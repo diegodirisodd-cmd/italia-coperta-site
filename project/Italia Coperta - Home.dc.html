@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#081A33;color:#F3E9CC;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  ::selection{background:#C9A227;color:#0B2545}
+  @keyframes icUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @keyframes icPulse{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.9);opacity:0}}
+  a{color:inherit}
+</style>
+</helmet>
+
+<div style="width:100%;overflow-x:hidden;background:#081A33">
+
+  <!-- ============ HEADER ============ -->
+  <header style="position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 40px;background:rgba(8,26,51,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,162,39,.24)">
+    <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+      <svg viewBox="0 0 260 380" width="26" height="38" aria-hidden="true" style="display:block;flex:none">
+        <path d="M60 46 C74 34 98 32 122 35 C140 37 160 33 176 45 C188 54 189 71 195 89 C201 108 209 127 213 149 C215 161 216 173 216 184 C226 184 236 190 238 200 C240 210 233 217 222 216 C213 215 205 212 197 219 C189 226 185 239 178 251 C171 262 165 274 157 285 C152 292 143 294 141 284 C139 273 146 263 141 249 C135 228 126 206 116 183 C107 162 96 142 85 121 C77 103 63 84 58 66 C54 57 53 50 60 46 Z" fill="#0B2545" stroke="#C9A227" stroke-width="6"></path>
+        <path d="M114 302 C130 294 152 300 161 312 C166 319 156 327 142 326 C127 325 110 316 114 302 Z" fill="#0B2545" stroke="#C9A227" stroke-width="6"></path>
+        <path d="M54 202 C46 194 49 218 53 240 C56 255 69 257 72 242 C76 222 64 208 54 202 Z" fill="#0B2545" stroke="#C9A227" stroke-width="6"></path>
+        <rect x="30" y="150" width="220" height="24" rx="4" fill="#C9A227" transform="rotate(19 130 165)"></rect>
+      </svg>
+      <span style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:Oswald;font-weight:700;font-size:17px;letter-spacing:.06em;color:#F3E9CC">DI RISO <span style="color:#C9A227">TELONI</span></span>
+        <span style="font-size:9.5px;letter-spacing:.34em;color:rgba(243,233,204,.55);margin-top:3px">ITALIA COPERTA · DAL 1950</span>
+      </span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:28px">
+      <a href="#storia" style="font-size:13px;letter-spacing:.04em;color:rgba(243,233,204,.8);text-decoration:none">Storia</a>
+      <a href="#configuratore" style="font-size:13px;letter-spacing:.04em;color:rgba(243,233,204,.8);text-decoration:none">Configuratore</a>
+      <a href="#centri" style="font-size:13px;letter-spacing:.04em;color:rgba(243,233,204,.8);text-decoration:none">Centri</a>
+      <a href="#riparazione" style="font-size:13px;letter-spacing:.04em;color:rgba(243,233,204,.8);text-decoration:none">Riparazione</a>
+      <a href="#configuratore" style="font-family:Oswald;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#0B2545;background:#C9A227;padding:11px 20px;border-radius:4px;text-decoration:none">Richiedi preventivo</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" style="position:relative;min-height:660px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;border-bottom:1px solid rgba(201,162,39,.18)">
+    <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ic-hero" shape="rect" placeholder="Trascina qui la foto del camion con telo (base fotografica scura)" style="position:absolute;inset:0;width:100%;height:100%" hint-size="100%,100%"></x-import>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,26,51,.97) 0%,rgba(8,26,51,.86) 42%,rgba(11,37,69,.55) 100%);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,26,51,.9) 0%,rgba(8,26,51,0) 45%);pointer-events:none"></div>
+
+    <!-- hero variant switcher -->
+    <div style="position:absolute;top:22px;right:26px;z-index:8;display:flex;align-items:center;gap:8px">
+      <span style="font-size:10px;letter-spacing:.2em;color:rgba(243,233,204,.5);text-transform:uppercase">Variante hero</span>
+      <div style="display:flex;gap:4px;padding:4px;background:rgba(8,26,51,.72);border:1px solid rgba(201,162,39,.32);border-radius:999px">
+        <button onClick="{{ setFoto }}" style="{{ fotoStyle }}">Foto protagonista</button>
+        <button onClick="{{ setEmblema }}" style="{{ emblemaStyle }}">Emblema protagonista</button>
+      </div>
+    </div>
+
+    <!-- FOTO variant -->
+    <sc-if value="{{ isFoto }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;z-index:6;max-width:1200px;width:100%;margin:0 auto;padding:40px 40px 56px">
+        <div style="max-width:660px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
+            <span style="width:34px;height:2px;background:#C9A227"></span>
+            <span style="font-size:12px;letter-spacing:.28em;color:#C9A227;text-transform:uppercase;font-weight:600">Teloni per camion · dal 1950</span>
+          </div>
+          <h1 style="font-family:Oswald;font-weight:700;font-size:88px;line-height:.92;letter-spacing:.01em;margin:0;color:#F3E9CC;text-transform:uppercase">Italia<br>Coperta</h1>
+          <p style="font-size:19px;line-height:1.55;color:rgba(243,233,204,.82);max-width:520px;margin:24px 0 0">Il telo che copre l'Italia — e ti copre in tutta Italia. Teloni su misura per bilici, motrici e rimorchi, cuciti a mano dalla terza generazione della famiglia Di Riso.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:34px">
+            <a href="#configuratore" style="font-family:Oswald;font-weight:600;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#0B2545;background:#C9A227;padding:16px 30px;border-radius:5px;text-decoration:none;box-shadow:0 8px 24px rgba(201,162,39,.28)">Richiedi preventivo</a>
+            <a href="#configuratore" style="font-family:Oswald;font-weight:600;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#F3E9CC;background:transparent;border:1.5px solid rgba(243,233,204,.5);padding:16px 30px;border-radius:5px;text-decoration:none">Configura il tuo telone</a>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- EMBLEMA variant -->
+    <sc-if value="{{ isEmblema }}" hint-placeholder-val="{{ true }}">
+      <div style="position:relative;z-index:6;max-width:1200px;width:100%;margin:0 auto;padding:40px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
+            <span style="width:34px;height:2px;background:#C9A227"></span>
+            <span style="font-size:12px;letter-spacing:.28em;color:#C9A227;text-transform:uppercase;font-weight:600">Teloni per camion · dal 1950</span>
+          </div>
+          <h1 style="font-family:Oswald;font-weight:700;font-size:76px;line-height:.92;margin:0;color:#F3E9CC;text-transform:uppercase">Italia<br>Coperta</h1>
+          <p style="font-size:18px;line-height:1.55;color:rgba(243,233,204,.82);max-width:460px;margin:22px 0 0">Un solo telo copre tutta la penisola. Lo stesso principio del nostro servizio: presenti, capillari, dovunque tu debba viaggiare.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px">
+            <a href="#configuratore" style="font-family:Oswald;font-weight:600;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#0B2545;background:#C9A227;padding:16px 30px;border-radius:5px;text-decoration:none">Richiedi preventivo</a>
+            <a href="#configuratore" style="font-family:Oswald;font-weight:600;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#F3E9CC;border:1.5px solid rgba(243,233,204,.5);padding:16px 30px;border-radius:5px;text-decoration:none">Configura il tuo telone</a>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:center">
+          <svg viewBox="0 0 260 380" width="330" height="480" style="filter:drop-shadow(0 26px 50px rgba(0,0,0,.5));max-width:100%">
+            <defs>
+              <linearGradient id="icTarpH" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#173a63"></stop>
+                <stop offset="0.5" stop-color="#0B2545"></stop>
+                <stop offset="1" stop-color="#061529"></stop>
+              </linearGradient>
+              <pattern id="icRibsH" width="17" height="14" patternUnits="userSpaceOnUse">
+                <rect width="17" height="14" fill="url(#icTarpH)"></rect>
+                <rect x="0" width="1.5" height="14" fill="rgba(243,233,204,.11)"></rect>
+                <rect x="9" width="3" height="14" fill="rgba(0,0,0,.26)"></rect>
+              </pattern>
+              <clipPath id="icClipH">
+                <path d="M60 46 C74 34 98 32 122 35 C140 37 160 33 176 45 C188 54 189 71 195 89 C201 108 209 127 213 149 C215 161 216 173 216 184 C226 184 236 190 238 200 C240 210 233 217 222 216 C213 215 205 212 197 219 C189 226 185 239 178 251 C171 262 165 274 157 285 C152 292 143 294 141 284 C139 273 146 263 141 249 C135 228 126 206 116 183 C107 162 96 142 85 121 C77 103 63 84 58 66 C54 57 53 50 60 46 Z"></path>
+                <path d="M114 302 C130 294 152 300 161 312 C166 319 156 327 142 326 C127 325 110 316 114 302 Z"></path>
+                <path d="M54 202 C46 194 49 218 53 240 C56 255 69 257 72 242 C76 222 64 208 54 202 Z"></path>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#icClipH)">
+              <rect x="0" y="0" width="260" height="380" fill="url(#icRibsH)"></rect>
+              <ellipse cx="76" cy="70" rx="130" ry="150" fill="rgba(243,233,204,.06)"></ellipse>
+            </g>
+            <!-- gold strap wraps the tarp -->
+            <g clip-path="url(#icClipH)">
+              <rect x="-10" y="150" width="290" height="26" fill="#C9A227" transform="rotate(19 130 165)"></rect>
+              <rect x="-10" y="150" width="290" height="3" fill="rgba(255,255,255,.4)" transform="rotate(19 130 165)"></rect>
+              <rect x="-10" y="173" width="290" height="3" fill="rgba(0,0,0,.3)" transform="rotate(19 130 165)"></rect>
+            </g>
+            <!-- silhouette outlines -->
+            <path d="M60 46 C74 34 98 32 122 35 C140 37 160 33 176 45 C188 54 189 71 195 89 C201 108 209 127 213 149 C215 161 216 173 216 184 C226 184 236 190 238 200 C240 210 233 217 222 216 C213 215 205 212 197 219 C189 226 185 239 178 251 C171 262 165 274 157 285 C152 292 143 294 141 284 C139 273 146 263 141 249 C135 228 126 206 116 183 C107 162 96 142 85 121 C77 103 63 84 58 66 C54 57 53 50 60 46 Z" fill="none" stroke="rgba(243,233,204,.6)" stroke-width="1.8"></path>
+            <path d="M114 302 C130 294 152 300 161 312 C166 319 156 327 142 326 C127 325 110 316 114 302 Z" fill="none" stroke="rgba(243,233,204,.55)" stroke-width="1.6"></path>
+            <path d="M54 202 C46 194 49 218 53 240 C56 255 69 257 72 242 C76 222 64 208 54 202 Z" fill="none" stroke="rgba(243,233,204,.55)" stroke-width="1.6"></path>
+            <!-- eyelets / grommets along the coast -->
+            <g fill="#081A33" stroke="#C9A227" stroke-width="2">
+              <circle cx="62" cy="72" r="4.5"></circle>
+              <circle cx="70" cy="104" r="4.5"></circle>
+              <circle cx="83" cy="140" r="4.5"></circle>
+              <circle cx="98" cy="176" r="4.5"></circle>
+              <circle cx="196" cy="120" r="4.5"></circle>
+              <circle cx="205" cy="150" r="4.5"></circle>
+            </g>
+            <!-- metal buckle on the strap -->
+            <g transform="rotate(19 130 165)">
+              <rect x="118" y="150" width="30" height="26" rx="3" fill="#8a9099"></rect>
+              <rect x="118" y="150" width="30" height="26" rx="3" fill="none" stroke="#c7ccd2" stroke-width="1.5"></rect>
+              <rect x="130" y="150" width="4" height="26" fill="#5c626b"></rect>
+              <rect x="122" y="154" width="22" height="3" fill="rgba(255,255,255,.5)"></rect>
+            </g>
+            <!-- lifted corner (peel) top-right -->
+            <path d="M176 45 C186 44 192 52 195 62 L172 74 C168 62 168 50 176 45 Z" fill="#3a4a5e"></path>
+            <path d="M176 45 C186 44 192 52 195 62" fill="none" stroke="#C9A227" stroke-width="2"></path>
+            <path d="M195 62 L172 74" fill="none" stroke="rgba(243,233,204,.5)" stroke-width="1.4"></path>
+          </svg>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- bottom marquee strip -->
+    <div style="position:relative;z-index:6;border-top:1px solid rgba(201,162,39,.16);background:rgba(6,21,41,.6)">
+      <div style="max-width:1200px;margin:0 auto;padding:16px 40px;display:flex;flex-wrap:wrap;gap:30px;align-items:center;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,233,204,.6)">
+        <span>Bilici</span><span style="color:#C9A227">·</span><span>Motrici</span><span style="color:#C9A227">·</span><span>Rimorchi</span><span style="color:#C9A227">·</span><span>Furgoni centinati</span><span style="color:#C9A227">·</span><span>Riparazioni rapide</span><span style="color:#C9A227">·</span><span>Servizio in tutta Italia</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STORIA / TRUST ============ -->
+  <section id="storia" style="background:#0B2545;padding:96px 40px;border-bottom:1px solid rgba(201,162,39,.14)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:center">
+      <div style="position:relative">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ic-storia" shape="rounded" radius="6" placeholder="Foto storica (b/n) del fondatore / officina" style="width:100%;height:460px;display:block" hint-size="100%,460px"></x-import>
+        <div style="position:absolute;left:-1px;bottom:-1px;background:#C9A227;color:#0B2545;font-family:Oswald;font-weight:700;padding:14px 22px;letter-spacing:.02em">
+          <span style="font-size:34px;line-height:1">1950</span>
+          <span style="display:block;font-size:11px;letter-spacing:.16em;font-weight:600;margin-top:2px">ANNO DI FONDAZIONE</span>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <span style="width:34px;height:2px;background:#C9A227"></span>
+          <span style="font-size:12px;letter-spacing:.28em;color:#C9A227;text-transform:uppercase;font-weight:600">Dal 1950 · Terza generazione</span>
+        </div>
+        <h2 style="font-family:Oswald;font-weight:700;font-size:52px;line-height:.98;margin:0;text-transform:uppercase;color:#F3E9CC">Una famiglia,<br>settantacinque anni<br>sulla strada</h2>
+        <p style="font-size:17px;line-height:1.65;color:rgba(243,233,204,.8);margin:24px 0 0;max-width:560px">Dal 1950 la famiglia Di Riso cuce teloni per camion pensati per resistere al tempo e ai chilometri. Oggi l'azienda è guidata da <strong style="color:#F3E9CC;font-weight:600">Domenico</strong> e <strong style="color:#F3E9CC;font-weight:600">Diego Di Riso</strong>, terza generazione: la stessa mano artigiana di allora, con processi e materiali di oggi.</p>
+        <p style="font-size:17px;line-height:1.65;color:rgba(243,233,204,.72);margin:16px 0 0;max-width:560px">Due sedi — Angri e Brescia — e un servizio attivo in tutta Italia, accanto a chi lavora ogni giorno con il proprio mezzo.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:36px;background:rgba(201,162,39,.2);border:1px solid rgba(201,162,39,.2)">
+          <div style="background:#0B2545;padding:24px 20px">
+            <div style="font-family:Oswald;font-weight:700;font-size:44px;line-height:1;color:#C9A227">75</div>
+            <div style="font-size:12px;letter-spacing:.1em;color:rgba(243,233,204,.65);text-transform:uppercase;margin-top:6px">Anni di attività</div>
+          </div>
+          <div style="background:#0B2545;padding:24px 20px">
+            <div style="font-family:Oswald;font-weight:700;font-size:44px;line-height:1;color:#C9A227">3ª</div>
+            <div style="font-size:12px;letter-spacing:.1em;color:rgba(243,233,204,.65);text-transform:uppercase;margin-top:6px">Generazione</div>
+          </div>
+          <div style="background:#0B2545;padding:24px 20px">
+            <div style="font-family:Oswald;font-weight:700;font-size:44px;line-height:1;color:#C9A227">2</div>
+            <div style="font-size:12px;letter-spacing:.1em;color:rgba(243,233,204,.65);text-transform:uppercase;margin-top:6px">Sedi · Angri & Brescia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONFIGURATORE ============ -->
+  <section id="configuratore" style="background:#081A33;padding:96px 40px;border-bottom:1px solid rgba(201,162,39,.14)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:40px">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <span style="width:34px;height:2px;background:#C9A227"></span>
+            <span style="font-size:12px;letter-spacing:.28em;color:#C9A227;text-transform:uppercase;font-weight:600">Costruisci la tua richiesta</span>
+          </div>
+          <h2 style="font-family:Oswald;font-weight:700;font-size:52px;line-height:1;margin:0;text-transform:uppercase;color:#F3E9CC">Configura il tuo telone</h2>
+        </div>
+        <p style="font-size:15px;line-height:1.6;color:rgba(243,233,204,.7);max-width:340px;margin:0">Quattro passi e ricevi un preventivo su misura. Ti richiamiamo noi, senza impegno.</p>
+      </div>
+
+      <!-- step tabs -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(201,162,39,.16);border:1px solid rgba(201,162,39,.2);margin-bottom:2px">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+          <button onClick="{{ st.onClick }}" style="{{ st.style }}">
+            <span style="font-family:Oswald;font-weight:700;font-size:15px;{{ st.numColor }}">{{ st.n }}</span>
+            <span style="font-size:14px;font-weight:500">{{ st.t }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.25fr .9fr;gap:2px;background:rgba(201,162,39,.16);border:1px solid rgba(201,162,39,.2);border-top:none">
+        <!-- LEFT: options -->
+        <div style="background:#0B2545;padding:36px">
+          <sc-if value="{{ isStep0 }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <h3 style="font-family:Oswald;font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.03em;margin:0 0 6px;color:#F3E9CC">Per quale veicolo?</h3>
+              <p style="font-size:14px;color:rgba(243,233,204,.6);margin:0 0 24px">Seleziona il tipo di mezzo da coprire.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <sc-for list="{{ veicoloOpts }}" as="opt" hint-placeholder-count="4">
+                  <button onClick="{{ opt.onClick }}" style="position:relative;text-align:left;padding:20px;background:#081A33;border:1.5px solid rgba(243,233,204,.14);border-radius:6px;cursor:pointer;color:#F3E9CC;transition:border-color .15s" style-hover="border-color:rgba(201,162,39,.6)">
+                    <sc-if value="{{ opt.selected }}"><div style="position:absolute;inset:0;border:2px solid #C9A227;border-radius:6px;pointer-events:none"></div></sc-if>
+                    <span style="font-family:Oswald;font-weight:600;font-size:17px;letter-spacing:.02em;text-transform:uppercase">{{ opt.label }}</span>
+                    <sc-if value="{{ opt.selected }}"><span style="display:block;margin-top:8px;font-size:10.5px;letter-spacing:.18em;color:#C9A227;text-transform:uppercase;font-weight:600">Selezionato</span></sc-if>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <h3 style="font-family:Oswald;font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.03em;margin:0 0 6px;color:#F3E9CC">Che tipo di telo?</h3>
+              <p style="font-size:14px;color:rgba(243,233,204,.6);margin:0 0 24px">Ogni telo ha una tenuta e un utilizzo diversi.</p>
+              <div style="display:grid;grid-template-columns:1fr;gap:12px">
+                <sc-for list="{{ teloOpts }}" as="opt" hint-placeholder-count="4">
+                  <button onClick="{{ opt.onClick }}" style="position:relative;text-align:left;padding:18px 20px;background:#081A33;border:1.5px solid rgba(243,233,204,.14);border-radius:6px;cursor:pointer;color:#F3E9CC;display:flex;justify-content:space-between;align-items:center;gap:16px" style-hover="border-color:rgba(201,162,39,.6)">
+                    <sc-if value="{{ opt.selected }}"><div style="position:absolute;inset:0;border:2px solid #C9A227;border-radius:6px;pointer-events:none"></div></sc-if>
+                    <span>
+                      <span style="font-family:Oswald;font-weight:600;font-size:17px;letter-spacing:.02em;text-transform:uppercase;display:block">{{ opt.label }}</span>
+                      <span style="font-size:13px;color:rgba(243,233,204,.6);margin-top:3px;display:block">{{ opt.desc }}</span>
+                    </span>
+                    <sc-if value="{{ opt.selected }}"><span style="flex:none;width:22px;height:22px;border-radius:50%;background:#C9A227;color:#0B2545;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">✓</span></sc-if>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <h3 style="font-family:Oswald;font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.03em;margin:0 0 6px;color:#F3E9CC">Quale misura?</h3>
+              <p style="font-size:14px;color:rgba(243,233,204,.6);margin:0 0 24px">Scegli il formato o indica che ti serve su misura.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <sc-for list="{{ misuraOpts }}" as="opt" hint-placeholder-count="4">
+                  <button onClick="{{ opt.onClick }}" style="position:relative;text-align:left;padding:20px;background:#081A33;border:1.5px solid rgba(243,233,204,.14);border-radius:6px;cursor:pointer;color:#F3E9CC" style-hover="border-color:rgba(201,162,39,.6)">
+                    <sc-if value="{{ opt.selected }}"><div style="position:absolute;inset:0;border:2px solid #C9A227;border-radius:6px;pointer-events:none"></div></sc-if>
+                    <span style="font-family:Oswald;font-weight:600;font-size:16px;letter-spacing:.02em;text-transform:uppercase">{{ opt.label }}</span>
+                    <sc-if value="{{ opt.selected }}"><span style="display:block;margin-top:8px;font-size:10.5px;letter-spacing:.18em;color:#C9A227;text-transform:uppercase;font-weight:600">Selezionato</span></sc-if>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ true }}">
+            <div>
+              <h3 style="font-family:Oswald;font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.03em;margin:0 0 6px;color:#F3E9CC">Aggiungi gli extra</h3>
+              <p style="font-size:14px;color:rgba(243,233,204,.6);margin:0 0 24px">Opzionali. Puoi selezionarne quanti vuoi.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                <sc-for list="{{ extraOpts }}" as="opt" hint-placeholder-count="6">
+                  <button onClick="{{ opt.onClick }}" style="position:relative;text-align:left;padding:16px 18px;background:#081A33;border:1.5px solid rgba(243,233,204,.14);border-radius:6px;cursor:pointer;color:#F3E9CC;display:flex;align-items:center;gap:12px" style-hover="border-color:rgba(201,162,39,.6)">
+                    <sc-if value="{{ opt.selected }}"><div style="position:absolute;inset:0;border:2px solid #C9A227;border-radius:6px;pointer-events:none"></div></sc-if>
+                    <span style="flex:none;width:20px;height:20px;border-radius:4px;border:1.5px solid {{ opt.boxBorder }};background:{{ opt.boxBg }};color:#0B2545;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center">{{ opt.check }}</span>
+                    <span style="font-size:14px;font-weight:500">{{ opt.label }}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- nav -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(243,233,204,.1)">
+            <button onClick="{{ prev }}" style="{{ prevStyle }}">← Indietro</button>
+            <span style="font-size:12px;letter-spacing:.16em;color:rgba(243,233,204,.5);text-transform:uppercase">{{ stepLabel }}</span>
+            <button onClick="{{ next }}" style="{{ nextStyle }}">Avanti →</button>
+          </div>
+        </div>
+
+        <!-- RIGHT: preview -->
+        <div style="background:#061529;padding:36px;display:flex;flex-direction:column">
+          <span style="font-size:11px;letter-spacing:.24em;color:rgba(243,233,204,.5);text-transform:uppercase;margin-bottom:20px">Anteprima configurazione</span>
+          <div style="background:#0B2545;border:1px solid rgba(201,162,39,.25);border-radius:8px;padding:22px;margin-bottom:22px">
+            <svg viewBox="0 0 440 180" style="width:100%;height:auto;display:block">
+              <line x1="10" y1="150" x2="430" y2="150" stroke="rgba(243,233,204,.2)" stroke-width="2"></line>
+              <!-- cab -->
+              <path d="M30 150 L30 96 Q30 88 40 86 L78 78 L98 100 L98 150 Z" fill="#12335c" stroke="#F3E9CC" stroke-width="2"></path>
+              <rect x="44" y="90" width="30" height="20" rx="2" fill="#0B2545" stroke="rgba(243,233,204,.6)" stroke-width="1.5"></rect>
+              <!-- trailer tarp -->
+              <rect x="104" y="60" width="308" height="90" rx="3" fill="#12335c" stroke="#F3E9CC" stroke-width="2"></rect>
+              <g stroke="rgba(243,233,204,.28)" stroke-width="2">
+                <line x1="130" y1="62" x2="130" y2="148"></line>
+                <line x1="160" y1="62" x2="160" y2="148"></line>
+                <line x1="190" y1="62" x2="190" y2="148"></line>
+                <line x1="220" y1="62" x2="220" y2="148"></line>
+                <line x1="250" y1="62" x2="250" y2="148"></line>
+                <line x1="280" y1="62" x2="280" y2="148"></line>
+                <line x1="310" y1="62" x2="310" y2="148"></line>
+                <line x1="340" y1="62" x2="340" y2="148"></line>
+                <line x1="370" y1="62" x2="370" y2="148"></line>
+              </g>
+              <!-- gold strap bottom -->
+              <rect x="104" y="132" width="308" height="7" fill="#C9A227"></rect>
+              <!-- wheels -->
+              <g fill="#061529" stroke="#F3E9CC" stroke-width="2">
+                <circle cx="70" cy="150" r="12"></circle>
+                <circle cx="300" cy="150" r="12"></circle>
+                <circle cx="340" cy="150" r="12"></circle>
+                <circle cx="380" cy="150" r="12"></circle>
+              </g>
+            </svg>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(243,233,204,.12);border-radius:8px;overflow:hidden">
+            <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(243,233,204,.1)">
+              <span style="font-size:12px;letter-spacing:.1em;color:rgba(243,233,204,.55);text-transform:uppercase">Veicolo</span>
+              <span style="font-size:14px;font-weight:600;color:#F3E9CC;text-align:right">{{ selVeicolo }}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(243,233,204,.1)">
+              <span style="font-size:12px;letter-spacing:.1em;color:rgba(243,233,204,.55);text-transform:uppercase">Telo</span>
+              <span style="font-size:14px;font-weight:600;color:#F3E9CC;text-align:right">{{ selTelo }}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(243,233,204,.1)">
+              <span style="font-size:12px;letter-spacing:.1em;color:rgba(243,233,204,.55);text-transform:uppercase">Misura</span>
+              <span style="font-size:14px;font-weight:600;color:#F3E9CC;text-align:right">{{ selMisura }}</span>
+            </div>
+            <div style="padding:14px 16px">
+              <span style="font-size:12px;letter-spacing:.1em;color:rgba(243,233,204,.55);text-transform:uppercase;display:block;margin-bottom:8px">Extra ({{ extraCount }})</span>
+              <sc-if value="{{ hasExtra }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-wrap:wrap;gap:6px">
+                  <sc-for list="{{ extraList }}" as="e" hint-placeholder-count="2">
+                    <span style="font-size:12px;padding:4px 10px;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.35);color:#C9A227;border-radius:999px">{{ e }}</span>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ noExtra }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size:13px;color:rgba(243,233,204,.45)">Nessun extra selezionato</span>
+              </sc-if>
+            </div>
+          </div>
+          <a href="#riparazione" style="margin-top:22px;font-family:Oswald;font-weight:600;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:#0B2545;background:#C9A227;padding:16px;border-radius:5px;text-align:center;text-decoration:none">Richiedi preventivo per questa configurazione</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CENTRI ============ -->
+  <section id="centri" style="background:#0B2545;padding:96px 40px;border-bottom:1px solid rgba(201,162,39,.14)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:56px">
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px">
+          <span style="width:34px;height:2px;background:#C9A227"></span>
+          <span style="font-size:12px;letter-spacing:.28em;color:#C9A227;text-transform:uppercase;font-weight:600">Presenti in tutta Italia</span>
+          <span style="width:34px;height:2px;background:#C9A227"></span>
+        </div>
+        <h2 style="font-family:Oswald;font-weight:700;font-size:52px;line-height:1;margin:0;text-transform:uppercase;color:#F3E9CC">Centri Autorizzati Italia Coperta</h2>
+        <p style="font-size:16px;line-height:1.6;color:rgba(243,233,204,.7);max-width:560px;margin:18px auto 0">Vendita, montaggio e riparazione vicino a te. Tocca un centro sulla mappa per i contatti.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center">
+        <!-- MAP -->
+        <div style="position:relative;width:100%;max-width:440px;margin:0 auto;aspect-ratio:260/380">
+          <svg viewBox="0 0 260 380" style="width:100%;height:100%;display:block;filter:drop-shadow(0 16px 32px rgba(0,0,0,.4))">
+            <defs>
+              <linearGradient id="icMapFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#12335c"></stop>
+                <stop offset="1" stop-color="#081A33"></stop>
+              </linearGradient>
+            </defs>
+            <path d="M60 46 C74 34 98 32 122 35 C140 37 160 33 176 45 C188 54 189 71 195 89 C201 108 209 127 213 149 C215 161 216 173 216 184 C226 184 236 190 238 200 C240 210 233 217 222 216 C213 215 205 212 197 219 C189 226 185 239 178 251 C171 262 165 274 157 285 C152 292 143 294 141 284 C139 273 146 263 141 249 C135 228 126 206 116 183 C107 162 96 142 85 121 C77 103 63 84 58 66 C54 57 53 50 60 46 Z" fill="url(#icMapFill)" stroke="#C9A227" stroke-width="1.4"></path>
+            <path d="M114 302 C130 294 152 300 161 312 C166 319 156 327 142 326 C127 325 110 316 114 302 Z" fill="url(#icMapFill)" stroke="#C9A227" stroke-width="1.4"></path>
+            <path d="M54 202 C46 194 49 218 53 240 C56 255 69 257 72 242 C76 222 64 208 54 202 Z" fill="url(#icMapFill)" stroke="#C9A227" stroke-width="1.4"></path>
+          </svg>
+          <sc-for list="{{ centri }}" as="c" hint-placeholder-count="8">
+            <button onClick="{{ c.onClick }}" style="{{ c.pinStyle }}">
+              <span style="position:relative;display:block;width:{{ c.pinSize }};height:{{ c.pinSize }}">
+                <sc-if value="{{ c.active }}"><span style="position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#C9A227;animation:icPulse 1.8s ease-out infinite"></span></sc-if>
+                <span style="position:absolute;inset:0;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:{{ c.pinBg }};border:2px solid {{ c.pinBorder }};box-shadow:0 4px 10px rgba(0,0,0,.4)"></span>
+                <span style="position:absolute;left:50%;top:44%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:{{ c.pinDot }}"></span>
+              </span>
+              <sc-if value="{{ c.active }}"><span style="position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);white-space:nowrap;font-family:Oswald;font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#0B2545;background:#C9A227;padding:3px 9px;border-radius:3px">{{ c.citta }}</span></sc-if>
+            </button>
+          </sc-for>
+        </div>
+
+        <!-- LIST + detail -->
+        <div>
+          <div style="display:flex;flex-direction:column;gap:2px;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.2);margin-bottom:24px">
+            <sc-for list="{{ centri }}" as="c" hint-placeholder-count="8">
+              <button onClick="{{ c.onClick }}" style="{{ c.rowStyle }}">
+                <span style="display:flex;align-items:center;gap:12px">
+                  <span style="width:8px;height:8px;border-radius:50%;background:{{ c.dotColor }};flex:none"></span>
+                  <span style="font-family:Oswald;font-weight:600;font-size:16px;letter-spacing:.02em;text-transform:uppercase">{{ c.citta }}</span>
+                </span>
+                <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:{{ c.tagColor }}">{{ c.tipo }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="background:#081A33;border:1px solid rgba(201,162,39,.3);border-radius:8px;padding:28px">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+              <span style="font-size:11px;letter-spacing:.2em;color:#C9A227;text-transform:uppercase;font-weight:600">{{ activeCentro.tipo }}</span>
+            </div>
+            <h3 style="font-family:Oswald;font-weight:700;font-size:30px;text-transform:uppercase;margin:0 0 14px;color:#F3E9CC">{{ activeCentro.citta }}</h3>
+            <div style="display:flex;flex-direction:column;gap:10px;font-size:15px;color:rgba(243,233,204,.8)">
+              <div>{{ activeCentro.indirizzo }}</div>
+              <div style="color:#C9A227;font-weight:600">{{ activeCentro.servizi }}</div>
+              <div style="font-family:Oswald;font-weight:600;font-size:20px;letter-spacing:.03em;color:#F3E9CC">{{ activeCentro.tel }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RIPARAZIONE RAPIDA ============ -->
+  <section id="riparazione" style="background:#081A33;padding:96px 40px">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.95fr 1.05fr;gap:56px;align-items:start">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="width:34px;height:2px;background:#C9A227"></span>
+          <span style="font-size:12px;letter-spacing:.28em;color:#C9A227;text-transform:uppercase;font-weight:600">Servizio · Intervento in 48h</span>
+        </div>
+        <h2 style="font-family:Oswald;font-weight:700;font-size:52px;line-height:1;margin:0;text-transform:uppercase;color:#F3E9CC">Riparazione rapida</h2>
+        <p style="font-size:17px;line-height:1.65;color:rgba(243,233,204,.8);margin:22px 0 0;max-width:480px">Strappi, fori, occhielli saltati, cinghie da sostituire: un telo fermo è un mezzo fermo. Prenoti online, ti diamo un appuntamento e rimetti il camion su strada.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-top:32px">
+          <div style="display:flex;align-items:center;gap:14px"><span style="font-family:Oswald;font-weight:700;color:#C9A227;font-size:18px;width:26px">01</span><span style="font-size:15px;color:rgba(243,233,204,.82)">Scegli il tipo di intervento e la sede</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="font-family:Oswald;font-weight:700;color:#C9A227;font-size:18px;width:26px">02</span><span style="font-size:15px;color:rgba(243,233,204,.82)">Prenoti giorno e fascia oraria</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="font-family:Oswald;font-weight:700;color:#C9A227;font-size:18px;width:26px">03</span><span style="font-size:15px;color:rgba(243,233,204,.82)">Confermiamo e ti aspettiamo — anche in giornata per le urgenze</span></div>
+        </div>
+      </div>
+
+      <!-- booking card -->
+      <div style="background:#0B2545;border:1px solid rgba(201,162,39,.28);border-radius:10px;padding:34px">
+        <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+          <div>
+            <h3 style="font-family:Oswald;font-weight:600;font-size:22px;text-transform:uppercase;letter-spacing:.03em;margin:0 0 22px;color:#F3E9CC">Prenota il tuo intervento</h3>
+
+            <span style="font-size:12px;letter-spacing:.14em;color:rgba(243,233,204,.6);text-transform:uppercase;display:block;margin-bottom:10px">Tipo di intervento</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+              <sc-for list="{{ repServizi }}" as="s" hint-placeholder-count="5">
+                <button onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</button>
+              </sc-for>
+            </div>
+
+            <span style="font-size:12px;letter-spacing:.14em;color:rgba(243,233,204,.6);text-transform:uppercase;display:block;margin-bottom:10px">Sede</span>
+            <div style="display:flex;gap:8px;margin-bottom:24px">
+              <sc-for list="{{ repSedi }}" as="s" hint-placeholder-count="2">
+                <button onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</button>
+              </sc-for>
+            </div>
+
+            <span style="font-size:12px;letter-spacing:.14em;color:rgba(243,233,204,.6);text-transform:uppercase;display:block;margin-bottom:10px">Giorno</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+              <sc-for list="{{ repDate }}" as="d" hint-placeholder-count="5">
+                <button onClick="{{ d.onClick }}" style="{{ d.style }}">
+                  <span style="display:block;font-size:10px;letter-spacing:.1em;opacity:.7;text-transform:uppercase">{{ d.dow }}</span>
+                  <span style="display:block;font-family:Oswald;font-weight:600;font-size:19px;line-height:1.1">{{ d.day }}</span>
+                </button>
+              </sc-for>
+            </div>
+
+            <span style="font-size:12px;letter-spacing:.14em;color:rgba(243,233,204,.6);text-transform:uppercase;display:block;margin-bottom:10px">Fascia oraria</span>
+            <div style="display:flex;gap:8px;margin-bottom:28px">
+              <sc-for list="{{ repSlots }}" as="s" hint-placeholder-count="2">
+                <button onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</button>
+              </sc-for>
+            </div>
+
+            <button onClick="{{ book }}" style="{{ bookStyle }}">{{ bookLabel }}</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ repDone }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:14px 0">
+            <div style="width:64px;height:64px;border-radius:50%;background:#C9A227;color:#0B2545;font-size:32px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">✓</div>
+            <h3 style="font-family:Oswald;font-weight:700;font-size:26px;text-transform:uppercase;margin:0 0 8px;color:#F3E9CC">Richiesta inviata</h3>
+            <p style="font-size:15px;color:rgba(243,233,204,.75);margin:0 0 24px">Ti richiamiamo per confermare l'appuntamento.</p>
+            <div style="text-align:left;background:#081A33;border:1px solid rgba(243,233,204,.12);border-radius:8px;padding:20px;margin-bottom:22px">
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(243,233,204,.08)"><span style="font-size:13px;color:rgba(243,233,204,.55)">Intervento</span><span style="font-size:14px;font-weight:600;color:#F3E9CC">{{ repServizioSel }}</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(243,233,204,.08)"><span style="font-size:13px;color:rgba(243,233,204,.55)">Sede</span><span style="font-size:14px;font-weight:600;color:#F3E9CC">{{ repSedeSel }}</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(243,233,204,.08)"><span style="font-size:13px;color:rgba(243,233,204,.55)">Giorno</span><span style="font-size:14px;font-weight:600;color:#F3E9CC">{{ repDataSel }}</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font-size:13px;color:rgba(243,233,204,.55)">Fascia</span><span style="font-size:14px;font-weight:600;color:#F3E9CC">{{ repSlotSel }}</span></div>
+            </div>
+            <button onClick="{{ reset }}" style="font-family:Oswald;font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:#F3E9CC;background:transparent;border:1.5px solid rgba(243,233,204,.4);padding:12px 24px;border-radius:5px;cursor:pointer">Nuova prenotazione</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#061529;padding:56px 40px 40px;border-top:1px solid rgba(201,162,39,.2)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <svg viewBox="0 0 260 380" width="24" height="35" aria-hidden="true">
+            <path d="M60 46 C74 34 98 32 122 35 C140 37 160 33 176 45 C188 54 189 71 195 89 C201 108 209 127 213 149 C215 161 216 173 216 184 C226 184 236 190 238 200 C240 210 233 217 222 216 C213 215 205 212 197 219 C189 226 185 239 178 251 C171 262 165 274 157 285 C152 292 143 294 141 284 C139 273 146 263 141 249 C135 228 126 206 116 183 C107 162 96 142 85 121 C77 103 63 84 58 66 C54 57 53 50 60 46 Z" fill="#0B2545" stroke="#C9A227" stroke-width="6"></path>
+            <rect x="30" y="150" width="220" height="24" rx="4" fill="#C9A227" transform="rotate(19 130 165)"></rect>
+          </svg>
+          <span style="font-family:Oswald;font-weight:700;font-size:18px;letter-spacing:.06em;color:#F3E9CC">DI RISO <span style="color:#C9A227">TELONI</span></span>
+        </div>
+        <p style="font-size:14px;line-height:1.6;color:rgba(243,233,204,.6);max-width:320px;margin:0">Teloni per camion dal 1950. Il telo che copre l'Italia — e ti copre in tutta Italia.</p>
+      </div>
+      <div>
+        <span style="font-size:11px;letter-spacing:.2em;color:#C9A227;text-transform:uppercase;font-weight:600;display:block;margin-bottom:16px">Sedi</span>
+        <div style="font-size:14px;color:rgba(243,233,204,.75);line-height:1.9">Angri (SA) — Sede principale<br>Brescia — Sede Nord</div>
+      </div>
+      <div>
+        <span style="font-size:11px;letter-spacing:.2em;color:#C9A227;text-transform:uppercase;font-weight:600;display:block;margin-bottom:16px">Servizi</span>
+        <div style="font-size:14px;color:rgba(243,233,204,.75);line-height:1.9">Teloni su misura<br>Configuratore online<br>Riparazione rapida<br>Centri autorizzati</div>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(243,233,204,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;color:rgba(243,233,204,.45)">
+      <span>© 1950–2025 Di Riso Teloni · Terza generazione</span>
+      <span style="letter-spacing:.14em;text-transform:uppercase">Italia Coperta</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = {
+    heroMode: 'foto',
+    step: 0,
+    veicolo: 'Bilico / Semirimorchio',
+    telo: 'Centinato (cappotta)',
+    misura: 'Standard 13,6 m',
+    extra: ['Occhielli rinforzati inox'],
+    centro: 'angri',
+    repServizio: 'Strappo / foro nel telo',
+    repData: '',
+    repSlot: '',
+    repSede: 'Angri (SA)',
+    repDone: false,
+  };
+
+  set(k, v) { this.setState({ [k]: v }); }
+  toggleExtra(v) {
+    this.setState(s => ({ extra: s.extra.includes(v) ? s.extra.filter(x => x !== v) : [...s.extra, v] }));
+  }
+
+  seg(active) {
+    return { padding: '8px 16px', borderRadius: '999px', border: 'none', cursor: 'pointer',
+      fontFamily: 'Inter', fontWeight: 600, fontSize: '12px', letterSpacing: '.02em',
+      transition: 'all .2s', background: active ? '#C9A227' : 'transparent',
+      color: active ? '#0B2545' : 'rgba(243,233,204,.75)' };
+  }
+
+  simpleOpts(list, key) {
+    return list.map(o => {
+      const label = typeof o === 'string' ? o : o.label;
+      const desc = typeof o === 'string' ? '' : o.desc;
+      return { label, desc, selected: this.state[key] === label, onClick: () => this.set(key, label) };
+    });
+  }
+
+  chip(active) {
+    return { padding: '9px 15px', borderRadius: '999px', cursor: 'pointer', fontFamily: 'Inter',
+      fontSize: '13px', fontWeight: 500, transition: 'all .15s',
+      border: active ? '1.5px solid #C9A227' : '1.5px solid rgba(243,233,204,.2)',
+      background: active ? 'rgba(201,162,39,.16)' : '#081A33',
+      color: active ? '#C9A227' : 'rgba(243,233,204,.8)' };
+  }
+
+  dateChip(active) {
+    return { padding: '10px 14px', borderRadius: '8px', cursor: 'pointer', textAlign: 'center', minWidth: '58px',
+      transition: 'all .15s',
+      border: active ? '1.5px solid #C9A227' : '1.5px solid rgba(243,233,204,.2)',
+      background: active ? 'rgba(201,162,39,.16)' : '#081A33',
+      color: active ? '#C9A227' : 'rgba(243,233,204,.8)' };
+  }
+
+  renderVals() {
+    const S = this.state;
+
+    // ---- hero ----
+    const isFoto = S.heroMode === 'foto';
+
+    // ---- configurator ----
+    const veicoli = ['Bilico / Semirimorchio', 'Motrice', 'Rimorchio', 'Furgone centinato'];
+    const teli = [
+      { label: 'Centinato (cappotta)', desc: 'Telo ad archi, apertura a soffietto' },
+      { label: 'Scorrevole / Curtain', desc: 'Sponde laterali scorrevoli' },
+      { label: 'Telo fisso', desc: 'Copertura fissa ad alta tenuta' },
+      { label: 'Isotermico', desc: 'Coibentato per la catena del freddo' },
+    ];
+    const misure = ['Standard 13,6 m', 'Mega — 3 m altezza', 'Ribassato', 'Su misura'];
+    const extra = ['Stampa logo aziendale', 'Occhielli rinforzati inox', 'Rinforzo antivento', 'Tasca portadocumenti', 'Bande rifrangenti', 'Kit riparazione incluso'];
+
+    const stepDefs = [{ n: '01', t: 'Veicolo' }, { n: '02', t: 'Tipo di telo' }, { n: '03', t: 'Misura' }, { n: '04', t: 'Extra' }];
+    const steps = stepDefs.map((st, i) => {
+      const active = S.step === i;
+      const done = S.step > i;
+      return {
+        n: st.n, t: st.t,
+        numColor: active ? 'color:#C9A227' : (done ? 'color:rgba(201,162,39,.7)' : 'color:rgba(243,233,204,.35)'),
+        onClick: () => this.set('step', i),
+        style: {
+          display: 'flex', alignItems: 'center', gap: '10px', padding: '18px 20px', cursor: 'pointer',
+          border: 'none', textAlign: 'left', transition: 'all .15s',
+          background: active ? '#0B2545' : '#061529',
+          color: active ? '#F3E9CC' : 'rgba(243,233,204,.55)',
+          borderBottom: active ? '2px solid #C9A227' : '2px solid transparent',
+        },
+      };
+    });
+
+    const extraOpts = extra.map(label => {
+      const sel = S.extra.includes(label);
+      return { label, selected: sel, onClick: () => this.toggleExtra(label),
+        check: sel ? '✓' : '', boxBg: sel ? '#C9A227' : 'transparent',
+        boxBorder: sel ? '#C9A227' : 'rgba(243,233,204,.35)' };
+    });
+
+    const navBtnBase = { fontFamily: 'Oswald', fontWeight: 600, fontSize: '13px', letterSpacing: '.05em',
+      textTransform: 'uppercase', padding: '11px 20px', borderRadius: '5px', cursor: 'pointer' };
+    const prevStyle = S.step > 0
+      ? { ...navBtnBase, background: 'transparent', border: '1.5px solid rgba(243,233,204,.4)', color: '#F3E9CC', opacity: 1 }
+      : { ...navBtnBase, background: 'transparent', border: '1.5px solid rgba(243,233,204,.12)', color: 'rgba(243,233,204,.3)', cursor: 'not-allowed' };
+    const nextStyle = S.step < 3
+      ? { ...navBtnBase, background: '#C9A227', border: 'none', color: '#0B2545' }
+      : { ...navBtnBase, background: 'rgba(201,162,39,.2)', border: 'none', color: 'rgba(243,233,204,.4)', cursor: 'not-allowed' };
+
+    // ---- centri ----
+    const centriData = [
+      { id: 'torino', citta: 'Torino', tipo: 'Centro partner', indirizzo: 'Str. del Portone 42, Torino', servizi: 'Vendita · Riparazione', tel: '011 000 0000', x: 22, y: 26 },
+      { id: 'milano', citta: 'Milano', tipo: 'Centro partner', indirizzo: 'Via Mecenate 84, Milano', servizi: 'Vendita · Montaggio', tel: '02 000 0000', x: 33, y: 24 },
+      { id: 'brescia', citta: 'Brescia', tipo: 'Sede Nord', indirizzo: 'Via dell\u2019Industria 12, Brescia', servizi: 'Produzione · Vendita · Riparazione rapida', tel: '030 000 0000', x: 40, y: 23 },
+      { id: 'padova', citta: 'Padova', tipo: 'Centro partner', indirizzo: 'Corso Stati Uniti 9, Padova', servizi: 'Vendita · Riparazione', tel: '049 000 0000', x: 49, y: 26 },
+      { id: 'bologna', citta: 'Bologna', tipo: 'Centro partner', indirizzo: 'Via Emilia 210, Bologna', servizi: 'Vendita · Montaggio', tel: '051 000 0000', x: 46, y: 34 },
+      { id: 'roma', citta: 'Roma', tipo: 'Centro partner', indirizzo: 'Via Prenestina 500, Roma', servizi: 'Vendita · Riparazione', tel: '06 000 0000', x: 47, y: 52 },
+      { id: 'angri', citta: 'Angri (SA)', tipo: 'Sede principale', indirizzo: 'Zona Industriale, Angri (SA)', servizi: 'Produzione · Vendita · Riparazione · Configuratore', tel: '081 000 0000', x: 57, y: 63 },
+      { id: 'bari', citta: 'Bari', tipo: 'Centro partner', indirizzo: 'S.S. 16 km 812, Bari', servizi: 'Vendita · Riparazione rapida', tel: '080 000 0000', x: 74, y: 61 },
+    ];
+    const centri = centriData.map(c => {
+      const active = S.centro === c.id;
+      const isMain = c.tipo.startsWith('Sede');
+      return { ...c, active, onClick: () => this.set('centro', c.id),
+        pinSize: active ? '26px' : '18px',
+        pinBg: active ? '#C9A227' : (isMain ? '#C9A227' : '#0B2545'),
+        pinBorder: active ? '#F3E9CC' : '#C9A227',
+        pinDot: active ? '#0B2545' : (isMain ? '#0B2545' : '#C9A227'),
+        pinStyle: { position: 'absolute', left: c.x + '%', top: c.y + '%',
+          transform: 'translate(-50%,-100%)', background: 'transparent', border: 'none',
+          cursor: 'pointer', padding: 0, zIndex: active ? 6 : 3 },
+        rowStyle: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px',
+          padding: '15px 18px', border: 'none', cursor: 'pointer', textAlign: 'left', transition: 'all .15s',
+          background: active ? '#081A33' : '#0B2545', color: '#F3E9CC' },
+        dotColor: active ? '#C9A227' : (isMain ? '#C9A227' : 'rgba(243,233,204,.35)'),
+        tagColor: active ? '#C9A227' : 'rgba(243,233,204,.4)',
+      };
+    });
+    const activeCentro = centriData.find(c => c.id === S.centro) || centriData[0];
+
+    // ---- repair ----
+    const servizi = ['Strappo / foro nel telo', 'Occhielli e cinghie', 'Sostituzione teli laterali', 'Riparazione centinato', 'Manutenzione generale'];
+    const repServizi = servizi.map(v => ({ label: v, onClick: () => this.set('repServizio', v), style: this.chip(S.repServizio === v) }));
+    const sedi = ['Angri (SA)', 'Brescia'];
+    const repSedi = sedi.map(v => ({ label: v, onClick: () => this.set('repSede', v), style: this.chip(S.repSede === v) }));
+    const dates = [
+      { dow: 'Lun', day: '6', val: 'Lunedì 6' }, { dow: 'Mar', day: '7', val: 'Martedì 7' },
+      { dow: 'Mer', day: '8', val: 'Mercoledì 8' }, { dow: 'Gio', day: '9', val: 'Giovedì 9' },
+      { dow: 'Ven', day: '10', val: 'Venerdì 10' },
+    ];
+    const repDate = dates.map(d => ({ dow: d.dow, day: d.day, onClick: () => this.set('repData', d.val), style: this.dateChip(S.repData === d.val) }));
+    const slots = ['Mattina · 8–13', 'Pomeriggio · 14–18'];
+    const repSlots = slots.map(v => ({ label: v, onClick: () => this.set('repSlot', v), style: this.chip(S.repSlot === v) }));
+    const canBook = !!S.repData && !!S.repSlot;
+    const bookStyle = { width: '100%', fontFamily: 'Oswald', fontWeight: 600, fontSize: '15px', letterSpacing: '.05em',
+      textTransform: 'uppercase', padding: '16px', borderRadius: '5px', border: 'none',
+      cursor: canBook ? 'pointer' : 'not-allowed',
+      background: canBook ? '#C9A227' : 'rgba(201,162,39,.25)',
+      color: canBook ? '#0B2545' : 'rgba(243,233,204,.5)' };
+
+    return {
+      // hero
+      isFoto, isEmblema: !isFoto,
+      setFoto: () => this.set('heroMode', 'foto'),
+      setEmblema: () => this.set('heroMode', 'emblema'),
+      fotoStyle: this.seg(isFoto), emblemaStyle: this.seg(!isFoto),
+      // configurator
+      steps,
+      isStep0: S.step === 0, isStep1: S.step === 1, isStep2: S.step === 2, isStep3: S.step === 3,
+      veicoloOpts: this.simpleOpts(veicoli, 'veicolo'),
+      teloOpts: this.simpleOpts(teli, 'telo'),
+      misuraOpts: this.simpleOpts(misure, 'misura'),
+      extraOpts,
+      selVeicolo: S.veicolo, selTelo: S.telo, selMisura: S.misura,
+      extraList: S.extra, hasExtra: S.extra.length > 0, noExtra: S.extra.length === 0, extraCount: S.extra.length,
+      prev: () => this.set('step', Math.max(0, S.step - 1)),
+      next: () => this.set('step', Math.min(3, S.step + 1)),
+      prevStyle, nextStyle,
+      stepLabel: 'Passo ' + (S.step + 1) + ' di 4',
+      // centri
+      centri, activeCentro,
+      // repair
+      repServizi, repSedi, repDate, repSlots,
+      book: () => { if (canBook) this.setState({ repDone: true }); },
+      reset: () => this.setState({ repDone: false }),
+      bookStyle, bookLabel: canBook ? 'Prenota intervento' : 'Scegli giorno e fascia',
+      notDone: !S.repDone, repDone: S.repDone,
+      repServizioSel: S.repServizio, repSedeSel: S.repSede,
+      repDataSel: S.repData || '—', repSlotSel: S.repSlot || '—',
+    };
+  }
+}
+</script>
+</body>
+</html>
