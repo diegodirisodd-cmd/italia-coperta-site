@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { INTERVENTI, SEDI, FASCE, slotDisponibile } from "@/lib/riparazione";
+import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 type Payload = {
   intervento: string;
@@ -40,10 +41,18 @@ export async function POST(req: Request) {
 
   const reference = "RIP-" + Date.now().toString(36).toUpperCase();
 
-  // TODO (Fase 6, once Supabase + WhatsApp exist):
-  //   1. supabaseAdmin().from("prenotazioni").insert({ reference, ...body })
-  //      inside a transaction that also marks the slot taken (real calendar).
-  //   2. notify the chosen sede via WhatsApp Cloud API.
+  const { error } = await supabaseAdmin()
+    .from("prenotazioni")
+    .insert({ reference, ...body });
+
+  if (error) {
+    console.error("Errore insert prenotazioni:", error);
+    return NextResponse.json({ error: "Errore nel salvataggio della prenotazione" }, { status: 500 });
+  }
+
+  // TODO (Fase 6, once WhatsApp exists):
+  //   - mark the slot taken inside a transaction (real calendar).
+  //   - notify the chosen sede via WhatsApp Cloud API.
 
   return NextResponse.json({ reference });
 }

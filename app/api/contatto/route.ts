@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 type Payload = {
   tipo: "contatto" | "preventivo";
@@ -35,8 +36,16 @@ export async function POST(req: Request) {
   const prefix = body.tipo === "preventivo" ? "PREV" : "CON";
   const reference = `${prefix}-` + Date.now().toString(36).toUpperCase();
 
-  // TODO (Fase 6 backend, once Supabase + integrations exist):
-  //   1. supabaseAdmin().from("richieste").insert({ reference, ...body })
+  const { error } = await supabaseAdmin()
+    .from("richieste")
+    .insert({ reference, ...body });
+
+  if (error) {
+    console.error("Errore insert richieste:", error);
+    return NextResponse.json({ error: "Errore nell'invio della richiesta" }, { status: 500 });
+  }
+
+  // TODO (Fase 6 backend, once the remaining integrations exist):
   //   2. notify Di Riso via email (dirisoteloniitalia@dodiitalia.it — see
   //      EMAIL in lib/site.ts) + WhatsApp Cloud API
   //   3. for tipo === "preventivo": generate the branded navy/gold PDF and

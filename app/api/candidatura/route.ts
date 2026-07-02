@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 type Payload = {
   azienda: string;
@@ -34,9 +35,17 @@ export async function POST(req: Request) {
 
   const reference = "PARTNER-" + Date.now().toString(36).toUpperCase();
 
-  // TODO (Fase 6 backend, once Supabase + notifications exist):
-  //   1. supabaseAdmin().from("candidature_partner").insert({ reference, ...body })
-  //   2. notify Di Riso (email + WhatsApp) of the new partner application.
+  const { error } = await supabaseAdmin()
+    .from("candidature_partner")
+    .insert({ reference, ...body });
+
+  if (error) {
+    console.error("Errore insert candidature_partner:", error);
+    return NextResponse.json({ error: "Errore nell'invio della candidatura" }, { status: 500 });
+  }
+
+  // TODO (Fase 6 backend, once notifications exist):
+  //   - notify Di Riso (email + WhatsApp) of the new partner application.
 
   return NextResponse.json({ reference });
 }

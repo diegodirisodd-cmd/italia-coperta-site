@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { stimaPrezzo, type ConfiguratoreSelezione } from "@/lib/configuratore";
 import { getCentroForRegione } from "@/lib/regioni";
+import { supabaseAdmin } from "@/lib/supabaseAdmin";
 
 type Payload = {
   selezione: ConfiguratoreSelezione;
@@ -38,13 +39,19 @@ export async function POST(req: Request) {
   const centro = getCentroForRegione(body.regione);
   const reference = "IC-" + Date.now().toString(36).toUpperCase();
 
-  // TODO (Fase 6, once the Supabase project + integrations exist):
-  //   1. supabaseAdmin().from("preventivi").insert({ reference, ...body, stima, centro_id })
+  const { error } = await supabaseAdmin()
+    .from("preventivi")
+    .insert({ reference, ...body, stima, centro_id: centro?.id ?? null });
+
+  if (error) {
+    console.error("Errore insert preventivi:", error);
+    return NextResponse.json({ error: "Errore nel salvataggio della richiesta" }, { status: 500 });
+  }
+
+  // TODO (Fase 6, once the remaining integrations exist):
   //   2. generate the branded navy/gold PDF preventivo
   //   3. notify the assigned centre via WhatsApp Cloud API, and Di Riso via
   //      email (dirisoteloniitalia@dodiitalia.it — see EMAIL in lib/site.ts)
-  // For now we validate, assign the centre, and return a reference so the
-  // client flow is complete end-to-end.
 
   return NextResponse.json({
     reference,
