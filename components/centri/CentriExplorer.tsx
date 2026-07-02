@@ -16,8 +16,8 @@ export function CentriExplorer({ footerHref }: { footerHref?: string }) {
   return (
     <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
       {/* MAP */}
-      <div className="relative mx-auto w-full max-w-[440px]" style={{ aspectRatio: "260 / 380" }}>
-        <svg viewBox="0 0 260 380" className="block h-full w-full drop-shadow-[0_16px_32px_rgba(0,0,0,0.4)]">
+      <div className="relative mx-auto w-full max-w-[440px]" style={{ aspectRatio: "260 / 313.3" }}>
+        <svg viewBox="0 0 260 313.3" className="block h-full w-full drop-shadow-[0_16px_32px_rgba(0,0,0,0.4)]">
           <defs>
             <linearGradient id="icMapFill" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stopColor="#12335c" />

@@ -128,7 +128,7 @@ function EmblemaVariant() {
         </div>
       </div>
       <div className="flex justify-center">
-        <ItaliaEmblem variant="rich" width={330} height={480} />
+        <ItaliaEmblem variant="rich" width={330} height={396} />
       </div>
     </div>
   );

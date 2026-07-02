@@ -3,12 +3,14 @@ import { useId } from "react";
 // Shared Italy silhouette path data — the "Italia Coperta" signature emblem
 // (Italy as a PVC tarp) and the stylized map both draw from these same
 // paths so the shape never drifts between uses.
+// Coordinates derived from real Italy country boundary data (mainland +
+// Sicily + Sardinia), projected and scaled to fit this viewBox.
 export const ITALY_PATH_MAINLAND =
-  "M60 46 C74 34 98 32 122 35 C140 37 160 33 176 45 C188 54 189 71 195 89 C201 108 209 127 213 149 C215 161 216 173 216 184 C226 184 236 190 238 200 C240 210 233 217 222 216 C213 215 205 212 197 219 C189 226 185 239 178 251 C171 262 165 274 157 285 C152 292 143 294 141 284 C139 273 146 263 141 249 C135 228 126 206 116 183 C107 162 96 142 85 121 C77 103 63 84 58 66 C54 57 53 50 60 46 Z";
+  "M 125.3 27.9 L 153.2 34.7 L 151.1 47.7 L 155.8 58.8 L 140.3 55.0 L 124.4 64.3 L 125.5 77.4 L 123.1 84.9 L 129.5 98.2 L 147.8 111.5 L 157.6 133.2 L 179.3 154.4 L 194.6 154.2 L 199.3 160.0 L 193.9 165.2 L 211.3 174.7 L 225.7 182.7 L 242.4 196.4 L 244.4 201.3 L 240.8 210.7 L 229.9 198.4 L 213.0 194.1 L 204.8 211.1 L 218.9 220.8 L 216.6 234.5 L 208.4 236.1 L 198.0 258.6 L 189.9 260.7 L 189.9 252.6 L 193.9 238.5 L 198.2 232.9 L 190.5 217.7 L 184.6 204.4 L 176.5 201.2 L 170.7 189.8 L 158.2 185.1 L 149.8 174.5 L 135.3 172.8 L 120.1 160.9 L 102.2 143.8 L 89.0 128.7 L 82.9 102.7 L 73.2 99.7 L 57.3 91.0 L 48.3 94.6 L 37.1 106.8 L 29.0 108.7 L 31.2 97.3 L 20.6 93.9 L 15.6 73.6 L 22.4 65.6 L 16.6 55.8 L 17.4 48.3 L 25.8 54.0 L 35.2 52.7 L 46.2 43.8 L 49.5 48.0 L 58.8 47.1 L 63.1 36.5 L 77.5 39.8 L 86.1 35.4 L 87.6 24.6 L 99.4 28.4 L 101.7 23.4 L 121.0 18.8 L 125.3 27.9 Z";
 export const ITALY_PATH_SICILY =
-  "M114 302 C130 294 152 300 161 312 C166 319 156 327 142 326 C127 325 110 316 114 302 Z";
+  "M 186.7 252.2 L 179.6 272.9 L 182.6 281.0 L 178.5 294.5 L 163.6 284.6 L 153.6 281.8 L 126.4 268.4 L 129.1 254.9 L 152.0 257.3 L 171.9 254.5 L 186.7 252.2 Z";
 export const ITALY_PATH_SARDINIA =
-  "M54 202 C46 194 49 218 53 240 C56 255 69 257 72 242 C76 222 64 208 54 202 Z";
+  "M 63.6 173.9 L 75.3 192.6 L 72.5 227.3 L 63.7 225.7 L 55.7 234.4 L 48.3 227.5 L 47.6 195.8 L 43.1 180.8 L 53.8 182.1 L 63.6 173.9 Z";
 
 type ItaliaEmblemProps = {
   /** "synthetic" = flat silhouette + strap, for header/footer/pins.
@@ -21,18 +23,18 @@ type ItaliaEmblemProps = {
 
 export function ItaliaEmblem({ variant = "synthetic", width, height, className }: ItaliaEmblemProps) {
   if (variant === "rich") {
-    return <RichEmblem width={width ?? 330} height={height ?? 480} className={className} />;
+    return <RichEmblem width={width ?? 330} height={height ?? 396} className={className} />;
   }
-  return <SyntheticEmblem width={width ?? 26} height={height ?? 38} className={className} />;
+  return <SyntheticEmblem width={width ?? 26} height={height ?? 31} className={className} />;
 }
 
 function SyntheticEmblem({ width, height, className }: { width: number; height: number; className?: string }) {
   return (
-    <svg viewBox="0 0 260 380" width={width} height={height} aria-hidden="true" className={className} style={{ display: "block", flex: "none" }}>
+    <svg viewBox="0 0 260 313.3" width={width} height={height} aria-hidden="true" className={className} style={{ display: "block", flex: "none" }}>
       <path d={ITALY_PATH_MAINLAND} fill="#000000" stroke="#E31919" strokeWidth={6} />
       <path d={ITALY_PATH_SICILY} fill="#000000" stroke="#E31919" strokeWidth={6} />
       <path d={ITALY_PATH_SARDINIA} fill="#000000" stroke="#E31919" strokeWidth={6} />
-      <rect x="30" y="150" width="220" height="24" rx="4" fill="#E31919" transform="rotate(19 130 165)" />
+      <rect x="-30" y="128" width="320" height="26" rx="4" fill="#E31919" transform="rotate(-18 131 141)" />
     </svg>
   );
 }
@@ -45,7 +47,7 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
 
   return (
     <svg
-      viewBox="0 0 260 380"
+      viewBox="0 0 260 313.3"
       width={width}
       height={height}
       className={className}
@@ -70,15 +72,15 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
       </defs>
 
       <g clipPath={`url(#${clipId})`}>
-        <rect x="0" y="0" width="260" height="380" fill={`url(#${ribsId})`} />
-        <ellipse cx="76" cy="70" rx="130" ry="150" fill="rgba(243,233,204,.06)" />
+        <rect x="0" y="0" width="260" height="313.3" fill={`url(#${ribsId})`} />
+        <ellipse cx="90" cy="60" rx="120" ry="140" fill="rgba(243,233,204,.06)" />
       </g>
 
-      {/* gold strap wraps the tarp */}
+      {/* red strap wraps the tarp */}
       <g clipPath={`url(#${clipId})`}>
-        <rect x="-10" y="150" width="290" height="26" fill="#E31919" transform="rotate(19 130 165)" />
-        <rect x="-10" y="150" width="290" height="3" fill="rgba(255,255,255,.4)" transform="rotate(19 130 165)" />
-        <rect x="-10" y="173" width="290" height="3" fill="rgba(0,0,0,.3)" transform="rotate(19 130 165)" />
+        <rect x="-30" y="128" width="320" height="26" fill="#E31919" transform="rotate(-18 131 141)" />
+        <rect x="-30" y="128" width="320" height="3" fill="rgba(255,255,255,.4)" transform="rotate(-18 131 141)" />
+        <rect x="-30" y="151" width="320" height="3" fill="rgba(0,0,0,.3)" transform="rotate(-18 131 141)" />
       </g>
 
       {/* silhouette outlines */}
@@ -88,26 +90,26 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
 
       {/* eyelets / grommets along the coast */}
       <g fill="#1A1980" stroke="#E31919" strokeWidth={2}>
-        <circle cx="62" cy="72" r="4.5" />
-        <circle cx="70" cy="104" r="4.5" />
-        <circle cx="83" cy="140" r="4.5" />
-        <circle cx="98" cy="176" r="4.5" />
-        <circle cx="196" cy="120" r="4.5" />
-        <circle cx="205" cy="150" r="4.5" />
+        <circle cx="125.5" cy="77.4" r="4.2" />
+        <circle cx="86.1" cy="35.4" r="4.2" />
+        <circle cx="20.6" cy="93.9" r="4.2" />
+        <circle cx="216.6" cy="234.5" r="4.2" />
+        <circle cx="198.2" cy="232.9" r="4.2" />
+        <circle cx="189.9" cy="260.7" r="4.2" />
       </g>
 
       {/* metal buckle on the strap */}
-      <g transform="rotate(19 130 165)">
-        <rect x="118" y="150" width="30" height="26" rx="3" fill="#8a9099" />
-        <rect x="118" y="150" width="30" height="26" rx="3" fill="none" stroke="#c7ccd2" strokeWidth={1.5} />
-        <rect x="130" y="150" width="4" height="26" fill="#5c626b" />
-        <rect x="122" y="154" width="22" height="3" fill="rgba(255,255,255,.5)" />
+      <g transform="rotate(-18 131 141)">
+        <rect x="116" y="128" width="30" height="26" rx="3" fill="#8a9099" />
+        <rect x="116" y="128" width="30" height="26" rx="3" fill="none" stroke="#c7ccd2" strokeWidth={1.5} />
+        <rect x="128" y="128" width="4" height="26" fill="#5c626b" />
+        <rect x="120" y="132" width="22" height="3" fill="rgba(255,255,255,.5)" />
       </g>
 
-      {/* lifted corner (peel) top-right */}
-      <path d="M176 45 C186 44 192 52 195 62 L172 74 C168 62 168 50 176 45 Z" fill="#3a4a5e" />
-      <path d="M176 45 C186 44 192 52 195 62" fill="none" stroke="#E31919" strokeWidth={2} />
-      <path d="M195 62 L172 74" fill="none" stroke="rgba(243,233,204,.5)" strokeWidth={1.4} />
+      {/* lifted corner (peel) at the Gargano promontory — the real geographic "spur" of the boot */}
+      <path d="M 225.7 182.7 C 236 180 244 188 244.4 201.3 L 229.9 198.4 C 224 194 222 187 225.7 182.7 Z" fill="#3a4a5e" />
+      <path d="M 225.7 182.7 C 236 180 244 188 244.4 201.3" fill="none" stroke="#E31919" strokeWidth={2} />
+      <path d="M 244.4 201.3 L 229.9 198.4" fill="none" stroke="rgba(243,233,204,.5)" strokeWidth={1.4} />
     </svg>
   );
 }
