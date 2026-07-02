@@ -37,11 +37,11 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
       />
 
       {/* hero */}
-      <section className="border-b border-oro/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <Link
             href="/settori"
-            className="text-xs font-semibold uppercase tracking-[0.14em] text-oro no-underline"
+            className="text-xs font-semibold uppercase tracking-[0.14em] text-primary no-underline"
           >
             ← Tutti i settori
           </Link>
@@ -70,14 +70,14 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
               />
             ))}
           </div>
-          <aside className="h-fit rounded-lg border border-oro/25 bg-navy p-7">
-            <span className="mb-4 block text-[11px] font-semibold uppercase tracking-[0.2em] text-oro">
+          <aside className="h-fit rounded-lg border border-primary/25 bg-navy p-7">
+            <span className="mb-4 block text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
               In sintesi
             </span>
             <ul className="flex flex-col gap-3.5">
               {settore.highlights.map((item) => (
                 <li key={item} className="flex gap-3 text-[15px] leading-snug text-avorio/80">
-                  <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-oro" />
+                  <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-primary" />
                   {item}
                 </li>
               ))}
@@ -88,7 +88,7 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
 
       {/* CTA */}
       <section className="bg-navy px-6 py-20 md:px-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-lg border border-oro/25 bg-navy-black px-8 py-10 md:flex-row md:items-center md:px-12">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-lg border border-primary/25 bg-navy-black px-8 py-10 md:flex-row md:items-center md:px-12">
           <div>
             <h2 className="font-display text-2xl font-bold uppercase leading-tight text-avorio md:text-3xl">
               Un preventivo su misura, senza impegno
@@ -99,7 +99,7 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
           </div>
           <Link
             href={settore.cta.href}
-            className="whitespace-nowrap rounded-md bg-oro px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
           >
             {settore.cta.label}
           </Link>

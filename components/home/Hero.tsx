@@ -7,12 +7,12 @@ import { ItaliaEmblem } from "@/components/ItaliaEmblem";
 function segClass(active: boolean) {
   return [
     "rounded-full px-4 py-2 text-xs font-semibold tracking-[0.02em] transition-colors",
-    active ? "bg-oro text-navy" : "bg-transparent text-avorio/75",
+    active ? "bg-primary text-navy" : "bg-transparent text-avorio/75",
   ].join(" ");
 }
 
 const ctaPrimary =
-  "rounded-md bg-oro px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline shadow-[0_8px_24px_rgba(201,162,39,0.28)]";
+  "rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline shadow-[0_8px_24px_rgba(227,25,25,0.28)]";
 const ctaSecondary =
   "rounded-md border-[1.5px] border-avorio/50 px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-avorio no-underline";
 
@@ -23,7 +23,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[660px] flex-col justify-center overflow-hidden border-b border-oro/[0.18]"
+      className="relative flex min-h-[660px] flex-col justify-center overflow-hidden border-b border-primary/[0.18]"
     >
       {/* photo placeholder backdrop — swap for a real truck+tarp photo */}
       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy via-navy-deep to-navy-black">
@@ -39,7 +39,7 @@ export function Hero() {
         <span className="hidden text-[10px] uppercase tracking-[0.2em] text-avorio/50 sm:inline">
           Variante hero
         </span>
-        <div className="flex gap-1 rounded-full border border-oro/30 bg-navy-deep/[0.72] p-1">
+        <div className="flex gap-1 rounded-full border border-primary/30 bg-navy-deep/[0.72] p-1">
           <button onClick={() => setMode("foto")} className={segClass(isFoto)}>
             Foto protagonista
           </button>
@@ -52,18 +52,18 @@ export function Hero() {
       {isFoto ? <FotoVariant /> : <EmblemaVariant />}
 
       {/* bottom marquee strip */}
-      <div className="relative z-[6] border-t border-oro/[0.16] bg-navy-black/60">
+      <div className="relative z-[6] border-t border-primary/[0.16] bg-navy-black/60">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-7 px-6 py-4 text-[12.5px] uppercase tracking-[0.14em] text-avorio/60 md:px-10">
           <span>Bilici</span>
-          <span className="text-oro">·</span>
+          <span className="text-primary">·</span>
           <span>Motrici</span>
-          <span className="text-oro">·</span>
+          <span className="text-primary">·</span>
           <span>Rimorchi</span>
-          <span className="text-oro">·</span>
+          <span className="text-primary">·</span>
           <span>Furgoni centinati</span>
-          <span className="text-oro">·</span>
+          <span className="text-primary">·</span>
           <span>Riparazioni rapide</span>
-          <span className="text-oro">·</span>
+          <span className="text-primary">·</span>
           <span>Servizio in tutta Italia</span>
         </div>
       </div>
@@ -74,8 +74,8 @@ export function Hero() {
 function HeroKicker() {
   return (
     <div className="mb-5 flex items-center gap-3">
-      <span className="h-0.5 w-8 bg-oro" />
-      <span className="text-xs font-semibold uppercase tracking-[0.28em] text-oro">
+      <span className="h-0.5 w-8 bg-primary" />
+      <span className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">
         Teloni per camion · dal 1950
       </span>
     </div>
@@ -91,7 +91,7 @@ function FotoVariant() {
         <h1 className="font-display text-5xl font-bold uppercase leading-[0.95] text-avorio md:text-6xl lg:text-[64px]">
           Teli per bilico completi e professionali — dal 1950
         </h1>
-        <p className="mt-4 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-oro">
+        <p className="mt-4 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-primary">
           Italia Coperta
         </p>
         <p className="mt-6 max-w-[520px] text-lg leading-relaxed text-avorio/80">
@@ -115,7 +115,7 @@ function EmblemaVariant() {
         <h1 className="font-display text-4xl font-bold uppercase leading-[0.95] text-avorio md:text-5xl">
           Teli per bilico completi e professionali — dal 1950
         </h1>
-        <p className="mt-4 font-display text-xl font-semibold uppercase tracking-[0.02em] text-oro">
+        <p className="mt-4 font-display text-xl font-semibold uppercase tracking-[0.02em] text-primary">
           Italia Coperta
         </p>
         <p className="mt-5 max-w-[460px] text-[18px] leading-relaxed text-avorio/80">

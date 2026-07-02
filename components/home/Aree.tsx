@@ -7,7 +7,7 @@ const AREE = SETTORI.slice(0, 4);
 
 export function Aree() {
   return (
-    <section className="border-b border-oro/[0.14] bg-navy-deep px-6 py-24 md:px-10">
+    <section className="border-b border-primary/[0.14] bg-navy-deep px-6 py-24 md:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -18,7 +18,7 @@ export function Aree() {
           </div>
           <Link
             href="/settori"
-            className="text-xs font-semibold uppercase tracking-[0.14em] text-oro no-underline"
+            className="text-xs font-semibold uppercase tracking-[0.14em] text-primary no-underline"
           >
             Tutti i settori →
           </Link>
@@ -28,13 +28,13 @@ export function Aree() {
             <Link
               key={area.slug}
               href={`/settori/${area.slug}`}
-              className="rounded-md border-[1.5px] border-avorio/[0.14] bg-navy p-6 no-underline transition-colors hover:border-oro/60"
+              className="rounded-md border-[1.5px] border-avorio/[0.14] bg-navy p-6 no-underline transition-colors hover:border-primary/60"
             >
               <h3 className="font-display text-lg font-semibold uppercase tracking-[0.02em] text-avorio">
                 {area.cardTitle}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-avorio/65">{area.tagline}</p>
-              <span className="mt-4 block text-xs font-semibold uppercase tracking-[0.14em] text-oro">
+              <span className="mt-4 block text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                 Scopri di più →
               </span>
             </Link>

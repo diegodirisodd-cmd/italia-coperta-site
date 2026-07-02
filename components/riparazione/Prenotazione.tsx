@@ -20,8 +20,8 @@ const chip = (active: boolean, disabled = false) =>
     disabled
       ? "cursor-not-allowed border-avorio/10 text-avorio/30"
       : active
-        ? "border-oro bg-oro/[0.16] text-oro"
-        : "border-avorio/20 bg-navy-deep text-avorio/80 hover:border-oro/60",
+        ? "border-primary bg-primary/[0.16] text-primary"
+        : "border-avorio/20 bg-navy-deep text-avorio/80 hover:border-primary/60",
   ].join(" ");
 
 export function Prenotazione() {
@@ -77,14 +77,14 @@ export function Prenotazione() {
   if (reference) {
     const giorno = giorni.find((g) => g.iso === giornoIso);
     return (
-      <div className="rounded-xl border border-oro/25 bg-navy p-8 text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-oro text-3xl font-bold text-navy">
+      <div className="rounded-xl border border-primary/25 bg-navy p-8 text-center">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-navy">
           ✓
         </div>
         <h3 className="mt-5 font-display text-2xl font-bold uppercase text-avorio">Richiesta inviata</h3>
         <p className="mt-2 text-avorio/75">Ti richiamiamo per confermare l&apos;appuntamento.</p>
         <p className="mt-1 text-sm text-avorio/50">
-          Riferimento: <span className="text-oro">{reference}</span>
+          Riferimento: <span className="text-primary">{reference}</span>
         </p>
         <div className="mx-auto mt-6 max-w-sm overflow-hidden rounded-lg border border-avorio/12 text-left">
           <Row k="Intervento" v={labelIntervento(intervento)} />
@@ -103,7 +103,7 @@ export function Prenotazione() {
   }
 
   return (
-    <div className="rounded-xl border border-oro/[0.28] bg-navy p-6 md:p-8">
+    <div className="rounded-xl border border-primary/[0.28] bg-navy p-6 md:p-8">
       <h3 className="mb-6 font-display text-2xl font-semibold uppercase tracking-[0.03em] text-avorio">
         Prenota il tuo intervento
       </h3>
@@ -138,7 +138,7 @@ export function Prenotazione() {
                 key={g.iso}
                 onClick={() => setGiornoIso(g.iso)}
                 className={`min-w-[58px] rounded-lg border-[1.5px] px-3.5 py-2.5 text-center transition-colors ${
-                  active ? "border-oro bg-oro/[0.16] text-oro" : "border-avorio/20 bg-navy-deep text-avorio/80 hover:border-oro/60"
+                  active ? "border-primary bg-primary/[0.16] text-primary" : "border-avorio/20 bg-navy-deep text-avorio/80 hover:border-primary/60"
                 }`}
               >
                 <span className="block text-[10px] uppercase tracking-[0.1em] opacity-70">{g.dow}</span>
@@ -174,7 +174,7 @@ export function Prenotazione() {
           <input
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-oro"
+            className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
           />
         </label>
         <label className="block">
@@ -183,7 +183,7 @@ export function Prenotazione() {
             type="tel"
             value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
-            className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-oro"
+            className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
           />
         </label>
       </div>
@@ -193,7 +193,7 @@ export function Prenotazione() {
       <button
         onClick={book}
         disabled={!canBook || submitting}
-        className="w-full rounded-md bg-oro px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy disabled:cursor-not-allowed disabled:bg-oro/25 disabled:text-avorio/40"
+        className="w-full rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
       >
         {submitting ? "Invio in corso…" : canBook ? "Prenota intervento" : "Scegli giorno, fascia e dati"}
       </button>
@@ -202,7 +202,7 @@ export function Prenotazione() {
         href={waLink(waText)}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-3 block rounded-md border-[1.5px] border-oro/50 px-6 py-3.5 text-center font-display text-[14px] font-semibold uppercase tracking-[0.05em] text-oro no-underline"
+        className="mt-3 block rounded-md border-[1.5px] border-primary/50 px-6 py-3.5 text-center font-display text-[14px] font-semibold uppercase tracking-[0.05em] text-primary no-underline"
       >
         Oppure scrivici su WhatsApp
       </a>

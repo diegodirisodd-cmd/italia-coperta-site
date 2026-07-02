@@ -11,7 +11,7 @@ export function PhotoPlaceholder({
 }) {
   return (
     <div
-      className={`flex items-center justify-center rounded-md border border-dashed border-oro/25 bg-gradient-to-br from-navy-black via-navy to-navy-deep ${className}`}
+      className={`flex items-center justify-center rounded-md border border-dashed border-primary/25 bg-gradient-to-br from-navy-black via-navy to-navy-deep ${className}`}
       style={aspect ? { aspectRatio: aspect } : undefined}
     >
       <span className="max-w-[240px] px-4 text-center text-xs uppercase tracking-[0.18em] text-avorio/30">

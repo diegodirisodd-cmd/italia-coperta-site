@@ -9,12 +9,12 @@ body {
 }
 
 body {
-  background: #081a33;
+  background: #1A1980;
   color: #f3e9cc;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: #c9a227;
-  color: #0b2545;
+  background: #E31919;
+  color: #000000;
 }

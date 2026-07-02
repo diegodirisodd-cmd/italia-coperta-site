@@ -9,7 +9,7 @@ const STEPS = [
 
 export function RiparazionePreview() {
   return (
-    <section id="riparazione" className="border-b border-oro/[0.14] bg-navy px-6 py-24 md:px-10">
+    <section id="riparazione" className="border-b border-primary/[0.14] bg-navy px-6 py-24 md:px-10">
       <div className="mx-auto grid max-w-6xl items-start gap-14 md:grid-cols-[0.95fr_1.05fr]">
         <div>
           <SectionKicker label="Servizio · Intervento in 48h" />
@@ -23,7 +23,7 @@ export function RiparazionePreview() {
           <div className="mt-8 flex flex-col gap-3.5">
             {STEPS.map((step, i) => (
               <div key={step} className="flex items-center gap-3.5">
-                <span className="w-6 font-display text-lg font-bold text-oro">
+                <span className="w-6 font-display text-lg font-bold text-primary">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="text-[15px] text-avorio/80">{step}</span>
@@ -32,13 +32,13 @@ export function RiparazionePreview() {
           </div>
           <Link
             href="/riparazione-rapida"
-            className="mt-8 inline-block rounded-md bg-oro px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+            className="mt-8 inline-block rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
           >
             Prenota un intervento →
           </Link>
         </div>
 
-        <div className="rounded-lg border border-oro/[0.28] bg-navy-deep p-9">
+        <div className="rounded-lg border border-primary/[0.28] bg-navy-deep p-9">
           <h3 className="font-display text-xl font-semibold uppercase tracking-[0.03em] text-avorio">
             Prenota in pochi passi
           </h3>

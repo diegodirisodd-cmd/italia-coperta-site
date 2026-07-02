@@ -4,13 +4,13 @@ import { EMAIL, WHATSAPP_DISPLAY, waLink } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-oro/20 bg-navy-black px-6 pb-10 pt-14 md:px-10">
+    <footer className="border-t border-primary/20 bg-navy-black px-6 pb-10 pt-14 md:px-10">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
             <ItaliaEmblem variant="synthetic" width={24} height={35} />
             <span className="font-display text-lg font-bold tracking-[0.06em] text-avorio">
-              DI RISO <span className="text-oro">TELONI</span>
+              DI RISO <span className="text-primary">TELONI</span>
             </span>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-avorio/60">
@@ -20,13 +20,13 @@ export function Footer() {
             <a href={`mailto:${EMAIL}`} className="text-avorio/75 no-underline">
               {EMAIL}
             </a>
-            <a href={waLink("Ciao Di Riso Teloni,")} target="_blank" rel="noopener noreferrer" className="text-oro no-underline">
+            <a href={waLink("Ciao Di Riso Teloni,")} target="_blank" rel="noopener noreferrer" className="text-primary no-underline">
               WhatsApp {WHATSAPP_DISPLAY}
             </a>
           </div>
         </div>
         <div>
-          <span className="mb-4 block text-[11px] font-semibold uppercase tracking-[0.2em] text-oro">Sedi</span>
+          <span className="mb-4 block text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">Sedi</span>
           <div className="text-sm leading-loose text-avorio/75">
             <Link href="/centri" className="no-underline">Angri (SA) — Sede principale</Link>
             <br />
@@ -34,7 +34,7 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <span className="mb-4 block text-[11px] font-semibold uppercase tracking-[0.2em] text-oro">Servizi</span>
+          <span className="mb-4 block text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">Servizi</span>
           <div className="text-sm leading-loose text-avorio/75">
             <Link href="/configuratore" className="no-underline">Teloni su misura</Link><br />
             <Link href="/configuratore" className="no-underline">Configuratore online</Link><br />

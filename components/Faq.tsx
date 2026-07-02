@@ -6,11 +6,11 @@ export function Faq({ items }: { items: { question: string; answer: string }[] }
       {items.map((item) => (
         <details
           key={item.question}
-          className="group rounded-lg border border-avorio/[0.14] bg-navy px-6 py-1 open:border-oro/40"
+          className="group rounded-lg border border-avorio/[0.14] bg-navy px-6 py-1 open:border-primary/40"
         >
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-display text-lg font-semibold uppercase tracking-[0.02em] text-avorio marker:content-none">
             {item.question}
-            <span className="flex-none text-oro transition-transform group-open:rotate-45">+</span>
+            <span className="flex-none text-primary transition-transform group-open:rotate-45">+</span>
           </summary>
           <p className="pb-5 pr-8 text-[15px] leading-relaxed text-avorio/75">{item.answer}</p>
         </details>

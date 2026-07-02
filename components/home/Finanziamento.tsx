@@ -3,8 +3,8 @@ import { SectionKicker } from "@/components/SectionKicker";
 
 export function Finanziamento() {
   return (
-    <section className="border-b border-oro/[0.14] bg-navy-black px-6 py-20 md:px-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 rounded-lg border border-oro/25 bg-navy px-8 py-10 md:flex-row md:items-center md:px-12">
+    <section className="border-b border-primary/[0.14] bg-navy-black px-6 py-20 md:px-10">
+      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 rounded-lg border border-primary/25 bg-navy px-8 py-10 md:flex-row md:items-center md:px-12">
         <div>
           <SectionKicker label="Su richiesta" />
           <h2 className="font-display text-3xl font-bold uppercase leading-none text-avorio md:text-4xl">
@@ -17,7 +17,7 @@ export function Finanziamento() {
         </div>
         <Link
           href="/preventivo"
-          className="whitespace-nowrap rounded-md bg-oro px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+          className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
         >
           Chiedi informazioni
         </Link>

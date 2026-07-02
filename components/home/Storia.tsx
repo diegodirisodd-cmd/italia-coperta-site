@@ -8,7 +8,7 @@ const STATS = [
 
 export function Storia() {
   return (
-    <section id="storia" className="border-b border-oro/[0.14] bg-navy px-6 py-24 md:px-10">
+    <section id="storia" className="border-b border-primary/[0.14] bg-navy px-6 py-24 md:px-10">
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[0.9fr_1.1fr]">
         <div className="relative">
           <div className="flex h-[380px] w-full items-center justify-center rounded-md bg-gradient-to-br from-navy-black via-navy to-navy-deep md:h-[460px]">
@@ -16,7 +16,7 @@ export function Storia() {
               Foto storica (b/n) del fondatore / officina — da sostituire
             </span>
           </div>
-          <div className="absolute bottom-0 left-0 bg-oro px-5 py-3.5 font-display font-bold text-navy">
+          <div className="absolute bottom-0 left-0 bg-primary px-5 py-3.5 font-display font-bold text-navy">
             <span className="block text-[34px] leading-none">1950</span>
             <span className="mt-0.5 block text-[11px] font-semibold tracking-[0.16em]">ANNO DI FONDAZIONE</span>
           </div>
@@ -36,10 +36,10 @@ export function Storia() {
             Due sedi — Angri e Brescia — e un servizio attivo in tutta Italia, accanto a chi lavora ogni giorno
             con il proprio mezzo.
           </p>
-          <div className="mt-9 grid grid-cols-3 gap-px border border-oro/20 bg-oro/20">
+          <div className="mt-9 grid grid-cols-3 gap-px border border-primary/20 bg-primary/20">
             {STATS.map((stat) => (
               <div key={stat.label} className="bg-navy px-5 py-6">
-                <div className="font-display text-4xl font-bold leading-none text-oro">{stat.value}</div>
+                <div className="font-display text-4xl font-bold leading-none text-primary">{stat.value}</div>
                 <div className="mt-1.5 text-xs uppercase tracking-[0.1em] text-avorio/65">{stat.label}</div>
               </div>
             ))}

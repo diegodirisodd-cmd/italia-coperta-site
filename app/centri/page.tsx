@@ -32,7 +32,7 @@ export default function CentriPage() {
       />
 
       {/* hero */}
-      <section className="border-b border-oro/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl text-center">
           <SectionKicker label="Presenti in tutta Italia" center />
           <h1 className="font-display text-4xl font-bold uppercase leading-none text-avorio md:text-6xl">
@@ -47,14 +47,14 @@ export default function CentriPage() {
       </section>
 
       {/* map */}
-      <section className="border-b border-oro/[0.14] bg-navy-deep px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy-deep px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <CentriExplorer />
         </div>
       </section>
 
       {/* prossime aperture */}
-      <section className="border-b border-oro/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="La rete cresce" />
           <h2 className="font-display text-3xl font-bold uppercase leading-none text-avorio md:text-4xl">
@@ -69,7 +69,7 @@ export default function CentriPage() {
               <div key={c.id} className="rounded-lg border border-avorio/[0.14] bg-navy-deep p-5">
                 <div className="font-display text-lg font-semibold uppercase text-avorio">{c.citta}</div>
                 <div className="mt-1 text-sm text-avorio/60">{c.area}</div>
-                <div className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-oro">
+                <div className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
                   Prossima apertura
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function CentriPage() {
 
       {/* diventa centro CTA */}
       <section className="bg-navy-deep px-6 py-20 md:px-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-lg border border-oro/25 bg-navy-black px-8 py-10 md:flex-row md:items-center md:px-12">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-lg border border-primary/25 bg-navy-black px-8 py-10 md:flex-row md:items-center md:px-12">
           <div>
             <h2 className="font-display text-2xl font-bold uppercase leading-tight text-avorio md:text-3xl">
               Vuoi portare Italia Coperta nella tua zona?
@@ -92,7 +92,7 @@ export default function CentriPage() {
           </div>
           <Link
             href="/diventa-centro"
-            className="whitespace-nowrap rounded-md bg-oro px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
           >
             Diventa centro
           </Link>

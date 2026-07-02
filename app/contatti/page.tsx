@@ -36,7 +36,7 @@ export default function ContattiPage() {
       />
 
       {/* hero */}
-      <section className="border-b border-oro/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Parliamone" />
           <h1 className="font-display text-4xl font-bold uppercase leading-none text-avorio md:text-6xl">
@@ -51,7 +51,7 @@ export default function ContattiPage() {
               href={waLink("Ciao Di Riso Teloni, avrei una richiesta.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-oro px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+              className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
             >
               Scrivici su WhatsApp
             </a>
@@ -70,11 +70,11 @@ export default function ContattiPage() {
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <div className="flex flex-col gap-5">
             {SEDI.map((s) => (
-              <div key={s.nome} className="rounded-lg border border-oro/25 bg-navy p-7">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-oro">{s.ruolo}</span>
+              <div key={s.nome} className="rounded-lg border border-primary/25 bg-navy p-7">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">{s.ruolo}</span>
                 <h2 className="mt-2 font-display text-2xl font-bold uppercase text-avorio">{s.nome}</h2>
                 <p className="mt-3 text-[15px] leading-relaxed text-avorio/80">{s.indirizzo}</p>
-                <p className="mt-1 text-[14px] text-oro">{s.servizi}</p>
+                <p className="mt-1 text-[14px] text-primary">{s.servizi}</p>
                 <div className="mt-4 flex flex-wrap gap-3">
                   <a
                     href={`tel:${s.tel.replace(/\s/g, "")}`}

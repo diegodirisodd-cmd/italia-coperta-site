@@ -10,7 +10,7 @@ const STEPS = [
 
 export function ConfiguratoreTeaser() {
   return (
-    <section id="configuratore" className="border-b border-oro/[0.14] bg-navy-deep px-6 py-24 md:px-10">
+    <section id="configuratore" className="border-b border-primary/[0.14] bg-navy-deep px-6 py-24 md:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-5">
           <div>
@@ -24,19 +24,19 @@ export function ConfiguratoreTeaser() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-md border border-oro/20 bg-oro/[0.16] md:grid-cols-[1.25fr_0.9fr]">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-md border border-primary/20 bg-primary/[0.16] md:grid-cols-[1.25fr_0.9fr]">
           <div className="bg-navy p-9">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
               {STEPS.map((step) => (
                 <div key={step.n} className="rounded-md border border-avorio/10 bg-navy-deep px-4 py-5 text-center">
-                  <span className="block font-display text-lg font-bold text-oro">{step.n}</span>
+                  <span className="block font-display text-lg font-bold text-primary">{step.n}</span>
                   <span className="mt-1 block text-sm font-medium text-avorio/80">{step.t}</span>
                 </div>
               ))}
             </div>
             <Link
               href="/configuratore"
-              className="mt-8 inline-block rounded-md bg-oro px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+              className="mt-8 inline-block rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
             >
               Apri il configuratore →
             </Link>
@@ -49,15 +49,15 @@ export function ConfiguratoreTeaser() {
             <svg viewBox="0 0 440 180" className="w-full">
               <line x1="10" y1="150" x2="430" y2="150" stroke="rgba(243,233,204,.2)" strokeWidth={2} />
               <path d="M30 150 L30 96 Q30 88 40 86 L78 78 L98 100 L98 150 Z" fill="#12335c" stroke="#F3E9CC" strokeWidth={2} />
-              <rect x="44" y="90" width="30" height="20" rx="2" fill="#0B2545" stroke="rgba(243,233,204,.6)" strokeWidth={1.5} />
+              <rect x="44" y="90" width="30" height="20" rx="2" fill="#000000" stroke="rgba(243,233,204,.6)" strokeWidth={1.5} />
               <rect x="104" y="60" width="308" height="90" rx="3" fill="#12335c" stroke="#F3E9CC" strokeWidth={2} />
               <g stroke="rgba(243,233,204,.28)" strokeWidth={2}>
                 {[130, 160, 190, 220, 250, 280, 310, 340, 370].map((x) => (
                   <line key={x} x1={x} y1="62" x2={x} y2="148" />
                 ))}
               </g>
-              <rect x="104" y="132" width="308" height="7" fill="#C9A227" />
-              <g fill="#061529" stroke="#F3E9CC" strokeWidth={2}>
+              <rect x="104" y="132" width="308" height="7" fill="#E31919" />
+              <g fill="#000000" stroke="#F3E9CC" strokeWidth={2}>
                 {[70, 300, 340, 380].map((cx) => (
                   <circle key={cx} cx={cx} cy="150" r="12" />
                 ))}

@@ -29,10 +29,10 @@ export function ItaliaEmblem({ variant = "synthetic", width, height, className }
 function SyntheticEmblem({ width, height, className }: { width: number; height: number; className?: string }) {
   return (
     <svg viewBox="0 0 260 380" width={width} height={height} aria-hidden="true" className={className} style={{ display: "block", flex: "none" }}>
-      <path d={ITALY_PATH_MAINLAND} fill="#0B2545" stroke="#C9A227" strokeWidth={6} />
-      <path d={ITALY_PATH_SICILY} fill="#0B2545" stroke="#C9A227" strokeWidth={6} />
-      <path d={ITALY_PATH_SARDINIA} fill="#0B2545" stroke="#C9A227" strokeWidth={6} />
-      <rect x="30" y="150" width="220" height="24" rx="4" fill="#C9A227" transform="rotate(19 130 165)" />
+      <path d={ITALY_PATH_MAINLAND} fill="#000000" stroke="#E31919" strokeWidth={6} />
+      <path d={ITALY_PATH_SICILY} fill="#000000" stroke="#E31919" strokeWidth={6} />
+      <path d={ITALY_PATH_SARDINIA} fill="#000000" stroke="#E31919" strokeWidth={6} />
+      <rect x="30" y="150" width="220" height="24" rx="4" fill="#E31919" transform="rotate(19 130 165)" />
     </svg>
   );
 }
@@ -54,8 +54,8 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
       <defs>
         <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#173a63" />
-          <stop offset="0.5" stopColor="#0B2545" />
-          <stop offset="1" stopColor="#061529" />
+          <stop offset="0.5" stopColor="#000000" />
+          <stop offset="1" stopColor="#000000" />
         </linearGradient>
         <pattern id={ribsId} width="17" height="14" patternUnits="userSpaceOnUse">
           <rect width="17" height="14" fill={`url(#${gradId})`} />
@@ -76,7 +76,7 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
 
       {/* gold strap wraps the tarp */}
       <g clipPath={`url(#${clipId})`}>
-        <rect x="-10" y="150" width="290" height="26" fill="#C9A227" transform="rotate(19 130 165)" />
+        <rect x="-10" y="150" width="290" height="26" fill="#E31919" transform="rotate(19 130 165)" />
         <rect x="-10" y="150" width="290" height="3" fill="rgba(255,255,255,.4)" transform="rotate(19 130 165)" />
         <rect x="-10" y="173" width="290" height="3" fill="rgba(0,0,0,.3)" transform="rotate(19 130 165)" />
       </g>
@@ -87,7 +87,7 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
       <path d={ITALY_PATH_SARDINIA} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} />
 
       {/* eyelets / grommets along the coast */}
-      <g fill="#081A33" stroke="#C9A227" strokeWidth={2}>
+      <g fill="#1A1980" stroke="#E31919" strokeWidth={2}>
         <circle cx="62" cy="72" r="4.5" />
         <circle cx="70" cy="104" r="4.5" />
         <circle cx="83" cy="140" r="4.5" />
@@ -106,7 +106,7 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
 
       {/* lifted corner (peel) top-right */}
       <path d="M176 45 C186 44 192 52 195 62 L172 74 C168 62 168 50 176 45 Z" fill="#3a4a5e" />
-      <path d="M176 45 C186 44 192 52 195 62" fill="none" stroke="#C9A227" strokeWidth={2} />
+      <path d="M176 45 C186 44 192 52 195 62" fill="none" stroke="#E31919" strokeWidth={2} />
       <path d="M195 62 L172 74" fill="none" stroke="rgba(243,233,204,.5)" strokeWidth={1.4} />
     </svg>
   );

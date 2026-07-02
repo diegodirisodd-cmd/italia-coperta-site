@@ -19,7 +19,7 @@ export default function PreventivoPage() {
   return (
     <main>
       {/* hero */}
-      <section className="border-b border-oro/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Senza impegno" />
           <h1 className="max-w-3xl font-display text-4xl font-bold uppercase leading-[0.98] text-avorio md:text-6xl">
@@ -39,7 +39,7 @@ export default function PreventivoPage() {
             <ul className="flex flex-col gap-3.5">
               {PUNTI.map((p) => (
                 <li key={p} className="flex gap-3 text-[16px] leading-snug text-avorio/85">
-                  <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-oro" />
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-primary" />
                   {p}
                 </li>
               ))}
@@ -54,7 +54,7 @@ export default function PreventivoPage() {
               </p>
               <Link
                 href="/configuratore"
-                className="mt-4 inline-block rounded-md border-[1.5px] border-oro/50 px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-oro no-underline"
+                className="mt-4 inline-block rounded-md border-[1.5px] border-primary/50 px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-primary no-underline"
               >
                 Apri il configuratore →
               </Link>

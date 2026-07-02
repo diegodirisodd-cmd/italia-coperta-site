@@ -99,7 +99,7 @@ export function Configuratore() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-oro/20 bg-oro/[0.16] lg:grid-cols-[1.35fr_0.9fr]">
+    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-primary/20 bg-primary/[0.16] lg:grid-cols-[1.35fr_0.9fr]">
       {/* LEFT: steps */}
       <div className="bg-navy p-6 md:p-9">
         {/* stepper */}
@@ -119,7 +119,7 @@ export function Configuratore() {
                 <span
                   className={[
                     "font-display text-sm font-bold",
-                    active ? "text-oro" : done ? "text-oro/70" : "text-avorio/35",
+                    active ? "text-primary" : done ? "text-primary/70" : "text-avorio/35",
                   ].join(" ")}
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -159,7 +159,7 @@ export function Configuratore() {
                       onClick={() => setColore(c.id)}
                       title={c.label}
                       className={`flex items-center gap-2 rounded-md border-[1.5px] px-3 py-2 text-[13px] transition-colors ${
-                        sel ? "border-oro text-avorio" : "border-avorio/20 text-avorio/70 hover:border-oro/60"
+                        sel ? "border-primary text-avorio" : "border-avorio/20 text-avorio/70 hover:border-primary/60"
                       }`}
                     >
                       <span className="h-4 w-4 rounded-full border border-avorio/40" style={{ background: c.hex }} />
@@ -181,12 +181,12 @@ export function Configuratore() {
                     key={opt.id}
                     onClick={() => toggleExtra(opt.id)}
                     className={`relative flex items-center gap-3 rounded-md border-[1.5px] bg-navy-deep px-4 py-4 text-left transition-colors ${
-                      sel ? "border-oro" : "border-avorio/[0.14] hover:border-oro/60"
+                      sel ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60"
                     }`}
                   >
                     <span
                       className={`flex h-5 w-5 flex-none items-center justify-center rounded border-[1.5px] text-xs font-bold text-navy ${
-                        sel ? "border-oro bg-oro" : "border-avorio/35 bg-transparent"
+                        sel ? "border-primary bg-primary" : "border-avorio/35 bg-transparent"
                       }`}
                     >
                       {sel ? "✓" : ""}
@@ -205,7 +205,7 @@ export function Configuratore() {
               <select
                 value={regione}
                 onChange={(e) => setRegione(e.target.value)}
-                className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3.5 text-avorio outline-none focus:border-oro"
+                className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3.5 text-avorio outline-none focus:border-primary"
               >
                 <option value="">Seleziona la tua regione…</option>
                 {REGIONI.map((r) => (
@@ -216,11 +216,11 @@ export function Configuratore() {
               </select>
             </label>
             {centro && (
-              <div className="mt-5 rounded-md border border-oro/30 bg-navy-deep p-5">
-                <span className="text-[11px] uppercase tracking-[0.2em] text-oro">Centro assegnato</span>
+              <div className="mt-5 rounded-md border border-primary/30 bg-navy-deep p-5">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-primary">Centro assegnato</span>
                 <div className="mt-1 font-display text-xl font-bold uppercase text-avorio">{centro.citta}</div>
                 <div className="mt-1 text-sm text-avorio/70">{centro.indirizzo}</div>
-                <div className="mt-1 text-sm text-oro">{centro.servizi}</div>
+                <div className="mt-1 text-sm text-primary">{centro.servizi}</div>
               </div>
             )}
           </StepShell>
@@ -239,7 +239,7 @@ export function Configuratore() {
                 value={dati.note}
                 onChange={(e) => setDati({ ...dati, note: e.target.value })}
                 rows={3}
-                className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-oro"
+                className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
               />
             </label>
           </StepShell>
@@ -263,7 +263,7 @@ export function Configuratore() {
             <button
               onClick={submit}
               disabled={submitting}
-              className="mt-6 w-full rounded-md bg-oro px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-6 w-full rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy disabled:cursor-not-allowed disabled:opacity-60"
             >
               {submitting ? "Invio in corso…" : "Invia richiesta di preventivo"}
             </button>
@@ -285,7 +285,7 @@ export function Configuratore() {
           <button
             onClick={() => canProceed && setStep((s) => Math.min(STEPS.length - 1, s + 1))}
             disabled={step === STEPS.length - 1 || !canProceed}
-            className="rounded-md bg-oro px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy disabled:cursor-not-allowed disabled:bg-oro/25 disabled:text-avorio/40"
+            className="rounded-md bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
           >
             Avanti →
           </button>
@@ -295,7 +295,7 @@ export function Configuratore() {
       {/* RIGHT: live preview + estimate */}
       <div className="flex flex-col bg-navy-black p-6 md:p-9">
         <span className="mb-5 text-[11px] uppercase tracking-[0.24em] text-avorio/50">Anteprima configurazione</span>
-        <div className="mb-6 rounded-lg border border-oro/25 bg-navy p-5">
+        <div className="mb-6 rounded-lg border border-primary/25 bg-navy p-5">
           <TruckPreview tarpColor={coloreHex} />
         </div>
 
@@ -307,15 +307,15 @@ export function Configuratore() {
           <SummaryRow label="Extra" value={String(extra.length)} last />
         </div>
 
-        <div className="mt-6 rounded-lg border border-oro/30 bg-navy p-5">
+        <div className="mt-6 rounded-lg border border-primary/30 bg-navy p-5">
           <span className="text-[11px] uppercase tracking-[0.2em] text-avorio/55">Stima indicativa</span>
-          <div className="mt-1 font-display text-3xl font-bold text-oro">{stima.formatted}</div>
+          <div className="mt-1 font-display text-3xl font-bold text-primary">{stima.formatted}</div>
           <p className="mt-1 text-xs text-avorio/50">Stima non vincolante. Il preventivo definitivo lo prepara il centro.</p>
         </div>
 
         {centro && (
           <div className="mt-4 rounded-lg border border-avorio/[0.14] bg-navy p-5">
-            <span className="text-[11px] uppercase tracking-[0.2em] text-oro">Centro più vicino</span>
+            <span className="text-[11px] uppercase tracking-[0.2em] text-primary">Centro più vicino</span>
             <div className="mt-1 font-display text-lg font-bold uppercase text-avorio">{centro.citta}</div>
             <div className="mt-1 text-sm text-avorio/70">{centro.tel}</div>
           </div>
@@ -358,7 +358,7 @@ function OptionGrid({
             key={opt.id}
             onClick={() => onChange(opt.id)}
             className={`relative flex items-center justify-between gap-4 rounded-md border-[1.5px] bg-navy-deep px-5 py-4 text-left transition-colors ${
-              sel ? "border-oro" : "border-avorio/[0.14] hover:border-oro/60"
+              sel ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60"
             }`}
           >
             <span>
@@ -367,13 +367,13 @@ function OptionGrid({
               </span>
               {withDesc && opt.desc && <span className="mt-1 block text-[13px] text-avorio/60">{opt.desc}</span>}
               {sel && !withDesc && (
-                <span className="mt-2 block text-[10.5px] font-semibold uppercase tracking-[0.18em] text-oro">
+                <span className="mt-2 block text-[10.5px] font-semibold uppercase tracking-[0.18em] text-primary">
                   Selezionato
                 </span>
               )}
             </span>
             {sel && withDesc && (
-              <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-oro text-[13px] font-bold text-navy">
+              <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-primary text-[13px] font-bold text-navy">
                 ✓
               </span>
             )}
@@ -402,7 +402,7 @@ function Field({
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-oro"
+        className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
       />
     </label>
   );
@@ -447,20 +447,20 @@ function Confirmation({
   onReset: () => void;
 }) {
   return (
-    <div className="mx-auto max-w-2xl rounded-lg border border-oro/25 bg-navy p-8 text-center md:p-12">
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-oro text-3xl font-bold text-navy">
+    <div className="mx-auto max-w-2xl rounded-lg border border-primary/25 bg-navy p-8 text-center md:p-12">
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-navy">
         ✓
       </div>
       <h3 className="mt-6 font-display text-3xl font-bold uppercase text-avorio">Richiesta inviata</h3>
       <p className="mt-2 text-avorio/75">
         Grazie {dati.nome || ""}! Ti ricontattiamo a breve con il preventivo su misura.
       </p>
-      <p className="mt-1 text-sm text-avorio/50">Riferimento richiesta: <span className="text-oro">{reference}</span></p>
+      <p className="mt-1 text-sm text-avorio/50">Riferimento richiesta: <span className="text-primary">{reference}</span></p>
 
       <div className="mt-8 space-y-3 text-left">
         <div className="flex items-center justify-between rounded-md border border-avorio/12 bg-navy-deep px-5 py-4">
           <span className="text-xs uppercase tracking-[0.12em] text-avorio/55">Stima indicativa</span>
-          <span className="font-display text-xl font-bold text-oro">{stima}</span>
+          <span className="font-display text-xl font-bold text-primary">{stima}</span>
         </div>
         {centro && (
           <div className="flex items-center justify-between rounded-md border border-avorio/12 bg-navy-deep px-5 py-4">
@@ -482,7 +482,7 @@ function Confirmation({
         </button>
         <Link
           href="/"
-          className="rounded-md bg-oro px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+          className="rounded-md bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
         >
           Torna alla home
         </Link>

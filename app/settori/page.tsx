@@ -30,7 +30,7 @@ export default function SettoriPage() {
             <Link
               key={settore.slug}
               href={`/settori/${settore.slug}`}
-              className="group flex flex-col overflow-hidden rounded-lg border border-avorio/[0.14] bg-navy no-underline transition-colors hover:border-oro/60"
+              className="group flex flex-col overflow-hidden rounded-lg border border-avorio/[0.14] bg-navy no-underline transition-colors hover:border-primary/60"
             >
               <PhotoPlaceholder caption={settore.photoCaption} aspect="16 / 10" className="rounded-none border-0 border-b border-dashed" />
               <div className="flex flex-1 flex-col p-6">
@@ -38,7 +38,7 @@ export default function SettoriPage() {
                   {settore.cardTitle}
                 </h2>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-avorio/65">{settore.tagline}</p>
-                <span className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-oro">
+                <span className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                   Scopri di più →
                 </span>
               </div>

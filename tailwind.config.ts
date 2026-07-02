@@ -6,15 +6,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#0B2545",
-        "navy-deep": "#081A33",
-        "navy-black": "#061529",
-        oro: "#C9A227",
-        "oro-light": "#E3C765",
+        navy: "#000000",
+        "navy-deep": "#1A1980",
+        "navy-black": "#000000",
+        primary: "#E31919",
+        "primary-light": "#FF4D4D",
+        indaco: "#3533CD",
+        "tricolore-verde": "#25904A",
+        "tricolore-rosso": "#D82427",
         acciaio: "#6B7280",
         avorio: "#F3E9CC",
         sfondo: "#FAF8F3",
         inchiostro: "#151A24",
+      },
+      backgroundImage: {
+        "brand-gradient": "linear-gradient(90deg, #000000 0%, #3533CD 100%)",
       },
       fontFamily: {
         display: ["var(--font-oswald)", "sans-serif"],

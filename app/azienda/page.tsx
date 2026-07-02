@@ -58,7 +58,7 @@ export default function AziendaPage() {
       />
 
       {/* hero */}
-      <section className="border-b border-oro/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Dal 1950 · Terza generazione" />
           <h1 className="max-w-3xl font-display text-4xl font-bold uppercase leading-[0.98] text-avorio md:text-6xl">
@@ -73,7 +73,7 @@ export default function AziendaPage() {
       </section>
 
       {/* story + photo */}
-      <section className="border-b border-oro/[0.14] bg-navy-deep px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy-deep px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 className="font-display text-3xl font-bold uppercase leading-tight text-avorio md:text-4xl">
@@ -104,16 +104,16 @@ export default function AziendaPage() {
       </section>
 
       {/* timeline */}
-      <section className="border-b border-oro/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="La nostra storia" />
           <h2 className="font-display text-3xl font-bold uppercase leading-none text-avorio md:text-4xl">
             Tre generazioni sulla strada
           </h2>
-          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-oro/20 bg-oro/20 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-primary/20 bg-primary/20 md:grid-cols-3">
             {TIMELINE.map((step) => (
               <div key={step.anno} className="bg-navy-deep p-8">
-                <div className="font-display text-3xl font-bold text-oro">{step.anno}</div>
+                <div className="font-display text-3xl font-bold text-primary">{step.anno}</div>
                 <h3 className="mt-3 font-display text-lg font-semibold uppercase tracking-[0.02em] text-avorio">
                   {step.titolo}
                 </h3>
@@ -125,7 +125,7 @@ export default function AziendaPage() {
       </section>
 
       {/* valori / garanzia */}
-      <section className="border-b border-oro/[0.14] bg-navy-deep px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy-deep px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Perché sceglierci" />
           <h2 className="font-display text-3xl font-bold uppercase leading-none text-avorio md:text-4xl">
@@ -145,10 +145,10 @@ export default function AziendaPage() {
       </section>
 
       {/* sedi */}
-      <section className="border-b border-oro/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
-          <div className="rounded-lg border border-oro/25 bg-navy-deep p-8">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-oro">
+          <div className="rounded-lg border border-primary/25 bg-navy-deep p-8">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
               Sede principale
             </span>
             <h3 className="mt-3 font-display text-2xl font-bold uppercase text-avorio">Angri (SA)</h3>
@@ -158,8 +158,8 @@ export default function AziendaPage() {
               Produzione · Vendita · Riparazione · Configuratore
             </p>
           </div>
-          <div className="rounded-lg border border-oro/25 bg-navy-deep p-8">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-oro">Sede Nord</span>
+          <div className="rounded-lg border border-primary/25 bg-navy-deep p-8">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">Sede Nord</span>
             <h3 className="mt-3 font-display text-2xl font-bold uppercase text-avorio">Brescia</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-avorio/75">
               Brescia
@@ -172,7 +172,7 @@ export default function AziendaPage() {
 
       {/* CTA */}
       <section className="bg-navy-deep px-6 py-20 md:px-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-lg border border-oro/25 bg-navy-black px-8 py-10 md:flex-row md:items-center md:px-12">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-lg border border-primary/25 bg-navy-black px-8 py-10 md:flex-row md:items-center md:px-12">
           <div>
             <h2 className="font-display text-2xl font-bold uppercase leading-tight text-avorio md:text-3xl">
               Mettici alla prova
@@ -184,7 +184,7 @@ export default function AziendaPage() {
           </div>
           <Link
             href="/preventivo"
-            className="whitespace-nowrap rounded-md bg-oro px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
           >
             Richiedi un preventivo
           </Link>
