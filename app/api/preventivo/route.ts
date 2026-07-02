@@ -39,9 +39,30 @@ export async function POST(req: Request) {
   const centro = getCentroForRegione(body.regione);
   const reference = "IC-" + Date.now().toString(36).toUpperCase();
 
+  // Flatten to the preventivi table's columns (the payload nests selezione /
+  // dati; the table stores flat columns + stima_min/max/formatted).
   const { error } = await supabaseAdmin()
     .from("preventivi")
-    .insert({ reference, ...body, stima, centro_id: centro?.id ?? null });
+    .insert({
+      reference,
+      veicolo: body.selezione.veicolo,
+      telo: body.selezione.telo,
+      misura: body.selezione.misura,
+      materiale: body.selezione.materiale,
+      colore: body.selezione.colore,
+      extra: body.selezione.extra,
+      regione: body.regione,
+      centro_id: centro?.id ?? null,
+      centro_citta: centro?.citta ?? null,
+      nome: body.dati.nome,
+      azienda: body.dati.azienda ?? null,
+      telefono: body.dati.telefono,
+      email: body.dati.email,
+      note: body.dati.note ?? null,
+      stima_min: stima.min,
+      stima_max: stima.max,
+      stima_formatted: stima.formatted,
+    });
 
   if (error) {
     console.error("Errore insert preventivi:", error);
