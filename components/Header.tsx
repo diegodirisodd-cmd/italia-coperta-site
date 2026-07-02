@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ItaliaEmblem } from "./ItaliaEmblem";
 
 const NAV_LINKS = [
   { href: "/azienda", label: "Azienda" },
@@ -13,12 +12,16 @@ export function Header() {
   return (
     <header className="sticky top-0 z-[60] flex items-center justify-between gap-6 border-b border-primary/[0.24] bg-navy-deep/[0.86] px-6 py-3.5 backdrop-blur-md md:px-10">
       <Link href="/" className="flex items-center gap-3 no-underline">
-        <ItaliaEmblem variant="synthetic" width={26} height={38} />
-        <span className="flex flex-col leading-none">
-          <span className="font-display text-[17px] font-bold tracking-[0.06em] text-avorio">
-            DI RISO <span className="text-primary">TELONI</span>
-          </span>
-          <span className="mt-[3px] text-[9.5px] tracking-[0.34em] text-avorio/55">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/logo-diriso-teloni.svg"
+          alt="Di Riso Teloni — Italia Coperta"
+          width={1230}
+          height={693}
+          className="h-11 w-auto"
+        />
+        <span className="hidden flex-col leading-none sm:flex">
+          <span className="text-[9.5px] tracking-[0.34em] text-avorio/55">
             ITALIA COPERTA · DAL 1950
           </span>
         </span>

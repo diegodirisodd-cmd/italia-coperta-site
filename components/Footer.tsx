@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ItaliaEmblem } from "./ItaliaEmblem";
 import { EMAIL, WHATSAPP_DISPLAY, waLink } from "@/lib/site";
 
 export function Footer() {
@@ -8,10 +7,14 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <ItaliaEmblem variant="synthetic" width={24} height={35} />
-            <span className="font-display text-lg font-bold tracking-[0.06em] text-avorio">
-              DI RISO <span className="text-primary">TELONI</span>
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo-diriso-teloni.svg"
+              alt="Di Riso Teloni — Italia Coperta"
+              width={1230}
+              height={693}
+              className="h-12 w-auto"
+            />
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-avorio/60">
             Teloni per camion dal 1950. Il telo che copre l&apos;Italia — e ti copre in tutta Italia.
