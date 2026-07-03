@@ -39,10 +39,16 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "linear-gradient(to right, rgba(26,25,128,0.95) 0%, rgba(26,25,128,0.90) 45%, rgba(26,25,128,0.60) 65%, rgba(0,0,0,0.40) 82%, rgba(0,0,0,0.28) 100%)",
+            "linear-gradient(to right, rgba(26,25,128,0.82) 0%, rgba(26,25,128,0.72) 38%, rgba(26,25,128,0.38) 60%, rgba(0,0,0,0.12) 80%, rgba(0,0,0,0.04) 100%)",
         }}
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-deep/90 to-transparent" />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(26,25,128,0.50) 0%, rgba(26,25,128,0) 34%)",
+        }}
+      />
 
       {/* hero variant switcher */}
       <div className="absolute right-5 top-5 z-[8] flex items-center gap-2">
