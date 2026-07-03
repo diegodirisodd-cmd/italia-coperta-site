@@ -23,12 +23,12 @@ export type Centro = {
 export const CENTRI: Centro[] = [
   { id: "torino", citta: "Torino", tipo: "Centro partner", stato: "prossima-apertura", area: "Piemonte", indirizzo: "Piemonte", servizi: "Vendita · Riparazione", tel: "011 000 0000", x: 22, y: 26 },
   { id: "milano", citta: "Milano", tipo: "Centro partner", stato: "prossima-apertura", area: "Lombardia", indirizzo: "Lombardia", servizi: "Vendita · Montaggio", tel: "02 000 0000", x: 33, y: 24 },
-  { id: "brescia", citta: "Brescia", tipo: "Sede Nord", stato: "attivo", area: "Lombardia", indirizzo: "Brescia", servizi: "Produzione · Vendita · Riparazione rapida", tel: "030 000 0000", x: 40, y: 23 },
-  { id: "padova", citta: "Padova", tipo: "Centro partner", stato: "prossima-apertura", area: "Nord-Est", indirizzo: "Nord-Est", servizi: "Vendita · Riparazione", tel: "049 000 0000", x: 49, y: 26 },
-  { id: "bologna", citta: "Bologna", tipo: "Centro partner", stato: "prossima-apertura", area: "Emilia-Romagna", indirizzo: "Emilia-Romagna", servizi: "Vendita · Montaggio", tel: "051 000 0000", x: 46, y: 34 },
-  { id: "roma", citta: "Roma", tipo: "Centro partner", stato: "prossima-apertura", area: "Lazio", indirizzo: "Lazio", servizi: "Vendita · Riparazione", tel: "06 000 0000", x: 47, y: 52 },
-  { id: "angri", citta: "Angri (SA)", tipo: "Sede principale", stato: "attivo", area: "Campania", indirizzo: "Via dei Goti 183, Angri (SA)", servizi: "Produzione · Vendita · Riparazione · Configuratore", tel: "081 000 0000", x: 57, y: 63 },
-  { id: "bari", citta: "Bari", tipo: "Centro partner", stato: "prossima-apertura", area: "Puglia", indirizzo: "Puglia", servizi: "Vendita · Riparazione rapida", tel: "080 000 0000", x: 74, y: 61 },
+  { id: "brescia", citta: "Brescia", tipo: "Sede Nord", stato: "attivo", area: "Lombardia", indirizzo: "Brescia", servizi: "Produzione · Vendita · Riparazione rapida", tel: "030 000 0000", x: 28.8, y: 13.8 },
+  { id: "padova", citta: "Padova", tipo: "Centro partner", stato: "prossima-apertura", area: "Nord-Est", indirizzo: "Nord-Est", servizi: "Vendita · Riparazione", tel: "049 000 0000", x: 42.4, y: 16.5 },
+  { id: "bologna", citta: "Bologna", tipo: "Centro partner", stato: "prossima-apertura", area: "Emilia-Romagna", indirizzo: "Emilia-Romagna", servizi: "Vendita · Montaggio", tel: "051 000 0000", x: 37.8, y: 23.6 },
+  { id: "roma", citta: "Roma", tipo: "Centro partner", stato: "prossima-apertura", area: "Lazio", indirizzo: "Lazio", servizi: "Vendita · Riparazione", tel: "06 000 0000", x: 46.8, y: 46.1 },
+  { id: "angri", citta: "Angri (SA)", tipo: "Sede principale", stato: "attivo", area: "Campania", indirizzo: "Via dei Goti 183, Angri (SA)", servizi: "Produzione · Vendita · Riparazione · Configuratore", tel: "081 000 0000", x: 63.5, y: 57.8 },
+  { id: "bari", citta: "Bari", tipo: "Centro partner", stato: "prossima-apertura", area: "Puglia", indirizzo: "Puglia", servizi: "Vendita · Riparazione rapida", tel: "080 000 0000", x: 82.4, y: 56.9 },
 ];
 
 export function getCentro(id: string): Centro | undefined {
