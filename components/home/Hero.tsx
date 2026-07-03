@@ -35,7 +35,13 @@ export function Hero() {
         sizes="100vw"
         className="object-cover"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy-deep/[0.97] via-navy-deep/[0.86] to-navy/[0.55]" />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(26,25,128,0.95) 0%, rgba(26,25,128,0.90) 45%, rgba(26,25,128,0.60) 65%, rgba(0,0,0,0.40) 82%, rgba(0,0,0,0.28) 100%)",
+        }}
+      />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-deep/90 to-transparent" />
 
       {/* hero variant switcher */}
