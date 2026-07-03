@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ItaliaEmblem } from "@/components/ItaliaEmblem";
 
 function segClass(active: boolean) {
@@ -25,12 +26,15 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[660px] flex-col justify-center overflow-hidden border-b border-primary/[0.18]"
     >
-      {/* photo placeholder backdrop — swap for a real truck+tarp photo */}
-      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy via-navy-deep to-navy-black">
-        <span className="max-w-xs px-6 text-center text-xs uppercase tracking-[0.2em] text-avorio/25">
-          Foto camion con telo — da sostituire con immagine reale
-        </span>
-      </div>
+      {/* real hero photo — truck with branded tarp at sunset (above the fold) */}
+      <Image
+        src="/images/hero-camion.jpg"
+        alt="Camion Di Riso Teloni con telone brandizzato al tramonto in autostrada"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy-deep/[0.97] via-navy-deep/[0.86] to-navy/[0.55]" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-navy-deep/90 to-transparent" />
 
