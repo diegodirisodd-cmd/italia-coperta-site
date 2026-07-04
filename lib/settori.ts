@@ -87,6 +87,9 @@ export const SETTORI: Settore[] = [
     metaDescription:
       "Coperture in PVC su misura: teli tecnici per protezione merci, cantieri, macchinari e stoccaggio all'aperto. Materiali ad alta tenuta, dal 1950.",
     photoCaption: "Foto reale: telo tecnico in PVC su bancali / cantiere — da inserire",
+    image: "/images/settori/coperture-pvc.jpg",
+    imageAlt:
+      "Copertura tecnica in PVC su misura Di Riso Teloni — telo di protezione per merci e stoccaggio all'aperto",
     body: [
       "Non tutto quello che va coperto sta sotto un tetto. Bancali di merce, macchinari fermi in cantiere, materiali stoccati in piazzale, cataste che devono restare asciutte per mesi: per tutto questo realizziamo coperture in PVC su misura, teli tecnici tagliati e confezionati sulle dimensioni esatte di ciò che devi proteggere.",
       "Dal 1950 lavoriamo il PVC spalmato in tutte le grammature: dai teli leggeri e maneggevoli per coperture temporanee, ai teli pesanti ad altissima tenuta per protezioni permanenti esposte a sole e vento. Confezioniamo teli piani, teli sagomati, cappucci e coperture avvolgenti, completi di occhielli, cinghie, elastici perimetrali e sistemi di fissaggio adatti al punto in cui il telo dovrà lavorare.",
