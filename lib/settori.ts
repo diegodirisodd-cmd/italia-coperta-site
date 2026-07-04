@@ -114,6 +114,9 @@ export const SETTORI: Settore[] = [
     metaDescription:
       "Teloni pubblicitari per camion e mezzi: stampa digitale su PVC ad alta definizione. Trasforma la flotta in pubblicità dinamica con Dodi Branding, dal 1950.",
     photoCaption: "Foto reale: telone camion con grafica pubblicitaria stampata — da inserire",
+    image: "/images/settori/teloni-pubblicitari.jpg",
+    imageAlt:
+      "Telone pubblicitario per camion Di Riso Teloni — stampa digitale su PVC, pubblicità dinamica Dodi Branding",
     body: [
       "Un camion percorre decine di migliaia di chilometri all'anno, attraversa città, autostrade e centri logistici, e viene visto da migliaia di persone ogni giorno. Il suo telone è la superficie pubblicitaria più grande e più mobile che la tua azienda possiede. Con la stampa digitale su telo lo trasformiamo in un cartellone che viaggia.",
       "Uniamo la nostra esperienza nel telo dal 1950 alla stampa pubblicitaria ad alta definizione: realizziamo teloni per centinati, teli tetto e sponde con la tua grafica, loghi, immagini e messaggi stampati direttamente sul PVC, con inchiostri resistenti ai raggi UV e al lavaggio. Il risultato è un telo che fa il suo lavoro tecnico — coprire e proteggere il carico — e allo stesso tempo comunica il tuo marchio su strada.",
