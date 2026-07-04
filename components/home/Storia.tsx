@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
 
 const STATS = [
@@ -11,10 +12,14 @@ export function Storia() {
     <section id="storia" className="border-b border-primary/[0.14] bg-navy px-6 py-24 md:px-10">
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[0.9fr_1.1fr]">
         <div className="relative">
-          <div className="flex h-[380px] w-full items-center justify-center rounded-md bg-gradient-to-br from-navy-black via-navy to-navy-deep md:h-[460px]">
-            <span className="max-w-[220px] px-4 text-center text-xs uppercase tracking-[0.2em] text-avorio/25">
-              Foto storica (b/n) del fondatore / officina — da sostituire
-            </span>
+          <div className="relative h-[380px] w-full overflow-hidden rounded-md md:h-[460px]">
+            <Image
+              src="/images/fondatore-storica.jpg"
+              alt="Il fondatore di Di Riso Teloni negli anni '50, agli inizi dell'attività"
+              fill
+              sizes="(max-width: 768px) 100vw, 45vw"
+              className="object-cover"
+            />
           </div>
           <div className="absolute bottom-0 left-0 bg-primary px-5 py-3.5 font-display font-bold text-navy">
             <span className="block text-[34px] leading-none">1950</span>
