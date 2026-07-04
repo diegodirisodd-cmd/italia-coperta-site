@@ -168,6 +168,9 @@ export const SETTORI: Settore[] = [
     metaDescription:
       "Coperture civili su misura: teli per piscine, terrazzi e spazi privati in PVC resistente. Protezione e durata con la qualità Di Riso, dal 1950.",
     photoCaption: "Foto reale: copertura in telo per piscina / terrazzo — da inserire",
+    image: "/images/settori/coperture-civili.jpg",
+    imageAlt:
+      "Copertura civile in telo su misura Di Riso Teloni — telo di protezione per piscina o terrazzo in PVC",
     body: [
       "La qualità del telo che usiamo per il lavoro pesante la portiamo anche a casa tua. Realizziamo coperture civili su misura per piscine, terrazzi e spazi privati: teli tecnici che proteggono, durano e mantengono un aspetto pulito e ordinato anno dopo anno.",
       "Per le piscine confezioniamo teli di copertura invernale ed estiva su misura della vasca, che tengono fuori foglie e sporco, riducono l'evaporazione e proteggono l'acqua nei mesi di fermo. Il telo è in PVC resistente, con occhielli, cinghie ed elastici perimetrali dimensionati per restare in tensione anche con vento e carico d'acqua piovana, evitando ristagni e avvallamenti.",
