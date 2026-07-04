@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SectionKicker } from "@/components/SectionKicker";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
@@ -53,7 +54,20 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
               </h1>
               <p className="mt-5 max-w-lg text-lg leading-relaxed text-avorio/80">{settore.tagline}</p>
             </div>
-            <PhotoPlaceholder caption={settore.photoCaption} aspect="16 / 11" />
+            {settore.image ? (
+              <div className="relative aspect-[16/11] overflow-hidden rounded-md border border-primary/20">
+                <Image
+                  src={settore.image}
+                  alt={settore.imageAlt ?? settore.h1}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+            ) : (
+              <PhotoPlaceholder caption={settore.photoCaption} aspect="16 / 11" />
+            )}
           </div>
         </div>
       </section>

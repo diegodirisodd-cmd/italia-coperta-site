@@ -12,8 +12,12 @@ export type Settore = {
   body: string[];
   /** Highlight bullets shown alongside the copy. */
   highlights: string[];
-  /** Caption for the main photo placeholder. */
+  /** Caption for the main photo placeholder (shown until a real photo exists). */
   photoCaption: string;
+  /** Real photo path under /public once available; falls back to the placeholder. */
+  image?: string;
+  /** Alt text for the real photo. */
+  imageAlt?: string;
   /** Where the final CTA points and its label. */
   cta: { href: "/preventivo" | "/configuratore"; label: string };
 };
@@ -30,6 +34,8 @@ export const SETTORI: Settore[] = [
     metaDescription:
       "Teloni per camion su misura dal 1950: motrici, rimorchi, bilici e furgoni centinati. Produzione propria, montaggio e riparazione ad Angri (SA) e Brescia.",
     photoCaption: "Foto reale: telone centinato montato su semirimorchio — da inserire",
+    image: "/images/settori/teloni-automezzi.jpg",
+    imageAlt: "Teloni per automezzi Di Riso Teloni — cinghie e fibbie di tensionamento su telone",
     body: [
       "Il telone di un automezzo lavora ogni giorno: sole, pioggia, vento a 100 all'ora, carico e scarico continui. Per questo dal 1950 costruiamo teloni per camion pensati per durare, non per essere sostituiti dopo una stagione. Ogni telo nasce su misura del tuo mezzo — motrice, rimorchio, bilico o furgone centinato — con il PVC spalmato che scegliamo in base al tipo di trasporto e alle sollecitazioni reali della tua tratta.",
       "Realizziamo teloni per centinati alla francese e a soffietto, cappotte ad archi, teli tetto scorrevoli, sponde laterali e teli fissi ad alta tenuta. Curiamo i dettagli che fanno la differenza sul lavoro: occhielli rinforzati in acciaio inox che non saltano, cinghie e tenditori robusti, bande rifrangenti a norma, angoli e cuciture ad alta frequenza dove il telo lavora di più. Se serve, integriamo tasche portadocumenti e rinforzi antivento.",
