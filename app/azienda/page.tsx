@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { organizationSchema, jsonLdScriptProps } from "@/lib/seo/schema";
@@ -96,10 +97,26 @@ export default function AziendaPage() {
               visti passare decine di migliaia, e la voglia di chi vuole ancora farli meglio.
             </p>
           </div>
-          <PhotoPlaceholder
-            caption="Foto storica (b/n): fondatore / officina · e foto attuale di Domenico e Diego — da inserire"
-            aspect="4 / 5"
-          />
+          <div className="flex flex-col gap-4">
+            <figure>
+              <div className="relative aspect-square w-full overflow-hidden rounded-md">
+                <Image
+                  src="/images/fondatore-storica.jpg"
+                  alt="Il fondatore di Di Riso Teloni negli anni '50, agli inizi dell'attività"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-2 text-xs uppercase tracking-[0.14em] text-avorio/40">
+                Il fondatore · dagli anni &apos;50
+              </figcaption>
+            </figure>
+            <PhotoPlaceholder
+              caption="Foto attuale di Domenico e Diego Di Riso — da inserire"
+              aspect="1 / 1"
+            />
+          </div>
         </div>
       </section>
 
