@@ -60,6 +60,9 @@ export const SETTORI: Settore[] = [
     metaDescription:
       "Tensostrutture industriali su misura: capannoni in telo, coperture per stoccaggio e logistica in PVC ad alta resistenza. Progettazione e installazione, dal 1950.",
     photoCaption: "Foto reale: tensostruttura industriale / capannone in telo — da inserire",
+    image: "/images/settori/tensostrutture-industriali.jpg",
+    imageAlt:
+      "Tensostruttura industriale in PVC Di Riso Teloni — capannone in telo per stoccaggio e logistica",
     body: [
       "Quando serve spazio coperto in fretta — per stoccare merce, proteggere una linea di produzione o creare un'area di carico riparata — la tensostruttura in PVC è la risposta più rapida ed economica rispetto a un capannone tradizionale. Dal 1950 lavoriamo il telo su grandi superfici e portiamo la stessa cura artigianale del telone da camion alla copertura industriale su misura.",
       "Progettiamo e realizziamo tensostrutture per magazzini, depositi, aree logistiche, coperture di piazzali e passaggi tra edifici. La struttura viene dimensionata sulle tue esigenze di luce, altezza e carico, e il telo di copertura è in PVC spalmato ad alta resistenza, ignifugo dove richiesto, con finiture pensate per durare anni sotto sole e intemperie.",
