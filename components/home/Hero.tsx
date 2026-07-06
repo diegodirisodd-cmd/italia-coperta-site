@@ -1,20 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ItaliaEmblem } from "@/components/ItaliaEmblem";
 import { WordReveal } from "@/components/motion/WordReveal";
 import { MagneticCTA } from "@/components/motion/MagneticCTA";
 import { EASE_OUT, EASE_TARP } from "@/components/motion/variants";
-
-function segClass(active: boolean) {
-  return [
-    "inline-flex min-h-[44px] items-center rounded-full px-4 py-2 text-xs font-semibold tracking-[0.02em] transition-colors",
-    active ? "bg-primary text-navy" : "bg-transparent text-avorio/75",
-  ].join(" ");
-}
 
 const ctaPrimary =
   "rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline shadow-[0_8px_24px_rgba(227,25,25,0.28)]";
@@ -22,8 +13,6 @@ const ctaSecondary =
   "rounded-md border-[1.5px] border-avorio/50 px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-avorio no-underline";
 
 export function Hero() {
-  const [mode, setMode] = useState<"foto" | "emblema">("foto");
-  const isFoto = mode === "foto";
   const reduced = useReducedMotion();
 
   return (
@@ -76,22 +65,7 @@ export function Hero() {
         </motion.div>
       )}
 
-      {/* hero variant switcher */}
-      <div className="absolute right-5 top-5 z-[8] flex items-center gap-2">
-        <span className="hidden text-[10px] uppercase tracking-[0.2em] text-avorio/50 sm:inline">
-          Variante hero
-        </span>
-        <div className="flex gap-1 rounded-full border border-primary/30 bg-navy-deep/[0.72] p-1">
-          <button onClick={() => setMode("foto")} className={segClass(isFoto)}>
-            Foto protagonista
-          </button>
-          <button onClick={() => setMode("emblema")} className={segClass(!isFoto)}>
-            Emblema protagonista
-          </button>
-        </div>
-      </div>
-
-      {isFoto ? <FotoVariant /> : <EmblemaVariant />}
+      <FotoVariant />
 
       {/* bottom marquee strip */}
       <div className="relative z-[6] border-t border-primary/[0.16] bg-navy-black/60">
@@ -165,33 +139,6 @@ function FotoVariant() {
           <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
         </motion.div>
       </motion.div>
-    </div>
-  );
-}
-
-function EmblemaVariant() {
-  return (
-    <div className="relative z-[6] mx-auto grid w-full max-w-6xl items-center gap-10 px-6 py-10 md:grid-cols-[1.05fr_0.95fr] md:px-10">
-      <div>
-        <HeroKicker />
-        <h1 className="font-display text-4xl font-bold uppercase leading-[0.95] text-avorio md:text-5xl">
-          Teli per bilico completi e professionali — dal 1950
-        </h1>
-        <p className="mt-4 font-display text-xl font-semibold uppercase tracking-[0.02em] text-primary">
-          Italia Coperta
-        </p>
-        <p className="mt-5 max-w-[460px] text-[18px] leading-relaxed text-avorio/80">
-          Un solo telo copre tutta la penisola. Lo stesso principio del nostro servizio: presenti, capillari,
-          dovunque tu debba viaggiare.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3.5">
-          <MagneticCTA href="/preventivo" className={ctaPrimary}>Richiedi preventivo</MagneticCTA>
-          <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
-        </div>
-      </div>
-      <div className="flex justify-center">
-        <ItaliaEmblem variant="rich" width={330} height={396} />
-      </div>
     </div>
   );
 }
