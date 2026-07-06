@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
 import { TarpReveal } from "@/components/motion/TarpReveal";
+import { CountUp } from "@/components/motion/CountUp";
 
 const STATS = [
   { value: "75", label: "Anni di attività" },
@@ -45,7 +46,9 @@ export function Storia() {
           <div className="mt-9 grid grid-cols-3 gap-px border border-primary/20 bg-primary/20">
             {STATS.map((stat) => (
               <div key={stat.label} className="bg-navy px-5 py-6">
-                <div className="font-display text-4xl font-bold leading-none text-primary">{stat.value}</div>
+                <div className="font-display text-4xl font-bold leading-none text-primary">
+                  <CountUp value={stat.value} />
+                </div>
                 <div className="mt-1.5 text-xs uppercase tracking-[0.1em] text-avorio/65">{stat.label}</div>
               </div>
             ))}

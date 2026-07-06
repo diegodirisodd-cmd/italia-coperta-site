@@ -1,4 +1,5 @@
 import { CENTRI_ATTIVI } from "@/lib/centri";
+import { CountUp } from "@/components/motion/CountUp";
 
 const STATS = [
   { value: "75", label: "Anni di attività · dal 1950" },
@@ -13,7 +14,7 @@ export function StatsBand() {
         {STATS.map((stat) => (
           <div key={stat.label} className="text-center sm:text-left">
             <div className="font-display text-4xl font-bold leading-none text-primary md:text-5xl">
-              {stat.value}
+              <CountUp value={stat.value} />
             </div>
             <div className="mt-2 text-xs uppercase tracking-[0.1em] text-avorio/65">{stat.label}</div>
           </div>
