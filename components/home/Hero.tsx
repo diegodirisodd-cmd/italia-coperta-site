@@ -11,7 +11,7 @@ import { EASE_OUT, EASE_TARP } from "@/components/motion/variants";
 
 function segClass(active: boolean) {
   return [
-    "rounded-full px-4 py-2 text-xs font-semibold tracking-[0.02em] transition-colors",
+    "inline-flex min-h-[44px] items-center rounded-full px-4 py-2 text-xs font-semibold tracking-[0.02em] transition-colors",
     active ? "bg-primary text-navy" : "bg-transparent text-avorio/75",
   ].join(" ");
 }
