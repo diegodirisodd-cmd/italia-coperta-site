@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { useRef, type ReactNode } from "react";
+import { usePointerFine } from "./usePointerFine";
 
 const MotionLink = motion.create(Link);
 
@@ -21,6 +22,7 @@ type MagneticCTAProps = {
  */
 export function MagneticCTA({ href, children, className, strength = 0.3 }: MagneticCTAProps) {
   const reduced = useReducedMotion();
+  const fine = usePointerFine();
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -44,6 +46,29 @@ export function MagneticCTA({ href, children, className, strength = 0.3 }: Magne
       <Link href={href} className={className}>
         {children}
       </Link>
+    );
+  }
+
+  // Touch device: no hover/magnetic — just a tap-scale + gradient flash.
+  if (!fine) {
+    return (
+      <MotionLink
+        href={href}
+        className={`relative overflow-hidden ${className ?? ""}`}
+        initial="rest"
+        whileTap="tap"
+        variants={{ rest: { scale: 1 }, tap: { scale: 0.96 } }}
+        transition={{ type: "spring", stiffness: 300, damping: 22 }}
+      >
+        <motion.span
+          aria-hidden
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(90deg, #E31919 0%, #FF4D4D 100%)" }}
+          variants={{ rest: { opacity: 0 }, tap: { opacity: 1 } }}
+          transition={{ duration: 0.2 }}
+        />
+        <span className="relative z-10 inline-flex items-center gap-2">{children}</span>
+      </MotionLink>
     );
   }
 

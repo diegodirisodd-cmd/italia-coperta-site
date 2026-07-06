@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
 import { useRef, type ReactNode } from "react";
+import { usePointerFine } from "./usePointerFine";
 
 type TiltProps = {
   children: ReactNode;
@@ -13,13 +14,15 @@ type TiltProps = {
 /** 3D tilt that follows the pointer. GPU transform only (rotateX/rotateY). */
 export function Tilt({ children, className, max = 7 }: TiltProps) {
   const reduced = useReducedMotion();
+  const fine = usePointerFine();
   const ref = useRef<HTMLDivElement>(null);
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);
   const rotateX = useSpring(useTransform(py, [0, 1], [max, -max]), { stiffness: 200, damping: 18 });
   const rotateY = useSpring(useTransform(px, [0, 1], [-max, max]), { stiffness: 200, damping: 18 });
 
-  if (reduced) return <div className={className}>{children}</div>;
+  // No hover on touch: render flat so the card can't get stuck mid-tilt.
+  if (reduced || !fine) return <div className={className}>{children}</div>;
 
   return (
     <motion.div
