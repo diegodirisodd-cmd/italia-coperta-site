@@ -3,7 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { ItaliaEmblem } from "@/components/ItaliaEmblem";
+import { WordReveal } from "@/components/motion/WordReveal";
+import { EASE_OUT, EASE_TARP } from "@/components/motion/variants";
 
 function segClass(active: boolean) {
   return [
@@ -20,6 +23,7 @@ const ctaSecondary =
 export function Hero() {
   const [mode, setMode] = useState<"foto" | "emblema">("foto");
   const isFoto = mode === "foto";
+  const reduced = useReducedMotion();
 
   return (
     <section
@@ -49,6 +53,27 @@ export function Hero() {
             "linear-gradient(to bottom, rgba(26,25,128,0.50) 0%, rgba(26,25,128,0) 34%)",
         }}
       />
+
+      {/* "telone che si scosta": a tarp panel slides off on load to reveal the truck */}
+      {!reduced && (
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-[5] will-change-transform"
+          style={{ background: "linear-gradient(115deg, #1A1980 0%, #12103f 55%, #000000 100%)" }}
+          initial={{ x: "0%" }}
+          animate={{ x: "-101%" }}
+          transition={{ duration: 1.05, ease: EASE_TARP, delay: 0.1 }}
+        >
+          <div
+            className="absolute inset-0 opacity-[0.14]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(90deg, rgba(243,233,204,0.5) 0 1px, transparent 1px 15px)",
+            }}
+          />
+          <div className="absolute inset-y-0 right-0 w-2 bg-primary" />
+        </motion.div>
+      )}
 
       {/* hero variant switcher */}
       <div className="absolute right-5 top-5 z-[8] flex items-center gap-2">
@@ -98,27 +123,47 @@ function HeroKicker() {
   );
 }
 
+const fotoContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.7 } },
+};
+const fotoItem = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT } },
+};
+
 function FotoVariant() {
+  const reduced = useReducedMotion();
+  const groupProps = reduced
+    ? {}
+    : { variants: fotoContainer, initial: "hidden" as const, animate: "show" as const };
+  const itemProps = reduced ? {} : { variants: fotoItem };
+
   return (
     <div className="relative z-[6] mx-auto w-full max-w-6xl px-6 pb-14 pt-10 md:px-10">
-      <div className="max-w-[660px]">
-        <HeroKicker />
+      <motion.div className="max-w-[660px]" {...groupProps}>
+        <motion.div {...itemProps}>
+          <HeroKicker />
+        </motion.div>
         {/* H1 keeps the ranking keyword phrase; "Italia Coperta" carries the brand as a tagline. */}
         <h1 className="font-display text-5xl font-bold uppercase leading-[0.95] text-avorio md:text-6xl lg:text-[64px]">
-          Teli per bilico completi e professionali — dal 1950
+          <WordReveal text="Teli per bilico completi e professionali — dal 1950" delay={0.7} />
         </h1>
-        <p className="mt-4 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-primary">
+        <motion.p
+          {...itemProps}
+          className="mt-4 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-primary"
+        >
           Italia Coperta
-        </p>
-        <p className="mt-6 max-w-[520px] text-lg leading-relaxed text-avorio/80">
+        </motion.p>
+        <motion.p {...itemProps} className="mt-6 max-w-[520px] text-lg leading-relaxed text-avorio/80">
           Il telo che copre l&apos;Italia — e ti copre in tutta Italia. Teloni su misura per bilici, motrici e
           rimorchi, cuciti a mano dalla terza generazione della famiglia Di Riso.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3.5">
+        </motion.p>
+        <motion.div {...itemProps} className="mt-8 flex flex-wrap gap-3.5">
           <Link href="/preventivo" className={ctaPrimary}>Richiedi preventivo</Link>
           <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
