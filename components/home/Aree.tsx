@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SectionKicker } from "@/components/SectionKicker";
+import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { SETTORI } from "@/lib/settori";
 
 // Home teaser shows the first four sectors; full list lives at /settori.
@@ -23,23 +24,24 @@ export function Aree() {
             Tutti i settori →
           </Link>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {AREE.map((area) => (
-            <Link
-              key={area.slug}
-              href={`/settori/${area.slug}`}
-              className="rounded-md border-[1.5px] border-avorio/[0.14] bg-navy p-6 no-underline transition-colors hover:border-primary/60"
-            >
-              <h3 className="font-display text-lg font-semibold uppercase tracking-[0.02em] text-avorio">
-                {area.cardTitle}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-avorio/65">{area.tagline}</p>
-              <span className="mt-4 block text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-                Scopri di più →
-              </span>
-            </Link>
+            <StaggerItem key={area.slug} className="h-full">
+              <Link
+                href={`/settori/${area.slug}`}
+                className="block h-full rounded-md border-[1.5px] border-avorio/[0.14] bg-navy p-6 no-underline transition-colors hover:border-primary/60"
+              >
+                <h3 className="font-display text-lg font-semibold uppercase tracking-[0.02em] text-avorio">
+                  {area.cardTitle}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-avorio/65">{area.tagline}</p>
+                <span className="mt-4 block text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                  Scopri di più →
+                </span>
+              </Link>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );
