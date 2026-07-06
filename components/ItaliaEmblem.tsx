@@ -1,4 +1,7 @@
+"use client";
+
 import { useId } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 // Shared Italy silhouette path data — the "Italia Coperta" signature emblem
 // (Italy as a PVC tarp) and the stylized map both draw from these same
@@ -39,11 +42,29 @@ function SyntheticEmblem({ width, height, className }: { width: number; height: 
   );
 }
 
+// On scroll-into-view the coastline outlines draw themselves via pathLength
+// (framer-motion drives stroke-dasharray/dashoffset under the hood).
+const drawTransition = (delay: number) => ({
+  pathLength: { duration: 1.6, ease: "easeInOut" as const, delay },
+  opacity: { duration: 0.3, delay },
+});
+
 function RichEmblem({ width, height, className }: { width: number; height: number; className?: string }) {
   const uid = useId().replace(/:/g, "");
   const gradId = `icTarp-${uid}`;
   const ribsId = `icRibs-${uid}`;
   const clipId = `icClip-${uid}`;
+  const reduced = useReducedMotion();
+
+  const drawProps = (delay: number) =>
+    reduced
+      ? {}
+      : {
+          initial: { pathLength: 0, opacity: 0 },
+          whileInView: { pathLength: 1, opacity: 1 },
+          viewport: { once: true, margin: "0px 0px -15% 0px" },
+          transition: drawTransition(delay),
+        };
 
   return (
     <svg
@@ -83,10 +104,10 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
         <rect x="-30" y="151" width="320" height="3" fill="rgba(0,0,0,.3)" transform="rotate(-18 131 141)" />
       </g>
 
-      {/* silhouette outlines */}
-      <path d={ITALY_PATH_MAINLAND} fill="none" stroke="rgba(243,233,204,.6)" strokeWidth={1.8} />
-      <path d={ITALY_PATH_SICILY} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} />
-      <path d={ITALY_PATH_SARDINIA} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} />
+      {/* silhouette outlines — drawn progressively on scroll-into-view */}
+      <motion.path d={ITALY_PATH_MAINLAND} fill="none" stroke="rgba(243,233,204,.6)" strokeWidth={1.8} {...drawProps(0)} />
+      <motion.path d={ITALY_PATH_SICILY} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} {...drawProps(1.1)} />
+      <motion.path d={ITALY_PATH_SARDINIA} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} {...drawProps(1.3)} />
 
       {/* eyelets / grommets along the coast */}
       <g fill="#1A1980" stroke="#E31919" strokeWidth={2}>
