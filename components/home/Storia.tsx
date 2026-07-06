@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
+import { TarpReveal } from "@/components/motion/TarpReveal";
 
 const STATS = [
   { value: "75", label: "Anni di attività" },
@@ -12,7 +13,7 @@ export function Storia() {
     <section id="storia" className="border-b border-primary/[0.14] bg-navy px-6 py-24 md:px-10">
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[0.9fr_1.1fr]">
         <div className="relative">
-          <div className="relative h-[380px] w-full overflow-hidden rounded-md md:h-[460px]">
+          <TarpReveal className="relative h-[380px] w-full rounded-md md:h-[460px]">
             <Image
               src="/images/fondatore-storica.jpg"
               alt="Il fondatore di Di Riso Teloni negli anni '50, agli inizi dell'attività"
@@ -20,7 +21,7 @@ export function Storia() {
               sizes="(max-width: 768px) 100vw, 45vw"
               className="object-cover"
             />
-          </div>
+          </TarpReveal>
           <div className="absolute bottom-0 left-0 bg-primary px-5 py-3.5 font-display font-bold text-navy">
             <span className="block text-[34px] leading-none">1950</span>
             <span className="mt-0.5 block text-[11px] font-semibold tracking-[0.16em]">ANNO DI FONDAZIONE</span>
