@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { WordReveal } from "@/components/motion/WordReveal";
 import { MagneticCTA } from "@/components/motion/MagneticCTA";
 import { EASE_OUT, EASE_TARP } from "@/components/motion/variants";
@@ -46,7 +46,7 @@ export function Hero() {
 
       {/* "telone che si scosta": a tarp panel slides off on load to reveal the truck */}
       {!reduced && (
-        <motion.div
+        <m.div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-[5] will-change-transform"
           style={{ background: "linear-gradient(115deg, #1A1980 0%, #12103f 55%, #000000 100%)" }}
@@ -62,7 +62,7 @@ export function Hero() {
             }}
           />
           <div className="absolute inset-y-0 right-0 w-2 bg-primary" />
-        </motion.div>
+        </m.div>
       )}
 
       <FotoVariant />
@@ -116,29 +116,29 @@ function FotoVariant() {
 
   return (
     <div className="relative z-[6] mx-auto w-full max-w-6xl px-6 pb-14 pt-10 md:px-10">
-      <motion.div className="max-w-[660px]" {...groupProps}>
-        <motion.div {...itemProps}>
+      <m.div className="max-w-[660px]" {...groupProps}>
+        <m.div {...itemProps}>
           <HeroKicker />
-        </motion.div>
+        </m.div>
         {/* H1 keeps the ranking keyword phrase; "Italia Coperta" carries the brand as a tagline. */}
         <h1 className="font-display text-5xl font-bold uppercase leading-[0.95] text-avorio md:text-6xl lg:text-[64px]">
           <WordReveal text="Teli per bilico completi e professionali — dal 1950" delay={0.7} />
         </h1>
-        <motion.p
+        <m.p
           {...itemProps}
           className="mt-4 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-primary"
         >
           Italia Coperta
-        </motion.p>
-        <motion.p {...itemProps} className="mt-6 max-w-[520px] text-lg leading-relaxed text-avorio/80">
+        </m.p>
+        <m.p {...itemProps} className="mt-6 max-w-[520px] text-lg leading-relaxed text-avorio/80">
           Il telo che copre l&apos;Italia — e ti copre in tutta Italia. Teloni su misura per bilici, motrici e
           rimorchi, cuciti a mano dalla terza generazione della famiglia Di Riso.
-        </motion.p>
-        <motion.div {...itemProps} className="mt-8 flex flex-wrap gap-3.5">
+        </m.p>
+        <m.div {...itemProps} className="mt-8 flex flex-wrap gap-3.5">
           <MagneticCTA href="/preventivo" className={ctaPrimary}>Richiedi preventivo</MagneticCTA>
           <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </div>
   );
 }

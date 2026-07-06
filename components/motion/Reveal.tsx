@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { EASE_OUT, revealItem, staggerContainer } from "./variants";
 
@@ -18,7 +18,7 @@ export function Reveal({ children, className, delay = 0, y = 24 }: RevealProps) 
   const reduced = useReducedMotion();
   if (reduced) return <div className={className}>{children}</div>;
   return (
-    <motion.div
+    <m.div
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ export function Reveal({ children, className, delay = 0, y = 24 }: RevealProps) 
       transition={{ duration: 0.6, delay, ease: EASE_OUT }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -35,7 +35,7 @@ export function Stagger({ children, className }: { children: ReactNode; classNam
   const reduced = useReducedMotion();
   if (reduced) return <div className={className}>{children}</div>;
   return (
-    <motion.div
+    <m.div
       className={className}
       variants={staggerContainer}
       initial="hidden"
@@ -43,7 +43,7 @@ export function Stagger({ children, className }: { children: ReactNode; classNam
       viewport={{ once: true, margin: "0px 0px -10% 0px" }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -52,8 +52,8 @@ export function StaggerItem({ children, className }: { children: ReactNode; clas
   const reduced = useReducedMotion();
   if (reduced) return <div className={className}>{children}</div>;
   return (
-    <motion.div className={className} variants={revealItem}>
+    <m.div className={className} variants={revealItem}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }

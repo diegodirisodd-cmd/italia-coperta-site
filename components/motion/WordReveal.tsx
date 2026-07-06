@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { EASE_OUT } from "./variants";
 
 type WordRevealProps = {
@@ -30,7 +30,7 @@ export function WordReveal({ text, className, delay = 0 }: WordRevealProps) {
 
   const words = text.split(" ");
   return (
-    <motion.span
+    <m.span
       className={className}
       aria-label={text}
       variants={container(delay)}
@@ -39,12 +39,12 @@ export function WordReveal({ text, className, delay = 0 }: WordRevealProps) {
     >
       {words.map((w, i) => (
         <span key={`${w}-${i}`}>
-          <motion.span aria-hidden variants={word} className="inline-block will-change-transform">
+          <m.span aria-hidden variants={word} className="inline-block will-change-transform">
             {w}
-          </motion.span>
+          </m.span>
           {i < words.length - 1 ? " " : ""}
         </span>
       ))}
-    </motion.span>
+    </m.span>
   );
 }

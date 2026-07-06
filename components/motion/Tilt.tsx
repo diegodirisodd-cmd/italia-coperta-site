@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
+import { m, useMotionValue, useReducedMotion, useSpring, useTransform } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 import { usePointerFine } from "./usePointerFine";
 
@@ -25,7 +25,7 @@ export function Tilt({ children, className, max = 7 }: TiltProps) {
   if (reduced || !fine) return <div className={className}>{children}</div>;
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className={className}
       style={{ rotateX, rotateY, transformPerspective: 800, transformStyle: "preserve-3d" }}
@@ -42,6 +42,6 @@ export function Tilt({ children, className, max = 7 }: TiltProps) {
       }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

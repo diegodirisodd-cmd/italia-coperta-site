@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import { m, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { useEffect } from "react";
 import { usePointerFine } from "./usePointerFine";
 
@@ -43,7 +43,7 @@ export function Spotlight({ size = 620, color = "rgba(120,112,255,0.16)" }: Spot
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-30" style={{ mixBlendMode: "screen" }}>
-      <motion.div
+      <m.div
         className="absolute left-0 top-0 rounded-full will-change-transform"
         style={{
           width: size,

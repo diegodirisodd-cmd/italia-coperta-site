@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import { m, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { useRef, type ReactNode } from "react";
 import { usePointerFine } from "./usePointerFine";
 
-const MotionLink = motion.create(Link);
+const MotionLink = m.create(Link);
 
 type MagneticCTAProps = {
   href: string;
@@ -60,7 +60,7 @@ export function MagneticCTA({ href, children, className, strength = 0.3 }: Magne
         variants={{ rest: { scale: 1 }, tap: { scale: 0.96 } }}
         transition={{ type: "spring", stiffness: 300, damping: 22 }}
       >
-        <motion.span
+        <m.span
           aria-hidden
           className="absolute inset-0"
           style={{ background: "linear-gradient(90deg, #E31919 0%, #FF4D4D 100%)" }}
@@ -86,7 +86,7 @@ export function MagneticCTA({ href, children, className, strength = 0.3 }: Magne
       variants={{ rest: { scale: 1 }, hover: { scale: 1.03 } }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
-      <motion.span
+      <m.span
         aria-hidden
         className="absolute inset-0"
         style={{ background: "linear-gradient(90deg, #E31919 0%, #FF4D4D 100%)" }}

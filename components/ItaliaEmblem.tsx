@@ -1,7 +1,7 @@
 "use client";
 
 import { useId } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 
 // Shared Italy silhouette path data — the "Italia Coperta" signature emblem
 // (Italy as a PVC tarp) and the stylized map both draw from these same
@@ -105,9 +105,9 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
       </g>
 
       {/* silhouette outlines — drawn progressively on scroll-into-view */}
-      <motion.path d={ITALY_PATH_MAINLAND} fill="none" stroke="rgba(243,233,204,.6)" strokeWidth={1.8} {...drawProps(0)} />
-      <motion.path d={ITALY_PATH_SICILY} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} {...drawProps(1.1)} />
-      <motion.path d={ITALY_PATH_SARDINIA} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} {...drawProps(1.3)} />
+      <m.path d={ITALY_PATH_MAINLAND} fill="none" stroke="rgba(243,233,204,.6)" strokeWidth={1.8} {...drawProps(0)} />
+      <m.path d={ITALY_PATH_SICILY} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} {...drawProps(1.1)} />
+      <m.path d={ITALY_PATH_SARDINIA} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} {...drawProps(1.3)} />
 
       {/* eyelets / grommets along the coast */}
       <g fill="#1A1980" stroke="#E31919" strokeWidth={2}>

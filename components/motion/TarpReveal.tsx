@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { EASE_TARP } from "./variants";
 
@@ -35,7 +35,7 @@ export function TarpReveal({ children, className, trigger = "inView", delay = 0 
     <div className={`relative overflow-hidden ${className ?? ""}`}>
       {children}
       {!reduced && (
-        <motion.div
+        <m.div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-10 will-change-transform"
           style={{
@@ -54,7 +54,7 @@ export function TarpReveal({ children, className, trigger = "inView", delay = 0 
           />
           {/* trailing red seam edge, like the hem of a tarp */}
           <div className="absolute inset-y-0 right-0 w-1.5 bg-primary" />
-        </motion.div>
+        </m.div>
       )}
     </div>
   );
