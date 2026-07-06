@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ItaliaEmblem } from "@/components/ItaliaEmblem";
 import { WordReveal } from "@/components/motion/WordReveal";
+import { MagneticCTA } from "@/components/motion/MagneticCTA";
 import { EASE_OUT, EASE_TARP } from "@/components/motion/variants";
 
 function segClass(active: boolean) {
@@ -160,7 +161,7 @@ function FotoVariant() {
           rimorchi, cuciti a mano dalla terza generazione della famiglia Di Riso.
         </motion.p>
         <motion.div {...itemProps} className="mt-8 flex flex-wrap gap-3.5">
-          <Link href="/preventivo" className={ctaPrimary}>Richiedi preventivo</Link>
+          <MagneticCTA href="/preventivo" className={ctaPrimary}>Richiedi preventivo</MagneticCTA>
           <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
         </motion.div>
       </motion.div>
@@ -184,7 +185,7 @@ function EmblemaVariant() {
           dovunque tu debba viaggiare.
         </p>
         <div className="mt-8 flex flex-wrap gap-3.5">
-          <Link href="/preventivo" className={ctaPrimary}>Richiedi preventivo</Link>
+          <MagneticCTA href="/preventivo" className={ctaPrimary}>Richiedi preventivo</MagneticCTA>
           <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
         </div>
       </div>

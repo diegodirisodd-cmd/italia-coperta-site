@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { SectionKicker } from "@/components/SectionKicker";
+import { MagneticCTA } from "@/components/motion/MagneticCTA";
 
 const STEPS = [
   { n: "01", t: "Veicolo" },
@@ -34,12 +34,12 @@ export function ConfiguratoreTeaser() {
                 </div>
               ))}
             </div>
-            <Link
+            <MagneticCTA
               href="/configuratore"
               className="mt-8 inline-block rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
             >
               Apri il configuratore →
-            </Link>
+            </MagneticCTA>
           </div>
 
           <div className="flex flex-col justify-center bg-navy-black p-9">
