@@ -9,6 +9,8 @@ import { EASE_OUT } from "@/components/motion/variants";
 import type { StepId } from "@/lib/configuratore/types";
 import { StepTipologiaMezzo } from "./steps/StepTipologiaMezzo";
 import { StepTipoRichiesta } from "./steps/StepTipoRichiesta";
+import { StepColoreTelo } from "./steps/StepColoreTelo";
+import { StepMisure } from "./steps/StepMisure";
 
 /**
  * Common layout frame for the wizard: progress bar, the animated step slot, and
@@ -25,7 +27,9 @@ import { StepTipoRichiesta } from "./steps/StepTipoRichiesta";
 const STEP_COMPONENTS: Partial<Record<StepId, ComponentType>> = {
   "tipologia-mezzo": StepTipologiaMezzo,
   "tipo-richiesta": StepTipoRichiesta,
-  // remaining steps registered in Block 4 onwards
+  "colore-telo": StepColoreTelo,
+  misure: StepMisure,
+  // remaining steps registered in Block 5 onwards
 };
 
 export function WizardShell() {

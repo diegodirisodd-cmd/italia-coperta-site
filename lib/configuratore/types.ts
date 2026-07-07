@@ -62,6 +62,10 @@ export type ColoreTeloState = {
   note: string;
   /** Checkbox "Vuoi una bozza grafica da noi?". */
   richiedeBozza: boolean;
+  /** Selected file names (display only for now; the actual upload to Supabase
+   *  storage is wired in a later block). */
+  logoFileName: string;
+  bozzaFileName: string;
 };
 
 /* -------------------------------------------------------------------------- */

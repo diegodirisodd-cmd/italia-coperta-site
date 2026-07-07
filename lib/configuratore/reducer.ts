@@ -137,6 +137,13 @@ export function canLeaveStep(state: ConfiguratoreState, step: StepId): boolean {
       // Every macro except "accessori" (free-text) requires a sub-option.
       if (state.macroCategoria !== "accessori" && !state.sottoOpzione) return false;
       return true;
+    case "colore-telo":
+      // Colour and personalization are the two core choices; each has an
+      // "undecided" option (da-definire / da-valutare), so requiring both is safe.
+      return state.coloreTelo.colore !== null && state.coloreTelo.personalizzazione !== null;
+    case "misure":
+      // Only the modality is required; individual measures stay optional.
+      return state.misure.modalita !== null;
     default:
       return true;
   }
@@ -153,7 +160,14 @@ export const initialState: ConfiguratoreState = {
   macroCategoria: null,
   sottoOpzione: null,
   richiestaNote: "",
-  coloreTelo: { colore: null, personalizzazione: null, note: "", richiedeBozza: false },
+  coloreTelo: {
+    colore: null,
+    personalizzazione: null,
+    note: "",
+    richiedeBozza: false,
+    logoFileName: "",
+    bozzaFileName: "",
+  },
   misure: { modalita: null, campi: {}, rilievo: {} },
   extraOptional: [],
   urgenza: { livello: null, dataPreferita: "", mezzoFermo: false, giorniFermo: "", note: "" },
