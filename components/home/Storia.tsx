@@ -14,7 +14,7 @@ export function Storia() {
     <section id="storia" className="border-b border-primary/[0.14] bg-navy px-6 py-24 md:px-10">
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[0.9fr_1.1fr]">
         <div className="relative">
-          <TarpReveal className="relative h-[380px] w-full rounded-md md:h-[460px]">
+          <TarpReveal trigger="scrub" className="relative h-[380px] w-full rounded-md md:h-[460px]">
             <Image
               src="/images/fondatore-storica.jpg"
               alt="Il fondatore di Di Riso Teloni negli anni '50, agli inizi dell'attività"

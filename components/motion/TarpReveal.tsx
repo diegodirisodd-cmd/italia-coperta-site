@@ -1,15 +1,17 @@
 "use client";
 
-import { m, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { m, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import type { ReactNode } from "react";
 import { EASE_TARP } from "./variants";
 
 type TarpRevealProps = {
   children: ReactNode;
   className?: string;
-  /** "mount" = reveal on load (hero); "inView" = reveal on scroll. */
-  trigger?: "mount" | "inView";
-  /** Extra delay in seconds. */
+  /** "mount" = reveal on load (hero); "inView" = reveal once on scroll;
+   *  "scrub" = tarp position is bound to scroll progress (storia). */
+  trigger?: "mount" | "inView" | "scrub";
+  /** Extra delay in seconds (mount/inView only). */
   delay?: number;
 };
 
@@ -20,19 +22,28 @@ type TarpRevealProps = {
  */
 export function TarpReveal({ children, className, trigger = "inView", delay = 0 }: TarpRevealProps) {
   const reduced = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+
+  // scrub: the tarp follows how far the block has scrolled into the viewport,
+  // fully covered at the bottom edge, fully revealed past the upper third
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.92", "start 0.35"] });
+  const scrubX = useTransform(scrollYProgress, [0, 1], ["0%", "-101%"]);
 
   const transition = { duration: 0.95, ease: EASE_TARP, delay };
   const motionProps =
     trigger === "mount"
-      ? { initial: { x: "0%" }, animate: { x: "-101%" } }
-      : {
-          initial: { x: "0%" },
-          whileInView: { x: "-101%" },
-          viewport: { once: true, margin: "0px 0px -15% 0px" },
-        };
+      ? { transition, initial: { x: "0%" }, animate: { x: "-101%" } }
+      : trigger === "inView"
+        ? {
+            transition,
+            initial: { x: "0%" },
+            whileInView: { x: "-101%" },
+            viewport: { once: true, margin: "0px 0px -15% 0px" },
+          }
+        : {};
 
   return (
-    <div className={`relative overflow-hidden ${className ?? ""}`}>
+    <div ref={ref} className={`relative overflow-hidden ${className ?? ""}`}>
       {children}
       {!reduced && (
         <m.div
@@ -40,8 +51,8 @@ export function TarpReveal({ children, className, trigger = "inView", delay = 0 
           className="pointer-events-none absolute inset-0 z-10 will-change-transform"
           style={{
             background: "linear-gradient(115deg, #1A1980 0%, #12103f 55%, #000000 100%)",
+            ...(trigger === "scrub" ? { x: scrubX } : null),
           }}
-          transition={transition}
           {...motionProps}
         >
           {/* woven rib texture */}
