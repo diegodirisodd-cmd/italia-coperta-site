@@ -7,6 +7,7 @@ import { ProgressBar } from "./ProgressBar";
 import { STEP_META } from "@/lib/configuratore/reducer";
 import { EASE_OUT } from "@/components/motion/variants";
 import type { StepId } from "@/lib/configuratore/types";
+import { StepTipologiaMezzo } from "./steps/StepTipologiaMezzo";
 
 /**
  * Common layout frame for the wizard: progress bar, the animated step slot, and
@@ -21,11 +22,12 @@ import type { StepId } from "@/lib/configuratore/types";
 
 /** Registry of step content components, filled in by later blocks. */
 const STEP_COMPONENTS: Partial<Record<StepId, ComponentType>> = {
-  // e.g. "tipologia-mezzo": StepTipologiaMezzo,  ← Block 2 onwards
+  "tipologia-mezzo": StepTipologiaMezzo,
+  // remaining steps registered in Block 3 onwards
 };
 
 export function WizardShell() {
-  const { state, dispatch, visibleSteps, stepIndex, isFirst, isLast } = useConfiguratore();
+  const { dispatch, visibleSteps, stepIndex, isFirst, isLast, canProceed } = useConfiguratore();
   const reduced = useReducedMotion();
   const step = visibleSteps[stepIndex];
   const StepComponent = STEP_COMPONENTS[step];
@@ -67,7 +69,8 @@ export function WizardShell() {
           <button
             type="button"
             onClick={() => dispatch({ type: "GO_NEXT" })}
-            className="rounded-md bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy transition-colors hover:bg-primary-light"
+            disabled={!canProceed}
+            className="rounded-md bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy transition-colors hover:bg-primary-light disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
           >
             Avanti →
           </button>

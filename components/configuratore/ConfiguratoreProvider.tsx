@@ -12,6 +12,7 @@ import {
   reducer,
   getVisibleSteps,
   currentStepIndex,
+  canLeaveStep,
 } from "@/lib/configuratore/reducer";
 import type {
   ConfiguratoreAction,
@@ -30,6 +31,8 @@ type ConfiguratoreContextValue = {
   stepIndex: number;
   isFirst: boolean;
   isLast: boolean;
+  /** Whether the current step's required fields are satisfied (gates "Avanti"). */
+  canProceed: boolean;
 };
 
 const ConfiguratoreContext = createContext<ConfiguratoreContextValue | null>(null);
@@ -72,6 +75,7 @@ export function ConfiguratoreProvider({ children }: { children: ReactNode }) {
     stepIndex,
     isFirst: stepIndex <= 0,
     isLast: stepIndex >= visibleSteps.length - 1,
+    canProceed: canLeaveStep(state, state.currentStep),
   };
 
   return (

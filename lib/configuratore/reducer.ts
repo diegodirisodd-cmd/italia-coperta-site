@@ -119,6 +119,24 @@ export function currentStepIndex(state: ConfiguratoreState): number {
   return getVisibleSteps(state).indexOf(state.currentStep);
 }
 
+/**
+ * Whether the user is allowed to advance past `step` given the current state.
+ * Centralized here (next to the branching) so the nav button and GO_NEXT share
+ * one gate. Per-step rules are filled in as each step lands; unlisted steps are
+ * optional (return true).
+ */
+export function canLeaveStep(state: ConfiguratoreState, step: StepId): boolean {
+  switch (step) {
+    case "tipologia-mezzo":
+      if (!state.tipologiaMezzo) return false;
+      // "Altro mezzo" needs at least a free-text specifica to be actionable.
+      if (state.tipologiaMezzo === "altro" && !state.mezzoAltro.specifica.trim()) return false;
+      return true;
+    default:
+      return true;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /* Initial state                                                               */
 /* -------------------------------------------------------------------------- */
@@ -171,6 +189,9 @@ export function reducer(
   switch (action.type) {
     /* ---- navigation ---- */
     case "GO_NEXT": {
+      // Guard forward navigation with the same gate the nav button uses, so a
+      // programmatic advance can't skip a required selection.
+      if (!canLeaveStep(state, state.currentStep)) return state;
       const visible = getVisibleSteps(state);
       const i = visible.indexOf(state.currentStep);
       const next = visible[Math.min(i + 1, visible.length - 1)];
