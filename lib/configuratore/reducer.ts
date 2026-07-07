@@ -132,6 +132,11 @@ export function canLeaveStep(state: ConfiguratoreState, step: StepId): boolean {
       // "Altro mezzo" needs at least a free-text specifica to be actionable.
       if (state.tipologiaMezzo === "altro" && !state.mezzoAltro.specifica.trim()) return false;
       return true;
+    case "tipo-richiesta":
+      if (!state.macroCategoria) return false;
+      // Every macro except "accessori" (free-text) requires a sub-option.
+      if (state.macroCategoria !== "accessori" && !state.sottoOpzione) return false;
+      return true;
     default:
       return true;
   }
@@ -147,6 +152,7 @@ export const initialState: ConfiguratoreState = {
   mezzoAltro: { specifica: "", note: "" },
   macroCategoria: null,
   sottoOpzione: null,
+  richiestaNote: "",
   coloreTelo: { colore: null, personalizzazione: null, note: "", richiedeBozza: false },
   misure: { modalita: null, campi: {}, rilievo: {} },
   extraOptional: [],
@@ -231,6 +237,8 @@ export function reducer(
       });
     case "SET_SOTTO_OPZIONE":
       return { ...state, sottoOpzione: action.value };
+    case "SET_RICHIESTA_NOTE":
+      return { ...state, richiestaNote: action.value };
 
     /* ---- step 3 ---- */
     case "SET_COLORE_TELO":

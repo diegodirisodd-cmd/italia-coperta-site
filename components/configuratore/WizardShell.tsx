@@ -8,6 +8,7 @@ import { STEP_META } from "@/lib/configuratore/reducer";
 import { EASE_OUT } from "@/components/motion/variants";
 import type { StepId } from "@/lib/configuratore/types";
 import { StepTipologiaMezzo } from "./steps/StepTipologiaMezzo";
+import { StepTipoRichiesta } from "./steps/StepTipoRichiesta";
 
 /**
  * Common layout frame for the wizard: progress bar, the animated step slot, and
@@ -23,7 +24,8 @@ import { StepTipologiaMezzo } from "./steps/StepTipologiaMezzo";
 /** Registry of step content components, filled in by later blocks. */
 const STEP_COMPONENTS: Partial<Record<StepId, ComponentType>> = {
   "tipologia-mezzo": StepTipologiaMezzo,
-  // remaining steps registered in Block 3 onwards
+  "tipo-richiesta": StepTipoRichiesta,
+  // remaining steps registered in Block 4 onwards
 };
 
 export function WizardShell() {

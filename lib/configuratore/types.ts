@@ -168,6 +168,9 @@ export type ConfiguratoreState = {
   // STEP 2
   macroCategoria: MacroCategoria | null;
   sottoOpzione: SottoOpzioneId | null;
+  /** Free-text request note — used by the "Accessori vari" branch (no fixed
+   *  sub-options), and available as a general note for step 2. */
+  richiestaNote: string;
 
   // STEP 3
   coloreTelo: ColoreTeloState;
@@ -208,6 +211,7 @@ export type ConfiguratoreAction =
   // step 2
   | { type: "SET_MACRO_CATEGORIA"; value: MacroCategoria }
   | { type: "SET_SOTTO_OPZIONE"; value: SottoOpzioneId | null }
+  | { type: "SET_RICHIESTA_NOTE"; value: string }
   // step 3
   | { type: "SET_COLORE_TELO"; patch: Partial<ColoreTeloState> }
   // step 4
