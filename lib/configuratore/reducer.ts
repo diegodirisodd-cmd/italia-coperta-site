@@ -144,6 +144,18 @@ export function canLeaveStep(state: ConfiguratoreState, step: StepId): boolean {
     case "misure":
       // Only the modality is required; individual measures stay optional.
       return state.misure.modalita !== null;
+    case "extra-optional":
+      // Fully optional multi-select.
+      return true;
+    case "urgenza":
+      return state.urgenza.livello !== null;
+    case "sede-zona":
+      return state.sedeZona.sede !== null;
+    case "dati-cliente": {
+      const d = state.datiCliente;
+      const required = [d.nomeCognome, d.azienda, d.telefono, d.email, d.citta, d.provincia];
+      return required.every((v) => v.trim() !== "") && d.privacy;
+    }
     default:
       return true;
   }
@@ -170,6 +182,7 @@ export const initialState: ConfiguratoreState = {
   },
   misure: { modalita: null, campi: {}, rilievo: {} },
   extraOptional: [],
+  extraNote: "",
   urgenza: { livello: null, dataPreferita: "", mezzoFermo: false, giorniFermo: "", note: "" },
   sedeZona: {
     sede: null,
@@ -194,6 +207,7 @@ export const initialState: ConfiguratoreState = {
     privacy: false,
     autorizzoRicontatto: false,
     preventivoSenzaImpegno: false,
+    allegati: {},
   },
   fotoUrls: [],
 };
@@ -272,6 +286,8 @@ export function reducer(
           : [...state.extraOptional, action.value],
       };
     }
+    case "SET_EXTRA_NOTE":
+      return { ...state, extraNote: action.value };
 
     /* ---- step 6 ---- */
     case "SET_URGENZA":

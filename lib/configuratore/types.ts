@@ -143,6 +143,9 @@ export type DatiClienteState = {
   privacy: boolean;
   autorizzoRicontatto: boolean;
   preventivoSenzaImpegno: boolean;
+  /** Selected file names keyed by upload slot (display only for now; the real
+   *  Supabase upload is wired at submit time in a later block). */
+  allegati: Record<string, string>;
 };
 
 /* -------------------------------------------------------------------------- */
@@ -184,6 +187,8 @@ export type ConfiguratoreState = {
 
   // STEP 5
   extraOptional: string[];
+  /** Free-text "esigenze particolari" for step 5. */
+  extraNote: string;
 
   // STEP 6
   urgenza: UrgenzaState;
@@ -222,6 +227,7 @@ export type ConfiguratoreAction =
   | { type: "SET_MISURE"; patch: Partial<MisureState> }
   // step 5
   | { type: "TOGGLE_EXTRA"; value: string }
+  | { type: "SET_EXTRA_NOTE"; value: string }
   // step 6
   | { type: "SET_URGENZA"; patch: Partial<UrgenzaState> }
   // step 7

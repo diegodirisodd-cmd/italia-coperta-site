@@ -11,6 +11,10 @@ import { StepTipologiaMezzo } from "./steps/StepTipologiaMezzo";
 import { StepTipoRichiesta } from "./steps/StepTipoRichiesta";
 import { StepColoreTelo } from "./steps/StepColoreTelo";
 import { StepMisure } from "./steps/StepMisure";
+import { StepExtraOptional } from "./steps/StepExtraOptional";
+import { StepUrgenza } from "./steps/StepUrgenza";
+import { StepSedeZona } from "./steps/StepSedeZona";
+import { StepDatiCliente } from "./steps/StepDatiCliente";
 
 /**
  * Common layout frame for the wizard: progress bar, the animated step slot, and
@@ -29,7 +33,11 @@ const STEP_COMPONENTS: Partial<Record<StepId, ComponentType>> = {
   "tipo-richiesta": StepTipoRichiesta,
   "colore-telo": StepColoreTelo,
   misure: StepMisure,
-  // remaining steps registered in Block 5 onwards
+  "extra-optional": StepExtraOptional,
+  urgenza: StepUrgenza,
+  "sede-zona": StepSedeZona,
+  "dati-cliente": StepDatiCliente,
+  // riepilogo (step 9) registered in Block 6
 };
 
 export function WizardShell() {
