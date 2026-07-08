@@ -168,6 +168,11 @@ export type ConfiguratoreState = {
   /** Id of the step currently shown. Always one of getVisibleSteps(state). */
   currentStep: StepId;
 
+  /** Client-generated request reference, also used as the storage folder for
+   *  uploads so files land under the same id the row is inserted with. Set by
+   *  the provider on mount / reset. */
+  reference: string;
+
   // STEP 1
   tipologiaMezzo: TipologiaMezzoId | null;
   mezzoAltro: { specifica: string; note: string };
@@ -212,7 +217,8 @@ export type ConfiguratoreAction =
   | { type: "GO_NEXT" }
   | { type: "GO_PREV" }
   | { type: "GO_TO_STEP"; step: StepId }
-  | { type: "RESET" }
+  | { type: "RESET"; reference: string }
+  | { type: "SET_REFERENCE"; value: string }
   | { type: "HYDRATE"; state: ConfiguratoreState }
   // step 1
   | { type: "SET_TIPOLOGIA_MEZZO"; value: TipologiaMezzoId }

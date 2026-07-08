@@ -77,9 +77,10 @@ export function StepDatiCliente() {
             <FileUpload
               key={slot.id}
               label={slot.label}
+              slot={slot.id}
               accept="image/*,.pdf"
-              fileName={d.allegati[slot.id] ?? ""}
-              onChange={(name) => setAllegato(slot.id, name)}
+              value={d.allegati[slot.id] ?? ""}
+              onChange={(path) => setAllegato(slot.id, path)}
             />
           ))}
         </div>

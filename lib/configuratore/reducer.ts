@@ -167,6 +167,7 @@ export function canLeaveStep(state: ConfiguratoreState, step: StepId): boolean {
 
 export const initialState: ConfiguratoreState = {
   currentStep: "tipologia-mezzo",
+  reference: "",
   tipologiaMezzo: null,
   mezzoAltro: { specifica: "", note: "" },
   macroCategoria: null,
@@ -242,7 +243,9 @@ export function reducer(
       return visible.includes(action.step) ? { ...state, currentStep: action.step } : state;
     }
     case "RESET":
-      return initialState;
+      return { ...initialState, reference: action.reference };
+    case "SET_REFERENCE":
+      return { ...state, reference: action.value };
     case "HYDRATE":
       // Restore persisted state, then re-validate the current step against the
       // branching rules in case the schema/logic changed since it was saved.

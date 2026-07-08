@@ -89,15 +89,17 @@ export function StepColoreTelo() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <FileUpload
               label="Logo aziendale"
-              accept="image/*,.pdf,.ai,.eps,.svg"
-              fileName={state.coloreTelo.logoFileName}
-              onChange={(name) => dispatch({ type: "SET_COLORE_TELO", patch: { logoFileName: name } })}
+              slot="logo"
+              accept="image/*,.pdf"
+              value={state.coloreTelo.logoFileName}
+              onChange={(path) => dispatch({ type: "SET_COLORE_TELO", patch: { logoFileName: path } })}
             />
             <FileUpload
               label="Bozza grafica"
-              accept="image/*,.pdf,.ai,.eps,.svg"
-              fileName={state.coloreTelo.bozzaFileName}
-              onChange={(name) => dispatch({ type: "SET_COLORE_TELO", patch: { bozzaFileName: name } })}
+              slot="bozza-grafica"
+              accept="image/*,.pdf"
+              value={state.coloreTelo.bozzaFileName}
+              onChange={(path) => dispatch({ type: "SET_COLORE_TELO", patch: { bozzaFileName: path } })}
             />
           </div>
           <label className="mt-4 block">

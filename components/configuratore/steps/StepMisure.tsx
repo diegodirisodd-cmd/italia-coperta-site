@@ -97,9 +97,10 @@ export function StepMisure() {
             </label>
             <FileUpload
               label="Foto con misure"
+              slot="foto-misure"
               accept="image/*,.pdf"
-              fileName={campi["foto-misure"] ?? ""}
-              onChange={(name) => setCampo("foto-misure", name)}
+              value={campi["foto-misure"] ?? ""}
+              onChange={(path) => setCampo("foto-misure", path)}
             />
           </div>
         </div>

@@ -15,6 +15,7 @@ import { StepExtraOptional } from "./steps/StepExtraOptional";
 import { StepUrgenza } from "./steps/StepUrgenza";
 import { StepSedeZona } from "./steps/StepSedeZona";
 import { StepDatiCliente } from "./steps/StepDatiCliente";
+import { StepRiepilogo } from "./steps/StepRiepilogo";
 
 /**
  * Common layout frame for the wizard: progress bar, the animated step slot, and
@@ -37,7 +38,7 @@ const STEP_COMPONENTS: Partial<Record<StepId, ComponentType>> = {
   urgenza: StepUrgenza,
   "sede-zona": StepSedeZona,
   "dati-cliente": StepDatiCliente,
-  // riepilogo (step 9) registered in Block 6
+  riepilogo: StepRiepilogo,
 };
 
 export function WizardShell() {

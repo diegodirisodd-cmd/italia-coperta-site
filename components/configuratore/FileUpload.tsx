@@ -1,26 +1,72 @@
 "use client";
 
-import { useId, useRef } from "react";
+import { useId, useRef, useState } from "react";
+import { useConfiguratore } from "./ConfiguratoreProvider";
 
 /**
- * Reusable upload control for the wizard. For now it only captures the selected
- * file name for display — the actual upload to Supabase storage is wired at
- * submit time in a later block. Kept serializable (name string) so it fits the
- * localStorage-persisted wizard state.
+ * Upload control for the wizard. Uploads the picked file immediately to the
+ * private `configuratore-uploads` bucket (via /api/configuratore/upload, small
+ * per-file requests) and keeps only the returned storage path in the wizard
+ * state (`value`) — serializable, so it survives a reload. The submit step turns
+ * these paths into signed URLs for the notification email.
  */
 export function FileUpload({
   label,
-  fileName,
+  slot,
+  value,
   onChange,
   accept,
 }: {
   label: string;
-  fileName: string;
-  onChange: (name: string) => void;
+  slot: string;
+  /** Stored storage path (empty when nothing uploaded). */
+  value: string;
+  onChange: (path: string) => void;
   accept?: string;
 }) {
+  const { state } = useConfiguratore();
   const inputRef = useRef<HTMLInputElement>(null);
   const id = useId();
+  const [status, setStatus] = useState<"idle" | "uploading" | "error">("idle");
+  const [name, setName] = useState("");
+  const [error, setError] = useState("");
+
+  const displayName = name || (value ? value.split("/").pop() ?? value : "");
+
+  async function handleFile(file: File | undefined) {
+    if (!file) return;
+    setError("");
+    if (file.size > 10 * 1024 * 1024) {
+      setStatus("error");
+      setError("File troppo grande (max 10 MB).");
+      return;
+    }
+    setStatus("uploading");
+    setName(file.name);
+    try {
+      const fd = new FormData();
+      fd.append("reference", state.reference);
+      fd.append("slot", slot);
+      fd.append("file", file);
+      const res = await fetch("/api/configuratore/upload", { method: "POST", body: fd });
+      if (!res.ok) throw new Error("upload");
+      const json = (await res.json()) as { path: string };
+      onChange(json.path);
+      setStatus("idle");
+    } catch {
+      setStatus("error");
+      setError("Upload non riuscito, riprova.");
+      setName("");
+    }
+  }
+
+  function clear() {
+    onChange("");
+    setName("");
+    setStatus("idle");
+    setError("");
+    if (inputRef.current) inputRef.current.value = "";
+  }
 
   return (
     <div>
@@ -31,20 +77,18 @@ export function FileUpload({
         type="file"
         accept={accept}
         className="sr-only"
-        onChange={(e) => onChange(e.target.files?.[0]?.name ?? "")}
+        onChange={(e) => handleFile(e.target.files?.[0])}
       />
-      {fileName ? (
+
+      {value ? (
         <div className="flex items-center justify-between gap-3 rounded-md border-[1.5px] border-primary/40 bg-navy-deep px-4 py-3">
           <span className="flex min-w-0 items-center gap-2 text-sm text-avorio">
             <FileIcon />
-            <span className="truncate">{fileName}</span>
+            <span className="truncate">{displayName}</span>
           </span>
           <button
             type="button"
-            onClick={() => {
-              onChange("");
-              if (inputRef.current) inputRef.current.value = "";
-            }}
+            onClick={clear}
             className="flex-none text-[11px] font-semibold uppercase tracking-[0.12em] text-primary hover:text-primary-light"
           >
             Rimuovi
@@ -55,13 +99,25 @@ export function FileUpload({
           htmlFor={id}
           className="flex min-h-[44px] cursor-pointer items-center gap-2 rounded-md border-[1.5px] border-dashed border-avorio/25 bg-navy-deep px-4 py-3 text-sm text-avorio/60 transition-colors hover:border-primary/60 hover:text-avorio"
         >
-          <UploadIcon />
-          Carica file
+          {status === "uploading" ? (
+            <>
+              <Spinner />
+              Caricamento…
+            </>
+          ) : (
+            <>
+              <UploadIcon />
+              Carica file
+            </>
+          )}
         </label>
       )}
-      <span className="mt-1 block text-[11px] text-avorio/35">
-        Il file viene allegato all&apos;invio della richiesta.
-      </span>
+
+      {status === "error" ? (
+        <span className="mt-1 block text-[11px] text-primary-light">{error}</span>
+      ) : (
+        <span className="mt-1 block text-[11px] text-avorio/35">Immagini o PDF, max 10 MB.</span>
+      )}
     </div>
   );
 }
@@ -79,6 +135,15 @@ function FileIcon() {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="flex-none text-primary">
       <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
       <path d="M14 2v6h6" />
+    </svg>
+  );
+}
+
+function Spinner() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="animate-spin text-primary">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2.5" opacity="0.25" />
+      <path d="M21 12a9 9 0 00-9-9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
     </svg>
   );
 }
