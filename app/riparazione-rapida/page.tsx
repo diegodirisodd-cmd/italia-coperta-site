@@ -10,11 +10,11 @@ import { serviceSchema, faqPageSchema, jsonLdScriptProps } from "@/lib/seo/schem
 export const metadata: Metadata = {
   title: "Riparazione rapida teloni per camion — prenotazione online",
   description:
-    "Riparazione rapida di teloni per camion: strappi, occhielli, teli tetto. Prenota online nella sede di Angri o Brescia, o scrivici su WhatsApp. Un telo fermo è un mezzo fermo.",
+    "Riparazione rapida di teloni per camion: strappi, occhielli, teli tetto. Prenota online ad Angri (SA) o in Lombardia, o scrivici su WhatsApp. Un telo fermo è un mezzo fermo.",
 };
 
 const COME_FUNZIONA = [
-  { n: "01", t: "Scegli intervento e sede", d: "Dicci cos'è successo al telo e dove ti è più comodo: Angri o Brescia." },
+  { n: "01", t: "Scegli intervento e sede", d: "Dicci cos'è successo al telo e dove ti è più comodo: Angri (SA) o Lombardia." },
   { n: "02", t: "Prenoti giorno e fascia", d: "Scegli tra le disponibilità del centro il momento che ti serve." },
   { n: "03", t: "Confermiamo e ti aspettiamo", d: "Ti richiamiamo per confermare — anche in giornata per le urgenze." },
 ];

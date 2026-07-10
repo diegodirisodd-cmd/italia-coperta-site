@@ -43,7 +43,7 @@ export const URGENZA_LIVELLI: { id: UrgenzaLivello; label: string }[] = [
 /* STEP 7 — Sede / zona (single-select) */
 export const SEDI_ZONA: { id: SedeZonaId; label: string; desc: string }[] = [
   { id: "angri", label: "Angri (SA)", desc: "Sede principale" },
-  { id: "brescia", label: "Brescia", desc: "Sede Nord" },
+  { id: "lombardia", label: "Lombardia", desc: "Area Nord" },
   { id: "altro", label: "Altro punto in Italia", desc: "Ti assegniamo il centro più vicino." },
   { id: "presso-cliente", label: "Servizio presso mia sede", desc: "Interveniamo da te." },
   { id: "da-definire", label: "Da definire", desc: "Ne parliamo insieme." },

@@ -36,9 +36,9 @@ const angriAddress: PostalAddress = {
   addressCountry: "IT",
 };
 
-// NB: the Brescia street address is not yet available, so it is intentionally
-// left out of the structured data — only Angri carries a full PostalAddress.
-// Brescia is still mentioned as a location by name in the description text.
+// NB: Angri is the only physical sede with a street address, so it is the only
+// one carrying a full PostalAddress. Lombardia is a coverage area (no fixed
+// address) and is mentioned by name in the description text only.
 
 export function localBusinessSchema() {
   return {
@@ -50,7 +50,7 @@ export function localBusinessSchema() {
     url: SITE_URL,
     foundingDate: "1950",
     description:
-      "Teloni per camion su misura dal 1950 — bilici, motrici, rimorchi e furgoni centinati. Terza generazione, sedi ad Angri (SA) e Brescia.",
+      "Teloni per camion su misura dal 1950 — bilici, motrici, rimorchi e furgoni centinati. Terza generazione, sede ad Angri (SA) e copertura in Lombardia.",
     address: angriAddress,
     location: [
       {

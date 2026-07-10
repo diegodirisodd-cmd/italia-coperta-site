@@ -100,7 +100,7 @@ export function CentriExplorer({ footerHref }: { footerHref?: string }) {
               <div>
                 Stiamo ampliando la rete <span className="text-primary">Italia Coperta</span> in{" "}
                 <strong className="text-avorio">{active.area}</strong>. Nel frattempo, serviamo tutta l&apos;area
-                dalle sedi di Angri e Brescia.
+                dalla sede di Angri (SA) e dalla copertura in Lombardia.
               </div>
               <Link
                 href="/diventa-centro"

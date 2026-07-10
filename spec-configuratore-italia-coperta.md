@@ -161,7 +161,7 @@ Nessuna urgenza / Entro 30gg / Entro 15gg / Entro 7gg / Urgente / Mezzo fermo / 
 Campi: data preferita, il mezzo può restare fermo?, per quanti giorni?, note disponibilità.
 
 ### STEP 7 — Sede / zona servizio
-Angri (SA) / Brescia / Altro punto in Italia / Servizio presso mia sede / Da definire.
+Angri (SA) / Lombardia / Altro punto in Italia / Servizio presso mia sede / Da definire.
 Campi: città, provincia, indirizzo (facoltativo), dove si trova il mezzo,
 preferenza montaggio (sede Di Riso vs presso cliente).
 Servizi: Produzione, Montaggio, Riparazione, Rilievo misure, Assistenza, Spedizione materiale.

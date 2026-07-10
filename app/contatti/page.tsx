@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { SectionKicker } from "@/components/SectionKicker";
 import { RichiestaForm } from "@/components/contatti/RichiestaForm";
-import { WHATSAPP_DISPLAY, TEL_ANGRI, TEL_BRESCIA, EMAIL, waLink } from "@/lib/site";
+import { WHATSAPP_DISPLAY, TEL_DISPLAY, EMAIL, waLink } from "@/lib/site";
 import { localBusinessSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
-  title: "Contatti — sedi Angri (SA) e Brescia, WhatsApp",
+  title: "Contatti — sede Angri (SA), copertura Lombardia, WhatsApp",
   description:
-    "Contatta Di Riso Teloni: sede principale ad Angri (SA), Via dei Goti 183, e sede Nord a Brescia. Scrivici su WhatsApp, per email o compila il form.",
+    "Contatta Di Riso Teloni: sede principale ad Angri (SA), Via dei Goti 183, con copertura in Lombardia. Scrivici su WhatsApp, per email o compila il form.",
 };
 
 const SEDI = [
@@ -16,14 +16,14 @@ const SEDI = [
     ruolo: "Sede principale",
     indirizzo: "Via dei Goti 183, Angri (SA)",
     servizi: "Produzione · Vendita · Riparazione · Configuratore",
-    tel: TEL_ANGRI,
+    tel: TEL_DISPLAY,
   },
   {
-    nome: "Brescia",
-    ruolo: "Sede Nord",
-    indirizzo: "Brescia", // TODO: indirizzo completo Brescia
-    servizi: "Produzione · Vendita · Riparazione rapida",
-    tel: TEL_BRESCIA,
+    nome: "Lombardia",
+    ruolo: "Area Nord",
+    indirizzo: "Area di copertura — Nord Italia",
+    servizi: "Vendita · Montaggio · Riparazione rapida",
+    tel: TEL_DISPLAY,
   },
 ];
 
@@ -43,8 +43,8 @@ export default function ContattiPage() {
             Contatti
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-avorio/80">
-            Due sedi produttive e un servizio attivo in tutta Italia. Scrivici su WhatsApp per una risposta
-            veloce, chiamaci o compila il form: ti ricontattiamo noi.
+            Sede produttiva ad Angri (SA), copertura in Lombardia e un servizio attivo in tutta Italia. Scrivici
+            su WhatsApp per una risposta veloce, chiamaci o compila il form: ti ricontattiamo noi.
           </p>
           <div className="mt-8 flex flex-wrap gap-3.5">
             <a
@@ -86,7 +86,7 @@ export default function ContattiPage() {
               </div>
             ))}
             <p className="text-xs text-avorio/40">
-              WhatsApp: {WHATSAPP_DISPLAY} · telefoni sedi e indirizzo Brescia in aggiornamento.
+              WhatsApp e telefono: {WHATSAPP_DISPLAY} · un&apos;unica linea per tutte le richieste.
             </p>
           </div>
           <RichiestaForm tipo="contatto" />

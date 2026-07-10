@@ -111,7 +111,7 @@ export type UrgenzaState = {
 /* STEP 7 — Sede / zona                                                        */
 /* -------------------------------------------------------------------------- */
 
-export type SedeZonaId = "angri" | "brescia" | "altro" | "presso-cliente" | "da-definire";
+export type SedeZonaId = "angri" | "lombardia" | "altro" | "presso-cliente" | "da-definire";
 
 export type SedeZonaState = {
   sede: SedeZonaId | null;

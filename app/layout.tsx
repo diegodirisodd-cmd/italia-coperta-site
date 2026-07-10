@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s · Di Riso Teloni",
   },
   description:
-    "Teli per bilico, teloni per camion e tensostrutture industriali su misura dal 1950. Terza generazione, sedi ad Angri (SA) e Brescia — Italia Coperta.",
+    "Teli per bilico, teloni per camion e tensostrutture industriali su misura dal 1950. Terza generazione, sede ad Angri (SA) e copertura in Lombardia — Italia Coperta.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

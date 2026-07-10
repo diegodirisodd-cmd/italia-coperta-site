@@ -4,7 +4,7 @@ import { CountUp } from "@/components/motion/CountUp";
 const STATS = [
   { value: "75", label: "Anni di attività · dal 1950" },
   { value: "3ª", label: "Generazione in azienda" },
-  { value: String(CENTRI_ATTIVI.length), label: "Sedi produttive · Angri & Brescia" },
+  { value: String(CENTRI_ATTIVI.length), label: "Poli operativi · Angri & Lombardia" },
 ];
 
 export function StatsBand() {

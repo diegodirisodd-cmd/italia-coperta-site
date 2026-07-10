@@ -33,7 +33,7 @@ export function Footer() {
           <div className="text-sm leading-loose text-avorio/75">
             <Link href="/centri" className="no-underline">Angri (SA) — Sede principale</Link>
             <br />
-            <Link href="/centri" className="no-underline">Brescia — Sede Nord</Link>
+            <Link href="/centri" className="no-underline">Lombardia — Area Nord</Link>
           </div>
         </div>
         <div>
