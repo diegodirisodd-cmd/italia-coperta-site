@@ -7,7 +7,9 @@ import { Resend } from "resend";
 import { EMAIL } from "@/lib/site";
 import type { RiepilogoSection } from "./riepilogo";
 
-const FROM = process.env.RESEND_FROM || "Italia Coperta <preventivi@dirisoteloni1950.com>";
+// Sender must use a domain verified in Resend. dodiitalia.it is verified;
+// dirisoteloni1950.com is not.
+const FROM = process.env.RESEND_FROM || "Italia Coperta <noreply@dodiitalia.it>";
 
 function sectionsToHtml(sections: RiepilogoSection[]): string {
   return sections
