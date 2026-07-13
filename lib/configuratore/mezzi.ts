@@ -54,8 +54,8 @@ export const MEZZI: MezzoCard[] = [
     id: "semirimorchio-collo-doca",
     label: "Semirimorchio collo d'oca",
     descrizione: "Pianale ribassato per trasporti eccezionali.",
-    image: null,
-    placeholderCaption: "Foto in arrivo",
+    image: "/images/mezzi/semirimorchio-collo-doca.jpg",
+    imageAlt: "Semirimorchio collo d'oca con pianale ribassato",
   },
   {
     id: "altro",
