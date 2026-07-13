@@ -7,6 +7,7 @@ import { ConfiguratoreTeaser } from "@/components/home/ConfiguratoreTeaser";
 import { RiparazionePreview } from "@/components/home/RiparazionePreview";
 import { CentriMapPreview } from "@/components/home/CentriMapPreview";
 import { Finanziamento } from "@/components/home/Finanziamento";
+import { Recensioni } from "@/components/home/Recensioni";
 import { CiHannoScelto } from "@/components/home/CiHannoScelto";
 import { organizationSchema, localBusinessSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 
@@ -35,6 +36,7 @@ export default function HomePage() {
       <RiparazionePreview />
       <CentriMapPreview />
       <Finanziamento />
+      <Recensioni />
       <CiHannoScelto />
     </main>
   );

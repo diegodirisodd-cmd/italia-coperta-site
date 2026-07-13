@@ -2,11 +2,12 @@ import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
 import { TarpReveal } from "@/components/motion/TarpReveal";
 import { CountUp } from "@/components/motion/CountUp";
+import { yearsOfExperience } from "@/lib/stats";
 
 const STATS = [
-  { value: "75", label: "Anni di attività" },
-  { value: "3ª", label: "Generazione" },
-  { value: "2", label: "Poli · Angri & Lombardia" },
+  { value: String(yearsOfExperience), label: "Anni di attività", aria: `${yearsOfExperience} anni di attività` },
+  { value: "3ª", label: "Generazione", aria: "Terza generazione" },
+  { value: "2", label: "Poli · Angri & Lombardia", aria: "2 poli: Angri e Lombardia" },
 ];
 
 export function Storia() {
@@ -31,7 +32,7 @@ export function Storia() {
         <div>
           <SectionKicker label="Dal 1950 · Terza generazione" />
           <h2 className="font-display text-4xl font-bold uppercase leading-[0.98] text-avorio md:text-5xl">
-            Una famiglia, settantacinque anni sulla strada
+            Una famiglia, tre generazioni sulla strada
           </h2>
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-avorio/80">
             Dal 1950 la famiglia Di Riso cuce teloni per camion pensati per resistere al tempo e ai chilometri.
@@ -46,10 +47,13 @@ export function Storia() {
           <div className="mt-9 grid grid-cols-3 gap-px border border-primary/20 bg-primary/20">
             {STATS.map((stat) => (
               <div key={stat.label} className="bg-navy px-5 py-6">
-                <div className="font-display text-4xl font-bold leading-none text-primary">
+                <div className="font-display text-4xl font-bold leading-none text-primary" aria-hidden="true">
                   <CountUp value={stat.value} />
                 </div>
-                <div className="mt-1.5 text-xs uppercase tracking-[0.1em] text-avorio/65">{stat.label}</div>
+                <div className="mt-1.5 text-xs uppercase tracking-[0.1em] text-avorio/65" aria-hidden="true">
+                  {stat.label}
+                </div>
+                <span className="sr-only">{stat.aria}</span>
               </div>
             ))}
           </div>

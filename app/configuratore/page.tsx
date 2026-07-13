@@ -3,6 +3,7 @@ import { SectionKicker } from "@/components/SectionKicker";
 import { ConfiguratoreProvider } from "@/components/configuratore/ConfiguratoreProvider";
 import { WizardShell } from "@/components/configuratore/WizardShell";
 import { serviceSchema, jsonLdScriptProps } from "@/lib/seo/schema";
+import { ProvaSociale } from "@/components/recensioni/ProvaSociale";
 
 export const metadata: Metadata = {
   title: "Configuratore telone su misura — stima istantanea",
@@ -40,6 +41,10 @@ export default function ConfiguratorePage() {
         <ConfiguratoreProvider>
           <WizardShell />
         </ConfiguratoreProvider>
+
+        <div className="mt-12">
+          <ProvaSociale service="Completo" />
+        </div>
       </div>
     </main>
   );

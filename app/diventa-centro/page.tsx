@@ -53,7 +53,7 @@ export default function DiventaCentroPage() {
             Diventa Centro Autorizzato Italia Coperta
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-avorio/80">
-            Porta nella tua zona un marchio con 75 anni di storia. Fornitura prodotta da noi, richieste che
+            Porta nella tua zona un marchio con una storia che parte dal 1950. Fornitura prodotta da noi, richieste che
             arrivano dal sito, un listino unico e il supporto di Di Riso Teloni.
           </p>
         </div>

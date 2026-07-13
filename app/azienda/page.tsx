@@ -7,7 +7,7 @@ import { organizationSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Azienda — Di Riso Teloni, dal 1950 e terza generazione",
   description:
-    "Di Riso Teloni: 75 anni di storia dal 1950, terza generazione con Domenico e Diego Di Riso. Dal telo cucito a mano al digital printing, sede ad Angri (SA) e copertura in Lombardia.",
+    "Di Riso Teloni: la nostra storia dal 1950, terza generazione con Domenico e Diego Di Riso. Dal telo cucito a mano al digital printing, sede ad Angri (SA) e copertura in Lombardia.",
 };
 
 const TIMELINE = [
@@ -62,7 +62,7 @@ export default function AziendaPage() {
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Dal 1950 · Terza generazione" />
           <h1 className="max-w-3xl font-display text-4xl font-bold uppercase leading-[0.98] text-avorio md:text-6xl">
-            75 anni di teli, una sola famiglia
+            Tre generazioni di teli, una sola famiglia
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-avorio/80">
             Di Riso Teloni nasce nel <strong className="font-semibold text-avorio">1950</strong> e da allora fa
@@ -92,7 +92,7 @@ export default function AziendaPage() {
               avanti l&apos;azienda con questa doppia anima: bottega e tecnologia.
             </p>
             <p className="mt-4 text-[17px] leading-[1.7] text-avorio/80">
-              È questo il vantaggio di affidarsi a chi il telo lo fa da 75 anni: l&apos;esperienza di chi ne ha
+              È questo il vantaggio di affidarsi a chi il telo lo fa dal 1950: l&apos;esperienza di chi ne ha
               visti passare decine di migliaia, e la voglia di chi vuole ancora farli meglio.
             </p>
           </div>
@@ -204,7 +204,7 @@ export default function AziendaPage() {
               Mettici alla prova
             </h2>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-avorio/75">
-              75 anni di teloni al tuo servizio. Raccontaci cosa ti serve e ti prepariamo un preventivo su
+              Dal 1950, teloni al tuo servizio. Raccontaci cosa ti serve e ti prepariamo un preventivo su
               misura, senza impegno.
             </p>
           </div>

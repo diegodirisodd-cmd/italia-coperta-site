@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionKicker } from "@/components/SectionKicker";
 import { RichiestaForm } from "@/components/contatti/RichiestaForm";
+import { ProvaSociale } from "@/components/recensioni/ProvaSociale";
 
 export const metadata: Metadata = {
   title: "Richiedi un preventivo su misura — teloni e coperture",
@@ -58,6 +59,9 @@ export default function PreventivoPage() {
               >
                 Apri il configuratore →
               </Link>
+            </div>
+            <div className="mt-6">
+              <ProvaSociale service="Telo su misura" />
             </div>
           </div>
           <RichiestaForm tipo="preventivo" />

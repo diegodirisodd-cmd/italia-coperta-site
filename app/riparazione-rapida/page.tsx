@@ -6,6 +6,7 @@ import { Prenotazione } from "@/components/riparazione/Prenotazione";
 import { TEMPI, FAQ_RIPARAZIONE } from "@/lib/riparazione";
 import { waLink } from "@/lib/site";
 import { serviceSchema, faqPageSchema, jsonLdScriptProps } from "@/lib/seo/schema";
+import { ProvaSociale } from "@/components/recensioni/ProvaSociale";
 
 export const metadata: Metadata = {
   title: "Riparazione rapida teloni per camion — prenotazione online",
@@ -114,6 +115,9 @@ export default function RiparazioneRapidaPage() {
               Hai una flotta? Chiedi la <strong className="text-avorio">convenzione flotte</strong> per priorità
               e tariffe dedicate.
             </p>
+            <div className="mt-8">
+              <ProvaSociale service="Riparazione" />
+            </div>
           </div>
           <Prenotazione />
         </div>

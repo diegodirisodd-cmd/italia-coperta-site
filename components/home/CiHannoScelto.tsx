@@ -17,7 +17,7 @@ export function CiHannoScelto() {
       <div className="mx-auto max-w-6xl text-center">
         <SectionKicker label="Un partner per chi lavora ogni giorno su strada" center />
         <h2 className="font-display text-3xl font-bold uppercase leading-none text-avorio md:text-4xl">
-          Ci scelgono da 75 anni
+          Ci scelgono dal 1950
         </h2>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           {SETTORI.map((settore) => (
