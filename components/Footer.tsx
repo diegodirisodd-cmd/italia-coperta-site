@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { EMAIL, WHATSAPP_DISPLAY, waLink } from "@/lib/site";
+import { AZIENDA, EMAIL, WHATSAPP_DISPLAY, waLink } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -33,7 +33,7 @@ export function Footer() {
           <div className="text-sm leading-loose text-avorio/75">
             <Link href="/centri" className="no-underline">Angri (SA) — Sede principale</Link>
             <br />
-            <Link href="/centri" className="no-underline">Brescia — Sede Nord</Link>
+            <Link href="/centri" className="no-underline">Lombardia — Area Nord</Link>
           </div>
         </div>
         <div>
@@ -46,7 +46,29 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-9 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-avorio/10 pt-5 text-xs text-avorio/45">
+      {/* Informazioni legali / societarie */}
+      <div className="mx-auto mt-9 max-w-6xl border-t border-avorio/10 pt-6 text-xs leading-relaxed text-avorio/45">
+        <p>
+          <span className="font-semibold text-avorio/70">{AZIENDA.ragioneSociale}</span> — {AZIENDA.gruppo}
+        </p>
+        <p className="mt-1">
+          Sede legale: {AZIENDA.sedeLegale} · P.IVA / C.F. {AZIENDA.piva} · REA {AZIENDA.rea}
+        </p>
+        <p className="mt-1">
+          PEC:{" "}
+          <a href={`mailto:${AZIENDA.pec}`} className="text-avorio/60 no-underline hover:text-avorio">
+            {AZIENDA.pec}
+          </a>
+        </p>
+        <nav className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5" aria-label="Note legali">
+          <Link href="/privacy" className="no-underline hover:text-avorio">Privacy Policy</Link>
+          <Link href="/cookie-policy" className="no-underline hover:text-avorio">Cookie Policy</Link>
+          <Link href="/condizioni" className="no-underline hover:text-avorio">Condizioni d&apos;uso</Link>
+          <Link href="/preferenze-cookie" className="no-underline hover:text-avorio">Preferenze cookie</Link>
+        </nav>
+      </div>
+
+      <div className="mx-auto mt-6 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-avorio/10 pt-5 text-xs text-avorio/45">
         <span>© 1950–{new Date().getFullYear()} Di Riso Teloni · Terza generazione</span>
         <span className="uppercase tracking-[0.14em]">Italia Coperta</span>
       </div>

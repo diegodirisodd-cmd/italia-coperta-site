@@ -8,7 +8,7 @@ import { organizationSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 export const metadata: Metadata = {
   title: "Azienda — Di Riso Teloni, dal 1950 e terza generazione",
   description:
-    "Di Riso Teloni: 75 anni di storia dal 1950, terza generazione con Domenico e Diego Di Riso. Dal telo cucito a mano al digital printing, sedi ad Angri (SA) e Brescia.",
+    "Di Riso Teloni: 75 anni di storia dal 1950, terza generazione con Domenico e Diego Di Riso. Dal telo cucito a mano al digital printing, sede ad Angri (SA) e copertura in Lombardia.",
 };
 
 const TIMELINE = [
@@ -28,7 +28,7 @@ const TIMELINE = [
     anno: "Oggi",
     titolo: "Terza generazione: Domenico e Diego",
     testo:
-      "Domenico e Diego Di Riso guidano l'azienda unendo l'artigianato del telo alla stampa digitale e all'installazione moderna, con le due sedi di Angri e Brescia.",
+      "Domenico e Diego Di Riso guidano l'azienda unendo l'artigianato del telo alla stampa digitale e all'installazione moderna, con la sede di Angri (SA) e la copertura in Lombardia.",
   },
 ];
 
@@ -176,12 +176,12 @@ export default function AziendaPage() {
             </p>
           </div>
           <div className="rounded-lg border border-primary/25 bg-navy-deep p-8">
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">Sede Nord</span>
-            <h3 className="mt-3 font-display text-2xl font-bold uppercase text-avorio">Brescia</h3>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">Area Nord</span>
+            <h3 className="mt-3 font-display text-2xl font-bold uppercase text-avorio">Lombardia</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-avorio/75">
-              Brescia
+              Area di copertura — Nord Italia
               <br />
-              Produzione · Vendita · Riparazione rapida
+              Vendita · Montaggio · Riparazione rapida
             </p>
           </div>
         </div>

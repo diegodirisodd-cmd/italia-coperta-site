@@ -32,14 +32,14 @@ export const SETTORI: Settore[] = [
     tagline: "Teloni su misura per bilici, motrici, rimorchi e furgoni centinati.",
     metaTitle: "Teloni per automezzi su misura — motrici, rimorchi, centinati",
     metaDescription:
-      "Teloni per camion su misura dal 1950: motrici, rimorchi, bilici e furgoni centinati. Produzione propria, montaggio e riparazione ad Angri (SA) e Brescia.",
+      "Teloni per camion su misura dal 1950: motrici, rimorchi, bilici e furgoni centinati. Produzione propria, montaggio e riparazione ad Angri (SA) e in Lombardia.",
     photoCaption: "Foto reale: telone centinato montato su semirimorchio — da inserire",
     image: "/images/settori/teloni-automezzi.jpg",
     imageAlt: "Teloni per automezzi Di Riso Teloni — cinghie e fibbie di tensionamento su telone",
     body: [
       "Il telone di un automezzo lavora ogni giorno: sole, pioggia, vento a 100 all'ora, carico e scarico continui. Per questo dal 1950 costruiamo teloni per camion pensati per durare, non per essere sostituiti dopo una stagione. Ogni telo nasce su misura del tuo mezzo — motrice, rimorchio, bilico o furgone centinato — con il PVC spalmato che scegliamo in base al tipo di trasporto e alle sollecitazioni reali della tua tratta.",
       "Realizziamo teloni per centinati alla francese e a soffietto, cappotte ad archi, teli tetto scorrevoli, sponde laterali e teli fissi ad alta tenuta. Curiamo i dettagli che fanno la differenza sul lavoro: occhielli rinforzati in acciaio inox che non saltano, cinghie e tenditori robusti, bande rifrangenti a norma, angoli e cuciture ad alta frequenza dove il telo lavora di più. Se serve, integriamo tasche portadocumenti e rinforzi antivento.",
-      "La differenza rispetto a chi rivende teli di terzi è che qui il telo lo produciamo noi: controlliamo materiale, misure e finiture, e se un domani serve una riparazione o una modifica sappiamo esattamente com'è fatto. Il montaggio lo facciamo direttamente nelle nostre sedi di Angri (SA) e Brescia, oppure attraverso i Centri Autorizzati Italia Coperta distribuiti sul territorio, così il tuo mezzo resta fermo il meno possibile.",
+      "La differenza rispetto a chi rivende teli di terzi è che qui il telo lo produciamo noi: controlliamo materiale, misure e finiture, e se un domani serve una riparazione o una modifica sappiamo esattamente com'è fatto. Il montaggio lo facciamo direttamente nella nostra sede di Angri (SA) e nell'area di copertura in Lombardia, oppure attraverso i Centri Autorizzati Italia Coperta distribuiti sul territorio, così il tuo mezzo resta fermo il meno possibile.",
       "Ogni telone è coperto da garanzia sui materiali PVC e da assistenza su tutto il territorio nazionale: se hai un problema in viaggio, il centro più vicino può intervenire. Per gli strappi e i fori improvvisi mettiamo a disposizione anche il servizio di riparazione rapida, con prenotazione online.",
       "Non sai da dove partire? Con il configuratore costruisci la richiesta passo passo — mezzo, tipo di telo, misura ed extra — e ricevi un preventivo su misura senza impegno.",
     ],

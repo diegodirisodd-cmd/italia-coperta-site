@@ -14,7 +14,7 @@ export const INTERVENTI: Intervento[] = [
 
 export const SEDI = [
   { id: "angri", label: "Angri (SA)" },
-  { id: "brescia", label: "Brescia" },
+  { id: "lombardia", label: "Lombardia" },
 ] as const;
 
 export const FASCE = [

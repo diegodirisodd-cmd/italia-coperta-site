@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SectionKicker } from "@/components/SectionKicker";
-import { Configuratore } from "@/components/configuratore/Configuratore";
+import { ConfiguratoreProvider } from "@/components/configuratore/ConfiguratoreProvider";
+import { WizardShell } from "@/components/configuratore/WizardShell";
 import { serviceSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
@@ -31,11 +32,14 @@ export default function ConfiguratorePage() {
             </h1>
           </div>
           <p className="max-w-sm text-[15px] leading-relaxed text-avorio/70">
-            Otto passi, una stima istantanea e il centro più vicino a te. Ti richiamiamo noi, senza impegno.
+            Rispondi a poche domande sul tuo mezzo e sull&apos;intervento: ti ricontattiamo
+            noi con il preventivo su misura, senza impegno.
           </p>
         </div>
 
-        <Configuratore />
+        <ConfiguratoreProvider>
+          <WizardShell />
+        </ConfiguratoreProvider>
       </div>
     </main>
   );

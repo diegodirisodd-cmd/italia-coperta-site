@@ -8,7 +8,7 @@ import { localBusinessSchema, serviceSchema, jsonLdScriptProps } from "@/lib/seo
 export const metadata: Metadata = {
   title: "Centri Autorizzati Italia Coperta — mappa e contatti",
   description:
-    "La rete Centri Autorizzati Italia Coperta: sedi operative ad Angri (SA) e Brescia, con aperture in arrivo in Piemonte, Nord-Est, Lazio e Puglia. Trova il centro più vicino sulla mappa.",
+    "La rete Centri Autorizzati Italia Coperta: sede operativa ad Angri (SA) e copertura in Lombardia, con aperture in arrivo in Piemonte, Nord-Est, Lazio e Puglia. Trova il centro più vicino sulla mappa.",
 };
 
 const prossime = CENTRI.filter((c) => c.stato === "prossima-apertura");
@@ -39,8 +39,8 @@ export default function CentriPage() {
             Centri Autorizzati Italia Coperta
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-avorio/80">
-            Due sedi produttive — <strong className="text-avorio">Angri (SA)</strong> e{" "}
-            <strong className="text-avorio">Brescia</strong> — e una rete in crescita in tutta la penisola. Tocca
+            Sede produttiva ad <strong className="text-avorio">Angri (SA)</strong> e copertura in{" "}
+            <strong className="text-avorio">Lombardia</strong> — e una rete in crescita in tutta la penisola. Tocca
             un centro sulla mappa per contatti e servizi.
           </p>
         </div>
@@ -61,8 +61,8 @@ export default function CentriPage() {
             Prossime aperture
           </h2>
           <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-avorio/75">
-            Stiamo ampliando la rete Italia Coperta. Fino all&apos;apertura, queste aree sono servite dalle sedi
-            di Angri e Brescia.
+            Stiamo ampliando la rete Italia Coperta. Fino all&apos;apertura, queste aree sono servite dalla sede
+            di Angri (SA) e dalla copertura in Lombardia.
           </p>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {prossime.map((c) => (

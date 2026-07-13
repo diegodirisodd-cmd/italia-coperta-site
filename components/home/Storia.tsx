@@ -6,7 +6,7 @@ import { CountUp } from "@/components/motion/CountUp";
 const STATS = [
   { value: "75", label: "Anni di attività" },
   { value: "3ª", label: "Generazione" },
-  { value: "2", label: "Sedi · Angri & Brescia" },
+  { value: "2", label: "Poli · Angri & Lombardia" },
 ];
 
 export function Storia() {
@@ -40,8 +40,8 @@ export function Storia() {
             mano artigiana di allora, con processi e materiali di oggi.
           </p>
           <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-avorio/70">
-            Due sedi — Angri e Brescia — e un servizio attivo in tutta Italia, accanto a chi lavora ogni giorno
-            con il proprio mezzo.
+            Sede produttiva ad Angri (SA), copertura in Lombardia e un servizio attivo in tutta Italia, accanto
+            a chi lavora ogni giorno con il proprio mezzo.
           </p>
           <div className="mt-9 grid grid-cols-3 gap-px border border-primary/20 bg-primary/20">
             {STATS.map((stat) => (

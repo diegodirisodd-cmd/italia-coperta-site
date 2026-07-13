@@ -13,17 +13,12 @@ Traccia dei dati placeholder e delle integrazioni ancora da completare.
 
 ## ⏳ Da recuperare
 
-- **Telefono sede Angri** — placeholder `081 000 0000`. → `lib/site.ts` (`TEL_ANGRI`)
-  e `lib/centri.ts` (centro `angri`).
-- **Telefono sede Brescia** — placeholder `030 000 0000`. → `lib/site.ts` (`TEL_BRESCIA`)
-  e `lib/centri.ts` (centro `brescia`).
-- **Indirizzo completo Brescia** — non disponibile. Attualmente Brescia compare
-  solo come sede/area senza via ed è **volutamente esclusa** dallo schema.org
-  `LocalBusiness` (solo Angri ha indirizzo completo). Quando disponibile:
-  aggiornare `app/contatti/page.tsx`, `lib/centri.ts` (centro `brescia`) e
-  reintrodurre l'indirizzo in `lib/seo/schema.ts` (`localBusinessSchema`).
-- **Telefoni centri partner** — placeholder in `lib/centri.ts` per Torino,
-  Milano, Padova, Bologna, Roma, Bari (aree "prossima apertura").
+- **Telefono / WhatsApp** — `+39 352 033 1778` è l'unica linea, usata ovunque
+  (`lib/site.ts` → `TEL_DISPLAY` / `WHATSAPP_*`, tutti i centri in `lib/centri.ts`).
+- **Lombardia** è un'**area di copertura** (Nord Italia), non una sede fisica con
+  indirizzo: nessuna via, esclusa dal `PostalAddress` schema.org (solo Angri ha
+  indirizzo completo). Se in futuro apre una sede fisica in Lombardia, aggiungere
+  via + reintrodurre l'indirizzo in `lib/seo/schema.ts`.
 
 ## 🔌 Integrazioni backend (Fase 6)
 

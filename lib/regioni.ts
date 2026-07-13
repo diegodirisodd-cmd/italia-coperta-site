@@ -7,7 +7,7 @@ export const REGIONE_TO_CENTRO: Record<string, string> = {
   "Valle d'Aosta": "torino",
   Piemonte: "torino",
   Liguria: "torino",
-  Lombardia: "brescia",
+  Lombardia: "lombardia",
   "Trentino-Alto Adige": "padova",
   Veneto: "padova",
   "Friuli-Venezia Giulia": "padova",

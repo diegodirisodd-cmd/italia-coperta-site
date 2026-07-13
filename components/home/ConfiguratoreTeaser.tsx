@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
 import { MagneticCTA } from "@/components/motion/MagneticCTA";
 
@@ -42,27 +43,14 @@ export function ConfiguratoreTeaser() {
             </MagneticCTA>
           </div>
 
-          <div className="flex flex-col justify-center bg-navy-black p-9">
-            <span className="mb-5 text-[11px] uppercase tracking-[0.24em] text-avorio/50">
-              Anteprima configurazione
-            </span>
-            <svg viewBox="0 0 440 180" className="w-full">
-              <line x1="10" y1="150" x2="430" y2="150" stroke="rgba(243,233,204,.2)" strokeWidth={2} />
-              <path d="M30 150 L30 96 Q30 88 40 86 L78 78 L98 100 L98 150 Z" fill="#12335c" stroke="#F3E9CC" strokeWidth={2} />
-              <rect x="44" y="90" width="30" height="20" rx="2" fill="#000000" stroke="rgba(243,233,204,.6)" strokeWidth={1.5} />
-              <rect x="104" y="60" width="308" height="90" rx="3" fill="#12335c" stroke="#F3E9CC" strokeWidth={2} />
-              <g stroke="rgba(243,233,204,.28)" strokeWidth={2}>
-                {[130, 160, 190, 220, 250, 280, 310, 340, 370].map((x) => (
-                  <line key={x} x1={x} y1="62" x2={x} y2="148" />
-                ))}
-              </g>
-              <rect x="104" y="132" width="308" height="7" fill="#E31919" />
-              <g fill="#000000" stroke="#F3E9CC" strokeWidth={2}>
-                {[70, 300, 340, 380].map((cx) => (
-                  <circle key={cx} cx={cx} cy="150" r="12" />
-                ))}
-              </g>
-            </svg>
+          <div className="relative aspect-[4/3] overflow-hidden bg-navy-black md:aspect-auto">
+            <Image
+              src="/images/configuratore/anteprima-configuratore.jpg"
+              alt="Anteprima del configuratore telone Italia Coperta"
+              fill
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </div>
