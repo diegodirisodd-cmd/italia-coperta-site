@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { organizationSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
@@ -112,10 +111,20 @@ export default function AziendaPage() {
                 Il fondatore · dagli anni &apos;50
               </figcaption>
             </figure>
-            <PhotoPlaceholder
-              caption="Foto attuale di Domenico e Diego Di Riso — da inserire"
-              aspect="1 / 1"
-            />
+            <figure>
+              <div className="relative aspect-square w-full overflow-hidden rounded-md">
+                <Image
+                  src="/images/storia/diego-domenico-oggi.jpg"
+                  alt="Domenico e Diego Di Riso, terza generazione dell'azienda, oggi"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover object-top"
+                />
+              </div>
+              <figcaption className="mt-2 text-xs uppercase tracking-[0.14em] text-avorio/40">
+                Domenico e Diego, oggi
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
