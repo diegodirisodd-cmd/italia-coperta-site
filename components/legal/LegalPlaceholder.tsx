@@ -37,7 +37,7 @@ export function LegalPlaceholder({ title, intro }: { title: string; intro: strin
           </p>
           <p>Sede legale: {AZIENDA.sedeLegale}</p>
           <p>
-            P.IVA / C.F. {AZIENDA.piva} · REA {AZIENDA.rea} · Cap. soc. {AZIENDA.capitaleSociale}
+            P.IVA / C.F. {AZIENDA.piva} · REA {AZIENDA.rea}
           </p>
           <p>
             PEC:{" "}

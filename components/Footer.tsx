@@ -52,8 +52,7 @@ export function Footer() {
           <span className="font-semibold text-avorio/70">{AZIENDA.ragioneSociale}</span> — {AZIENDA.gruppo}
         </p>
         <p className="mt-1">
-          Sede legale: {AZIENDA.sedeLegale} · P.IVA / C.F. {AZIENDA.piva} · REA {AZIENDA.rea} · Cap. soc.{" "}
-          {AZIENDA.capitaleSociale}
+          Sede legale: {AZIENDA.sedeLegale} · P.IVA / C.F. {AZIENDA.piva} · REA {AZIENDA.rea}
         </p>
         <p className="mt-1">
           PEC:{" "}
