@@ -2,9 +2,12 @@ import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
 import { TarpReveal } from "@/components/motion/TarpReveal";
 import { CountUp } from "@/components/motion/CountUp";
+import { getYearsOfExperience } from "@/lib/azienda";
+
+const yearsOfExperience = getYearsOfExperience();
 
 const STATS = [
-  { value: "75", label: "Anni di attività" },
+  { value: String(yearsOfExperience), label: "Anni di attività" },
   { value: "3ª", label: "Generazione" },
   { value: "2", label: "Sedi · Angri & Brescia" },
 ];
@@ -31,7 +34,7 @@ export function Storia() {
         <div>
           <SectionKicker label="Dal 1950 · Terza generazione" />
           <h2 className="font-display text-4xl font-bold uppercase leading-[0.98] text-avorio md:text-5xl">
-            Una famiglia, settantacinque anni sulla strada
+            Una famiglia, {yearsOfExperience} anni sulla strada
           </h2>
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-avorio/80">
             Dal 1950 la famiglia Di Riso cuce teloni per camion pensati per resistere al tempo e ai chilometri.

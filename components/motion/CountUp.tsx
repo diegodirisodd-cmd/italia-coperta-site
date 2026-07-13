@@ -6,13 +6,21 @@ import { EASE_OUT } from "./variants";
 
 type CountUpProps = {
   /** Raw label such as "75", "2" or "3ª" — the numeric part is counted up,
-   *  any prefix/suffix (e.g. the ordinal "ª") is preserved verbatim. */
+   *  any prefix/suffix (e.g. the ordinal "ª") is preserved verbatim. Whole
+   *  numbers are formatted with the Italian thousands separator (e.g.
+   *  "65000" → "65.000") both mid-animation and at rest. */
   value: string;
   className?: string;
   duration?: number;
 };
 
 const NUM_RE = /^(\D*)(\d+(?:[.,]\d+)?)(.*)$/;
+
+function formatNumber(v: number, decimals: number): string {
+  return decimals > 0
+    ? v.toFixed(decimals)
+    : Math.round(v).toLocaleString("it-IT");
+}
 
 export function CountUp({ value, className, duration = 1.4 }: CountUpProps) {
   const reduced = useReducedMotion();
@@ -33,16 +41,25 @@ export function CountUp({ value, className, duration = 1.4 }: CountUpProps) {
     const controls = animate(0, target, {
       duration,
       ease: EASE_OUT,
-      onUpdate: (v) => setDisplay(`${prefix}${v.toFixed(decimals)}${suffix}`),
+      onUpdate: (v) => setDisplay(`${prefix}${formatNumber(v, decimals)}${suffix}`),
     });
     return () => controls.stop();
   }, [inView, reduced, duration, value]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Non-numeric labels render as-is (no ref needed).
   if (!match) return <span className={className}>{value}</span>;
+
+  const finalDecimals = (match[2].split(/[.,]/)[1] ?? "").length;
+  const finalFormatted = `${match[1]}${formatNumber(parseFloat(match[2].replace(",", ".")), finalDecimals)}${match[3]}`;
+
   return (
-    <span ref={ref} className={className}>
-      {reduced ? value : display}
+    <span className={className}>
+      {/* Real, formatted value for search engines/screen readers, independent
+          of the in-progress count-up animation (which starts visually at 0). */}
+      <span className="sr-only">{finalFormatted}</span>
+      <span ref={ref} aria-hidden="true">
+        {reduced ? finalFormatted : display}
+      </span>
     </span>
   );
 }

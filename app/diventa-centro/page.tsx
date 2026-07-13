@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { SectionKicker } from "@/components/SectionKicker";
 import { CandidaturaForm } from "@/components/diventa/CandidaturaForm";
+import { getYearsOfExperience } from "@/lib/azienda";
+
+const yearsOfExperience = getYearsOfExperience();
 
 export const metadata: Metadata = {
   title: "Diventa Centro Autorizzato Italia Coperta — partner",
@@ -53,8 +56,8 @@ export default function DiventaCentroPage() {
             Diventa Centro Autorizzato Italia Coperta
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-avorio/80">
-            Porta nella tua zona un marchio con 75 anni di storia. Fornitura prodotta da noi, richieste che
-            arrivano dal sito, un listino unico e il supporto di Di Riso Teloni.
+            Porta nella tua zona un marchio con {yearsOfExperience} anni di storia. Fornitura prodotta da noi,
+            richieste che arrivano dal sito, un listino unico e il supporto di Di Riso Teloni.
           </p>
         </div>
       </section>

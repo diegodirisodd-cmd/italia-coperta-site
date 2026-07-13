@@ -4,11 +4,14 @@ import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { organizationSchema, jsonLdScriptProps } from "@/lib/seo/schema";
+import { getYearsOfExperience } from "@/lib/azienda";
+
+const yearsOfExperience = getYearsOfExperience();
 
 export const metadata: Metadata = {
   title: "Azienda — Di Riso Teloni, dal 1950 e terza generazione",
   description:
-    "Di Riso Teloni: 75 anni di storia dal 1950, terza generazione con Domenico e Diego Di Riso. Dal telo cucito a mano al digital printing, sedi ad Angri (SA) e Brescia.",
+    `Di Riso Teloni: ${getYearsOfExperience()} anni di storia dal 1950, terza generazione con Domenico e Diego Di Riso. Dal telo cucito a mano al digital printing, sedi ad Angri (SA) e Brescia.`,
 };
 
 const TIMELINE = [
@@ -63,7 +66,7 @@ export default function AziendaPage() {
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Dal 1950 · Terza generazione" />
           <h1 className="max-w-3xl font-display text-4xl font-bold uppercase leading-[0.98] text-avorio md:text-6xl">
-            75 anni di teli, una sola famiglia
+            {yearsOfExperience} anni di teli, una sola famiglia
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-avorio/80">
             Di Riso Teloni nasce nel <strong className="font-semibold text-avorio">1950</strong> e da allora fa
@@ -93,8 +96,8 @@ export default function AziendaPage() {
               avanti l&apos;azienda con questa doppia anima: bottega e tecnologia.
             </p>
             <p className="mt-4 text-[17px] leading-[1.7] text-avorio/80">
-              È questo il vantaggio di affidarsi a chi il telo lo fa da 75 anni: l&apos;esperienza di chi ne ha
-              visti passare decine di migliaia, e la voglia di chi vuole ancora farli meglio.
+              È questo il vantaggio di affidarsi a chi il telo lo fa da {yearsOfExperience} anni: l&apos;esperienza
+              di chi ne ha visti passare decine di migliaia, e la voglia di chi vuole ancora farli meglio.
             </p>
           </div>
           <div className="flex flex-col gap-4">
@@ -195,8 +198,8 @@ export default function AziendaPage() {
               Mettici alla prova
             </h2>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-avorio/75">
-              75 anni di teloni al tuo servizio. Raccontaci cosa ti serve e ti prepariamo un preventivo su
-              misura, senza impegno.
+              Dal 1950, tre generazioni di teloni al tuo servizio. Raccontaci cosa ti serve e ti prepariamo un
+              preventivo su misura, senza impegno.
             </p>
           </div>
           <Link
