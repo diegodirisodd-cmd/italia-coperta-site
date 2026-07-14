@@ -7,11 +7,11 @@ import { m, useReducedMotion } from "framer-motion";
 
 const NAV_LINKS = [
   { href: "/azienda", label: "Azienda" },
+  { href: "/negozio/tenditore-cricchetto", label: "Negozio" },
   { href: "/settori", label: "Settori" },
   { href: "/configuratore", label: "Configuratore" },
   { href: "/centri", label: "Centri" },
   { href: "/riparazione-rapida", label: "Riparazione" },
-  { href: "/negozio/tenditore-cricchetto", label: "Negozio" },
 ];
 
 export function Header() {
