@@ -13,6 +13,7 @@ const STATIC_ROUTES = [
   "/diventa-centro",
   "/contatti",
   "/preventivo",
+  "/negozio/tenditore-cricchetto",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

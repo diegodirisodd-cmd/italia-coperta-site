@@ -6,6 +6,7 @@ const NAV_LINKS = [
   { href: "/configuratore", label: "Configuratore" },
   { href: "/centri", label: "Centri" },
   { href: "/riparazione-rapida", label: "Riparazione" },
+  { href: "/negozio/tenditore-cricchetto", label: "Negozio" },
 ];
 
 export function Header() {
