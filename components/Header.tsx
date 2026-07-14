@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 const NAV_LINKS = [
   { href: "/azienda", label: "Azienda" },
@@ -10,6 +13,28 @@ const NAV_LINKS = [
 ];
 
 export function Header() {
+  const navRef = useRef<HTMLElement>(null);
+  const [showLeftFade, setShowLeftFade] = useState(false);
+  const [showRightFade, setShowRightFade] = useState(false);
+
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+
+    const updateFades = () => {
+      setShowLeftFade(el.scrollLeft > 4);
+      setShowRightFade(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+    };
+
+    updateFades();
+    el.addEventListener("scroll", updateFades, { passive: true });
+    window.addEventListener("resize", updateFades);
+    return () => {
+      el.removeEventListener("scroll", updateFades);
+      window.removeEventListener("resize", updateFades);
+    };
+  }, []);
+
   return (
     <header
       className="sticky top-0 z-[60] flex items-center justify-between gap-6 border-b border-primary/[0.24] bg-navy-deep/[0.86] px-6 py-3.5 backdrop-blur-md md:px-10"
@@ -30,23 +55,40 @@ export function Header() {
           </span>
         </span>
       </Link>
-      <nav className="flex items-center gap-4 overflow-x-auto md:gap-7">
-        {NAV_LINKS.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="flex min-h-[44px] items-center whitespace-nowrap text-[13px] tracking-[0.04em] text-avorio/80 no-underline"
-          >
-            {link.label}
-          </Link>
-        ))}
-        <Link
-          href="/preventivo"
-          className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded bg-primary px-5 py-[11px] font-display text-[13px] font-semibold uppercase tracking-[0.06em] text-navy no-underline"
+      <div className="relative min-w-0 flex-1">
+        <nav
+          ref={navRef}
+          className="flex items-center gap-4 overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch] md:gap-7"
         >
-          Richiedi preventivo
-        </Link>
-      </nav>
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="flex min-h-[44px] items-center whitespace-nowrap text-[13px] tracking-[0.04em] text-avorio/80 no-underline"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            href="/preventivo"
+            className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded bg-primary px-5 py-[11px] font-display text-[13px] font-semibold uppercase tracking-[0.06em] text-navy no-underline"
+          >
+            Richiedi preventivo
+          </Link>
+        </nav>
+        <span
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-navy-deep to-transparent transition-opacity duration-200 ${
+            showLeftFade ? "opacity-100" : "opacity-0"
+          }`}
+        />
+        <span
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-navy-deep to-transparent transition-opacity duration-200 ${
+            showRightFade ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      </div>
     </header>
   );
 }
