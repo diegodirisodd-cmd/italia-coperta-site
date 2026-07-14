@@ -21,6 +21,7 @@ export async function generateMetadata({
   return {
     title: settore.metaTitle,
     description: settore.metaDescription,
+    alternates: { canonical: `/settori/${settore.slug}` },
   };
 }
 

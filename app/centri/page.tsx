@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Centri Autorizzati Italia Coperta — mappa e contatti",
   description:
     "La rete Centri Autorizzati Italia Coperta: sede operativa ad Angri (SA) e copertura in Lombardia, con aperture in arrivo in Piemonte, Nord-Est, Lazio e Puglia. Trova il centro più vicino sulla mappa.",
+  alternates: { canonical: "/centri" },
 };
 
 const prossime = CENTRI.filter((c) => c.stato === "prossima-apertura");

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Azienda — Di Riso Teloni, dal 1950 e terza generazione",
   description:
     "Di Riso Teloni: la nostra storia dal 1950, terza generazione con Domenico e Diego Di Riso. Dal telo cucito a mano al digital printing, sede ad Angri (SA) e copertura in Lombardia.",
+  alternates: { canonical: "/azienda" },
 };
 
 const TIMELINE = [

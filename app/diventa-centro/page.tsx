@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Diventa Centro Autorizzato Italia Coperta — partner",
   description:
     "Diventa Centro Autorizzato Italia Coperta: fornitura prodotta direttamente da Di Riso Teloni, richieste dal configuratore, listino unico e marketing condiviso. Candidati per la tua zona.",
+  alternates: { canonical: "/diventa-centro" },
 };
 
 const VANTAGGI = [

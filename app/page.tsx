@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "Teli per bilico e teloni per camion dal 1950 — Di Riso Teloni",
   description:
     "Teli per bilico, teloni per camion dal 1950 e tensostrutture industriali su misura. Terza generazione, produzione ad Angri (SA) e copertura in Lombardia — Italia Coperta, servizio in tutta Italia.",
+  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {

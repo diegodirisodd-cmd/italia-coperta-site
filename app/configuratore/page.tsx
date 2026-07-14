@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Configuratore telone su misura — stima istantanea",
   description:
     "Configura il tuo telone per camion passo passo: veicolo, telo, misura, materiale ed extra. Ricevi una stima istantanea e il centro Italia Coperta più vicino.",
+  alternates: { canonical: "/configuratore" },
 };
 
 export default function ConfiguratorePage() {

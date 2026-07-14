@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Richiedi un preventivo su misura — teloni e coperture",
   description:
     "Richiedi un preventivo gratuito e senza impegno per teloni per camion, tensostrutture e coperture su misura. Ti ricontattiamo con una proposta concreta, dal 1950.",
+  alternates: { canonical: "/preventivo" },
 };
 
 const PUNTI = [

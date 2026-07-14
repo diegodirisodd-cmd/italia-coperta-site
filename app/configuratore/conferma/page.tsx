@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Richiesta inviata — Configuratore",
   description: "La tua richiesta è stata inviata a Di Riso Teloni.",
   robots: { index: false, follow: false },
+  alternates: { canonical: "/configuratore/conferma" },
 };
 
 export default function ConfermaPage() {

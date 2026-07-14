@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Condizioni d'uso",
   description: "Condizioni d'uso del sito Di Riso Teloni / Italia Coperta.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/condizioni" },
 };
 
 export default function CondizioniPage() {

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Contatti — sede Angri (SA), copertura Lombardia, WhatsApp",
   description:
     "Contatta Di Riso Teloni: sede principale ad Angri (SA), Via dei Goti 183, con copertura in Lombardia. Scrivici su WhatsApp, per email o compila il form.",
+  alternates: { canonical: "/contatti" },
 };
 
 const SEDI = [

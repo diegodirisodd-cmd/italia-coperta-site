@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Cookie Policy",
   description: "Come Di Riso Teloni / Italia Coperta usa i cookie e come gestire il consenso.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/cookie-policy" },
 };
 
 export default function CookiePolicyPage() {

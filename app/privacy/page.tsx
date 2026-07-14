@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Informativa sul trattamento dei dati personali di Di Riso Teloni / Italia Coperta.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

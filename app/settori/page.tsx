@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Settori di applicazione — teloni e coperture su misura",
   description:
     "I settori Di Riso Teloni: teloni per automezzi, tensostrutture industriali, coperture in PVC, teloni pubblicitari, gazebo e pergole, coperture civili. Su misura, dal 1950.",
+  alternates: { canonical: "/settori" },
 };
 
 export default function SettoriPage() {

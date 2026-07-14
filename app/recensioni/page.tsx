@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Recensioni clienti | Di Riso Teloni",
   description:
     "Leggi le recensioni dei clienti Di Riso Teloni su produzione, riparazione, personalizzazione e montaggio di teloni per camion e veicoli industriali.",
+  alternates: { canonical: "/recensioni" },
 };
 
 // NB: nessun markup strutturato Review/AggregateRating riferito a Di Riso Teloni

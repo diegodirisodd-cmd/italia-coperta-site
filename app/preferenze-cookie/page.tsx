@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Preferenze cookie",
   description: "Gestisci o revoca il consenso ai cookie su Di Riso Teloni / Italia Coperta.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/preferenze-cookie" },
 };
 
 export default function PreferenzeCookiePage() {

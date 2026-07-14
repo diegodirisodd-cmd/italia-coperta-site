@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   title: "Tenditore a cricchetto standard — Negozio",
   description:
     "Tenditore a cricchetto standard: cricchetto in acciaio inox, cinghia in poliestere, gancio aperto zincato. Robusto e affidabile per il fissaggio del carico.",
+  alternates: { canonical: "/negozio/tenditore-cricchetto" },
 };
 
 export default function TenditoreCricchettoPage() {

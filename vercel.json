@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "dirisoteloni1950.com"
+        }
+      ],
+      "destination": "https://www.dirisoteloni1950.com/:path*",
+      "statusCode": 301
+    }
+  ]
+}
