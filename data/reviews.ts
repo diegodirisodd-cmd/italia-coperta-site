@@ -1,11 +1,8 @@
 // Recensioni clienti — FONTE UNICA.
 //
-// ⚠️ TUTTI I CAMPI SONO PLACEHOLDER finché non arrivano recensioni reali.
-// Sostituire rating / text / customer / date (ed eventuale source / image) con i
-// dati veri prima di considerarle pubblicate. NON inventare recensioni, nomi,
-// aziende, date o valutazioni: finché sono placeholder devono restare
-// riconoscibili come tali. Per aggiungerne di nuove basta appendere qui: i
-// componenti grafici non vanno toccati.
+// Recensioni reali, verificate dalla scheda Google Business di Di Riso
+// Teloni Italia (5,0★, 7 recensioni). Per aggiungerne di nuove basta
+// appendere qui: i componenti grafici non vanno toccati.
 
 export interface Review {
   rating: number;
@@ -20,53 +17,64 @@ export interface Review {
 export const reviews: Review[] = [
   {
     rating: 5,
-    text: "[PLACEHOLDER - testo reale da inserire]",
-    customer: "[PLACEHOLDER - nome/azienda]",
-    service: "Completo laterali e tetto",
-    date: "[PLACEHOLDER]",
+    text: "Ho sostituito i teli laterali alla motrice, lavoro perfetto complimenti",
+    customer: "Gerardo Coppola",
+    service: "Sostituzione teli laterali",
+    date: "Marzo 2026",
     source: "Google",
   },
   {
     rating: 5,
-    text: "[PLACEHOLDER - testo reale da inserire]",
-    customer: "[PLACEHOLDER - nome/azienda]",
-    service: "Riparazione rapida",
-    date: "[PLACEHOLDER]",
-    source: "Google",
-  },
-  {
-    rating: 5,
-    text: "[PLACEHOLDER - testo reale da inserire]",
-    customer: "[PLACEHOLDER - nome/azienda]",
-    service: "Personalizzazione grafica",
-    date: "[PLACEHOLDER]",
-  },
-  {
-    rating: 5,
-    text: "[PLACEHOLDER - testo reale da inserire]",
-    customer: "[PLACEHOLDER - nome/azienda]",
-    service: "Sostituzione telo tetto",
-    date: "[PLACEHOLDER]",
-    source: "Google",
-  },
-  {
-    rating: 5,
-    text: "[PLACEHOLDER - testo reale da inserire]",
-    customer: "[PLACEHOLDER - nome/azienda]",
+    text: "Persone serie, ho effettuato 3 montaggi a Brescia e tutto è andato bene",
+    customer: "Nicole Alessandro",
     service: "Montaggio",
-    date: "[PLACEHOLDER]",
+    date: "Marzo 2026",
+    source: "Google",
   },
   {
     rating: 5,
-    text: "[PLACEHOLDER - testo reale da inserire]",
-    customer: "[PLACEHOLDER - nome/azienda]",
-    service: "Telo su misura",
-    date: "[PLACEHOLDER]",
+    text: "I migliori nel settore",
+    customer: "Tiziano Tagliaferri",
+    service: "Fornitura teloni",
+    date: "Aprile 2026",
+    source: "Google",
+  },
+  {
+    rating: 5,
+    text: "Ho fatto una motrice da voi, materiale ottimo e ragazzi con voglia di fare. Vi auguro belle cose",
+    customer: "Andrea Chiavazzo",
+    service: "Motrice completa",
+    date: "Giugno 2026",
+    source: "Google",
+  },
+  {
+    rating: 5,
+    text: "I migliori nel settore! Professionisti che sanno ascoltare le necessità del cliente!",
+    customer: "Walter D'Ambrosio",
+    service: "Fornitura teloni",
+    date: "Giugno 2026",
+    source: "Google",
+  },
+  {
+    rating: 5,
+    text: "Persone serie e professionali, ho fatto i laterali al mio Scania, lavoro egregio.",
+    customer: "Angela Spitale",
+    service: "Laterali Scania",
+    date: "Giugno 2026",
+    source: "Google",
+  },
+  {
+    rating: 5,
+    text: "Lavoro top, il semirimorchio sembrava un frigo per quanto fosse steso bene il telo.",
+    customer: "Davide Alessandro",
+    service: "Telo semirimorchio",
+    date: "Giugno 2026",
     source: "Google",
   },
 ];
 
-// Link alla scheda Google Business — inserire l'URL reale.
+// Link alla scheda Google Business — PLACEHOLDER, in attesa dell'URL reale
+// dal Business Profile Manager.
 export const googleReviewUrl = "PLACEHOLDER_INSERIRE_LINK_REALE_GOOGLE_BUSINESS";
 
 /** Elenco dei servizi presenti fra le recensioni, per il filtro in /recensioni. */
