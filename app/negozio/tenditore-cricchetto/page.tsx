@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
-import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 
 const price = "13,00 €";
 const shippingCost = "5,00 €";
@@ -9,12 +9,25 @@ const totalPrice = "18,00 €";
 
 const stripePaymentLink = "https://buy.stripe.com/9B6fZ90R372GfOS5VSc7u0c";
 
+const heroImage = {
+  src: "/images/shop/tenditore-cricchetto-02.jpg",
+  alt: "Tenditore a cricchetto standard",
+};
+
+const galleryImages = [
+  { src: "/images/shop/tenditore-cricchetto-05.jpg", alt: "Tenditore a cricchetto standard — vista d'insieme" },
+  { src: "/images/shop/tenditore-cricchetto-01.jpg", alt: "Tenditore a cricchetto standard — vista laterale" },
+  { src: "/images/shop/tenditore-cricchetto-03-dettaglio.jpg", alt: "Tenditore a cricchetto standard — dettaglio gancio" },
+];
+
 const SCHEDA_TECNICA = [
   { label: "Larghezza cinghia", value: "50 mm" },
-  { label: "Lunghezza cinghia standard", value: "~650 mm" },
-  { label: "Estensione totale minima", value: "~205 mm" },
-  { label: "Estensione totale massima", value: "~565 mm" },
+  { label: "Lunghezza totale", value: "9,00 m" },
+  { label: "Cinghia lunga (che avvolge il carico)", value: "8,60 m" },
+  { label: "Cinghia corta (fissa al cricchetto)", value: "0,40 m" },
+  { label: "Colore", value: "Blu" },
   { label: "Materiale", value: "Cricchetto in acciaio inox, cinghia in poliestere, gancio aperto zincato" },
+  { label: "Marchio", value: "LoadLok" },
 ];
 
 export const metadata: Metadata = {
@@ -36,8 +49,34 @@ export default function TenditoreCricchettoPage() {
             ← Torna alla home
           </Link>
           <div className="mt-6 grid items-start gap-12 md:grid-cols-[0.95fr_1.05fr]">
-            {/* TODO: foto reale prodotto */}
-            <PhotoPlaceholder caption="Foto prodotto in arrivo" aspect="4 / 3" />
+            <div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-primary/20">
+                <Image
+                  src={heroImage.src}
+                  alt={heroImage.alt}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="mt-3 grid grid-cols-3 gap-3">
+                {galleryImages.map((img) => (
+                  <div
+                    key={img.src}
+                    className="relative aspect-square overflow-hidden rounded-md border border-avorio/[0.14]"
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 768px) 33vw, 15vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
             <div>
               <SectionKicker label="Negozio · Accessori" />
               <h1 className="font-display text-4xl font-bold uppercase leading-[0.98] text-avorio md:text-5xl">
