@@ -3,8 +3,9 @@ import Link from "next/link";
 import { SectionKicker } from "@/components/SectionKicker";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 
-// PLACEHOLDER: sostituire con il prezzo reale del prodotto.
-const price = "PLACEHOLDER_PREZZO";
+const price = "13,00 €";
+const shippingCost = "5,00 €";
+const totalPrice = "18,00 €";
 
 const stripePaymentLink = "https://buy.stripe.com/9B6fZ90R372GfOS5VSc7u0c";
 
@@ -46,12 +47,13 @@ export default function TenditoreCricchettoPage() {
                 Cricchetto in acciaio inox, cinghia in poliestere, gancio aperto zincato. Robusto e
                 affidabile per il fissaggio del carico.
               </p>
-              <div className="mt-7 flex items-center gap-3">
+              <div className="mt-7 flex flex-wrap items-baseline gap-3">
                 <span className="font-display text-2xl font-bold text-primary">{price}</span>
-                <span className="text-xs uppercase tracking-[0.14em] text-avorio/40">
-                  prezzo da confermare
-                </span>
+                <span className="text-sm text-avorio/60">+ {shippingCost} di spedizione</span>
               </div>
+              <p className="mt-1 text-xs text-avorio/40">
+                Totale al checkout: {totalPrice} · quantità regolabile su Stripe.
+              </p>
               <a
                 href={stripePaymentLink}
                 target="_blank"
