@@ -58,7 +58,7 @@ export function Header() {
           </span>
         </span>
       </Link>
-      <div className="relative min-w-0 flex-1">
+      <div className="relative flex min-w-0 flex-1 items-center justify-end">
         <nav
           ref={navRef}
           className="flex items-center gap-4 overflow-x-auto overscroll-x-contain [-webkit-overflow-scrolling:touch] md:gap-7"
