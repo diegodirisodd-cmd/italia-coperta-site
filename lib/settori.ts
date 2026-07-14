@@ -114,7 +114,7 @@ export const SETTORI: Settore[] = [
     metaDescription:
       "Teloni pubblicitari per camion e mezzi: stampa digitale su PVC ad alta definizione. Trasforma la flotta in pubblicità dinamica con Dodi Branding, dal 1950.",
     photoCaption: "Foto reale: telone camion con grafica pubblicitaria stampata — da inserire",
-    image: "/images/settori/teloni-pubblicitari.jpg",
+    image: "/images/settori/teloni-pubblicitari-climaconvenienza.jpg",
     imageAlt:
       "Telone pubblicitario per camion Di Riso Teloni — stampa digitale su PVC, pubblicità dinamica Dodi Branding",
     body: [
