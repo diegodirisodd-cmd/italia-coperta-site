@@ -18,6 +18,9 @@ export type Settore = {
   image?: string;
   /** Alt text for the real photo. */
   imageAlt?: string;
+  /** Optional extra real photos shown as a small gallery on the detail page,
+   *  alongside the main `image`. Most settori have none. */
+  images?: { src: string; alt: string }[];
   /** Where the final CTA points and its label. */
   cta: { href: "/preventivo" | "/configuratore"; label: string };
 };
@@ -141,9 +144,14 @@ export const SETTORI: Settore[] = [
     metaDescription:
       "Gazebo e pergole in telo su misura: coperture per dehors, eventi, cortili e attività commerciali. Teli in PVC resistenti e su misura, dal 1950.",
     photoCaption: "Foto reale: pergola / gazebo con copertura in telo su misura — da inserire",
-    image: "/images/settori/gazebo-pergole.jpg",
-    imageAlt:
-      "Gazebo con copertura in telo su misura Di Riso Teloni — pergola in PVC per esterni ed eventi",
+    image: "/images/settori/tettoia-pergola-gazebo.jpg",
+    imageAlt: "Tettoia in legno con copertura su misura Di Riso Teloni — cantiere pergola vista d'insieme",
+    images: [
+      {
+        src: "/images/settori/tettoia-pergola-gazebo-02.jpg",
+        alt: "Tettoia in legno con copertura su misura Di Riso Teloni — dettaglio con operatore Di Riso Teloni",
+      },
+    ],
     body: [
       "Uno spazio esterno ben coperto si vive di più e si lavora meglio. Che sia il dehors di un bar, il cortile di casa, un'area espositiva o lo spazio di un evento, realizziamo gazebo e pergole in telo su misura, con la stessa qualità di PVC che mettiamo nei teloni da lavoro.",
       "Confezioniamo teli di copertura per pergole e strutture esistenti, teli avvolgibili e a caduta per le chiusure laterali, tende e frangivento. Il telo viene tagliato sulle misure reali della struttura, con occhielli, cinghie e sistemi di tensionamento che lo tengono in tensione e ordinato nel tempo, senza le pieghe e gli avvallamenti in cui ristagna l'acqua.",

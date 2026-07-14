@@ -55,15 +55,35 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
               <p className="mt-5 max-w-lg text-lg leading-relaxed text-avorio/80">{settore.tagline}</p>
             </div>
             {settore.image ? (
-              <div className="relative aspect-[16/11] overflow-hidden rounded-md border border-primary/20">
-                <Image
-                  src={settore.image}
-                  alt={settore.imageAlt ?? settore.h1}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 45vw"
-                  className="object-cover"
-                />
+              <div>
+                <div className="relative aspect-[16/11] overflow-hidden rounded-md border border-primary/20">
+                  <Image
+                    src={settore.image}
+                    alt={settore.imageAlt ?? settore.h1}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 45vw"
+                    className="object-cover"
+                  />
+                </div>
+                {settore.images && settore.images.length > 0 && (
+                  <div className="mt-3 grid grid-cols-3 gap-3">
+                    {settore.images.map((img) => (
+                      <div
+                        key={img.src}
+                        className="relative aspect-square overflow-hidden rounded-md border border-avorio/[0.14]"
+                      >
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          fill
+                          sizes="(max-width: 768px) 33vw, 15vw"
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ) : (
               <PhotoPlaceholder caption={settore.photoCaption} aspect="16 / 11" />
