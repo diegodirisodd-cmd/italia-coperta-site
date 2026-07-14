@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { ChevronRight } from "lucide-react";
+import { m, useReducedMotion } from "framer-motion";
 
 const NAV_LINKS = [
   { href: "/azienda", label: "Azienda" },
@@ -16,6 +18,7 @@ export function Header() {
   const navRef = useRef<HTMLElement>(null);
   const [showLeftFade, setShowLeftFade] = useState(false);
   const [showRightFade, setShowRightFade] = useState(false);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     const el = navRef.current;
@@ -78,16 +81,24 @@ export function Header() {
         </nav>
         <span
           aria-hidden="true"
-          className={`pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-navy-deep to-transparent transition-opacity duration-200 ${
+          className={`pointer-events-none absolute inset-y-0 left-0 w-14 bg-gradient-to-r from-navy-deep via-navy-deep/80 to-transparent transition-opacity duration-200 ${
             showLeftFade ? "opacity-100" : "opacity-0"
           }`}
         />
         <span
           aria-hidden="true"
-          className={`pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-navy-deep to-transparent transition-opacity duration-200 ${
+          className={`pointer-events-none absolute inset-y-0 right-0 flex w-14 items-center justify-end bg-gradient-to-l from-navy-deep via-navy-deep/80 to-transparent pr-1 transition-opacity duration-200 ${
             showRightFade ? "opacity-100" : "opacity-0"
           }`}
-        />
+        >
+          <m.span
+            className="flex text-avorio/75"
+            animate={reducedMotion ? undefined : { x: [0, 4, 0] }}
+            transition={{ duration: 1.3, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronRight size={18} strokeWidth={2.5} />
+          </m.span>
+        </span>
       </div>
     </header>
   );
