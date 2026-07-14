@@ -6,8 +6,7 @@ import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 // PLACEHOLDER: sostituire con il prezzo reale del prodotto.
 const price = "PLACEHOLDER_PREZZO";
 
-// PLACEHOLDER: inserire qui il link di pagamento Stripe reale (non inventare l'URL).
-const stripePaymentLink = "PLACEHOLDER_INSERIRE_LINK_STRIPE";
+const stripePaymentLink = "https://buy.stripe.com/9B6fZ90R372GfOS5VSc7u0c";
 
 const SCHEDA_TECNICA = [
   { label: "Larghezza cinghia", value: "50 mm" },
@@ -61,9 +60,6 @@ export default function TenditoreCricchettoPage() {
               >
                 Acquista ora
               </a>
-              <p className="mt-3 text-xs text-avorio/40">
-                Link di pagamento non ancora attivo — in attesa del link Stripe definitivo.
-              </p>
             </div>
           </div>
         </div>
