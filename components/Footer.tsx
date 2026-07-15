@@ -41,6 +41,7 @@ export function Footer() {
           <div className="text-sm leading-loose text-avorio/75">
             <Link href="/configuratore" className="no-underline">Teloni su misura</Link><br />
             <Link href="/configuratore" className="no-underline">Configuratore online</Link><br />
+            <Link href="/guida-teloni" className="no-underline">Guida ai teloni</Link><br />
             <Link href="/riparazione-rapida" className="no-underline">Riparazione rapida</Link><br />
             <Link href="/centri" className="no-underline">Centri autorizzati</Link><br />
             <Link href="/negozio/tenditore-cricchetto" className="no-underline">Negozio</Link>

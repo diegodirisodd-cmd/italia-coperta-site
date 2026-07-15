@@ -14,6 +14,7 @@ const STATIC_ROUTES = [
   "/contatti",
   "/preventivo",
   "/negozio/tenditore-cricchetto",
+  "/guida-teloni",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
