@@ -8,9 +8,9 @@ import { MagneticCTA } from "@/components/motion/MagneticCTA";
 import { EASE_OUT, EASE_TARP } from "@/components/motion/variants";
 
 const ctaPrimary =
-  "rounded-md border-2 border-white/85 bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline shadow-[0_8px_28px_rgba(0,0,0,0.45)]";
+  "rounded-md border-2 border-white/85 bg-primary px-6 py-3 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline shadow-[0_8px_28px_rgba(0,0,0,0.45)] md:px-7 md:py-4";
 const ctaSecondary =
-  "rounded-md border-[1.5px] border-white/60 px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline [text-shadow:0_1px_6px_rgba(0,0,0,0.7)]";
+  "rounded-md border-[1.5px] border-white/60 px-6 py-3 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline [text-shadow:0_1px_6px_rgba(0,0,0,0.7)] md:px-7 md:py-4";
 
 const textShadowSoft = "0 2px 10px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.7)";
 
@@ -93,7 +93,7 @@ export function Hero() {
 
       {/* bottom marquee strip */}
       <div className="relative z-[6] border-t border-primary/[0.16] bg-navy-black/60">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-7 px-6 py-4 text-[12.5px] uppercase tracking-[0.14em] text-avorio/60 md:px-10">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-5 gap-y-2 px-6 py-3 text-[12.5px] uppercase tracking-[0.14em] text-avorio/60 md:gap-7 md:px-10 md:py-4">
           <span>Bilici</span>
           <span className="text-primary">·</span>
           <span>Motrici</span>
@@ -113,7 +113,7 @@ export function Hero() {
 
 function HeroKicker() {
   return (
-    <div className="mb-5 flex items-center gap-3">
+    <div className="mb-3 flex items-center gap-3 md:mb-5">
       <span className="h-0.5 w-8 bg-primary" />
       <span
         className="text-xs font-semibold uppercase tracking-[0.28em] text-white"
@@ -142,7 +142,7 @@ function FotoVariant() {
   const itemProps = reduced ? {} : { variants: fotoItem };
 
   return (
-    <div className="relative z-[6] mx-auto w-full max-w-6xl px-6 pb-14 pt-10 md:px-10">
+    <div className="relative z-[6] mx-auto w-full max-w-6xl px-6 pb-8 pt-7 md:px-10 md:pb-14 md:pt-10">
       <m.div className="relative max-w-[660px]" {...groupProps}>
         {/* local scrim, scoped to the text block itself — tracks it at every breakpoint.
            Breakpoint matches the <picture> art direction (md): below md the portrait crop
@@ -169,27 +169,27 @@ function FotoVariant() {
         </m.div>
         {/* H1 keeps the ranking keyword phrase; "Italia Coperta" carries the brand as a tagline. */}
         <h1
-          className="font-display text-5xl font-bold uppercase leading-[0.95] text-white md:text-6xl lg:text-[64px]"
+          className="font-display text-4xl font-bold uppercase leading-[0.95] text-white md:text-6xl lg:text-[64px]"
           style={{ textShadow: textShadowSoft }}
         >
           <WordReveal text="Teli per bilico completi e professionali — dal 1950" delay={0.7} />
         </h1>
         <m.p
           {...itemProps}
-          className="mt-4 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-white"
+          className="mt-3 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-white md:mt-4"
           style={{ textShadow: textShadowSoft }}
         >
           Italia Coperta
         </m.p>
         <m.p
           {...itemProps}
-          className="mt-6 max-w-[520px] text-lg leading-relaxed text-white/85"
+          className="mt-4 max-w-[520px] text-lg leading-normal text-white/85 md:mt-6 md:leading-relaxed"
           style={{ textShadow: textShadowSoft }}
         >
           Il telo che copre l&apos;Italia — e ti copre in tutta Italia. Teloni su misura per bilici, motrici e
           rimorchi, cuciti a mano dalla terza generazione della famiglia Di Riso.
         </m.p>
-        <m.div {...itemProps} className="mt-8 flex flex-wrap gap-3.5">
+        <m.div {...itemProps} className="mt-5 flex flex-wrap gap-2 md:mt-8 md:gap-3.5">
           <MagneticCTA href="/preventivo" className={ctaPrimary}>Richiedi preventivo</MagneticCTA>
           <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
         </m.div>
