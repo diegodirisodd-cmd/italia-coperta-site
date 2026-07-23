@@ -47,15 +47,18 @@ export function Hero() {
     >
       {/* real hero photo — branded red tarp with the DiRiso Teloni sticker (above the fold).
          Portrait crop below md, landscape crop from md up — true art direction via <picture>,
-         so only one file is ever downloaded. */}
-      <picture>
-        <source media="(min-width: 768px)" srcSet={heroDesktopImg.srcSet} sizes="100vw" />
-        <img
-          {...heroMobileImg}
-          alt={heroAlt}
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
-      </picture>
+         so only one file is ever downloaded. The wrapper is its own relative+overflow-hidden
+         box so the <img>'s absolute+cover sizing never depends on an ancestor further up. */}
+      <div className="absolute inset-0 overflow-hidden">
+        <picture>
+          <source media="(min-width: 768px)" srcSet={heroDesktopImg.srcSet} sizes="100vw" />
+          <img
+            {...heroMobileImg}
+            alt={heroAlt}
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </picture>
+      </div>
       {/* uniform, discreet veil — even left/right so the whole photo stays visible */}
       <div
         className="pointer-events-none absolute inset-0"
