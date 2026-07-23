@@ -8,9 +8,11 @@ import { MagneticCTA } from "@/components/motion/MagneticCTA";
 import { EASE_OUT, EASE_TARP } from "@/components/motion/variants";
 
 const ctaPrimary =
-  "rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline shadow-[0_8px_24px_rgba(227,25,25,0.28)]";
+  "rounded-md border-2 border-white/85 bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline shadow-[0_8px_28px_rgba(0,0,0,0.45)]";
 const ctaSecondary =
-  "rounded-md border-[1.5px] border-avorio/50 px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-avorio no-underline";
+  "rounded-md border-[1.5px] border-white/60 px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline [text-shadow:0_1px_6px_rgba(0,0,0,0.7)]";
+
+const textShadowSoft = "0 2px 10px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.7)";
 
 export function Hero() {
   const reduced = useReducedMotion();
@@ -20,27 +22,21 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[660px] flex-col justify-center overflow-hidden border-b border-primary/[0.18]"
     >
-      {/* real hero photo — truck with branded tarp at sunset (above the fold) */}
+      {/* real hero photo — branded red tarp with the DiRiso Teloni sticker (above the fold) */}
       <Image
-        src="/images/hero-camion.jpg"
-        alt="Camion Di Riso Teloni con telone brandizzato al tramonto in autostrada"
+        src="/images/hero-telone-rosso.jpg"
+        alt="Telone rosso Di Riso Teloni con adesivo del marchio e gancio a cricchetto"
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className="object-cover object-[30%_center] sm:object-[38%_center] lg:object-center"
       />
+      {/* uniform, discreet veil — even left/right so the whole photo stays visible */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "linear-gradient(to right, rgba(26,25,128,0.82) 0%, rgba(26,25,128,0.72) 38%, rgba(26,25,128,0.38) 60%, rgba(0,0,0,0.12) 80%, rgba(0,0,0,0.04) 100%)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(26,25,128,0.50) 0%, rgba(26,25,128,0) 34%)",
+            "linear-gradient(to bottom, rgba(0,0,0,0.44) 0%, rgba(0,0,0,0.22) 32%, rgba(0,0,0,0.28) 68%, rgba(0,0,0,0.48) 100%)",
         }}
       />
 
@@ -91,7 +87,10 @@ function HeroKicker() {
   return (
     <div className="mb-5 flex items-center gap-3">
       <span className="h-0.5 w-8 bg-primary" />
-      <span className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+      <span
+        className="text-xs font-semibold uppercase tracking-[0.28em] text-white"
+        style={{ textShadow: textShadowSoft }}
+      >
         Teloni per camion · dal 1950
       </span>
     </div>
@@ -116,21 +115,48 @@ function FotoVariant() {
 
   return (
     <div className="relative z-[6] mx-auto w-full max-w-6xl px-6 pb-14 pt-10 md:px-10">
-      <m.div className="max-w-[660px]" {...groupProps}>
+      <m.div className="relative max-w-[660px]" {...groupProps}>
+        {/* local scrim, scoped to the text block itself — tracks it at every breakpoint.
+           Mobile crops in tight on the sticker's bright artwork, so it gets a stronger veil;
+           tablet/desktop see more of the frame and need only a light touch. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -inset-x-6 -inset-y-8 -z-10 blur-2xl sm:hidden"
+          style={{
+            background:
+              "radial-gradient(ellipse 85% 90% at 32% 42%, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.22) 82%, rgba(0,0,0,0) 100%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -inset-x-8 -inset-y-10 -z-10 hidden blur-2xl sm:block"
+          style={{
+            background:
+              "radial-gradient(ellipse 75% 80% at 30% 40%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.12) 80%, rgba(0,0,0,0) 100%)",
+          }}
+        />
         <m.div {...itemProps}>
           <HeroKicker />
         </m.div>
         {/* H1 keeps the ranking keyword phrase; "Italia Coperta" carries the brand as a tagline. */}
-        <h1 className="font-display text-5xl font-bold uppercase leading-[0.95] text-avorio md:text-6xl lg:text-[64px]">
+        <h1
+          className="font-display text-5xl font-bold uppercase leading-[0.95] text-white md:text-6xl lg:text-[64px]"
+          style={{ textShadow: textShadowSoft }}
+        >
           <WordReveal text="Teli per bilico completi e professionali — dal 1950" delay={0.7} />
         </h1>
         <m.p
           {...itemProps}
-          className="mt-4 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-primary"
+          className="mt-4 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-white"
+          style={{ textShadow: textShadowSoft }}
         >
           Italia Coperta
         </m.p>
-        <m.p {...itemProps} className="mt-6 max-w-[520px] text-lg leading-relaxed text-avorio/80">
+        <m.p
+          {...itemProps}
+          className="mt-6 max-w-[520px] text-lg leading-relaxed text-white/85"
+          style={{ textShadow: textShadowSoft }}
+        >
           Il telo che copre l&apos;Italia — e ti copre in tutta Italia. Teloni su misura per bilici, motrici e
           rimorchi, cuciti a mano dalla terza generazione della famiglia Di Riso.
         </m.p>
