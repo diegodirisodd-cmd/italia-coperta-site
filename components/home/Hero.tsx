@@ -154,12 +154,14 @@ function FotoVariant() {
         <m.div {...itemProps} className="order-1 md:order-none">
           <HeroKicker />
         </m.div>
-        {/* H1 keeps the ranking keyword phrase; "Italia Coperta" carries the brand as a tagline. */}
+        {/* H1 keeps the ranking keyword phrase; "Italia Coperta" carries the brand as a tagline.
+           The space between "dal" and "1950" below is U+00A0 (non-breaking), not a regular
+           space -- keeps the year from wrapping onto its own orphan line on narrow screens. */}
         <h1
           className="order-2 font-display text-4xl font-bold uppercase leading-[0.95] text-white md:order-none md:text-6xl lg:text-[64px]"
           style={{ textShadow: textShadowSoft }}
         >
-          <WordReveal text="Teli per bilico completi e professionali — dal 1950" delay={0.7} />
+          <WordReveal text={"Teli per bilico completi e professionali — dal 1950"} delay={0.7} />
         </h1>
         <m.p
           {...itemProps}
