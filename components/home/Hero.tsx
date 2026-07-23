@@ -90,23 +90,6 @@ export function Hero() {
       )}
 
       <FotoVariant />
-
-      {/* bottom marquee strip */}
-      <div className="relative z-[6] border-t border-primary/[0.16] bg-navy-black/60">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-5 gap-y-2 px-6 py-3 text-[12.5px] uppercase tracking-[0.14em] text-avorio/60 md:gap-7 md:px-10 md:py-4">
-          <span>Bilici</span>
-          <span className="text-primary">·</span>
-          <span>Motrici</span>
-          <span className="text-primary">·</span>
-          <span>Rimorchi</span>
-          <span className="text-primary">·</span>
-          <span>Furgoni centinati</span>
-          <span className="text-primary">·</span>
-          <span>Riparazioni rapide</span>
-          <span className="text-primary">·</span>
-          <span>Servizio in tutta Italia</span>
-        </div>
-      </div>
     </section>
   );
 }
@@ -143,7 +126,7 @@ function FotoVariant() {
 
   return (
     <div className="relative z-[6] mx-auto w-full max-w-6xl px-6 pb-8 pt-7 md:px-10 md:pb-14 md:pt-10">
-      <m.div className="relative max-w-[660px]" {...groupProps}>
+      <m.div className="relative flex max-w-[660px] flex-col" {...groupProps}>
         {/* local scrim, scoped to the text block itself — tracks it at every breakpoint.
            Breakpoint matches the <picture> art direction (md): below md the portrait crop
            is tighter and needs a stronger veil; md+ shows more of the frame and needs only
@@ -164,32 +147,36 @@ function FotoVariant() {
               "radial-gradient(ellipse 75% 80% at 30% 40%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.12) 80%, rgba(0,0,0,0) 100%)",
           }}
         />
-        <m.div {...itemProps}>
+        {/* Visual order on mobile (order-*) moves "Italia Coperta" + paragraph below the
+           CTAs, where the removed keyword strip used to sit. DOM order is untouched — kicker,
+           title, subtitle, paragraph, CTAs — so reading order and tab order stay linear and
+           match the md+ visual order exactly; only mobile is remapped. */}
+        <m.div {...itemProps} className="order-1 md:order-none">
           <HeroKicker />
         </m.div>
         {/* H1 keeps the ranking keyword phrase; "Italia Coperta" carries the brand as a tagline. */}
         <h1
-          className="font-display text-4xl font-bold uppercase leading-[0.95] text-white md:text-6xl lg:text-[64px]"
+          className="order-2 font-display text-4xl font-bold uppercase leading-[0.95] text-white md:order-none md:text-6xl lg:text-[64px]"
           style={{ textShadow: textShadowSoft }}
         >
           <WordReveal text="Teli per bilico completi e professionali — dal 1950" delay={0.7} />
         </h1>
         <m.p
           {...itemProps}
-          className="mt-3 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-white md:mt-4"
+          className="order-4 mt-6 font-display text-2xl font-semibold uppercase tracking-[0.02em] text-white md:order-none md:mt-4"
           style={{ textShadow: textShadowSoft }}
         >
           Italia Coperta
         </m.p>
         <m.p
           {...itemProps}
-          className="mt-4 max-w-[520px] text-lg leading-normal text-white/85 md:mt-6 md:leading-relaxed"
+          className="order-5 mt-4 max-w-[520px] text-lg leading-normal text-white/85 md:order-none md:mt-6 md:leading-relaxed"
           style={{ textShadow: textShadowSoft }}
         >
           Il telo che copre l&apos;Italia — e ti copre in tutta Italia. Teloni su misura per bilici, motrici e
           rimorchi, cuciti a mano dalla terza generazione della famiglia Di Riso.
         </m.p>
-        <m.div {...itemProps} className="mt-5 flex flex-wrap gap-2 md:mt-8 md:gap-3.5">
+        <m.div {...itemProps} className="order-3 mt-6 flex flex-wrap gap-2 md:order-none md:mt-8 md:gap-3.5">
           <MagneticCTA href="/preventivo" className={ctaPrimary}>Richiedi preventivo</MagneticCTA>
           <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
         </m.div>
