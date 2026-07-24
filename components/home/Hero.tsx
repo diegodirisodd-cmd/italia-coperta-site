@@ -55,7 +55,7 @@ export function Hero() {
           <img
             {...heroMobileImg}
             alt={heroAlt}
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="absolute inset-0 h-full w-full object-cover object-center saturate-[1.25] contrast-[1.05]"
           />
         </picture>
       </div>
