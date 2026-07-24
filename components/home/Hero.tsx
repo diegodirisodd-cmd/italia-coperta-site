@@ -29,7 +29,7 @@ const { props: heroDesktopImg } = getImageProps({
   sizes: "100vw",
 });
 const { props: heroMobileImg } = getImageProps({
-  src: "/images/hero-telone-rosso-mobile.jpg",
+  src: "/images/hero-telone-rosso-mobile-v2.jpg",
   alt: heroAlt,
   width: 1080,
   height: 1440,
