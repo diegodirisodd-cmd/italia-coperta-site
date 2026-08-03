@@ -73,9 +73,8 @@ export const reviews: Review[] = [
   },
 ];
 
-// Link alla scheda Google Business — PLACEHOLDER, in attesa dell'URL reale
-// dal Business Profile Manager.
-export const googleReviewUrl = "PLACEHOLDER_INSERIRE_LINK_REALE_GOOGLE_BUSINESS";
+// Link alla scheda Google Business per lasciare una recensione.
+export const googleReviewUrl = "https://share.google/ENxpSuGMiY1gxh47Z";
 
 /** Elenco dei servizi presenti fra le recensioni, per il filtro in /recensioni. */
 export const serviziRecensioni: string[] = Array.from(new Set(reviews.map((r) => r.service)));

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LegalPlaceholder } from "@/components/legal/LegalPlaceholder";
+import { LegalArticle, LegalSection } from "@/components/legal/LegalArticle";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
@@ -12,10 +12,44 @@ export const metadata: Metadata = {
 export default function CookiePolicyPage() {
   return (
     <>
-      <LegalPlaceholder
-        title="Cookie Policy"
-        intro="Questo sito usa esclusivamente cookie tecnici necessari al funzionamento. Non sono attivi cookie di profilazione o strumenti di tracciamento di terze parti; eventuali cookie di statistica verrebbero attivati solo previo tuo consenso."
-      />
+      <LegalArticle title="Cookie Policy" lastUpdated="15 luglio 2026">
+        <p className="text-[15px] leading-relaxed text-avorio/70">
+          Questo sito utilizza cookie tecnici necessari al funzionamento del sito stesso e, dove presenti,
+          cookie di terze parti strettamente funzionali ai servizi integrati.
+        </p>
+
+        <LegalSection heading="Cookie tecnici (sempre attivi)">
+          <p>
+            Necessari per il funzionamento base del sito: navigazione, memorizzazione delle preferenze sui
+            cookie stessi, sicurezza. Non richiedono consenso secondo la normativa vigente.
+          </p>
+        </LegalSection>
+
+        <LegalSection heading="Cookie di terze parti (funzionali)">
+          <p>
+            Se utilizzi il configuratore o il modulo di acquisto, Stripe potrebbe impostare cookie tecnici
+            necessari a completare la transazione in sicurezza e a prevenire frodi. Consulta l&apos;informativa
+            privacy di Stripe:{" "}
+            <a
+              href="https://stripe.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary no-underline hover:underline"
+            >
+              stripe.com/privacy
+            </a>
+            .
+          </p>
+        </LegalSection>
+
+        <LegalSection heading="Gestione dei cookie">
+          <p>
+            Puoi gestire le preferenze sui cookie tramite il banner mostrato alla prima visita, o cancellare i
+            cookie già salvati dalle impostazioni del tuo browser in qualsiasi momento.
+          </p>
+        </LegalSection>
+      </LegalArticle>
+
       <section className="bg-navy-deep px-6 pb-24 md:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <Link

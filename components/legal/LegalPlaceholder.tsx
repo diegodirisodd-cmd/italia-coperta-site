@@ -33,7 +33,7 @@ export function LegalPlaceholder({ title, intro }: { title: string; intro: strin
         <div className="mt-8 border-t border-avorio/10 pt-6 text-sm leading-relaxed text-avorio/55">
           <p className="font-semibold text-avorio/70">Titolare del trattamento</p>
           <p className="mt-1">
-            {AZIENDA.ragioneSociale} — {AZIENDA.gruppo}
+            {AZIENDA.ragioneSociale}
           </p>
           <p>Sede legale: {AZIENDA.sedeLegale}</p>
           <p>
