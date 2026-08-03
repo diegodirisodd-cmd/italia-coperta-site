@@ -11,7 +11,6 @@ export const TEL_DISPLAY = "+39 352 033 1778";
 // "Di Riso Teloni" / "Italia Coperta" brand.
 export const AZIENDA = {
   ragioneSociale: "DODI Pubblicità Dinamica S.R.L.S.",
-  gruppo: "parte del Gruppo Commerciale Partenopea",
   sedeLegale: "Via dei Goti 183, 84012 Angri (SA)",
   piva: "06207010650",
   rea: "SA-505437",

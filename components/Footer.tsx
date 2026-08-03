@@ -51,7 +51,7 @@ export function Footer() {
       {/* Informazioni legali / societarie */}
       <div className="mx-auto mt-9 max-w-6xl border-t border-avorio/10 pt-6 text-xs leading-relaxed text-avorio/45">
         <p>
-          <span className="font-semibold text-avorio/70">{AZIENDA.ragioneSociale}</span> — {AZIENDA.gruppo}
+          <span className="font-semibold text-avorio/70">{AZIENDA.ragioneSociale}</span>
         </p>
         <p className="mt-1">
           Sede legale: {AZIENDA.sedeLegale} · P.IVA / C.F. {AZIENDA.piva} · REA {AZIENDA.rea}
