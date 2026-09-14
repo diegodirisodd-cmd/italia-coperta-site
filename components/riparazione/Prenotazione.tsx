@@ -13,6 +13,7 @@ import {
   type Giorno,
 } from "@/lib/riparazione";
 import { waLink } from "@/lib/site";
+import { Turnstile } from "@/components/Turnstile";
 
 const chip = (active: boolean, disabled = false) =>
   [
@@ -32,6 +33,7 @@ export function Prenotazione() {
   const [nome, setNome] = useState("");
   const [telefono, setTelefono] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [error, setError] = useState("");
   const [reference, setReference] = useState<string | null>(null);
 
@@ -62,7 +64,7 @@ export function Prenotazione() {
       const res = await fetch("/api/prenotazione", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ intervento, sede, giorno: giornoIso, fascia, nome, telefono }),
+        body: JSON.stringify({ intervento, sede, giorno: giornoIso, fascia, nome, telefono, turnstileToken }),
       });
       if (!res.ok) throw new Error("Prenotazione non riuscita");
       const json = (await res.json()) as { reference: string };
@@ -187,6 +189,8 @@ export function Prenotazione() {
           />
         </label>
       </div>
+
+      <Turnstile onToken={setTurnstileToken} action="prenotazione" />
 
       {error && <p className="mb-4 text-sm text-red-300">{error}</p>}
 

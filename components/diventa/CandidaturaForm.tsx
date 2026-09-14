@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { REGIONI } from "@/lib/regioni";
+import { Turnstile } from "@/components/Turnstile";
 
 type Form = {
   azienda: string;
@@ -20,6 +21,7 @@ export function CandidaturaForm() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [reference, setReference] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const set = (k: keyof Form, v: string) => setForm((f) => ({ ...f, [k]: v }));
   const valid = form.azienda.trim() && form.referente.trim() && form.telefono.trim() && form.email.trim() && form.zona;
@@ -32,7 +34,7 @@ export function CandidaturaForm() {
       const res = await fetch("/api/candidatura", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, turnstileToken }),
       });
       if (!res.ok) throw new Error("Invio non riuscito");
       const json = (await res.json()) as { reference: string };
@@ -108,6 +110,8 @@ export function CandidaturaForm() {
           className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
         />
       </label>
+
+      <Turnstile onToken={setTurnstileToken} action="candidatura" />
 
       {error && <p className="mt-4 text-sm text-red-300">{error}</p>}
 

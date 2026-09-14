@@ -36,6 +36,14 @@ export function FileUpload({
   async function handleFile(file: File | undefined) {
     if (!file) return;
     setError("");
+    // Il reference ora lo emette il server (S-10) e arriva subito dopo il
+    // mount: nell'attimo in cui non c'è ancora, l'upload verrebbe rifiutato
+    // con 422 — meglio dirlo chiaramente.
+    if (!state.reference) {
+      setStatus("error");
+      setError("Attendi un istante e riprova.");
+      return;
+    }
     if (file.size > 10 * 1024 * 1024) {
       setStatus("error");
       setError("File troppo grande (max 10 MB).");

@@ -14,6 +14,7 @@ import {
   currentStepIndex,
   canLeaveStep,
 } from "@/lib/configuratore/reducer";
+import { isValidReference } from "@/lib/reference";
 import type {
   ConfiguratoreAction,
   ConfiguratoreState,
@@ -63,14 +64,18 @@ function stripPii(state: ConfiguratoreState): ConfiguratoreState {
   };
 }
 
-/** Human-ish unique request id, also used as the storage folder for uploads. */
-export function newReference(): string {
-  return (
-    "IC-" +
-    Date.now().toString(36).toUpperCase() +
-    "-" +
-    Math.random().toString(36).slice(2, 6).toUpperCase()
-  );
+/**
+ * Chiede al server un nuovo reference (S-10). Prima lo coniava il client con
+ * Date.now() + Math.random(): prevedibile, collidibile, e usato come cartella
+ * di storage. Ora lo emette /api/configuratore/reference e il client si limita
+ * a conservarlo.
+ */
+async function fetchReference(signal?: AbortSignal): Promise<string> {
+  const res = await fetch("/api/configuratore/reference", { signal, cache: "no-store" });
+  if (!res.ok) throw new Error("reference");
+  const json = (await res.json()) as { reference?: string };
+  if (!isValidReference(json.reference)) throw new Error("reference");
+  return json.reference;
 }
 
 type ConfiguratoreContextValue = {
@@ -97,6 +102,20 @@ export function ConfiguratoreProvider({ children }: { children: ReactNode }) {
   // Vercel (not a sandboxed artifact), so localStorage is a valid place to keep
   // a long form alive across reloads (spec §3). Guarded for SSR.
   useEffect(() => {
+    const ac = new AbortController();
+
+    // Il reference arriva dal server: se manca o non ha il formato atteso, se
+    // ne chiede uno nuovo invece di inventarlo lato client.
+    const assegnaNuovoReference = () => {
+      fetchReference(ac.signal)
+        .then((reference) => dispatch({ type: "SET_REFERENCE", value: reference }))
+        .catch((e) => {
+          if ((e as Error)?.name !== "AbortError") {
+            console.warn("Reference non ottenuto dal server:", e);
+          }
+        });
+    };
+
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       const envelope = raw ? (JSON.parse(raw) as Partial<Persisted>) : null;
@@ -109,19 +128,25 @@ export function ConfiguratoreProvider({ children }: { children: ReactNode }) {
       // contenere dati personali): si butta e si riparte pulito.
       if (scaduto || !envelope?.state) {
         if (raw) window.localStorage.removeItem(STORAGE_KEY);
-        dispatch({ type: "SET_REFERENCE", value: newReference() });
+        assegnaNuovoReference();
         return;
       }
 
       const parsed = envelope.state;
-      dispatch({
-        type: "HYDRATE",
-        state: parsed.reference ? parsed : { ...parsed, reference: newReference() },
-      });
+      if (isValidReference(parsed.reference)) {
+        dispatch({ type: "HYDRATE", state: parsed });
+      } else {
+        // Bozza valida ma con un reference del vecchio formato client-side:
+        // si tiene il contenuto e si rimpiazza il riferimento.
+        dispatch({ type: "HYDRATE", state: { ...parsed, reference: "" } });
+        assegnaNuovoReference();
+      }
     } catch {
       // Corrupt/blocked storage: fall back to a fresh wizard with a new ref.
-      dispatch({ type: "SET_REFERENCE", value: newReference() });
+      assegnaNuovoReference();
     }
+
+    return () => ac.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -152,7 +177,10 @@ export function ConfiguratoreProvider({ children }: { children: ReactNode }) {
       } catch {
         // ignore
       }
-      dispatch({ type: "RESET", reference: newReference() });
+      dispatch({ type: "RESET", reference: "" });
+      fetchReference()
+        .then((reference) => dispatch({ type: "SET_REFERENCE", value: reference }))
+        .catch((e) => console.warn("Reference non ottenuto dal server:", e));
     },
   };
 

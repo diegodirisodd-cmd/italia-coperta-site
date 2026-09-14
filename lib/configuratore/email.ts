@@ -97,6 +97,9 @@ export async function sendConfiguratoreEmails(args: {
   clienteNome: string;
   allegatiUrls: { label: string; url: string }[];
   pdf: Buffer;
+  /** false quando il limite per destinatario è stato superato (S-02): la
+   *  notifica interna parte lo stesso, la conferma al cliente no. */
+  inviaConferma?: boolean;
 }): Promise<{ notified: boolean; confirmed: boolean; error?: string }> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -157,8 +160,9 @@ export async function sendConfiguratoreEmails(args: {
     console.error("Errore email notifica configuratore:", e);
   }
 
-  // 2) Confirmation to the customer (if they left an email).
-  if (args.clienteEmail) {
+  // 2) Confirmation to the customer (if they left an email, and only if the
+  //    per-recipient limit hasn't been hit — anti email-bombing, S-02).
+  if (args.clienteEmail && args.inviaConferma !== false) {
     try {
       const html = wrapHtml(
         "Richiesta ricevuta",

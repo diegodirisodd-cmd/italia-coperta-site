@@ -14,6 +14,7 @@ import {
   labelOf,
 } from "@/lib/configuratore";
 import { REGIONI, getCentroForRegione } from "@/lib/regioni";
+import { Turnstile } from "@/components/Turnstile";
 
 const STEPS = [
   { key: "veicolo", label: "Veicolo" },
@@ -39,6 +40,7 @@ export function Configuratore() {
   const [regione, setRegione] = useState("");
   const [dati, setDati] = useState<Dati>({ nome: "", azienda: "", telefono: "", email: "", note: "" });
   const [submitting, setSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [error, setError] = useState("");
   const [reference, setReference] = useState<string | null>(null);
 
@@ -67,6 +69,7 @@ export function Configuratore() {
           selezione: { veicolo, telo, misura, materiale, colore, extra },
           regione,
           dati,
+          turnstileToken,
         }),
       });
       if (!res.ok) throw new Error("Invio non riuscito");
@@ -259,6 +262,8 @@ export function Configuratore() {
                 ["Contatto", dati.nome || "—"],
               ]}
             />
+            <Turnstile onToken={setTurnstileToken} action="preventivo" />
+
             {error && <p className="mt-4 text-sm text-red-300">{error}</p>}
             <button
               onClick={submit}
