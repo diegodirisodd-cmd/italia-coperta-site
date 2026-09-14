@@ -1,6 +1,7 @@
 // Server-only: renders a branded PDF summary of a configuratore request.
 // Imported exclusively from the submit route handler (Node runtime).
 
+import "server-only";
 import { Document, Page, Text, View, StyleSheet, renderToBuffer } from "@react-pdf/renderer";
 import type { RiepilogoSection } from "./riepilogo";
 

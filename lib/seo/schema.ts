@@ -90,5 +90,8 @@ export function faqPageSchema(items: { question: string; answer: string }[]) {
 }
 
 export function jsonLdScriptProps(schema: unknown) {
-  return { __html: JSON.stringify(schema) };
+  // JSON.stringify non neutralizza "<": un "</script>" nei dati chiuderebbe il
+  // tag. Oggi lo schema è tutto statico, ma l'escape va messo prima che questi
+  // dati diventino dinamici (S-13).
+  return { __html: JSON.stringify(schema).replace(/</g, "\\u003c") };
 }

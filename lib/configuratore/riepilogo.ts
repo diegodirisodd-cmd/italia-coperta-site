@@ -49,7 +49,11 @@ export function collectAllegati(state: ConfiguratoreState): { label: string; pat
     libretto: "Libretto / misure tecniche",
   };
   for (const [slot, path] of Object.entries(state.datiCliente.allegati)) {
-    if (path) out.push({ label: slotLabels[slot] ?? slot, path });
+    // `allegati` è un Record<string,string> che arriva dal client: una chiave
+    // sconosciuta non è un nostro slot, quindi si scarta invece di usarla come
+    // etichetta (S-04 — prima finiva non-escaped nell'email interna).
+    const label = Object.prototype.hasOwnProperty.call(slotLabels, slot) ? slotLabels[slot] : null;
+    if (path && label) out.push({ label, path });
   }
   return out;
 }
@@ -107,8 +111,16 @@ export function buildRiepilogo(state: ConfiguratoreState): RiepilogoSection[] {
     const bag = state.misure.modalita === "richiedo-rilievo" ? state.misure.rilievo : state.misure.campi;
     for (const [key, val] of Object.entries(bag)) {
       if (key === "foto-misure") continue; // shown under Allegati
-      const label = key === "note" ? "Note" : CAMPO_LABELS[key] ?? key;
-      pushIf(rows, label, val);
+      // Stesso motivo di collectAllegati: `campi` / `rilievo` sono
+      // Record<string,string> controllati dal client. Le chiavi che non
+      // corrispondono a un campo noto vengono scartate, non rinominate (S-04).
+      const label =
+        key === "note"
+          ? "Note"
+          : Object.prototype.hasOwnProperty.call(CAMPO_LABELS, key)
+            ? CAMPO_LABELS[key]
+            : null;
+      if (label) pushIf(rows, label, val);
     }
     if (rows.length) sections.push({ title: "Misure", rows });
   }
