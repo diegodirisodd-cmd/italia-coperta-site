@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { SectionKicker } from "@/components/SectionKicker";
 import { LAVORI } from "@/lib/lavori";
+import { LavoroMedia } from "@/components/LavoroMedia";
 import { breadcrumbSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 import { waLink } from "@/lib/site";
 
@@ -41,16 +41,18 @@ export default function LavoriPage() {
               key={l.slug}
               className="group mb-5 break-inside-avoid overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]"
             >
-              <div className="overflow-hidden">
-                <Image
-                  src={l.image}
-                  alt={l.alt}
-                  width={l.width}
-                  height={l.height}
+              <div className="relative overflow-hidden">
+                <LavoroMedia
+                  lavoro={l}
                   priority={i < 2}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  className="transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
+                {l.video && (
+                  <span className="absolute left-3 top-3 rounded-full bg-black/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur">
+                    Video
+                  </span>
+                )}
               </div>
               <figcaption className="p-5">
                 {l.cliente && (

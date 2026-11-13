@@ -1,11 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { SectionKicker } from "@/components/SectionKicker";
 import { LAVORI } from "@/lib/lavori";
+import { LavoroMedia } from "@/components/LavoroMedia";
 
-// Three portrait shots read best side by side; the landscape one lives on /lavori.
-const PREVIEW = ["eca-teli-laterali", "telo-nero-lucido", "montaggio-telo"]
+// Three portrait items read best side by side; the landscape one lives on /lavori.
+const PREVIEW = ["telo-tetto-krone", "eca-teli-laterali", "sostituzione-teli"]
   .map((slug) => LAVORI.find((l) => l.slug === slug))
   .filter((l): l is NonNullable<typeof l> => Boolean(l));
 
@@ -35,12 +35,11 @@ export function LavoriPreview() {
               href="/lavori"
               className="group relative block aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 no-underline"
             >
-              <Image
-                src={l.image}
-                alt={l.alt}
+              <LavoroMedia
+                lavoro={l}
                 fill
                 sizes="(max-width: 640px) 100vw, 33vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                className="transition-transform duration-700 ease-out group-hover:scale-[1.05]"
               />
               <div
                 aria-hidden

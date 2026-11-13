@@ -13,9 +13,21 @@ export type Lavoro = {
   alt: string;
   width: number;
   height: number;
+  /** Video breve (mp4 H.264, senza audio, muto in loop). `image` fa da copertina. */
+  video?: string;
 };
 
 export const LAVORI: Lavoro[] = [
+  {
+    slug: "telo-tetto-krone",
+    titolo: "Telo tetto nuovo",
+    descrizione: "Il nuovo telo tetto bianco steso su tutta la lunghezza del semirimorchio, con l'adesivo Di Riso Teloni sull'angolo.",
+    image: "/images/lavori/telo-tetto-krone-poster.jpg",
+    video: "/videos/telo-tetto-krone.mp4",
+    alt: "Video: telo tetto bianco nuovo montato su un semirimorchio blu, con adesivo Di Riso Teloni",
+    width: 720,
+    height: 1280,
+  },
   {
     slug: "sostituzione-teli",
     titolo: "Sostituzione teli laterali",
