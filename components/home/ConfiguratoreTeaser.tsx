@@ -84,7 +84,7 @@ export function ConfiguratoreTeaser() {
             >
               Apri il configuratore →
             </MagneticCTA>
-            <span className="text-sm text-white/70">Rilievo misure gratuito · nessun impegno</span>
+            <span className="text-sm text-white/70">Rilievo e montaggio da te, in tutta Italia · nessun impegno</span>
           </div>
         </div>
       </div>

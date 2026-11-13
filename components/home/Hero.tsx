@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { MapPin } from "lucide-react";
 import { getImageProps } from "next/image";
 import { m, useReducedMotion } from "framer-motion";
 import { WordReveal } from "@/components/motion/WordReveal";
@@ -189,11 +190,12 @@ function FotoVariant() {
         <m.div {...itemProps} className="order-3 mt-6 flex flex-wrap gap-2 md:order-none md:mt-8 md:gap-3.5">
           <MagneticCTA href="/preventivo" className={ctaPrimary}>Richiedi preventivo</MagneticCTA>
           <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
-          <p
-            className="mt-1 w-full text-sm font-medium text-white/90 md:mt-2"
-            style={{ textShadow: textShadowSoft }}
-          >
-            <span className="text-primary-light">✓</span> Rilievo misure gratuito in tutta Italia
+          <p className="mt-2 inline-flex w-fit items-center gap-2.5 rounded-full border border-white/20 bg-black/35 px-4 py-2 text-[13.5px] font-medium leading-snug text-white backdrop-blur-md md:mt-3 md:text-sm">
+            <MapPin size={16} className="flex-none text-primary-light" aria-hidden />
+            <span>
+              <strong className="font-semibold">Veniamo noi da te, in tutta Italia:</strong> rilievo misure gratuito e
+              montaggio sul tuo mezzo.
+            </span>
           </p>
         </m.div>
       </m.div>

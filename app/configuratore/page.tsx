@@ -39,7 +39,9 @@ export default function ConfiguratorePage() {
           </div>
           <p className="max-w-sm text-[15px] leading-relaxed text-avorio/70">
             Rispondi a poche domande sul tuo mezzo e sull&apos;intervento: ti ricontattiamo
-            noi con il preventivo su misura, senza impegno.
+            noi con il preventivo su misura, senza impegno.{" "}
+            <strong className="font-semibold text-avorio">Veniamo noi da te, in tutta Italia:</strong> rilievo misure
+            gratuito e montaggio sul tuo mezzo.
           </p>
         </div>
 
