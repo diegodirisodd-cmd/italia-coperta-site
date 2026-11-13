@@ -9,14 +9,14 @@ body {
 }
 
 body {
-  background: #1A1980;
+  background: #0B0D18;
   color: #f3e9cc;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
   background: #E61C1C;
-  color: #000000;
+  color: #ffffff;
 }
 
 /* Brand red text on the blue (navy-deep) surfaces only reached 3:1 contrast.

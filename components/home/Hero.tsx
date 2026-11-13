@@ -8,9 +8,9 @@ import { MagneticCTA } from "@/components/motion/MagneticCTA";
 import { EASE_OUT, EASE_TARP } from "@/components/motion/variants";
 
 const ctaPrimary =
-  "rounded-md border-2 border-white/85 bg-primary px-6 py-3 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline shadow-[0_8px_28px_rgba(0,0,0,0.45)] md:px-7 md:py-4";
+  "rounded-full border-2 border-transparent bg-primary px-6 py-3 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline shadow-[0_8px_28px_rgba(0,0,0,0.45)] md:px-7 md:py-4";
 const ctaSecondary =
-  "rounded-md border-[1.5px] border-white/60 px-6 py-3 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline [text-shadow:0_1px_6px_rgba(0,0,0,0.7)] md:px-7 md:py-4";
+  "rounded-full border-[1.5px] border-white/60 bg-white/[0.06] px-6 py-3 backdrop-blur-sm font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline [text-shadow:0_1px_6px_rgba(0,0,0,0.7)] md:px-7 md:py-4";
 
 const textShadowSoft = "0 2px 10px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.7)";
 
@@ -43,7 +43,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[520px] flex-col justify-center overflow-hidden border-b border-primary/[0.18] md:min-h-[660px]"
+      className="relative flex min-h-[560px] flex-col justify-center overflow-hidden md:min-h-[min(88vh,820px)]"
     >
       {/* real hero photo — branded red tarp with the DiRiso Teloni sticker (above the fold).
          Portrait crop below md, landscape crop from md up — true art direction via <picture>,
@@ -66,6 +66,14 @@ export function Hero() {
           background:
             "linear-gradient(to bottom, rgba(0,0,0,0.44) 0%, rgba(0,0,0,0.22) 32%, rgba(0,0,0,0.28) 68%, rgba(0,0,0,0.48) 100%)",
         }}
+      />
+
+      {/* bottom fade into the page background, so the hero melts into the stats
+         glass card instead of ending on a hard edge */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 md:h-56"
+        style={{ background: "linear-gradient(to bottom, rgba(11,13,24,0) 0%, #0B0D18 100%)" }}
       />
 
       {/* "telone che si scosta": a tarp panel slides off on load to reveal the truck */}
@@ -125,7 +133,7 @@ function FotoVariant() {
   const itemProps = reduced ? {} : { variants: fotoItem };
 
   return (
-    <div className="relative z-[6] mx-auto w-full max-w-6xl px-6 pb-8 pt-7 md:px-10 md:pb-14 md:pt-10">
+    <div className="relative z-[6] mx-auto w-full max-w-6xl px-6 pb-24 pt-10 md:px-10 md:pb-36 md:pt-14">
       <m.div className="relative flex max-w-[660px] flex-col" {...groupProps}>
         {/* local scrim, scoped to the text block itself — tracks it at every breakpoint.
            Breakpoint matches the <picture> art direction (md): below md the portrait crop

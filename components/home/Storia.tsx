@@ -12,10 +12,10 @@ const STATS = [
 
 export function Storia() {
   return (
-    <section id="storia" className="border-b border-primary/[0.14] bg-navy px-6 py-24 md:px-10">
+    <section id="storia" className="bg-ink px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto grid max-w-6xl items-center gap-14 md:grid-cols-[0.9fr_1.1fr]">
         <div className="relative">
-          <TarpReveal trigger="scrub" className="relative h-[380px] w-full rounded-md md:h-[460px]">
+          <TarpReveal trigger="scrub" className="relative h-[380px] w-full overflow-hidden rounded-2xl md:h-[480px]">
             <Image
               src="/images/fondatore-storica.jpg"
               alt="Il fondatore di Di Riso Teloni negli anni '50, agli inizi dell'attività"
@@ -24,7 +24,7 @@ export function Storia() {
               className="object-cover"
             />
           </TarpReveal>
-          <div className="absolute bottom-0 left-0 bg-primary px-5 py-3.5 font-display font-bold text-navy">
+          <div className="absolute bottom-4 left-4 rounded-xl bg-primary px-5 py-3.5 font-display font-bold text-white shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
             <span className="block text-[34px] leading-none">1950</span>
             <span className="mt-0.5 block text-[11px] font-semibold tracking-[0.16em]">ANNO DI FONDAZIONE</span>
           </div>
@@ -44,10 +44,10 @@ export function Storia() {
             Sede produttiva ad Angri (SA), copertura in Lombardia e un servizio attivo in tutta Italia, accanto
             a chi lavora ogni giorno con il proprio mezzo.
           </p>
-          <div className="mt-9 grid grid-cols-3 gap-px border border-primary/20 bg-primary/20">
+          <div className="mt-9 grid grid-cols-3 gap-3">
             {STATS.map((stat) => (
-              <div key={stat.label} className="bg-navy px-5 py-6">
-                <div className="font-display text-4xl font-bold leading-none text-primary" aria-hidden="true">
+              <div key={stat.label} className="rounded-xl border border-white/10 bg-white/[0.04] px-5 py-6">
+                <div className="font-display text-4xl font-semibold leading-none text-white" aria-hidden="true">
                   <CountUp value={stat.value} />
                 </div>
                 <div className="mt-1.5 text-xs uppercase tracking-[0.1em] text-avorio/65" aria-hidden="true">

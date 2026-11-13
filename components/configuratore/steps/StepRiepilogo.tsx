@@ -97,7 +97,7 @@ Vorrei procedere con il preventivo.`;
             type="button"
             onClick={() => submit(false)}
             disabled={submitting}
-            className="flex-1 rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy transition-colors hover:bg-primary-light disabled:cursor-not-allowed disabled:opacity-60"
+            className="flex-1 rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-60"
           >
             {submitting ? "Invio in corso…" : "Invia richiesta"}
           </button>

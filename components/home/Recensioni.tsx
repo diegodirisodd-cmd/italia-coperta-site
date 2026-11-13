@@ -7,7 +7,7 @@ import { reviews, googleReviewUrl } from "@/data/reviews";
 /** Home "Dicono di noi" section: carousel + CTAs. */
 export function Recensioni() {
   return (
-    <section id="recensioni" className="border-b border-primary/[0.14] bg-navy px-6 py-24 md:px-10">
+    <section id="recensioni" className="bg-ink-soft px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 max-w-2xl">
           <SectionKicker label="La voce dei clienti" />
@@ -26,7 +26,7 @@ export function Recensioni() {
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/recensioni"
-            className="rounded-md bg-primary px-6 py-3.5 font-display text-[14px] font-semibold uppercase tracking-[0.05em] text-navy no-underline transition-colors hover:bg-primary-light"
+            className="rounded-full bg-primary px-6 py-3.5 font-display text-[14px] font-semibold uppercase tracking-[0.05em] text-white no-underline transition-colors hover:bg-primary-dark"
           >
             Leggi tutte le recensioni
           </Link>
@@ -34,7 +34,7 @@ export function Recensioni() {
             href={googleReviewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md border-[1.5px] border-avorio/40 px-6 py-3.5 font-display text-[14px] font-semibold uppercase tracking-[0.05em] text-avorio no-underline transition-colors hover:border-primary/70"
+            className="rounded-full border-[1.5px] border-avorio/40 px-6 py-3.5 font-display text-[14px] font-semibold uppercase tracking-[0.05em] text-avorio no-underline transition-colors hover:border-primary/70"
           >
             Lascia una recensione su Google
           </a>

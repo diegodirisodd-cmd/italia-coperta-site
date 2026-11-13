@@ -49,7 +49,7 @@ export function CandidaturaForm() {
   if (reference) {
     return (
       <div className="rounded-xl border border-primary/25 bg-navy p-8 text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-navy">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-white">
           ✓
         </div>
         <h3 className="mt-5 font-display text-2xl font-bold uppercase text-avorio">Candidatura inviata</h3>
@@ -118,7 +118,7 @@ export function CandidaturaForm() {
       <button
         type="submit"
         disabled={!valid || submitting}
-        className="mt-6 w-full rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
+        className="mt-6 w-full rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
       >
         {submitting ? "Invio in corso…" : "Invia candidatura"}
       </button>

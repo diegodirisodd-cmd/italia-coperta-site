@@ -85,7 +85,7 @@ export function PreferenzeCookie() {
           type="button"
           onClick={save}
           disabled={!ready}
-          className="rounded-md bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy transition-colors hover:bg-primary-light disabled:opacity-60"
+          className="rounded-md bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white transition-colors hover:bg-primary-dark disabled:opacity-60"
         >
           Salva preferenze
         </button>

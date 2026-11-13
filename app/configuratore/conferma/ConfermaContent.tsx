@@ -27,7 +27,7 @@ export function ConfermaContent() {
 
   return (
     <div className="mx-auto max-w-2xl rounded-lg border border-primary/25 bg-navy p-8 text-center md:p-12">
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-navy">
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-white">
         ✓
       </div>
       <h1 className="mt-6 font-display text-3xl font-bold uppercase text-avorio md:text-4xl">
@@ -48,7 +48,7 @@ export function ConfermaContent() {
           href={waLink(waMessage)}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy no-underline transition-colors hover:bg-primary-light"
+          className="rounded-md bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white no-underline transition-colors hover:bg-primary-dark"
         >
           Invia anche su WhatsApp
         </a>

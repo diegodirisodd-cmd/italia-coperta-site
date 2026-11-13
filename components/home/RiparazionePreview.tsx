@@ -9,7 +9,7 @@ const STEPS = [
 
 export function RiparazionePreview() {
   return (
-    <section id="riparazione" className="border-b border-primary/[0.14] bg-navy px-6 py-24 md:px-10">
+    <section id="riparazione" className="bg-ink-soft px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto grid max-w-6xl items-start gap-14 md:grid-cols-[0.95fr_1.05fr]">
         <div>
           <SectionKicker label="Servizio · Intervento in 48h" />
@@ -32,13 +32,13 @@ export function RiparazionePreview() {
           </div>
           <Link
             href="/riparazione-rapida"
-            className="mt-8 inline-block rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+            className="mt-8 inline-block rounded-full bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
           >
             Prenota un intervento →
           </Link>
         </div>
 
-        <div className="rounded-lg border border-primary/[0.28] bg-navy-deep p-9">
+        <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-navy-deep/60 to-ink p-9 shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
           <h3 className="font-display text-xl font-semibold uppercase tracking-[0.03em] text-avorio">
             Prenota in pochi passi
           </h3>
@@ -51,7 +51,7 @@ export function RiparazionePreview() {
               (label) => (
                 <span
                   key={label}
-                  className="rounded-full border-[1.5px] border-avorio/20 bg-navy px-4 py-2 text-[13px] text-avorio/75"
+                  className="rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-[13px] text-avorio/85"
                 >
                   {label}
                 </span>

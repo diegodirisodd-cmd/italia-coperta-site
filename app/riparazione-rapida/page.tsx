@@ -55,7 +55,7 @@ export default function RiparazioneRapidaPage() {
               <div className="mt-8 flex flex-wrap gap-3.5">
                 <Link
                   href="#prenota"
-                  className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+                  className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
                 >
                   Prenota online
                 </Link>

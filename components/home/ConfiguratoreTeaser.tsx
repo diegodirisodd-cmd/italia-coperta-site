@@ -9,54 +9,82 @@ const STEPS = [
   { n: "03", t: "La richiesta", d: "Zona · Dati · Riepilogo" },
 ];
 
+/** Full-bleed photo band with a glass panel: the configurator as the centrepiece. */
 export function ConfiguratoreTeaser() {
   return (
-    <section id="configuratore" className="border-b border-primary/[0.14] bg-navy-deep px-6 py-24 md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-5">
-          <div>
-            <SectionKicker label="Costruisci la tua richiesta" />
-            <h2 className="font-display text-4xl font-bold uppercase leading-none text-avorio md:text-5xl">
-              Configura il tuo telone
-            </h2>
-          </div>
-          <p className="max-w-sm text-[15px] leading-relaxed text-avorio/70">
-            Nove passaggi guidati, anche con le foto del tuo mezzo. Ricevi un preventivo su misura: ti richiamiamo noi, senza impegno.
-          </p>
-        </div>
+    <section id="configuratore" className="relative overflow-hidden px-6 py-24 md:px-10 md:py-40">
+      <Image
+        src="/images/hero-camion.jpg"
+        alt=""
+        fill
+        sizes="100vw"
+        className="hidden object-cover object-[70%_center] md:block"
+      />
+      {/* desktop: text column on the left, truck visible on the right */}
+      <div
+        aria-hidden
+        className="absolute inset-0 hidden md:block"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(11,13,24,0.96) 0%, rgba(11,13,24,0.82) 38%, rgba(26,25,128,0.35) 75%, rgba(11,13,24,0.25) 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-24"
+        style={{ background: "linear-gradient(to bottom, #0B0D18, rgba(11,13,24,0))" }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-24"
+        style={{ background: "linear-gradient(to top, #0B0D18, rgba(11,13,24,0))" }}
+      />
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-md border border-primary/20 bg-primary/[0.16] md:grid-cols-[1.25fr_0.9fr]">
-          <div className="bg-navy p-9">
-            <ol className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {STEPS.map((step) => (
-                <li key={step.n} className="rounded-md border border-avorio/10 bg-navy-deep px-4 py-5">
-                  <span className="block font-display text-lg font-bold text-primary">{step.n}</span>
-                  <span className="mt-1 block font-display text-base font-semibold uppercase tracking-[0.03em] text-avorio">
-                    {step.t}
-                  </span>
-                  <span className="mt-1.5 block text-[13px] leading-snug text-avorio/65">{step.d}</span>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-5 text-sm text-avorio/70">
-              <span className="font-semibold text-avorio">9 passaggi</span> · rilievo misure gratuito in tutta Italia · nessun impegno
-            </p>
+      <div className="relative mx-auto max-w-6xl">
+        {/* mobile: the photo as its own rounded card above the text — as a
+           background on a tall narrow section it only showed a sliver of trailer */}
+        <div className="relative mb-9 aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 md:hidden">
+          <Image
+            src="/images/hero-camion.jpg"
+            alt="Bilico con telone Di Riso Teloni su strada al tramonto"
+            fill
+            sizes="100vw"
+            className="object-cover object-[65%_center]"
+          />
+        </div>
+        <div className="max-w-xl">
+          <SectionKicker label="Costruisci la tua richiesta" />
+          <h2 className="font-display text-4xl font-bold uppercase leading-none text-white md:text-6xl">
+            Configura il tuo telone
+          </h2>
+          <p className="mt-5 text-[17px] leading-relaxed text-white/80">
+            Nove passaggi guidati, anche con le foto del tuo mezzo. Ricevi un preventivo su misura: ti
+            richiamiamo noi, senza impegno.
+          </p>
+
+          <ol className="mt-9 grid gap-3 sm:grid-cols-3">
+            {STEPS.map((step) => (
+              <li
+                key={step.n}
+                className="rounded-xl border border-white/10 bg-white/[0.07] px-4 py-4 backdrop-blur-md"
+              >
+                <span className="block font-display text-sm font-semibold text-primary-light">{step.n}</span>
+                <span className="mt-1 block font-display text-base font-semibold uppercase tracking-[0.03em] text-white">
+                  {step.t}
+                </span>
+                <span className="mt-1 block text-[12.5px] leading-snug text-white/65">{step.d}</span>
+              </li>
+            ))}
+          </ol>
+
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
             <MagneticCTA
               href="/configuratore"
-              className="mt-6 inline-block rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+              className="inline-block rounded-full bg-primary px-8 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline shadow-[0_10px_30px_rgba(230,28,28,0.35)]"
             >
               Apri il configuratore →
             </MagneticCTA>
-          </div>
-
-          <div className="relative aspect-[4/3] overflow-hidden bg-navy-black md:aspect-auto">
-            <Image
-              src="/images/configuratore/anteprima-configuratore.jpg"
-              alt="Anteprima del configuratore telone Italia Coperta"
-              fill
-              sizes="(max-width: 768px) 100vw, 40vw"
-              className="object-cover"
-            />
+            <span className="text-sm text-white/70">Rilievo misure gratuito · nessun impegno</span>
           </div>
         </div>
       </div>

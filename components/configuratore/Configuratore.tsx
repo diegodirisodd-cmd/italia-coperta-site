@@ -188,7 +188,7 @@ export function Configuratore() {
                     }`}
                   >
                     <span
-                      className={`flex h-5 w-5 flex-none items-center justify-center rounded border-[1.5px] text-xs font-bold text-navy ${
+                      className={`flex h-5 w-5 flex-none items-center justify-center rounded border-[1.5px] text-xs font-bold text-white ${
                         sel ? "border-primary bg-primary" : "border-avorio/35 bg-transparent"
                       }`}
                     >
@@ -268,7 +268,7 @@ export function Configuratore() {
             <button
               onClick={submit}
               disabled={submitting}
-              className="mt-6 w-full rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-6 w-full rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:opacity-60"
             >
               {submitting ? "Invio in corso…" : "Invia richiesta di preventivo"}
             </button>
@@ -290,7 +290,7 @@ export function Configuratore() {
           <button
             onClick={() => canProceed && setStep((s) => Math.min(STEPS.length - 1, s + 1))}
             disabled={step === STEPS.length - 1 || !canProceed}
-            className="rounded-md bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
+            className="rounded-md bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
           >
             Avanti →
           </button>
@@ -378,7 +378,7 @@ function OptionGrid({
               )}
             </span>
             {sel && withDesc && (
-              <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-primary text-[13px] font-bold text-navy">
+              <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-primary text-[13px] font-bold text-white">
                 ✓
               </span>
             )}
@@ -453,7 +453,7 @@ function Confirmation({
 }) {
   return (
     <div className="mx-auto max-w-2xl rounded-lg border border-primary/25 bg-navy p-8 text-center md:p-12">
-      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-navy">
+      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-3xl font-bold text-white">
         ✓
       </div>
       <h3 className="mt-6 font-display text-3xl font-bold uppercase text-avorio">Richiesta inviata</h3>
@@ -487,7 +487,7 @@ function Confirmation({
         </button>
         <Link
           href="/"
-          className="rounded-md bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+          className="rounded-md bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
         >
           Torna alla home
         </Link>

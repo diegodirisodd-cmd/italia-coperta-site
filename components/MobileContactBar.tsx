@@ -40,7 +40,7 @@ export function MobileContactBar() {
           target="_blank"
           rel="noopener noreferrer"
           tabIndex={visible ? 0 : -1}
-          className="flex min-h-[48px] items-center justify-center gap-2 rounded-md bg-primary font-display text-[14px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+          className="flex min-h-[48px] items-center justify-center gap-2 rounded-md bg-primary font-display text-[14px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
         >
           <MessageCircle size={18} strokeWidth={2.25} /> WhatsApp
         </a>

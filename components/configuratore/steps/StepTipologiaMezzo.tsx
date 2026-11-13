@@ -105,8 +105,8 @@ function MezzoCardButton({
           className={[
             "mt-4 flex h-11 w-11 flex-none items-center justify-center self-center rounded-full border-[1.5px] transition-colors",
             selected
-              ? "border-primary bg-primary text-navy"
-              : "border-primary/70 text-primary group-hover:bg-primary group-hover:text-navy",
+              ? "border-primary bg-primary text-white"
+              : "border-primary/70 text-primary group-hover:bg-primary group-hover:text-white",
           ].join(" ")}
           aria-hidden="true"
         >

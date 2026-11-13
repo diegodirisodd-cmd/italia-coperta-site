@@ -143,7 +143,7 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
           </div>
           <Link
             href={settore.cta.href}
-            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
           >
             {settore.cta.label}
           </Link>

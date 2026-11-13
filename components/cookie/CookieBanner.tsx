@@ -64,7 +64,7 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={() => choose("accepted")}
-            className={`${btn} bg-primary text-navy hover:bg-primary-light`}
+            className={`${btn} bg-primary text-white hover:bg-primary-dark`}
           >
             Accetta
           </button>

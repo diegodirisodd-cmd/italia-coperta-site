@@ -89,7 +89,7 @@ export function Header() {
 
   return (
     <header
-      className="sticky top-0 z-[70] border-b border-primary/[0.24] bg-navy-deep/[0.86] backdrop-blur-md"
+      className="sticky top-0 z-[70] border-b border-white/10 bg-ink/75 backdrop-blur-xl"
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="flex items-center justify-between gap-4 px-5 py-3 md:px-10 md:py-3.5">
@@ -123,7 +123,7 @@ export function Header() {
           ))}
           <Link
             href="/preventivo"
-            className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded bg-primary px-5 py-[11px] font-display text-[13px] font-semibold uppercase tracking-[0.06em] text-navy no-underline"
+            className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full bg-primary px-5 py-[11px] font-display text-[13px] font-semibold uppercase tracking-[0.06em] text-white no-underline"
           >
             Richiedi preventivo
           </Link>
@@ -133,7 +133,7 @@ export function Header() {
         <div className="flex items-center gap-2 xl:hidden">
           <Link
             href="/preventivo"
-            className="hidden min-h-[44px] items-center whitespace-nowrap rounded bg-primary px-4 font-display text-[13px] font-semibold uppercase tracking-[0.06em] text-navy no-underline min-[350px]:inline-flex"
+            className="hidden min-h-[44px] items-center whitespace-nowrap rounded-full bg-primary px-4 font-display text-[13px] font-semibold uppercase tracking-[0.06em] text-white no-underline min-[350px]:inline-flex"
           >
             Preventivo
           </Link>
@@ -176,7 +176,7 @@ export function Header() {
           <Link
             href="/preventivo"
             onClick={() => setOpen(false)}
-            className="mt-8 flex min-h-[52px] items-center justify-center rounded-md bg-primary font-display text-base font-semibold uppercase tracking-[0.06em] text-navy no-underline"
+            className="mt-8 flex min-h-[52px] items-center justify-center rounded-md bg-primary font-display text-base font-semibold uppercase tracking-[0.06em] text-white no-underline"
           >
             Richiedi preventivo
           </Link>

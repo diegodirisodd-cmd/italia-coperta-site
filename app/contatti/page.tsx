@@ -52,7 +52,7 @@ export default function ContattiPage() {
               href={waLink("Ciao Di Riso Teloni, avrei una richiesta.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+              className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
             >
               Scrivici su WhatsApp
             </a>

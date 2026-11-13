@@ -48,7 +48,7 @@ export default function RecensioniPage() {
         <div className="mt-16 flex flex-wrap gap-3 border-t border-avorio/10 pt-10">
           <Link
             href="/preventivo"
-            className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline transition-colors hover:bg-primary-light"
+            className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline transition-colors hover:bg-primary-dark"
           >
             Richiedi un preventivo
           </Link>

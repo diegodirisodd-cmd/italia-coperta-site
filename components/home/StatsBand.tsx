@@ -21,20 +21,22 @@ const STATS = [
   },
 ];
 
+/** Glass stats card that overlaps the bottom of the hero photo. */
 export function StatsBand() {
   return (
-    <section className="border-b border-primary/[0.14] bg-navy-black px-6 py-10 md:px-10">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="relative z-10 -mt-16 px-6 md:-mt-24 md:px-10">
+      <div className="mx-auto max-w-6xl rounded-2xl border border-white/10 bg-white/[0.06] px-6 py-7 shadow-[0_24px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl md:px-10 md:py-9">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-7 lg:grid-cols-4">
           {STATS.map((stat) => (
-            <div key={stat.label} className="text-center sm:text-left">
+            <div key={stat.label}>
               <div
-                className="font-display text-4xl font-bold leading-none text-primary md:text-5xl"
+                className="font-display text-4xl font-semibold leading-none text-white md:text-5xl"
                 aria-hidden="true"
               >
                 <CountUp value={stat.value} />
               </div>
-              <div className="mt-2 text-xs uppercase tracking-[0.1em] text-avorio/65" aria-hidden="true">
+              <div className="mt-2.5 flex items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-avorio/65" aria-hidden="true">
+                <span className="h-px w-4 flex-none bg-primary" />
                 {stat.label}
               </div>
               {/* Real value for screen readers / SEO — the animated number above
@@ -43,9 +45,7 @@ export function StatsBand() {
             </div>
           ))}
         </div>
-        <p className="mt-6 text-center text-[11px] text-avorio/55 sm:text-left">
-          Dati produttivi aggiornati al 31 dicembre 2025
-        </p>
+        <p className="mt-6 text-[11px] text-avorio/55">Dati produttivi aggiornati al 31 dicembre 2025</p>
       </div>
     </section>
   );

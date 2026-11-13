@@ -83,7 +83,7 @@ export function CentriExplorer({ footerHref }: { footerHref?: string }) {
                   href={waLink(`Ciao Di Riso Teloni, vorrei informazioni dalla sede di ${active.citta}.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-md bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+                  className="rounded-md bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
                 >
                   Scrivi su WhatsApp
                 </a>
@@ -153,7 +153,7 @@ function MapPin({ centro, active, onSelect }: { centro: Centro; active: boolean;
         />
       </span>
       {active && (
-        <span className="absolute bottom-[calc(100%+6px)] left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-primary px-2.5 py-1 font-display text-xs font-semibold uppercase tracking-[0.04em] text-navy">
+        <span className="absolute bottom-[calc(100%+6px)] left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-primary px-2.5 py-1 font-display text-xs font-semibold uppercase tracking-[0.04em] text-white">
           {centro.citta}
         </span>
       )}

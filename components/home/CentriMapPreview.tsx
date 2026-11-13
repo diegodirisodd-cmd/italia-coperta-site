@@ -3,7 +3,8 @@ import { CentriExplorer } from "@/components/centri/CentriExplorer";
 
 export function CentriMapPreview() {
   return (
-    <section id="centri" className="border-b border-primary/[0.14] bg-navy px-6 py-24 md:px-10">
+    <section id="centri" className="relative bg-ink px-6 py-24 md:px-10 md:py-32"
+      style={{ background: "radial-gradient(ellipse 60% 50% at 30% 55%, rgba(26,25,128,0.35) 0%, rgba(11,13,24,0) 70%), #0B0D18" }}>
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 text-center">
           <SectionKicker label="Presenti in tutta Italia" center />

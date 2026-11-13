@@ -126,7 +126,7 @@ export default function GuidaTeloniPage() {
           </div>
           <Link
             href="/configuratore"
-            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
           >
             Configura il tuo telone
           </Link>

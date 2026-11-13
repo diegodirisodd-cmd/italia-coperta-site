@@ -122,7 +122,7 @@ export default function TenditoreCricchettoPage() {
                 href={stripePaymentLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-7 inline-block rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-navy no-underline"
+                className="mt-7 inline-block rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
               >
                 Acquista ora
               </a>
