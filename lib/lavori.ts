@@ -17,6 +17,15 @@ export type Lavoro = {
 
 export const LAVORI: Lavoro[] = [
   {
+    slug: "sostituzione-teli",
+    titolo: "Sostituzione teli laterali",
+    descrizione: "Nuovi teli bianchi montati sul semirimorchio; a terra i vecchi teli appena smontati.",
+    image: "/images/lavori/sostituzione-teli.jpg",
+    alt: "Semirimorchio con nuovi teli laterali bianchi Di Riso Teloni e vecchi teli rossi smontati a terra",
+    width: 1200,
+    height: 1600,
+  },
+  {
     slug: "panormus-laterale",
     titolo: "Teli laterali con logo e contatti",
     cliente: "Servizi e Logistica Panormus SRL",
@@ -61,6 +70,15 @@ export const LAVORI: Lavoro[] = [
     descrizione: "Lo stesso lavoro visto da vicino: logo e testi stampati sul telo laterale.",
     image: "/images/lavori/panormus-consegna.jpg",
     alt: "Dettaglio del telo laterale blu Servizi e Logistica Panormus con logo e contatti",
+    width: 1200,
+    height: 1600,
+  },
+  {
+    slug: "sostituzione-dettaglio",
+    titolo: "Finiture del telo nuovo",
+    descrizione: "Dettaglio del telo bianco appena montato: cinghie con cricchetti, fascia rifrangente e adesivo Di Riso Teloni.",
+    image: "/images/lavori/sostituzione-dettaglio.jpg",
+    alt: "Dettaglio del telo laterale bianco con cinghie, cricchetti, fascia rifrangente e adesivo Di Riso Teloni",
     width: 1200,
     height: 1600,
   },

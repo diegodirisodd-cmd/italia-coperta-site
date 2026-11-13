@@ -28,7 +28,7 @@ export default function LavoriPage() {
             I nostri teloni, su strada
           </h1>
           <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-avorio/80">
-            Foto reali dei lavori fatti per i nostri clienti: teli laterali con la grafica dell&apos;azienda, finiture
+            Foto reali dei lavori fatti per i nostri clienti: sostituzione dei teli, teli laterali con la grafica dell&apos;azienda, finiture
             lucide, montaggio direttamente sul mezzo.
           </p>
         </div>
