@@ -12,31 +12,32 @@ const SETTORI = [
   "Grande distribuzione",
 ];
 
-/** Closing band over a real job photo (Climaconvenienza semi-trailer). */
+/** Closing band over a real photo: a Di Riso Teloni semi-trailer on the road. */
 export function CiHannoScelto() {
   return (
     <section className="relative overflow-hidden px-6 py-28 md:px-10 md:py-36">
       <Image
-        src="/images/settori/teloni-pubblicitari-climaconvenienza.jpg"
+        src="/images/home/bilico-diriso-strada.jpg"
         alt=""
         fill
         sizes="100vw"
-        className="object-cover opacity-80 grayscale-[35%]"
+        className="object-cover object-[70%_center]"
       />
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(180deg, rgba(11,13,24,0.95) 0%, rgba(26,25,128,0.86) 55%, rgba(11,13,24,0.97) 100%)",
+            "linear-gradient(90deg, rgba(11,13,24,0.96) 0%, rgba(11,13,24,0.86) 40%, rgba(11,13,24,0.3) 72%, rgba(11,13,24,0.15) 100%), linear-gradient(180deg, rgba(11,13,24,0.7) 0%, rgba(11,13,24,0) 25%, rgba(11,13,24,0) 75%, rgba(11,13,24,0.85) 100%)",
         }}
       />
-      <div className="relative mx-auto max-w-6xl text-center">
-        <SectionKicker label="Un partner per chi lavora ogni giorno su strada" center />
+      <div className="relative mx-auto max-w-6xl">
+        <div className="max-w-xl">
+        <SectionKicker label="Un partner per chi lavora su strada" />
         <h2 className="font-display text-4xl font-bold uppercase leading-none text-white md:text-5xl">
           Ci scelgono dal 1950
         </h2>
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
+        <div className="mt-9 flex flex-wrap gap-2.5">
           {SETTORI.map((settore) => (
             <span
               key={settore}
@@ -45,6 +46,7 @@ export function CiHannoScelto() {
               {settore}
             </span>
           ))}
+        </div>
         </div>
       </div>
     </section>

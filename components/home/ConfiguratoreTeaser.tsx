@@ -14,11 +14,11 @@ export function ConfiguratoreTeaser() {
   return (
     <section id="configuratore" className="relative overflow-hidden px-6 py-24 md:px-10 md:py-40">
       <Image
-        src="/images/hero-camion.jpg"
+        src="/images/home/bilico-diriso-lato.jpg"
         alt=""
         fill
         sizes="100vw"
-        className="hidden object-cover object-[70%_center] md:block"
+        className="hidden object-cover object-[75%_center] md:block"
       />
       {/* desktop: text column on the left, truck visible on the right */}
       <div
@@ -26,7 +26,7 @@ export function ConfiguratoreTeaser() {
         className="absolute inset-0 hidden md:block"
         style={{
           background:
-            "linear-gradient(90deg, rgba(11,13,24,0.96) 0%, rgba(11,13,24,0.82) 38%, rgba(26,25,128,0.35) 75%, rgba(11,13,24,0.25) 100%)",
+            "linear-gradient(90deg, rgba(11,13,24,0.97) 0%, rgba(11,13,24,0.88) 36%, rgba(11,13,24,0.35) 62%, rgba(11,13,24,0.05) 100%)",
         }}
       />
       <div
@@ -45,11 +45,11 @@ export function ConfiguratoreTeaser() {
            background on a tall narrow section it only showed a sliver of trailer */}
         <div className="relative mb-9 aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 md:hidden">
           <Image
-            src="/images/hero-camion.jpg"
-            alt="Bilico con telone Di Riso Teloni su strada al tramonto"
+            src="/images/home/bilico-diriso-lato.jpg"
+            alt="Bilico con telone blu Di Riso Teloni, logo e tricolore sul laterale"
             fill
             sizes="100vw"
-            className="object-cover object-[65%_center]"
+            className="object-cover object-[60%_center]"
           />
         </div>
         <div className="max-w-xl">

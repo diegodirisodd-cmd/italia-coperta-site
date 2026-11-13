@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
 
 const STEPS = [
@@ -10,7 +11,7 @@ const STEPS = [
 export function RiparazionePreview() {
   return (
     <section id="riparazione" className="bg-ink-soft px-6 py-24 md:px-10 md:py-32">
-      <div className="mx-auto grid max-w-6xl items-start gap-14 md:grid-cols-[0.95fr_1.05fr]">
+      <div className="mx-auto grid max-w-6xl items-start gap-14 md:grid-cols-[0.95fr_1.05fr] md:items-center">
         <div>
           <SectionKicker label="Servizio · Intervento in 48h" />
           <h2 className="font-display text-4xl font-bold uppercase leading-none text-avorio md:text-5xl">
@@ -38,25 +39,41 @@ export function RiparazionePreview() {
           </Link>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-navy-deep/60 to-ink p-9 shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
-          <h3 className="font-display text-xl font-semibold uppercase tracking-[0.03em] text-avorio">
-            Prenota in pochi passi
-          </h3>
-          <p className="mt-3 text-sm leading-relaxed text-avorio/65">
-            Il calendario completo con disponibilità per sede è nella pagina dedicata — scegli intervento, sede,
-            giorno e fascia oraria in tempo reale.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {["Strappo / foro", "Occhielli e cinghie", "Teli laterali", "Centinato", "Manutenzione"].map(
-              (label) => (
-                <span
-                  key={label}
-                  className="rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 text-[13px] text-avorio/85"
-                >
-                  {label}
-                </span>
-              ),
-            )}
+        <div className="relative min-h-[600px] overflow-hidden rounded-2xl border border-white/10 md:min-h-[560px]">
+          <Image
+            src="/images/home/controllo-telo.jpg"
+            alt="Controllo del telone laterale di un bilico Di Riso Teloni"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover object-[60%_35%]"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(7,8,15,0.92) 0%, rgba(7,8,15,0.55) 35%, rgba(7,8,15,0) 60%)",
+            }}
+          />
+          <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-ink/60 p-6 backdrop-blur-xl md:inset-x-6 md:bottom-6">
+            <h3 className="font-display text-xl font-semibold uppercase tracking-[0.03em] text-white">
+              Prenota in pochi passi
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-white/75">
+              Scegli intervento, sede, giorno e fascia oraria in tempo reale.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {["Strappo / foro", "Occhielli e cinghie", "Teli laterali", "Centinato", "Manutenzione"].map(
+                (label) => (
+                  <span
+                    key={label}
+                    className="rounded-full border border-white/15 bg-white/[0.08] px-3.5 py-1.5 text-[12.5px] text-white/85"
+                  >
+                    {label}
+                  </span>
+                ),
+              )}
+            </div>
           </div>
         </div>
       </div>
