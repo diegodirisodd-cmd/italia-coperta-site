@@ -13,7 +13,7 @@ export default function GuidaTeloniPage() {
   return (
     <main>
       {/* hero */}
-      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-3xl">
           <SectionKicker label="Guida ai teloni" />
           <h1 className="font-display text-4xl font-bold uppercase leading-[0.98] text-avorio md:text-5xl">
@@ -23,7 +23,7 @@ export default function GuidaTeloniPage() {
       </section>
 
       {/* body */}
-      <section className="bg-navy-deep px-6 py-20 md:px-10">
+      <section className="bg-ink-soft px-6 py-20 md:px-10">
         <div className="mx-auto flex max-w-3xl flex-col gap-14">
           <div>
             <h2 className="font-display text-2xl font-bold uppercase leading-tight text-avorio md:text-3xl">
@@ -126,7 +126,7 @@ export default function GuidaTeloniPage() {
           </div>
           <Link
             href="/configuratore"
-            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
+            className="whitespace-nowrap rounded-full bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
           >
             Configura il tuo telone
           </Link>

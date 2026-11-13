@@ -48,7 +48,7 @@ export function ConfermaContent() {
           href={waLink(waMessage)}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white no-underline transition-colors hover:bg-primary-dark"
+          className="rounded-full bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white no-underline transition-colors hover:bg-primary-dark"
         >
           Invia anche su WhatsApp
         </a>

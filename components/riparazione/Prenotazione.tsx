@@ -22,7 +22,7 @@ const chip = (active: boolean, disabled = false) =>
       ? "cursor-not-allowed border-avorio/10 text-avorio/30"
       : active
         ? "border-primary bg-primary/[0.16] text-primary-light"
-        : "border-avorio/20 bg-navy-deep text-avorio/80 hover:border-primary/60",
+        : "border-avorio/20 bg-white/[0.04] text-avorio/80 hover:border-primary/60",
   ].join(" ");
 
 export function Prenotazione() {
@@ -140,7 +140,7 @@ export function Prenotazione() {
                 key={g.iso}
                 onClick={() => setGiornoIso(g.iso)}
                 className={`min-w-[58px] rounded-lg border-[1.5px] px-3.5 py-2.5 text-center transition-colors ${
-                  active ? "border-primary bg-primary/[0.16] text-primary-light" : "border-avorio/20 bg-navy-deep text-avorio/80 hover:border-primary/60"
+                  active ? "border-primary bg-primary/[0.16] text-primary-light" : "border-avorio/20 bg-white/[0.04] text-avorio/80 hover:border-primary/60"
                 }`}
               >
                 <span className="block text-[10px] uppercase tracking-[0.1em] opacity-80">{g.dow}</span>
@@ -176,7 +176,7 @@ export function Prenotazione() {
           <input
             value={nome}
             onChange={(e) => setNome(e.target.value)}
-            className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
+            className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none focus:border-primary"
           />
         </label>
         <label className="block">
@@ -185,7 +185,7 @@ export function Prenotazione() {
             type="tel"
             value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
-            className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
+            className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none focus:border-primary"
           />
         </label>
       </div>
@@ -197,7 +197,7 @@ export function Prenotazione() {
       <button
         onClick={book}
         disabled={!canBook || submitting}
-        className="w-full rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
+        className="w-full rounded-full bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
       >
         {submitting ? "Invio in corso…" : canBook ? "Prenota intervento" : "Scegli giorno, fascia e dati"}
       </button>

@@ -80,7 +80,7 @@ export function CandidaturaForm() {
         <select
           value={form.zona}
           onChange={(e) => set("zona", e.target.value)}
-          className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
+          className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none focus:border-primary"
         >
           <option value="">Seleziona la regione…</option>
           {REGIONI.map((r) => (
@@ -97,7 +97,7 @@ export function CandidaturaForm() {
           value={form.attivita}
           onChange={(e) => set("attivita", e.target.value)}
           placeholder="Es. officina, gommista, carrozzeria, teloneria…"
-          className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio placeholder:text-avorio/30 outline-none focus:border-primary"
+          className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio placeholder:text-avorio/30 outline-none focus:border-primary"
         />
       </label>
 
@@ -107,7 +107,7 @@ export function CandidaturaForm() {
           value={form.messaggio}
           onChange={(e) => set("messaggio", e.target.value)}
           rows={3}
-          className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
+          className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none focus:border-primary"
         />
       </label>
 
@@ -118,7 +118,7 @@ export function CandidaturaForm() {
       <button
         type="submit"
         disabled={!valid || submitting}
-        className="mt-6 w-full rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
+        className="mt-6 w-full rounded-full bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
       >
         {submitting ? "Invio in corso…" : "Invia candidatura"}
       </button>
@@ -148,7 +148,7 @@ function Field({
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
+        className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none focus:border-primary"
       />
     </label>
   );

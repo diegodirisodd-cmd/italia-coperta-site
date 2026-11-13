@@ -65,7 +65,7 @@ export default function TenditoreCricchettoPage() {
         )}
       />
       {/* hero */}
-      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <Link
             href="/"
@@ -122,7 +122,7 @@ export default function TenditoreCricchettoPage() {
                 href={stripePaymentLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-7 inline-block rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
+                className="mt-7 inline-block rounded-full bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
               >
                 Acquista ora
               </a>
@@ -132,7 +132,7 @@ export default function TenditoreCricchettoPage() {
       </section>
 
       {/* scheda tecnica */}
-      <section className="bg-navy-deep px-6 py-20 md:px-10">
+      <section className="bg-ink-soft px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Scheda tecnica" />
           <div className="mt-6 max-w-2xl overflow-hidden rounded-lg border border-avorio/[0.14]">
@@ -140,7 +140,7 @@ export default function TenditoreCricchettoPage() {
               <div
                 key={row.label}
                 className={`flex flex-col gap-1 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 ${
-                  i % 2 === 0 ? "bg-navy" : "bg-navy-deep"
+                  i % 2 === 0 ? "bg-navy" : "bg-white/[0.03]"
                 }`}
               >
                 <span className="text-[13px] uppercase tracking-[0.06em] text-avorio/55">{row.label}</span>

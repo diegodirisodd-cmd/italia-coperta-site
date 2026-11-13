@@ -46,7 +46,7 @@ export function OptionButton({
       aria-pressed={selected}
       onClick={onClick}
       className={[
-        "flex min-h-[44px] items-center gap-3 rounded-md border-[1.5px] bg-navy-deep px-4 py-3 text-left transition-colors",
+        "flex min-h-[44px] items-center gap-3 rounded-xl border-[1.5px] bg-white/[0.04] px-4 py-3 text-left transition-colors",
         selected ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60",
       ].join(" ")}
     >
@@ -99,7 +99,7 @@ export function TextField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
+        className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
       />
     </label>
   );
@@ -126,7 +126,7 @@ export function TextAreaField({
         onChange={(e) => onChange(e.target.value)}
         rows={rows}
         placeholder={placeholder}
-        className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
+        className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
       />
     </label>
   );

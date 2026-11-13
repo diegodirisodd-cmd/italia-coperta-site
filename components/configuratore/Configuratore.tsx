@@ -183,7 +183,7 @@ export function Configuratore() {
                   <button
                     key={opt.id}
                     onClick={() => toggleExtra(opt.id)}
-                    className={`relative flex items-center gap-3 rounded-md border-[1.5px] bg-navy-deep px-4 py-4 text-left transition-colors ${
+                    className={`relative flex items-center gap-3 rounded-xl border-[1.5px] bg-white/[0.04] px-4 py-4 text-left transition-colors ${
                       sel ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60"
                     }`}
                   >
@@ -208,7 +208,7 @@ export function Configuratore() {
               <select
                 value={regione}
                 onChange={(e) => setRegione(e.target.value)}
-                className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3.5 text-avorio outline-none focus:border-primary"
+                className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3.5 text-avorio outline-none focus:border-primary"
               >
                 <option value="">Seleziona la tua regione…</option>
                 {REGIONI.map((r) => (
@@ -219,7 +219,7 @@ export function Configuratore() {
               </select>
             </label>
             {centro && (
-              <div className="mt-5 rounded-md border border-primary/30 bg-navy-deep p-5">
+              <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.04] p-5">
                 <span className="text-[11px] uppercase tracking-[0.2em] text-primary">Centro assegnato</span>
                 <div className="mt-1 font-display text-xl font-bold uppercase text-avorio">{centro.citta}</div>
                 <div className="mt-1 text-sm text-avorio/70">{centro.indirizzo}</div>
@@ -242,7 +242,7 @@ export function Configuratore() {
                 value={dati.note}
                 onChange={(e) => setDati({ ...dati, note: e.target.value })}
                 rows={3}
-                className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
+                className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none focus:border-primary"
               />
             </label>
           </StepShell>
@@ -268,7 +268,7 @@ export function Configuratore() {
             <button
               onClick={submit}
               disabled={submitting}
-              className="mt-6 w-full rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:opacity-60"
+              className="mt-6 w-full rounded-full bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:opacity-60"
             >
               {submitting ? "Invio in corso…" : "Invia richiesta di preventivo"}
             </button>
@@ -290,7 +290,7 @@ export function Configuratore() {
           <button
             onClick={() => canProceed && setStep((s) => Math.min(STEPS.length - 1, s + 1))}
             disabled={step === STEPS.length - 1 || !canProceed}
-            className="rounded-md bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
+            className="rounded-full bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
           >
             Avanti →
           </button>
@@ -362,7 +362,7 @@ function OptionGrid({
           <button
             key={opt.id}
             onClick={() => onChange(opt.id)}
-            className={`relative flex items-center justify-between gap-4 rounded-md border-[1.5px] bg-navy-deep px-5 py-4 text-left transition-colors ${
+            className={`relative flex items-center justify-between gap-4 rounded-xl border-[1.5px] bg-white/[0.04] px-5 py-4 text-left transition-colors ${
               sel ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60"
             }`}
           >
@@ -407,7 +407,7 @@ function Field({
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none focus:border-primary"
+        className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none focus:border-primary"
       />
     </label>
   );
@@ -463,12 +463,12 @@ function Confirmation({
       <p className="mt-1 text-sm text-avorio/50">Riferimento richiesta: <span className="text-primary">{reference}</span></p>
 
       <div className="mt-8 space-y-3 text-left">
-        <div className="flex items-center justify-between rounded-md border border-avorio/12 bg-navy-deep px-5 py-4">
+        <div className="flex items-center justify-between rounded-xl border border-avorio/12 bg-white/[0.04] px-5 py-4">
           <span className="text-xs uppercase tracking-[0.12em] text-avorio/55">Stima indicativa</span>
           <span className="font-display text-xl font-bold text-primary">{stima}</span>
         </div>
         {centro && (
-          <div className="flex items-center justify-between rounded-md border border-avorio/12 bg-navy-deep px-5 py-4">
+          <div className="flex items-center justify-between rounded-xl border border-avorio/12 bg-white/[0.04] px-5 py-4">
             <span className="text-xs uppercase tracking-[0.12em] text-avorio/55">Centro assegnato</span>
             <span className="text-right">
               <span className="block font-display font-bold uppercase text-avorio">{centro.citta}</span>
@@ -487,7 +487,7 @@ function Confirmation({
         </button>
         <Link
           href="/"
-          className="rounded-md bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
+          className="rounded-full bg-primary px-6 py-3 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
         >
           Torna alla home
         </Link>

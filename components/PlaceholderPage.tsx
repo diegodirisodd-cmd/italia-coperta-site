@@ -9,7 +9,7 @@ type PlaceholderPageProps = {
 /** Minimal, crawlable stub for sitemap routes not yet built out (see build plan). */
 export function PlaceholderPage({ kicker, title, description }: PlaceholderPageProps) {
   return (
-    <section className="min-h-[60vh] bg-navy-deep px-6 py-24 md:px-10">
+    <section className="min-h-[60vh] bg-ink-soft px-6 py-24 md:px-10">
       <div className="mx-auto max-w-3xl">
         <SectionKicker label={kicker} />
         <h1 className="font-display text-4xl font-bold uppercase leading-none text-avorio md:text-5xl">

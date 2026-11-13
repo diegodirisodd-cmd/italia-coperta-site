@@ -89,7 +89,7 @@ export function FileUpload({
       />
 
       {value ? (
-        <div className="flex items-center justify-between gap-3 rounded-md border-[1.5px] border-primary/40 bg-navy-deep px-4 py-3">
+        <div className="flex items-center justify-between gap-3 rounded-xl border-[1.5px] border-primary/40 bg-white/[0.04] px-4 py-3">
           <span className="flex min-w-0 items-center gap-2 text-sm text-avorio">
             <FileIcon />
             <span className="truncate">{displayName}</span>
@@ -105,7 +105,7 @@ export function FileUpload({
       ) : (
         <label
           htmlFor={id}
-          className="flex min-h-[44px] cursor-pointer items-center gap-2 rounded-md border-[1.5px] border-dashed border-avorio/25 bg-navy-deep px-4 py-3 text-sm text-avorio/60 transition-colors hover:border-primary/60 hover:text-avorio"
+          className="flex min-h-[44px] cursor-pointer items-center gap-2 rounded-xl border-[1.5px] border-dashed border-avorio/25 bg-white/[0.04] px-4 py-3 text-sm text-avorio/60 transition-colors hover:border-primary/60 hover:text-avorio"
         >
           {status === "uploading" ? (
             <>

@@ -33,7 +33,7 @@ export default function CentriPage() {
       />
 
       {/* hero */}
-      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl text-center">
           <SectionKicker label="Presenti in tutta Italia" center />
           <h1 className="font-display text-4xl font-bold uppercase leading-none text-avorio md:text-6xl">
@@ -48,14 +48,14 @@ export default function CentriPage() {
       </section>
 
       {/* map */}
-      <section className="border-b border-primary/[0.14] bg-navy-deep px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-ink-soft px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <CentriExplorer />
         </div>
       </section>
 
       {/* prossime aperture */}
-      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="La rete cresce" />
           <h2 className="font-display text-3xl font-bold uppercase leading-none text-avorio md:text-4xl">
@@ -70,7 +70,7 @@ export default function CentriPage() {
               <Link
                 key={c.id}
                 href="/diventa-centro"
-                className="rounded-lg border border-avorio/[0.14] bg-navy-deep p-5 no-underline transition-colors hover:border-primary/50"
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 no-underline transition-colors hover:border-primary/50"
               >
                 <div className="font-display text-lg font-semibold uppercase text-avorio">{c.citta}</div>
                 <div className="mt-1 text-sm text-avorio/60">{c.area}</div>
@@ -84,7 +84,7 @@ export default function CentriPage() {
       </section>
 
       {/* diventa centro CTA */}
-      <section className="bg-navy-deep px-6 py-20 md:px-10">
+      <section className="bg-ink-soft px-6 py-20 md:px-10">
         <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 rounded-lg border border-primary/25 bg-navy-black px-8 py-10 md:flex-row md:items-center md:px-12">
           <div>
             <h2 className="font-display text-2xl font-bold uppercase leading-tight text-avorio md:text-3xl">
@@ -97,7 +97,7 @@ export default function CentriPage() {
           </div>
           <Link
             href="/diventa-centro"
-            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
+            className="whitespace-nowrap rounded-full bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
           >
             Diventa centro
           </Link>

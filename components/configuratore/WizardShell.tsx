@@ -85,7 +85,7 @@ export function WizardShell() {
             type="button"
             onClick={() => dispatch({ type: "GO_NEXT" })}
             disabled={!canProceed}
-            className="rounded-md bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
+            className="rounded-full bg-primary px-5 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.05em] text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-primary/25 disabled:text-avorio/40"
           >
             Avanti →
           </button>

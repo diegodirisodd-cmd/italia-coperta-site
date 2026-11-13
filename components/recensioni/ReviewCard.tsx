@@ -16,7 +16,7 @@ export function ReviewCard({ review, index }: { review: Review; index?: number }
         <div className="flex items-center gap-2.5">
           {typeof index === "number" && (
             <span
-              className="flex h-6 w-6 flex-none items-center justify-center rounded-md bg-primary/15 font-display text-[11px] font-bold text-primary"
+              className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-primary/15 font-display text-[11px] font-bold text-primary"
               aria-hidden="true"
             >
               {String(index).padStart(2, "0")}

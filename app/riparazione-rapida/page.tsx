@@ -40,7 +40,7 @@ export default function RiparazioneRapidaPage() {
       />
 
       {/* hero */}
-      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Servizio · Intervento rapido" />
           <div className="grid items-start gap-10 md:grid-cols-[1.05fr_0.95fr]">
@@ -55,7 +55,7 @@ export default function RiparazioneRapidaPage() {
               <div className="mt-8 flex flex-wrap gap-3.5">
                 <Link
                   href="#prenota"
-                  className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
+                  className="rounded-full bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
                 >
                   Prenota online
                 </Link>
@@ -71,7 +71,7 @@ export default function RiparazioneRapidaPage() {
             </div>
             <div className="grid gap-3">
               {TEMPI.map((t) => (
-                <div key={t.label} className="flex items-center gap-5 rounded-lg border border-avorio/[0.14] bg-navy-deep px-6 py-5">
+                <div key={t.label} className="flex items-center gap-5 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-5">
                   <span className="min-w-[110px] font-display text-3xl font-bold text-primary">{t.valore}</span>
                   <span className="text-[15px] text-avorio/80">{t.label}</span>
                 </div>
@@ -83,7 +83,7 @@ export default function RiparazioneRapidaPage() {
       </section>
 
       {/* come funziona */}
-      <section className="border-b border-primary/[0.14] bg-navy-deep px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-ink-soft px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Come funziona" />
           <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -101,7 +101,7 @@ export default function RiparazioneRapidaPage() {
       </section>
 
       {/* prenotazione */}
-      <section id="prenota" className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section id="prenota" className="border-b border-white/[0.06] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.85fr_1.15fr] md:items-start">
           <div>
             <SectionKicker label="Prenota online" />
@@ -125,7 +125,7 @@ export default function RiparazioneRapidaPage() {
       </section>
 
       {/* upsell flotte + kit */}
-      <section className="border-b border-primary/[0.14] bg-navy-deep px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-ink-soft px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
           <div className="rounded-lg border border-primary/25 bg-navy p-8">
             <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">Per le aziende</span>

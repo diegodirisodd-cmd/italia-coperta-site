@@ -47,7 +47,7 @@ export default function DiventaCentroPage() {
   return (
     <main>
       {/* hero */}
-      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Reclutamento partner" />
           <h1 className="max-w-3xl font-display text-4xl font-bold uppercase leading-[0.98] text-avorio md:text-6xl">
@@ -61,7 +61,7 @@ export default function DiventaCentroPage() {
       </section>
 
       {/* vantaggi */}
-      <section className="border-b border-primary/[0.14] bg-navy-deep px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-ink-soft px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Perché diventare partner" />
           <h2 className="font-display text-3xl font-bold uppercase leading-none text-avorio md:text-4xl">

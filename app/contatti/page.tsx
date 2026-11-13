@@ -37,7 +37,7 @@ export default function ContattiPage() {
       />
 
       {/* hero */}
-      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="Parliamone" />
           <h1 className="font-display text-4xl font-bold uppercase leading-none text-avorio md:text-6xl">
@@ -52,7 +52,7 @@ export default function ContattiPage() {
               href={waLink("Ciao Di Riso Teloni, avrei una richiesta.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
+              className="rounded-full bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
             >
               Scrivici su WhatsApp
             </a>
@@ -67,7 +67,7 @@ export default function ContattiPage() {
       </section>
 
       {/* sedi + form */}
-      <section className="bg-navy-deep px-6 py-20 md:px-10">
+      <section className="bg-ink-soft px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <div className="flex flex-col gap-5">
             {SEDI.map((s) => (

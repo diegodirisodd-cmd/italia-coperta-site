@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function SettoriPage() {
   return (
-    <main className="bg-navy-deep px-6 py-24 md:px-10">
+    <main className="bg-ink-soft px-6 py-24 md:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <SectionKicker label="Settori di applicazione" />
@@ -37,7 +37,7 @@ export default function SettoriPage() {
                 className="group flex h-full flex-col overflow-hidden rounded-lg border border-avorio/[0.14] bg-navy no-underline transition-colors hover:border-primary/60"
               >
                 {settore.image ? (
-                  <Tilt className="relative aspect-[16/10] overflow-hidden border-b border-primary/[0.14]">
+                  <Tilt className="relative aspect-[16/10] overflow-hidden border-b border-white/[0.06]">
                     <Image
                       src={settore.image}
                       alt={settore.imageAlt ?? settore.cardTitle}

@@ -60,7 +60,7 @@ export function StepColoreTelo() {
                 aria-pressed={sel}
                 onClick={() => dispatch({ type: "SET_COLORE_TELO", patch: { personalizzazione: p.id } })}
                 className={[
-                  "flex min-h-[44px] items-center gap-3 rounded-md border-[1.5px] bg-navy-deep px-4 py-3 text-left transition-colors",
+                  "flex min-h-[44px] items-center gap-3 rounded-xl border-[1.5px] bg-white/[0.04] px-4 py-3 text-left transition-colors",
                   sel ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60",
                 ].join(" ")}
               >
@@ -82,7 +82,7 @@ export function StepColoreTelo() {
 
       {/* Branding fields (logo / artwork) */}
       {showBranding && (
-        <div className="mt-6 rounded-lg border border-primary/25 bg-navy-deep p-5">
+        <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
           <span className="mb-4 block text-[11px] uppercase tracking-[0.2em] text-primary">
             Logo e grafica
           </span>
@@ -144,7 +144,7 @@ function ColoreSwatch({
       aria-pressed={selected}
       onClick={onSelect}
       className={[
-        "flex min-h-[44px] items-center gap-3 rounded-md border-[1.5px] bg-navy-deep px-3 py-3 text-left transition-colors",
+        "flex min-h-[44px] items-center gap-3 rounded-xl border-[1.5px] bg-white/[0.04] px-3 py-3 text-left transition-colors",
         selected ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60",
       ].join(" ")}
     >

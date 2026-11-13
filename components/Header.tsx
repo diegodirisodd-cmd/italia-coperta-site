@@ -176,7 +176,7 @@ export function Header() {
           <Link
             href="/preventivo"
             onClick={() => setOpen(false)}
-            className="mt-8 flex min-h-[52px] items-center justify-center rounded-md bg-primary font-display text-base font-semibold uppercase tracking-[0.06em] text-white no-underline"
+            className="mt-8 flex min-h-[52px] items-center justify-center rounded-full bg-primary font-display text-base font-semibold uppercase tracking-[0.06em] text-white no-underline"
           >
             Richiedi preventivo
           </Link>

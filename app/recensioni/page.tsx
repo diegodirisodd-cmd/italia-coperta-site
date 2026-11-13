@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RecensioniPage() {
   return (
-    <main className="bg-navy-deep px-6 py-24 md:px-10">
+    <main className="bg-ink-soft px-6 py-24 md:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <SectionKicker label="La voce dei clienti" />
@@ -48,7 +48,7 @@ export default function RecensioniPage() {
         <div className="mt-16 flex flex-wrap gap-3 border-t border-avorio/10 pt-10">
           <Link
             href="/preventivo"
-            className="rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline transition-colors hover:bg-primary-dark"
+            className="rounded-full bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline transition-colors hover:bg-primary-dark"
           >
             Richiedi un preventivo
           </Link>

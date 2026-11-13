@@ -56,7 +56,7 @@ export function StepMisure() {
               aria-pressed={sel}
               onClick={() => dispatch({ type: "SET_MISURE", patch: { modalita: m.id } })}
               className={[
-                "flex min-h-[44px] flex-col items-start rounded-md border-[1.5px] bg-navy-deep px-4 py-3 text-left transition-colors",
+                "flex min-h-[44px] flex-col items-start rounded-xl border-[1.5px] bg-white/[0.04] px-4 py-3 text-left transition-colors",
                 sel ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60",
               ].join(" ")}
             >
@@ -92,7 +92,7 @@ export function StepMisure() {
                 onChange={(e) => setCampo("note", e.target.value)}
                 rows={3}
                 placeholder="Dettagli utili sulle misure o sul montaggio."
-                className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
+                className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
               />
             </label>
             <FileUpload
@@ -117,7 +117,7 @@ export function StepMisure() {
               onChange={(e) => setRilievo("note", e.target.value)}
               rows={3}
               placeholder="Indicazioni per raggiungere il mezzo, referente, ecc."
-              className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
+              className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
             />
           </label>
         </div>
@@ -126,7 +126,7 @@ export function StepMisure() {
       {/* Not sure */}
       {modalita === "non-sicuro" && (
         <div className="mt-8">
-          <p className="rounded-md border border-primary/25 bg-navy-deep px-4 py-3 text-[13px] leading-relaxed text-avorio/70">
+          <p className="rounded-xl border border-primary/25 bg-white/[0.04] px-4 py-3 text-[13px] leading-relaxed text-avorio/70">
             Nessun problema: definiamo insieme le misure quando ti ricontattiamo, o
             organizziamo un rilievo se serve.
           </p>
@@ -137,7 +137,7 @@ export function StepMisure() {
               onChange={(e) => setCampo("note", e.target.value)}
               rows={3}
               placeholder="Quello che sai già del mezzo o dell'intervento."
-              className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
+              className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
             />
           </label>
         </div>
@@ -171,7 +171,7 @@ function CampoGruppo({
                 value={values[def.key] ?? ""}
                 onChange={(e) => onChange(def.key, e.target.value)}
                 placeholder={def.placeholder}
-                className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
+                className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
               />
               {def.suffix && (
                 <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-avorio/55">

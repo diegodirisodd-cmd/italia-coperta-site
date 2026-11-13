@@ -53,7 +53,7 @@ export function StepTipoRichiesta() {
                 aria-pressed={selected}
                 onClick={() => dispatch({ type: "SET_MACRO_CATEGORIA", value: cat.id })}
                 className={[
-                  "flex min-h-[44px] flex-col items-start rounded-md border-[1.5px] bg-navy-deep px-4 py-3 text-left transition-colors",
+                  "flex min-h-[44px] flex-col items-start rounded-xl border-[1.5px] bg-white/[0.04] px-4 py-3 text-left transition-colors",
                   selected ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60",
                 ].join(" ")}
               >
@@ -77,7 +77,7 @@ export function StepTipoRichiesta() {
               <AccessoriFreeText />
             )}
             {macro === "riparazione" && (
-              <p className="mt-4 rounded-md border border-primary/25 bg-navy-deep px-4 py-3 text-[13px] leading-relaxed text-avorio/70">
+              <p className="mt-4 rounded-xl border border-primary/25 bg-white/[0.04] px-4 py-3 text-[13px] leading-relaxed text-avorio/70">
                 Una foto del danno ci aiuta a preparare il preventivo giusto: potrai
                 allegarla negli step successivi.
               </p>
@@ -114,7 +114,7 @@ function SottoOpzioni({
               aria-pressed={sel}
               onClick={() => dispatch({ type: "SET_SOTTO_OPZIONE", value: opt.id })}
               className={[
-                "flex min-h-[44px] items-center gap-3 rounded-md border-[1.5px] bg-navy-deep px-4 py-3 text-left transition-colors",
+                "flex min-h-[44px] items-center gap-3 rounded-xl border-[1.5px] bg-white/[0.04] px-4 py-3 text-left transition-colors",
                 sel ? "border-primary" : "border-avorio/[0.14] hover:border-primary/60",
               ].join(" ")}
             >
@@ -148,7 +148,7 @@ function AccessoriFreeText() {
         onChange={(e) => dispatch({ type: "SET_RICHIESTA_NOTE", value: e.target.value })}
         rows={5}
         placeholder="Es. cinghie aggiuntive, tasca portadocumenti, bande rifrangenti, kit riparazione…"
-        className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
+        className="w-full rounded-xl border-[1.5px] border-avorio/20 bg-white/[0.04] px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
       />
     </label>
   );
@@ -158,7 +158,7 @@ function HighlightPanel({ image }: { image: HighlightImage }) {
   const reduced = useReducedMotion();
   return (
     <div className="lg:pt-7">
-      <div className="overflow-hidden rounded-lg border border-primary/25 bg-navy-deep">
+      <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04]">
         <div className="relative aspect-[4/3]">
           <AnimatePresence mode="wait" initial={false}>
             <m.div

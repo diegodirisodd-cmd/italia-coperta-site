@@ -48,7 +48,7 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
       />
 
       {/* hero */}
-      <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
+      <section className="border-b border-white/[0.06] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
           <Link
             href="/settori"
@@ -103,7 +103,7 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
       </section>
 
       {/* body + highlights */}
-      <section className="bg-navy-deep px-6 py-20 md:px-10">
+      <section className="bg-ink-soft px-6 py-20 md:px-10">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.4fr_0.6fr]">
           <div className="flex flex-col gap-5">
             {settore.body.map((paragraph, i) => (
@@ -143,7 +143,7 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
           </div>
           <Link
             href={settore.cta.href}
-            className="whitespace-nowrap rounded-md bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
+            className="whitespace-nowrap rounded-full bg-primary px-7 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white no-underline"
           >
             {settore.cta.label}
           </Link>

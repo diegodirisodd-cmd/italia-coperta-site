@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function ConfiguratorePage() {
   return (
-    <main className="bg-navy-deep px-6 py-20 md:px-10">
+    <main className="bg-ink-soft px-6 py-20 md:px-10">
       <div className="mx-auto max-w-6xl">
         <script
           type="application/ld+json"

@@ -67,7 +67,7 @@ Vorrei procedere con il preventivo.`;
       <div className="mt-8 space-y-5">
         {sections.map((sec) => (
           <div key={sec.title} className="overflow-hidden rounded-lg border border-avorio/[0.14]">
-            <div className="border-b border-avorio/10 bg-navy-deep px-4 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.08em] text-primary">
+            <div className="border-b border-avorio/10 bg-white/[0.06] px-4 py-2.5 font-display text-[13px] font-semibold uppercase tracking-[0.08em] text-primary">
               {sec.title}
             </div>
             <div>
@@ -97,7 +97,7 @@ Vorrei procedere con il preventivo.`;
             type="button"
             onClick={() => submit(false)}
             disabled={submitting}
-            className="flex-1 rounded-md bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-60"
+            className="flex-1 rounded-full bg-primary px-6 py-4 font-display text-[15px] font-semibold uppercase tracking-[0.05em] text-white transition-colors hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-60"
           >
             {submitting ? "Invio in corso…" : "Invia richiesta"}
           </button>

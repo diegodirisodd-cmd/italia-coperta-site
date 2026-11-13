@@ -8,7 +8,7 @@ import { AZIENDA, EMAIL } from "@/lib/site";
  */
 export function LegalPlaceholder({ title, intro }: { title: string; intro: string }) {
   return (
-    <main className="bg-navy-deep px-6 py-24 md:px-10">
+    <main className="bg-ink-soft px-6 py-24 md:px-10">
       <div className="mx-auto max-w-3xl">
         <SectionKicker label="Note legali" />
         <h1 className="font-display text-4xl font-bold uppercase leading-none text-avorio md:text-5xl">

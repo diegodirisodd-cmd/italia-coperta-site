@@ -50,7 +50,7 @@ export default function CookiePolicyPage() {
         </LegalSection>
       </LegalArticle>
 
-      <section className="bg-navy-deep px-6 pb-24 md:px-10">
+      <section className="bg-ink-soft px-6 pb-24 md:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <Link
             href="/preferenze-cookie"

@@ -77,7 +77,7 @@ function MezzoCardButton({
       ].join(" ")}
     >
       {mezzo.image ? (
-        <Tilt className="relative aspect-[4/3] overflow-hidden border-b border-primary/[0.14]">
+        <Tilt className="relative aspect-[4/3] overflow-hidden border-b border-white/[0.06]">
           <Image
             src={mezzo.image}
             alt={mezzo.imageAlt ?? mezzo.label}
@@ -133,7 +133,7 @@ function AltroMezzoFields() {
   const { state, dispatch } = useConfiguratore();
   const { specifica, note } = state.mezzoAltro;
   return (
-    <div className="mx-auto mt-6 max-w-xl rounded-lg border border-primary/25 bg-navy-deep p-5">
+    <div className="mx-auto mt-6 max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] p-5">
       <span className="mb-3 block text-[11px] uppercase tracking-[0.2em] text-primary">
         Descrivi il mezzo
       </span>
