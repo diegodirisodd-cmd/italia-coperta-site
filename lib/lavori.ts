@@ -58,6 +58,17 @@ export const LAVORI: Lavoro[] = [
     height: 1429,
   },
   {
+    slug: "ragone-logistics",
+    titolo: "Teli laterali con logo",
+    cliente: "Ragone Logistics Group",
+    descrizione: "Più semirimorchi con teli laterali grigi e il logo Ragone Logistics Group.",
+    image: "/images/lavori/ragone-logistics-poster.jpg",
+    video: "/videos/ragone-logistics.mp4",
+    alt: "Video: semirimorchi con teli laterali grigi e logo Ragone Logistics Group",
+    width: 720,
+    height: 1280,
+  },
+  {
     slug: "montaggio-telo",
     titolo: "Montaggio sul mezzo",
     descrizione: "Montaggio del telone direttamente sul semirimorchio, sotto tettoia.",
