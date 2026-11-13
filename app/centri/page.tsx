@@ -59,21 +59,25 @@ export default function CentriPage() {
         <div className="mx-auto max-w-6xl">
           <SectionKicker label="La rete cresce" />
           <h2 className="font-display text-3xl font-bold uppercase leading-none text-avorio md:text-4xl">
-            Prossime aperture
+            Cerchiamo partner
           </h2>
           <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-avorio/75">
-            Stiamo ampliando la rete Italia Coperta. Fino all&apos;apertura, queste aree sono servite dalla sede
-            di Angri (SA) e dalla copertura in Lombardia.
+            Stiamo ampliando la rete Italia Coperta e cerchiamo officine e telonerie partner in queste aree.
+            Nel frattempo le serviamo dalla sede di Angri (SA) e dalla copertura in Lombardia.
           </p>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
             {prossime.map((c) => (
-              <div key={c.id} className="rounded-lg border border-avorio/[0.14] bg-navy-deep p-5">
+              <Link
+                key={c.id}
+                href="/diventa-centro"
+                className="rounded-lg border border-avorio/[0.14] bg-navy-deep p-5 no-underline transition-colors hover:border-primary/50"
+              >
                 <div className="font-display text-lg font-semibold uppercase text-avorio">{c.citta}</div>
                 <div className="mt-1 text-sm text-avorio/60">{c.area}</div>
                 <div className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
-                  Prossima apertura
+                  Diventa partner →
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

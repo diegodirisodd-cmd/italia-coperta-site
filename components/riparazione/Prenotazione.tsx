@@ -20,7 +20,7 @@ const chip = (active: boolean, disabled = false) =>
     disabled
       ? "cursor-not-allowed border-avorio/10 text-avorio/30"
       : active
-        ? "border-primary bg-primary/[0.16] text-primary"
+        ? "border-primary bg-primary/[0.16] text-primary-light"
         : "border-avorio/20 bg-navy-deep text-avorio/80 hover:border-primary/60",
   ].join(" ");
 
@@ -129,7 +129,7 @@ export function Prenotazione() {
       <FieldLabel>Giorno</FieldLabel>
       <div className="mb-6 flex flex-wrap gap-2">
         {giorni.length === 0 ? (
-          <span className="py-2 text-sm text-avorio/40">Caricamento disponibilità…</span>
+          <span className="py-2 text-sm text-avorio/55">Caricamento disponibilità…</span>
         ) : (
           giorni.map((g) => {
             const active = giornoIso === g.iso;
@@ -138,10 +138,10 @@ export function Prenotazione() {
                 key={g.iso}
                 onClick={() => setGiornoIso(g.iso)}
                 className={`min-w-[58px] rounded-lg border-[1.5px] px-3.5 py-2.5 text-center transition-colors ${
-                  active ? "border-primary bg-primary/[0.16] text-primary" : "border-avorio/20 bg-navy-deep text-avorio/80 hover:border-primary/60"
+                  active ? "border-primary bg-primary/[0.16] text-primary-light" : "border-avorio/20 bg-navy-deep text-avorio/80 hover:border-primary/60"
                 }`}
               >
-                <span className="block text-[10px] uppercase tracking-[0.1em] opacity-70">{g.dow}</span>
+                <span className="block text-[10px] uppercase tracking-[0.1em] opacity-80">{g.dow}</span>
                 <span className="block font-display text-lg font-semibold leading-tight">{g.day}</span>
               </button>
             );

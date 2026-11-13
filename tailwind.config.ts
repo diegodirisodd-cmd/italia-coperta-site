@@ -9,7 +9,10 @@ const config: Config = {
         navy: "#000000",
         "navy-deep": "#1A1980",
         "navy-black": "#000000",
-        primary: "#E31919",
+        // Brand red. #E31919 gave 4.42:1 against black (CTA text, red text on black
+        // sections) — a hair under WCAG AA. #E61C1C reaches 4.55:1 and is visually
+        // indistinguishable.
+        primary: "#E61C1C",
         "primary-light": "#FF4D4D",
         indaco: "#3533CD",
         "tricolore-verde": "#25904A",

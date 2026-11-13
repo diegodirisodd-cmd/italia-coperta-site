@@ -76,7 +76,7 @@ export default function RiparazioneRapidaPage() {
                   <span className="text-[15px] text-avorio/80">{t.label}</span>
                 </div>
               ))}
-              <p className="text-xs text-avorio/40">Tempi indicativi, confermati alla prenotazione.</p>
+              <p className="text-xs text-avorio/55">Tempi indicativi, confermati alla prenotazione.</p>
             </div>
           </div>
         </div>

@@ -76,7 +76,7 @@ export function Hero() {
           style={{ background: "linear-gradient(115deg, #1A1980 0%, #12103f 55%, #000000 100%)" }}
           initial={{ x: "0%" }}
           animate={{ x: "-101%" }}
-          transition={{ duration: 1.05, ease: EASE_TARP, delay: 0.1 }}
+          transition={{ duration: 0.85, ease: EASE_TARP, delay: 0 }}
         >
           <div
             className="absolute inset-0 opacity-[0.14]"
@@ -110,7 +110,7 @@ function HeroKicker() {
 
 const fotoContainer = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.7 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.45 } },
 };
 const fotoItem = {
   hidden: { opacity: 0, y: 20 },
@@ -161,7 +161,7 @@ function FotoVariant() {
           className="order-2 font-display text-4xl font-bold uppercase leading-[0.95] text-white md:order-none md:text-6xl lg:text-[64px]"
           style={{ textShadow: textShadowSoft }}
         >
-          <WordReveal text={"Teli per bilico completi e professionali — dal 1950"} delay={0.7} />
+          <WordReveal text={"Teli per bilico completi e professionali — dal 1950"} delay={0.4} />
         </h1>
         <m.p
           {...itemProps}
@@ -181,6 +181,12 @@ function FotoVariant() {
         <m.div {...itemProps} className="order-3 mt-6 flex flex-wrap gap-2 md:order-none md:mt-8 md:gap-3.5">
           <MagneticCTA href="/preventivo" className={ctaPrimary}>Richiedi preventivo</MagneticCTA>
           <Link href="/configuratore" className={ctaSecondary}>Configura il tuo telone</Link>
+          <p
+            className="mt-1 w-full text-sm font-medium text-white/90 md:mt-2"
+            style={{ textShadow: textShadowSoft }}
+          >
+            <span className="text-primary-light">✓</span> Rilievo misure gratuito in tutta Italia
+          </p>
         </m.div>
       </m.div>
     </div>

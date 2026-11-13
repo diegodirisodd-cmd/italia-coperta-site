@@ -86,7 +86,7 @@ export default function ContattiPage() {
                 </div>
               </div>
             ))}
-            <p className="text-xs text-avorio/40">
+            <p className="text-xs text-avorio/55">
               WhatsApp e telefono: {WHATSAPP_DISPLAY} · un&apos;unica linea per tutte le richieste.
             </p>
           </div>

@@ -34,10 +34,10 @@ export function ItaliaEmblem({ variant = "synthetic", width, height, className }
 function SyntheticEmblem({ width, height, className }: { width: number; height: number; className?: string }) {
   return (
     <svg viewBox="0 0 260 313.3" width={width} height={height} aria-hidden="true" className={className} style={{ display: "block", flex: "none" }}>
-      <path d={ITALY_PATH_MAINLAND} fill="#000000" stroke="#E31919" strokeWidth={6} />
-      <path d={ITALY_PATH_SICILY} fill="#000000" stroke="#E31919" strokeWidth={6} />
-      <path d={ITALY_PATH_SARDINIA} fill="#000000" stroke="#E31919" strokeWidth={6} />
-      <rect x="-30" y="128" width="320" height="26" rx="4" fill="#E31919" transform="rotate(-18 131 141)" />
+      <path d={ITALY_PATH_MAINLAND} fill="#000000" stroke="#E61C1C" strokeWidth={6} />
+      <path d={ITALY_PATH_SICILY} fill="#000000" stroke="#E61C1C" strokeWidth={6} />
+      <path d={ITALY_PATH_SARDINIA} fill="#000000" stroke="#E61C1C" strokeWidth={6} />
+      <rect x="-30" y="128" width="320" height="26" rx="4" fill="#E61C1C" transform="rotate(-18 131 141)" />
     </svg>
   );
 }
@@ -99,7 +99,7 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
 
       {/* red strap wraps the tarp */}
       <g clipPath={`url(#${clipId})`}>
-        <rect x="-30" y="128" width="320" height="26" fill="#E31919" transform="rotate(-18 131 141)" />
+        <rect x="-30" y="128" width="320" height="26" fill="#E61C1C" transform="rotate(-18 131 141)" />
         <rect x="-30" y="128" width="320" height="3" fill="rgba(255,255,255,.4)" transform="rotate(-18 131 141)" />
         <rect x="-30" y="151" width="320" height="3" fill="rgba(0,0,0,.3)" transform="rotate(-18 131 141)" />
       </g>
@@ -110,7 +110,7 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
       <m.path d={ITALY_PATH_SARDINIA} fill="none" stroke="rgba(243,233,204,.55)" strokeWidth={1.6} {...drawProps(1.3)} />
 
       {/* eyelets / grommets along the coast */}
-      <g fill="#1A1980" stroke="#E31919" strokeWidth={2}>
+      <g fill="#1A1980" stroke="#E61C1C" strokeWidth={2}>
         <circle cx="125.5" cy="77.4" r="4.2" />
         <circle cx="86.1" cy="35.4" r="4.2" />
         <circle cx="20.6" cy="93.9" r="4.2" />
@@ -129,7 +129,7 @@ function RichEmblem({ width, height, className }: { width: number; height: numbe
 
       {/* lifted corner (peel) at the Gargano promontory — the real geographic "spur" of the boot */}
       <path d="M 225.7 182.7 C 236 180 244 188 244.4 201.3 L 229.9 198.4 C 224 194 222 187 225.7 182.7 Z" fill="#3a4a5e" />
-      <path d="M 225.7 182.7 C 236 180 244 188 244.4 201.3" fill="none" stroke="#E31919" strokeWidth={2} />
+      <path d="M 225.7 182.7 C 236 180 244 188 244.4 201.3" fill="none" stroke="#E61C1C" strokeWidth={2} />
       <path d="M 244.4 201.3 L 229.9 198.4" fill="none" stroke="rgba(243,233,204,.5)" strokeWidth={1.4} />
     </svg>
   );

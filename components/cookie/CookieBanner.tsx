@@ -28,46 +28,46 @@ export function CookieBanner() {
     setVisible(false);
   };
 
+  const btn =
+    "rounded px-3 py-2 font-display text-[11.5px] font-semibold uppercase tracking-[0.05em] transition-colors md:px-4 md:text-[12px]";
+
+  // Compact bar: one short line + three small buttons. The old card covered
+  // about a third of the screen on mobile, right over the hero CTAs.
   return (
     <div
       role="dialog"
       aria-live="polite"
       aria-label="Informativa sui cookie"
-      className="fixed inset-x-0 bottom-0 z-[60] px-4 pb-4 sm:px-6"
+      className="fixed inset-x-0 bottom-0 z-[80] px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:px-6"
     >
-      <div className="mx-auto max-w-4xl rounded-lg border border-primary/30 bg-navy-black/95 p-5 shadow-2xl backdrop-blur md:p-6">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div className="text-sm leading-relaxed text-avorio/80">
-            <span className="font-display font-semibold uppercase tracking-[0.05em] text-avorio">Cookie</span>{" "}
-            Usiamo solo cookie tecnici necessari al funzionamento del sito. Con il tuo consenso potremmo in
-            futuro usare cookie di statistica per migliorarlo. Dettagli nella{" "}
-            <Link href="/cookie-policy" className="text-primary underline-offset-2 hover:underline">
-              Cookie Policy
-            </Link>
-            .
-          </div>
-          <div className="flex flex-none flex-wrap items-center gap-2.5">
-            <Link
-              href="/preferenze-cookie"
-              className="rounded-md border-[1.5px] border-avorio/30 px-4 py-2.5 font-display text-[12px] font-semibold uppercase tracking-[0.05em] text-avorio/80 no-underline transition-colors hover:border-primary/60 hover:text-avorio"
-            >
-              Preferenze
-            </Link>
-            <button
-              type="button"
-              onClick={() => choose("rejected")}
-              className="rounded-md border-[1.5px] border-avorio/40 px-4 py-2.5 font-display text-[12px] font-semibold uppercase tracking-[0.05em] text-avorio transition-colors hover:border-primary/70"
-            >
-              Solo necessari
-            </button>
-            <button
-              type="button"
-              onClick={() => choose("accepted")}
-              className="rounded-md bg-primary px-4 py-2.5 font-display text-[12px] font-semibold uppercase tracking-[0.05em] text-navy transition-colors hover:bg-primary-light"
-            >
-              Accetta
-            </button>
-          </div>
+      <div className="mx-auto flex max-w-4xl flex-col gap-2.5 rounded-md border border-primary/30 bg-navy-black/95 px-4 py-3 shadow-2xl backdrop-blur sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+        <p className="text-[12.5px] leading-snug text-avorio/80 md:text-[13px]">
+          Usiamo solo cookie tecnici.{" "}
+          <Link href="/cookie-policy" className="text-primary underline underline-offset-2">
+            Cookie Policy
+          </Link>
+        </p>
+        <div className="flex flex-none items-center gap-2">
+          <Link
+            href="/preferenze-cookie"
+            className={`${btn} text-avorio/70 underline-offset-2 hover:text-avorio hover:underline`}
+          >
+            Preferenze
+          </Link>
+          <button
+            type="button"
+            onClick={() => choose("rejected")}
+            className={`${btn} border-[1.5px] border-avorio/40 text-avorio hover:border-primary/70`}
+          >
+            Solo necessari
+          </button>
+          <button
+            type="button"
+            onClick={() => choose("accepted")}
+            className={`${btn} bg-primary text-navy hover:bg-primary-light`}
+          >
+            Accetta
+          </button>
         </div>
       </div>
     </div>

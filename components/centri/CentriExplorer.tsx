@@ -24,9 +24,9 @@ export function CentriExplorer({ footerHref }: { footerHref?: string }) {
               <stop offset="1" stopColor="#1A1980" />
             </linearGradient>
           </defs>
-          <path d={ITALY_PATH_MAINLAND} fill="url(#icMapFill)" stroke="#E31919" strokeWidth={1.4} />
-          <path d={ITALY_PATH_SICILY} fill="url(#icMapFill)" stroke="#E31919" strokeWidth={1.4} />
-          <path d={ITALY_PATH_SARDINIA} fill="url(#icMapFill)" stroke="#E31919" strokeWidth={1.4} />
+          <path d={ITALY_PATH_MAINLAND} fill="url(#icMapFill)" stroke="#E61C1C" strokeWidth={1.4} />
+          <path d={ITALY_PATH_SICILY} fill="url(#icMapFill)" stroke="#E61C1C" strokeWidth={1.4} />
+          <path d={ITALY_PATH_SARDINIA} fill="url(#icMapFill)" stroke="#E61C1C" strokeWidth={1.4} />
         </svg>
         {CENTRI.map((c) => (
           <MapPin key={c.id} centro={c} active={c.id === activeId} onSelect={() => setActiveId(c.id)} />
@@ -50,7 +50,7 @@ export function CentriExplorer({ footerHref }: { footerHref?: string }) {
                 <span className="flex items-center gap-3">
                   <span
                     className="h-2 w-2 flex-none rounded-full"
-                    style={{ background: attivo ? "#E31919" : "rgba(243,233,204,.3)" }}
+                    style={{ background: attivo ? "#E61C1C" : "rgba(243,233,204,.3)" }}
                   />
                   <span className="font-display text-base font-semibold uppercase tracking-[0.02em] text-avorio">
                     {c.citta}
@@ -58,9 +58,9 @@ export function CentriExplorer({ footerHref }: { footerHref?: string }) {
                 </span>
                 <span
                   className="text-[11px] uppercase tracking-[0.12em]"
-                  style={{ color: attivo ? "#E31919" : "rgba(243,233,204,.4)" }}
+                  style={{ color: attivo ? "#E61C1C" : "rgba(243,233,204,.55)" }}
                 >
-                  {attivo ? c.tipo : "Prossima apertura"}
+                  {attivo ? c.tipo : "Cerchiamo partner"}
                 </span>
               </button>
             );
@@ -69,7 +69,7 @@ export function CentriExplorer({ footerHref }: { footerHref?: string }) {
 
         <div className="rounded-lg border border-primary/30 bg-navy-deep p-7">
           <span className="mb-4 block text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-            {isAttivo ? active.tipo : "Prossima apertura"}
+            {isAttivo ? active.tipo : "Cerchiamo partner"}
           </span>
           <h3 className="mb-3.5 font-display text-3xl font-bold uppercase text-avorio">{active.citta}</h3>
 
@@ -128,9 +128,9 @@ export function CentriExplorer({ footerHref }: { footerHref?: string }) {
 function MapPin({ centro, active, onSelect }: { centro: Centro; active: boolean; onSelect: () => void }) {
   const attivo = centro.stato === "attivo";
   const size = active ? 26 : 18;
-  const bg = active ? "#E31919" : attivo ? "#E31919" : "#000000";
-  const border = active ? "#F3E9CC" : attivo ? "#E31919" : "rgba(227,25,25,.55)";
-  const dot = active || attivo ? "#000000" : "#E31919";
+  const bg = active ? "#E61C1C" : attivo ? "#E61C1C" : "#000000";
+  const border = active ? "#F3E9CC" : attivo ? "#E61C1C" : "rgba(227,25,25,.55)";
+  const dot = active || attivo ? "#000000" : "#E61C1C";
 
   return (
     <button

@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Spotlight } from "@/components/motion/Spotlight";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { CookieBanner } from "@/components/cookie/CookieBanner";
+import { MobileContactBar } from "@/components/MobileContactBar";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -39,11 +40,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-body">
         <MotionProvider>
           <Spotlight />
-          <div className="w-full overflow-x-hidden bg-navy-deep">
+          <div className="w-full overflow-x-hidden">
             <Header />
             {children}
             <Footer />
           </div>
+          <MobileContactBar />
           <CookieBanner />
         </MotionProvider>
       </body>

@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { SectionKicker } from "@/components/SectionKicker";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
 import { SETTORI, getSettore } from "@/lib/settori";
-import { serviceSchema, jsonLdScriptProps } from "@/lib/seo/schema";
+import { serviceSchema, breadcrumbSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 
 export function generateStaticParams() {
   return SETTORI.map((s) => ({ slug: s.slug }));
@@ -35,6 +35,15 @@ export default function SettoreSlugPage({ params }: { params: { slug: string } }
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLdScriptProps(
           serviceSchema({ name: settore.h1, description: settore.metaDescription }),
+        )}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScriptProps(
+          breadcrumbSchema([
+            { name: "Settori", path: "/settori" },
+            { name: settore.h1, path: `/settori/${settore.slug}` },
+          ]),
         )}
       />
 

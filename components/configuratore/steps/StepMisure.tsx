@@ -174,7 +174,7 @@ function CampoGruppo({
                 className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio outline-none transition-colors placeholder:text-avorio/30 focus:border-primary"
               />
               {def.suffix && (
-                <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-avorio/40">
+                <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-xs text-avorio/55">
                   {def.suffix}
                 </span>
               )}

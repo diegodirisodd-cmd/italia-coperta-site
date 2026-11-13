@@ -43,7 +43,7 @@ export function StatsBand() {
             </div>
           ))}
         </div>
-        <p className="mt-6 text-center text-[11px] text-avorio/40 sm:text-left">
+        <p className="mt-6 text-center text-[11px] text-avorio/55 sm:text-left">
           Dati produttivi aggiornati al 31 dicembre 2025
         </p>
       </div>

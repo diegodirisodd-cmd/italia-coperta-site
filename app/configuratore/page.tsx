@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { SectionKicker } from "@/components/SectionKicker";
 import { ConfiguratoreProvider } from "@/components/configuratore/ConfiguratoreProvider";
 import { WizardShell } from "@/components/configuratore/WizardShell";
-import { serviceSchema, jsonLdScriptProps } from "@/lib/seo/schema";
+import { serviceSchema, breadcrumbSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 import { ProvaSociale } from "@/components/recensioni/ProvaSociale";
 
 export const metadata: Metadata = {
-  title: "Configuratore telone su misura — stima istantanea",
+  title: "Configuratore teloni per camion su misura — preventivo gratuito",
   description:
-    "Configura il tuo telone per camion passo passo: veicolo, telo, misura, materiale ed extra. Ricevi una stima istantanea e il centro Italia Coperta più vicino.",
+    "Configura il telone per bilico, motrice o rimorchio in 9 passaggi: mezzo, intervento, colore, misure ed extra, anche con foto. Preventivo su misura gratuito e senza impegno.",
   alternates: { canonical: "/configuratore" },
 };
 
@@ -22,9 +22,13 @@ export default function ConfiguratorePage() {
             serviceSchema({
               name: "Configuratore telone su misura",
               description:
-                "Configuratore online per teloni per camion: stima istantanea del prezzo e assegnazione automatica del centro Italia Coperta più vicino.",
+                "Configuratore online per teloni per camion in 9 passaggi: tipo di mezzo, intervento, colore, misure ed extra, con richiesta di preventivo gratuita.",
             }),
           )}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={jsonLdScriptProps(breadcrumbSchema([{ name: "Configuratore", path: "/configuratore" }]))}
         />
         <div className="mb-10 flex flex-wrap items-end justify-between gap-5">
           <div>

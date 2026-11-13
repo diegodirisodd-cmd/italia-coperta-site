@@ -116,7 +116,7 @@ export function FileUpload({
       {status === "error" ? (
         <span className="mt-1 block text-[11px] text-primary-light">{error}</span>
       ) : (
-        <span className="mt-1 block text-[11px] text-avorio/35">Immagini o PDF, max 10 MB.</span>
+        <span className="mt-1 block text-[11px] text-avorio/55">Immagini o PDF, max 10 MB.</span>
       )}
     </div>
   );

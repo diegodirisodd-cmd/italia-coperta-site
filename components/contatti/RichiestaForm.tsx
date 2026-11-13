@@ -120,7 +120,7 @@ export function RichiestaForm({ tipo }: { tipo: Tipo }) {
       >
         {submitting ? "Invio in corso…" : tipo === "preventivo" ? "Invia richiesta" : "Invia messaggio"}
       </button>
-      <p className="mt-3 text-center text-xs text-avorio/40">
+      <p className="mt-3 text-center text-xs text-avorio/55">
         Ti ricontattiamo noi. Nessun impegno.
       </p>
     </form>

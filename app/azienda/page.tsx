@@ -108,7 +108,7 @@ export default function AziendaPage() {
                   className="object-cover"
                 />
               </div>
-              <figcaption className="mt-2 text-xs uppercase tracking-[0.14em] text-avorio/40">
+              <figcaption className="mt-2 text-xs uppercase tracking-[0.14em] text-avorio/55">
                 Il fondatore · dagli anni &apos;50
               </figcaption>
             </figure>
@@ -122,7 +122,7 @@ export default function AziendaPage() {
                   className="object-cover object-top"
                 />
               </div>
-              <figcaption className="mt-2 text-xs uppercase tracking-[0.14em] text-avorio/40">
+              <figcaption className="mt-2 text-xs uppercase tracking-[0.14em] text-avorio/55">
                 Domenico e Diego, oggi
               </figcaption>
             </figure>

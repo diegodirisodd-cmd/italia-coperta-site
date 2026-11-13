@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { SectionKicker } from "@/components/SectionKicker";
+import { productSchema, breadcrumbSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 
 const price = "13,00 €";
 const shippingCost = "5,00 €";
@@ -31,7 +32,7 @@ const SCHEDA_TECNICA = [
 ];
 
 export const metadata: Metadata = {
-  title: "Tenditore a cricchetto standard — Negozio",
+  title: "Tenditore a cricchetto 9 m per camion — acquista online",
   description:
     "Tenditore a cricchetto standard: cricchetto in acciaio inox, cinghia in poliestere, gancio aperto zincato. Robusto e affidabile per il fissaggio del carico.",
   alternates: { canonical: "/negozio/tenditore-cricchetto" },
@@ -40,6 +41,29 @@ export const metadata: Metadata = {
 export default function TenditoreCricchettoPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScriptProps(
+          productSchema({
+            name: "Tenditore a cricchetto standard LoadLok",
+            description:
+              "Tenditore a cricchetto: cricchetto in acciaio inox, cinghia in poliestere da 50 mm, lunghezza totale 9 m, gancio aperto zincato.",
+            path: "/negozio/tenditore-cricchetto",
+            images: [heroImage.src, ...galleryImages.map((g) => g.src)],
+            brand: "LoadLok",
+            price: 13,
+            paymentUrl: stripePaymentLink,
+          }),
+        )}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScriptProps(
+          breadcrumbSchema([
+            { name: "Negozio", path: "/negozio/tenditore-cricchetto" },
+          ]),
+        )}
+      />
       {/* hero */}
       <section className="border-b border-primary/[0.14] bg-navy px-6 py-20 md:px-10">
         <div className="mx-auto max-w-6xl">
@@ -91,7 +115,7 @@ export default function TenditoreCricchettoPage() {
                 <span className="font-display text-2xl font-bold text-primary">{price}</span>
                 <span className="text-sm text-avorio/60">+ {shippingCost} di spedizione</span>
               </div>
-              <p className="mt-1 text-xs text-avorio/40">
+              <p className="mt-1 text-xs text-avorio/55">
                 Totale al checkout: {totalPrice} · quantità regolabile su Stripe.
               </p>
               <a

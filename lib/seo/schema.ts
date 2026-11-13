@@ -3,7 +3,10 @@
  *   <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
  */
 
+import { AZIENDA, EMAIL, TEL_DISPLAY } from "@/lib/site";
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.dirisoteloni1950.com";
+const TEL_E164 = `+${TEL_DISPLAY.replace(/\D/g, "")}`;
 
 type PostalAddress = {
   "@type": "PostalAddress";
@@ -21,10 +24,14 @@ export function organizationSchema() {
     name: "Di Riso Teloni",
     alternateName: "Italia Coperta",
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    // /logo.png never existed; the 512px brand icon is the real square logo.
+    logo: `${SITE_URL}/icon-512.png`,
     foundingDate: "1950",
     slogan: "Italia Coperta",
-    sameAs: [] as string[],
+    legalName: AZIENDA.ragioneSociale,
+    vatID: `IT${AZIENDA.piva}`,
+    email: EMAIL,
+    telephone: TEL_E164,
   };
 }
 
@@ -33,6 +40,7 @@ const angriAddress: PostalAddress = {
   streetAddress: "Via dei Goti 183",
   addressLocality: "Angri",
   addressRegion: "SA",
+  postalCode: "84012",
   addressCountry: "IT",
 };
 
@@ -52,6 +60,13 @@ export function localBusinessSchema() {
     description:
       "Teloni per camion su misura dal 1950 — bilici, motrici, rimorchi e furgoni centinati. Terza generazione, sede ad Angri (SA) e copertura in Lombardia.",
     address: angriAddress,
+    telephone: TEL_E164,
+    email: EMAIL,
+    image: `${SITE_URL}/images/hero-telone-rosso.jpg`,
+    logo: `${SITE_URL}/icon-512.png`,
+    legalName: AZIENDA.ragioneSociale,
+    vatID: `IT${AZIENDA.piva}`,
+    areaServed: { "@type": "Country", name: "Italia" },
     location: [
       {
         "@type": "Place",
@@ -70,7 +85,7 @@ export function serviceSchema(opts: {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    provider: { "@type": "LocalBusiness", name: "Di Riso Teloni" },
+    provider: { "@type": "LocalBusiness", "@id": `${SITE_URL}/#organization`, name: "Di Riso Teloni" },
     name: opts.name,
     description: opts.description,
     areaServed: opts.areaServed ?? "IT",
@@ -86,6 +101,49 @@ export function faqPageSchema(items: { question: string; answer: string }[]) {
       name: item.question,
       acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
+  };
+}
+
+/** Breadcrumb trail. `items` excludes Home, which is always prepended. */
+export function breadcrumbSchema(items: { name: string; path: string }[]) {
+  const trail = [{ name: "Home", path: "/" }, ...items];
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${SITE_URL}${item.path === "/" ? "" : item.path}`,
+    })),
+  };
+}
+
+export function productSchema(opts: {
+  name: string;
+  description: string;
+  path: string;
+  images: string[];
+  brand: string;
+  price: number;
+  paymentUrl: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: opts.name,
+    description: opts.description,
+    image: opts.images.map((src) => `${SITE_URL}${src}`),
+    brand: { "@type": "Brand", name: opts.brand },
+    url: `${SITE_URL}${opts.path}`,
+    offers: {
+      "@type": "Offer",
+      price: opts.price.toFixed(2),
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      url: opts.paymentUrl,
+      seller: { "@id": `${SITE_URL}/#organization` },
+    },
   };
 }
 

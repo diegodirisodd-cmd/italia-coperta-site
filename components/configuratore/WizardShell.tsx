@@ -99,7 +99,7 @@ export function WizardShell() {
 function StepPlaceholder({ step }: { step: StepId }) {
   return (
     <div className="flex min-h-[16rem] flex-col items-start justify-center">
-      <span className="mb-2 text-[11px] uppercase tracking-[0.24em] text-avorio/45">
+      <span className="mb-2 text-[11px] uppercase tracking-[0.24em] text-avorio/55">
         {STEP_META[step].label}
       </span>
       <h2 className="font-display text-2xl font-bold uppercase tracking-[0.02em] text-avorio md:text-3xl">

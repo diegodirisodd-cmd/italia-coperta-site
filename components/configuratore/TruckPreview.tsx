@@ -15,7 +15,7 @@ export function TruckPreview({ tarpColor = "#12335c" }: { tarpColor?: string }) 
         ))}
       </g>
       {/* gold strap bottom */}
-      <rect x="104" y="132" width="308" height="7" fill="#E31919" />
+      <rect x="104" y="132" width="308" height="7" fill="#E61C1C" />
       {/* wheels */}
       <g fill="#000000" stroke="#F3E9CC" strokeWidth={2}>
         {[70, 300, 340, 380].map((cx) => (

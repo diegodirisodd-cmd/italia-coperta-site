@@ -119,7 +119,7 @@ export function Configuratore() {
                 <span
                   className={[
                     "font-display text-sm font-bold",
-                    active ? "text-primary" : done ? "text-primary/70" : "text-avorio/35",
+                    active ? "text-primary" : done ? "text-primary/70" : "text-avorio/55",
                   ].join(" ")}
                 >
                   {String(i + 1).padStart(2, "0")}

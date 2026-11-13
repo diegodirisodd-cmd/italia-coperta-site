@@ -15,6 +15,13 @@ body {
 }
 
 ::selection {
-  background: #E31919;
+  background: #E61C1C;
   color: #000000;
+}
+
+/* Brand red text on the blue (navy-deep) surfaces only reached 3:1 contrast.
+   Red text inside blue containers uses a lighter red (4.6:1, WCAG AA). The
+   page body is already blue, so no global wrapper carries bg-navy-deep. */
+.bg-navy-deep .text-primary {
+  color: #ff5a5a;
 }

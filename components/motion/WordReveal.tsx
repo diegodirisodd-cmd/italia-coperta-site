@@ -21,8 +21,9 @@ const word = {
 };
 
 /**
- * Reveals text word by word. The visible words are aria-hidden and the whole
- * phrase is exposed once via aria-label so screen readers read it normally.
+ * Reveals text word by word. The animated words are aria-hidden and the whole
+ * phrase is exposed once as visually-hidden text, so screen readers read it
+ * normally (aria-label is not allowed on a plain span).
  */
 export function WordReveal({ text, className, delay = 0 }: WordRevealProps) {
   const reduced = useReducedMotion();
@@ -30,13 +31,9 @@ export function WordReveal({ text, className, delay = 0 }: WordRevealProps) {
 
   const words = text.split(" ");
   return (
-    <m.span
-      className={className}
-      aria-label={text}
-      variants={container(delay)}
-      initial="hidden"
-      animate="show"
-    >
+    <span className={className}>
+      <span className="sr-only">{text}</span>
+      <m.span aria-hidden variants={container(delay)} initial="hidden" animate="show">
       {words.map((w, i) => (
         <span key={`${w}-${i}`}>
           <m.span aria-hidden variants={word} className="inline-block will-change-transform">
@@ -45,6 +42,7 @@ export function WordReveal({ text, className, delay = 0 }: WordRevealProps) {
           {i < words.length - 1 ? " " : ""}
         </span>
       ))}
-    </m.span>
+      </m.span>
+    </span>
   );
 }

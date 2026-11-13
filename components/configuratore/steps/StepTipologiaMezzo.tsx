@@ -33,7 +33,7 @@ export function StepTipologiaMezzo() {
       </header>
 
       <Stagger className="mt-9 flex flex-wrap justify-center gap-5">
-        {MEZZI.map((mezzo) => (
+        {MEZZI.map((mezzo, i) => (
           <StaggerItem
             key={mezzo.id}
             className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]"
@@ -41,6 +41,7 @@ export function StepTipologiaMezzo() {
             <MezzoCardButton
               mezzo={mezzo}
               selected={selected === mezzo.id}
+              priority={i === 0}
               onSelect={() => dispatch({ type: "SET_TIPOLOGIA_MEZZO", value: mezzo.id })}
             />
           </StaggerItem>
@@ -55,10 +56,12 @@ export function StepTipologiaMezzo() {
 function MezzoCardButton({
   mezzo,
   selected,
+  priority = false,
   onSelect,
 }: {
   mezzo: MezzoCard;
   selected: boolean;
+  priority?: boolean;
   onSelect: () => void;
 }) {
   return (
@@ -79,6 +82,7 @@ function MezzoCardButton({
             src={mezzo.image}
             alt={mezzo.imageAlt ?? mezzo.label}
             fill
+            priority={priority}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
           />
@@ -118,7 +122,7 @@ function MezzoIconPlaceholder({ mezzo }: { mezzo: MezzoCard }) {
   return (
     <div className="relative flex aspect-[4/3] flex-col items-center justify-center gap-2 border-b border-dashed border-primary/25 bg-gradient-to-br from-navy-black via-navy to-navy-deep">
       {mezzo.id === "altro" ? <SpecialIcon /> : <TruckIcon />}
-      <span className="text-[11px] uppercase tracking-[0.18em] text-avorio/35">
+      <span className="text-[11px] uppercase tracking-[0.18em] text-avorio/55">
         {mezzo.placeholderCaption}
       </span>
     </div>

@@ -63,7 +63,7 @@ export function MagneticCTA({ href, children, className, strength = 0.3 }: Magne
         <m.span
           aria-hidden
           className="absolute inset-0"
-          style={{ background: "linear-gradient(90deg, #E31919 0%, #FF4D4D 100%)" }}
+          style={{ background: "linear-gradient(90deg, #E61C1C 0%, #FF4D4D 100%)" }}
           variants={{ rest: { opacity: 0 }, tap: { opacity: 1 } }}
           transition={{ duration: 0.2 }}
         />
@@ -89,7 +89,7 @@ export function MagneticCTA({ href, children, className, strength = 0.3 }: Magne
       <m.span
         aria-hidden
         className="absolute inset-0"
-        style={{ background: "linear-gradient(90deg, #E31919 0%, #FF4D4D 100%)" }}
+        style={{ background: "linear-gradient(90deg, #E61C1C 0%, #FF4D4D 100%)" }}
         variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
         transition={{ duration: 0.35 }}
       />

@@ -3,7 +3,7 @@ import { AZIENDA, EMAIL, WHATSAPP_DISPLAY, waLink } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-primary/20 bg-navy-black px-6 pb-10 pt-14 md:px-10">
+    <footer className="border-t border-primary/20 bg-navy-black px-6 pb-28 pt-14 md:px-10 md:pb-10">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
@@ -49,7 +49,7 @@ export function Footer() {
         </div>
       </div>
       {/* Informazioni legali / societarie */}
-      <div className="mx-auto mt-9 max-w-6xl border-t border-avorio/10 pt-6 text-xs leading-relaxed text-avorio/45">
+      <div className="mx-auto mt-9 max-w-6xl border-t border-avorio/10 pt-6 text-xs leading-relaxed text-avorio/55">
         <p>
           <span className="font-semibold text-avorio/70">{AZIENDA.ragioneSociale}</span>
         </p>
@@ -70,7 +70,7 @@ export function Footer() {
         </nav>
       </div>
 
-      <div className="mx-auto mt-6 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-avorio/10 pt-5 text-xs text-avorio/45">
+      <div className="mx-auto mt-6 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-avorio/10 pt-5 text-xs text-avorio/55">
         <span>© 1950–{new Date().getFullYear()} Di Riso Teloni · Terza generazione</span>
         <span className="uppercase tracking-[0.14em]">Italia Coperta</span>
       </div>
