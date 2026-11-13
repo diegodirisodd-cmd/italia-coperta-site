@@ -3,6 +3,7 @@ import { Hero } from "@/components/home/Hero";
 import { StatsBand } from "@/components/home/StatsBand";
 import { Storia } from "@/components/home/Storia";
 import { Aree } from "@/components/home/Aree";
+import { LavoriPreview } from "@/components/home/LavoriPreview";
 import { ConfiguratoreTeaser } from "@/components/home/ConfiguratoreTeaser";
 import { RiparazionePreview } from "@/components/home/RiparazionePreview";
 import { CentriMapPreview } from "@/components/home/CentriMapPreview";
@@ -33,6 +34,7 @@ export default function HomePage() {
       <StatsBand />
       <Storia />
       <Aree />
+      <LavoriPreview />
       <ConfiguratoreTeaser />
       <RiparazionePreview />
       <CentriMapPreview />

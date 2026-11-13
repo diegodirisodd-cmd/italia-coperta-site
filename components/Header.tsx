@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/azienda", label: "Azienda" },
   { href: "/negozio/tenditore-cricchetto", label: "Negozio" },
   { href: "/settori", label: "Settori" },
+  { href: "/lavori", label: "Lavori" },
   { href: "/configuratore", label: "Configuratore" },
   { href: "/centri", label: "Centri" },
   { href: "/riparazione-rapida", label: "Riparazione" },
@@ -102,7 +103,7 @@ export function Header() {
             height={693}
             className="h-10 w-auto md:h-11"
           />
-          <span className="hidden text-[9.5px] leading-none tracking-[0.34em] text-avorio/55 sm:block">
+          <span className="hidden text-[9.5px] leading-none tracking-[0.34em] text-avorio/55 sm:block xl:hidden 2xl:block">
             ITALIA COPERTA · DAL 1950
           </span>
         </Link>
