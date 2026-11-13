@@ -9,7 +9,7 @@ const STEPS = [
     n: "01",
     icon: Ruler,
     t: "Rilievo misure da te",
-    d: "Veniamo dove si trova il tuo mezzo e prendiamo noi le misure. Il rilievo è gratuito.",
+    d: "Veniamo dove si trova il tuo mezzo e prendiamo noi le misure.",
   },
   {
     n: "02",

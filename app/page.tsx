@@ -16,7 +16,7 @@ import { organizationSchema, localBusinessSchema, jsonLdScriptProps } from "@/li
 export const metadata: Metadata = {
   title: "Teli per bilico e teloni per camion dal 1950 — Di Riso Teloni",
   description:
-    "Teli per bilico e teloni per camion su misura dal 1950. Veniamo noi da te in tutta Italia: rilievo misure gratuito e montaggio sul tuo mezzo. Produzione ad Angri (SA).",
+    "Teli per bilico e teloni per camion su misura dal 1950. Veniamo noi da te in tutta Italia: rilievo misure e montaggio sul tuo mezzo. Produzione ad Angri (SA).",
   alternates: { canonical: "/" },
 };
 

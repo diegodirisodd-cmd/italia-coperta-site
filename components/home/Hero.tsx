@@ -193,8 +193,8 @@ function FotoVariant() {
           <p className="mt-2 inline-flex w-fit items-center gap-2.5 rounded-full border border-white/20 bg-black/35 px-4 py-2 text-[13.5px] font-medium leading-snug text-white backdrop-blur-md md:mt-3 md:text-sm">
             <MapPin size={16} className="flex-none text-primary-light" aria-hidden />
             <span>
-              <strong className="font-semibold">Veniamo noi da te, in tutta Italia:</strong> rilievo misure gratuito e
-              montaggio sul tuo mezzo.
+              <strong className="font-semibold">Veniamo noi da te, in tutta Italia:</strong> rilievo misure e montaggio
+              sul tuo mezzo.
             </span>
           </p>
         </m.div>
