@@ -9,6 +9,7 @@ import { buildRiepilogo } from "@/lib/configuratore/riepilogo";
 import { mezzoLabel } from "@/lib/configuratore/mezzi";
 import { macroLabel } from "@/lib/configuratore/richiesta";
 import { waLink, WHATSAPP_NUMBER } from "@/lib/site";
+import { Turnstile } from "@/components/Turnstile";
 
 const STORAGE_KEY = "italiacoperta.configuratore.v1";
 
@@ -22,6 +23,7 @@ export function StepRiepilogo() {
   const { state, dispatch, visibleSteps } = useConfiguratore();
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [error, setError] = useState("");
 
   const sections = buildRiepilogo(state);
@@ -38,7 +40,7 @@ Vorrei procedere con il preventivo.`;
       const res = await fetch("/api/configuratore", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ state }),
+        body: JSON.stringify({ state, turnstileToken }),
       });
       if (!res.ok) throw new Error("Invio non riuscito");
       const json = (await res.json()) as { reference: string };
@@ -84,6 +86,8 @@ Vorrei procedere con il preventivo.`;
           </div>
         ))}
       </div>
+
+      <Turnstile onToken={setTurnstileToken} action="configuratore" />
 
       {error && <p className="mt-5 rounded-md border border-primary/40 bg-primary/10 px-4 py-3 text-sm text-primary-light">{error}</p>}
 

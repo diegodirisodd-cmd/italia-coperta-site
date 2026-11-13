@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SETTORI } from "@/lib/settori";
+import { Turnstile } from "@/components/Turnstile";
 
 type Tipo = "contatto" | "preventivo";
 type Form = {
@@ -20,6 +21,7 @@ export function RichiestaForm({ tipo }: { tipo: Tipo }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [reference, setReference] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const set = (k: keyof Form, v: string) => setForm((f) => ({ ...f, [k]: v }));
   const valid = form.nome.trim() && form.email.trim() && form.telefono.trim() && form.messaggio.trim();
@@ -32,7 +34,7 @@ export function RichiestaForm({ tipo }: { tipo: Tipo }) {
       const res = await fetch("/api/contatto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tipo, ...form }),
+        body: JSON.stringify({ tipo, ...form, turnstileToken }),
       });
       if (!res.ok) throw new Error("Invio non riuscito");
       const json = (await res.json()) as { reference: string };
@@ -110,6 +112,8 @@ export function RichiestaForm({ tipo }: { tipo: Tipo }) {
           className="w-full rounded-md border-[1.5px] border-avorio/20 bg-navy-deep px-4 py-3 text-avorio placeholder:text-avorio/30 outline-none focus:border-primary"
         />
       </label>
+
+      <Turnstile onToken={setTurnstileToken} action="contatto" />
 
       {error && <p className="mt-4 text-sm text-red-300">{error}</p>}
 

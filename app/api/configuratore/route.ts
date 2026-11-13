@@ -4,6 +4,15 @@ import { canLeaveStep } from "@/lib/configuratore/reducer";
 import { buildRiepilogo, collectAllegati } from "@/lib/configuratore/riepilogo";
 import { renderRichiestaPdf } from "@/lib/configuratore/pdf";
 import { sendConfiguratoreEmails } from "@/lib/configuratore/email";
+import { allegatiDelReference, isValidReference, newReference } from "@/lib/reference";
+import {
+  LIMITE_CONFERMA,
+  LIMITE_FORM,
+  rateLimit,
+  rateLimitByIp,
+  troppeRichieste,
+} from "@/lib/rateLimit";
+import { verificaFallita, verificaTurnstile } from "@/lib/turnstile";
 import type { ConfiguratoreState } from "@/lib/configuratore/types";
 
 export const runtime = "nodejs";
@@ -11,7 +20,7 @@ export const runtime = "nodejs";
 const BUCKET = "configuratore-uploads";
 const SIGNED_URL_TTL = 60 * 60 * 24 * 60; // 60 days
 
-type Payload = { state: ConfiguratoreState };
+type Payload = { state: ConfiguratoreState; turnstileToken?: string };
 
 function isValidState(s: ConfiguratoreState | undefined): s is ConfiguratoreState {
   if (!s || !s.reference || !s.tipologiaMezzo || !s.macroCategoria) return false;
@@ -21,6 +30,10 @@ function isValidState(s: ConfiguratoreState | undefined): s is ConfiguratoreStat
 }
 
 export async function POST(req: Request) {
+  // 1) Rate limit per IP, prima di leggere il corpo (S-02).
+  const rl = await rateLimitByIp(req, { name: "configuratore", ...LIMITE_FORM });
+  if (!rl.ok) return troppeRichieste(rl.retryAfter);
+
   let body: Partial<Payload>;
   try {
     body = (await req.json()) as Partial<Payload>;
@@ -28,15 +41,32 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "JSON non valido" }, { status: 400 });
   }
 
+  // 2) Turnstile, prima di qualunque scrittura (S-02).
+  const turnstile = await verificaTurnstile(req, body.turnstileToken);
+  if (!turnstile.ok) return verificaFallita();
+
   const state = body.state;
   if (!isValidState(state)) {
     return NextResponse.json({ error: "Dati incompleti" }, { status: 422 });
   }
 
-  const reference = state.reference;
+  // 3) Il reference deve avere il formato emesso dal server. Se il client ne
+  //    ha inventato uno, se ne conia uno nuovo invece di fidarsi (S-10).
+  const reference = isValidReference(state.reference) ? state.reference : newReference();
+
   const createdAt = new Date().toLocaleString("it-IT", { dateStyle: "medium", timeStyle: "short" });
   const sections = buildRiepilogo(state);
-  const allegati = collectAllegati(state);
+
+  // 4) Gli allegati devono stare nella cartella di QUESTA richiesta: i path
+  //    arrivano dallo stato del client, che potrebbe puntarli altrove nel
+  //    bucket per farsi firmare file di terzi (S-09).
+  const tuttiAllegati = collectAllegati(state);
+  const allegati = allegatiDelReference(tuttiAllegati, reference);
+  if (allegati.length !== tuttiAllegati.length) {
+    console.warn(
+      `Allegati scartati (path fuori da ${reference}/): ${tuttiAllegati.length - allegati.length}`,
+    );
+  }
   const fotoPaths = allegati.map((a) => a.path);
   const admin = supabaseAdmin();
 
@@ -71,7 +101,7 @@ export async function POST(req: Request) {
   });
 
   if (error) {
-    console.error("Errore insert preventivi (configuratore):", error);
+    console.error("Errore insert preventivi (configuratore):", error.message);
     return NextResponse.json({ error: "Errore nel salvataggio della richiesta" }, { status: 500 });
   }
 
@@ -82,6 +112,21 @@ export async function POST(req: Request) {
     if (signed) {
       allegatiUrls = allegati.map((a, i) => ({ label: a.label, url: signed[i]?.signedUrl ?? "" })).filter((a) => a.url);
     }
+  }
+
+  // 5) Limite per DESTINATARIO sulla conferma al cliente (S-02).
+  //    Un attaccante dietro IP a rotazione supererebbe il limite per IP: senza
+  //    questo, il dominio mittente diventerebbe uno strumento per tempestare
+  //    di email un indirizzo di terzi. La richiesta viene comunque salvata e
+  //    la notifica interna parte lo stesso — si sopprime solo la conferma.
+  const clienteEmail = state.datiCliente.email.trim().toLowerCase();
+  const confermaRl = await rateLimit({
+    name: "conferma-email",
+    identifier: clienteEmail,
+    ...LIMITE_CONFERMA,
+  });
+  if (!confermaRl.ok) {
+    console.warn("Conferma cliente soppressa: limite per destinatario superato.");
   }
 
   // Branded PDF + emails (best-effort — a mail/PDF failure must not lose the row).
@@ -95,6 +140,7 @@ export async function POST(req: Request) {
       clienteNome: state.datiCliente.nomeCognome,
       allegatiUrls,
       pdf,
+      inviaConferma: confermaRl.ok,
     });
   } catch (e) {
     console.error("Errore PDF/email configuratore (richiesta comunque salvata):", e);

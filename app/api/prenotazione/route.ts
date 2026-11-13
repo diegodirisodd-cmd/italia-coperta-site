@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
 import { INTERVENTI, SEDI, FASCE, slotDisponibile } from "@/lib/riparazione";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { LIMITE_FORM, rateLimitByIp, troppeRichieste } from "@/lib/rateLimit";
+import { verificaFallita, verificaTurnstile } from "@/lib/turnstile";
 
 type Payload = {
+  turnstileToken?: string;
   intervento: string;
   sede: string;
   giorno: string;
@@ -23,12 +26,20 @@ function isValid(p: Partial<Payload>): p is Payload {
 }
 
 export async function POST(req: Request) {
+  // Rate limit per IP, prima di leggere il corpo (S-02).
+  const rl = await rateLimitByIp(req, { name: "prenotazione", ...LIMITE_FORM });
+  if (!rl.ok) return troppeRichieste(rl.retryAfter);
+
   let body: Partial<Payload>;
   try {
     body = (await req.json()) as Partial<Payload>;
   } catch {
     return NextResponse.json({ error: "JSON non valido" }, { status: 400 });
   }
+
+  // Turnstile, prima di qualunque scrittura (S-02).
+  const turnstile = await verificaTurnstile(req, body.turnstileToken);
+  if (!turnstile.ok) return verificaFallita();
 
   if (!isValid(body)) {
     return NextResponse.json({ error: "Dati incompleti" }, { status: 422 });
@@ -41,9 +52,13 @@ export async function POST(req: Request) {
 
   const reference = "RIP-" + Date.now().toString(36).toUpperCase();
 
+  // `turnstileToken` è un campo di trasporto, non un dato della richiesta:
+  // va tolto prima dell'insert (nessuna colonna corrispondente).
+  const { turnstileToken: _scartato, ...datiRichiesta } = body;
+
   const { error } = await supabaseAdmin()
     .from("prenotazioni")
-    .insert({ reference, ...body });
+    .insert({ reference, ...datiRichiesta });
 
   if (error) {
     console.error("Errore insert prenotazioni:", error);

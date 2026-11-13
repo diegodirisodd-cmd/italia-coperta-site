@@ -2,8 +2,11 @@ import { NextResponse } from "next/server";
 import { stimaPrezzo, type ConfiguratoreSelezione } from "@/lib/configuratore";
 import { getCentroForRegione } from "@/lib/regioni";
 import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { LIMITE_FORM, rateLimitByIp, troppeRichieste } from "@/lib/rateLimit";
+import { verificaFallita, verificaTurnstile } from "@/lib/turnstile";
 
 type Payload = {
+  turnstileToken?: string;
   selezione: ConfiguratoreSelezione;
   regione: string;
   dati: { nome: string; azienda?: string; telefono: string; email: string; note?: string };
@@ -23,12 +26,20 @@ function isValid(p: Partial<Payload>): p is Payload {
 }
 
 export async function POST(req: Request) {
+  // Rate limit per IP, prima di leggere il corpo (S-02).
+  const rl = await rateLimitByIp(req, { name: "preventivo", ...LIMITE_FORM });
+  if (!rl.ok) return troppeRichieste(rl.retryAfter);
+
   let body: Partial<Payload>;
   try {
     body = (await req.json()) as Partial<Payload>;
   } catch {
     return NextResponse.json({ error: "JSON non valido" }, { status: 400 });
   }
+
+  // Turnstile, prima di qualunque scrittura (S-02).
+  const turnstile = await verificaTurnstile(req, body.turnstileToken);
+  if (!turnstile.ok) return verificaFallita();
 
   if (!isValid(body)) {
     return NextResponse.json({ error: "Dati incompleti" }, { status: 422 });
