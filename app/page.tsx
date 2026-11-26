@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/home/Hero";
+import { HeroSequence } from "@/components/home/HeroSequence";
 import { StatsBand } from "@/components/home/StatsBand";
 import { Storia } from "@/components/home/Storia";
 import { Aree } from "@/components/home/Aree";
@@ -30,7 +30,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLdScriptProps(localBusinessSchema())}
       />
-      <Hero />
+      <HeroSequence />
       <StatsBand />
       <Storia />
       <Aree />
