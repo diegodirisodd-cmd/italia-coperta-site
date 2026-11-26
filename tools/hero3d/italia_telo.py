@@ -25,6 +25,9 @@ def masked_material(base):
     m.name = "PVCTeloVolante"
     nt = m.node_tree
     p = next(n for n in nt.nodes if n.type == "BSDF_PRINCIPLED")
+    # In volo il telo e' molto vicino alla key: meno lucido, se no la sagoma sbianca verso il rosa.
+    p.inputs["Specular IOR Level"].default_value = 0.15
+    p.inputs["Coat Weight"].default_value = 0.0
     out = next(n for n in nt.nodes if n.type == "OUTPUT_MATERIAL")
     uv = nt.nodes.new("ShaderNodeTexCoord")
     sep = nt.nodes.new("ShaderNodeSeparateXYZ")
@@ -75,7 +78,7 @@ def masked_material(base):
     tono.data_type = "RGBA"
     tono.blend_type = "MIX"
     tono.name = "Tono"
-    tono.inputs["B"].default_value = (0.62, 0.006, 0.006, 1)  # rosso pieno: la sagoma e' solo Italia, senza pezzi di logo
+    tono.inputs["B"].default_value = (0.30, 0.004, 0.004, 1)  # rosso pieno: la sagoma e' solo Italia, senza pezzi di logo
     base_link = p.inputs["Base Color"].links[0]
     nt.links.new(base_link.from_socket, tono.inputs["A"])
     nt.links.new(tono.outputs["Result"], p.inputs["Base Color"])
