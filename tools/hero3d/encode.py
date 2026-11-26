@@ -9,10 +9,14 @@ from pathlib import Path
 
 from PIL import Image
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from config import FRAMES, ROOT, TOTAL_FRAMES  # noqa: E402
-
-OUT = ROOT.parent.parent / "public" / "sequenze" / "hero"
+HERE = Path(__file__).resolve().parent
+if (HERE / "config.py").exists():  # nel repo
+    sys.path.insert(0, str(HERE))
+    from config import FRAMES, ROOT, TOTAL_FRAMES  # noqa: E402
+    OUT = ROOT.parent.parent / "public" / "sequenze" / "hero"
+else:  # cartella di rendering sul PC: frames/ accanto, uscita in sito/
+    FRAMES, TOTAL_FRAMES = HERE / "frames", 150
+    OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "sito"
 BUDGET = {"desktop": (80_000, 6_000_000), "mobile": (50_000, 3_000_000)}  # per fotogramma, totale
 STATICI = (1, 75, 150)
 
