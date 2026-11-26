@@ -34,7 +34,7 @@ def pvc_material():
     nt.nodes.clear()
     out = nt.nodes.new("ShaderNodeOutputMaterial")
     p = _node(nt, "ShaderNodeBsdfPrincipled", Roughness=0.42)
-    p.inputs["Coat Weight"].default_value = 0.25
+    p.inputs["Coat Weight"].default_value = 0.1
     p.inputs["Coat Roughness"].default_value = 0.2
     tex = nt.nodes.new("ShaderNodeTexImage")
     tex.image = bpy.data.images.load(str(ASSETS / "telo_laterale.png"), check_existing=True)
@@ -116,6 +116,8 @@ def apply_finish():
 
     inox = paint("Inox", (0.82, 0.83, 0.85), rough=0.18, metal=1.0)
     bianco_tetto = paint("TettoBianco", (0.9, 0.9, 0.88), rough=0.55)
+    bordo = paint("BordoTelo", (0.62, 0.06, 0.06), rough=0.5)
+    alluminio = paint("Alluminio", (0.78, 0.79, 0.81), rough=0.3, metal=1.0)
     for o in bpy.data.objects:
         if o.type != "MESH":
             continue
@@ -123,3 +125,7 @@ def apply_finish():
             set_material(o, inox)
         elif "tetto" in o.name.lower() and not o.name.startswith("Cabina"):
             set_material(o, bianco_tetto)
+        elif o.name.startswith(("Telone | bordo", "Telone | rinforzo")):
+            set_material(o, bordo)
+        elif o.name.startswith(("Guida superiore telone", "Semirimorchio | profilo inferiore alluminio", "Protezione laterale")):
+            set_material(o, alluminio)

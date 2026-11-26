@@ -248,6 +248,9 @@ def build_scene(series):
     setup_floor()
     setup_lights(center)
     setup_camera(series, center)
+    from camera_path import add_macro_detail, keyframe_cameras
+    add_macro_detail()
+    keyframe_cameras(series, TOTAL_FRAMES)
     setup_render()
     out = WORK / f"scene_{series}.blend"
     bpy.ops.wm.save_as_mainfile(filepath=str(out))
