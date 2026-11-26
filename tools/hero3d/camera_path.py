@@ -25,8 +25,8 @@ KEYS = [
     (150, (-16.5, -11.0, 3.3), (-3.6, 3.6, 1.7), 35, 11),  # chiusura larga a tre quarti
 ]
 # Mobile: stessa coreografia; il punto mirato sale (camion piu' in basso) e la camera arretra un po' nei larghi.
-MOBILE_TARGET_DZ = 1.1
-MOBILE_BACK = 1.18
+MOBILE_TARGET_DZ = 0.9
+MOBILE_BACK = 0.78
 
 
 def keyframe_cameras(series: str, total: int = 150) -> None:
@@ -47,7 +47,7 @@ def keyframe_cameras(series: str, total: int = 150) -> None:
             if wide:
                 loc = tuple(t + (l - t) * MOBILE_BACK for l, t in zip(loc, tgt))
                 tgt = (tgt[0], tgt[1], tgt[2] + MOBILE_TARGET_DZ)
-            lens = round(lens * 0.8)
+            lens = round(lens * 0.7) if wide else round(lens * 0.85)
         cam.location = loc
         mira.location = tgt
         cam.data.lens = lens

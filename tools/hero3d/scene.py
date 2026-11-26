@@ -145,7 +145,12 @@ def setup_lights(center):
     fill = area("Fill", (center.x - 6, center.y - 16, 3), c, 8, 900, (0.85, 0.88, 1.0))
     fill.visible_glossy = False  # niente macchia bianca riflessa sul pavimento
     # Alta, così il suo riflesso sul pavimento cade fuori inquadratura.
-    area("Rim", (center.x + 6, center.y + 12, 16), c, 6, 9000, (0.7, 0.78, 1.0))
+    rim = area("Rim", (center.x + 6, center.y + 12, 16), c, 6, 9000, (0.7, 0.78, 1.0))
+    # Light linking: la rim illumina solo il bilico, non il pavimento (niente macchia riflessa).
+    ricevitori = bpy.data.collections.new("RicevitoriRim")
+    for name in ("Trattore", "Semirimorchio"):
+        ricevitori.children.link(bpy.data.collections[name])
+    rim.light_linking.receiver_collection = ricevitori
     top = area("Top", (center.x, center.y, 11), c, 16, 1800)
     # Il pavimento non deve riflettere i pannelli grandi (macchia bianca): li escludo dai riflessi
     # e aggiungo una striscia sottile che disegna il riflesso lungo il fianco.
@@ -239,7 +244,9 @@ def build_scene(series):
 
     apply_base_finish(tractor, trailer)
     from materials import apply_finish
+    from italia_telo import build_italia_telo
     apply_finish()
+    build_italia_telo()
     mn, mx = bounds(tractor + trailer)
     center = (mn + mx) / 2
     global CENTER_XY

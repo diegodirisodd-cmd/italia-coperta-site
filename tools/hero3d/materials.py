@@ -54,7 +54,14 @@ def pvc_material():
     nt.links.new(w2.outputs["Fac"], add.inputs[1])
     nt.links.new(add.outputs[0], bump.inputs["Height"])
     nt.links.new(bump.outputs["Normal"], p.inputs["Normal"])
-    nt.links.new(tex.outputs["Color"], p.inputs["Base Color"])
+    # Dal retro (interno del semirimorchio scoperto) il telo e' rosso pieno: niente logo a specchio.
+    geo = nt.nodes.new("ShaderNodeNewGeometry")
+    retro = nt.nodes.new("ShaderNodeMix")
+    retro.data_type = "RGBA"
+    retro.inputs["B"].default_value = (0.45, 0.012, 0.012, 1)
+    nt.links.new(geo.outputs["Backfacing"], retro.inputs["Factor"])
+    nt.links.new(tex.outputs["Color"], retro.inputs["A"])
+    nt.links.new(retro.outputs["Result"], p.inputs["Base Color"])
     # Fascia rifrangente: lucida e leggermente metallica dove c'e' la maschera.
     rough = nt.nodes.new("ShaderNodeMapRange")
     rough.inputs["To Min"].default_value = 0.42
