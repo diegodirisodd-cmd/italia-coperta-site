@@ -24,3 +24,9 @@ Cartella `pc/`: copiare `scena_desktop.blend` e `scena_mobile.blend` (salvate co
 PageSpeed Insights su https://www.dirisoteloni1950.com/, 26/11/2026 17:21:
 - Mobile: Prestazioni 97 · Accessibilità 97 · Best practice 100 · SEO 100 · LCP 2,6 s · TBT 0 ms · CLS 0
 - Desktop: LCP 0,5 s · TBT 10 ms · CLS 0
+
+## Dopo l'hero 3D (Lighthouse 12 mobile in locale, stessa macchina, 2 run)
+
+- main: Prestazioni 93 / 92 · Accessibilità 97 · LCP 3,0 s · TBT 160–180 ms · CLS 0
+- hero 3D: Prestazioni 91 / 93 · Accessibilità 97 · LCP 2,6–2,8 s · TBT 220–250 ms · CLS 0
+- (PageSpeed sull'anteprima Vercel non è utilizzabile: l'anteprima è protetta e misura la pagina di login.)
