@@ -61,10 +61,11 @@ function Ctas() {
 export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: boolean }) {
   const introOpacity = useTransform(p, map([0, 0.08, 0.12], [1, 1, 0]));
   const introEvents = useTransform(p, (v) => (v < 0.11 ? "auto" : "none"));
-  const barOpacity = useTransform(p, map([0.1, 0.14, 0.82, 0.86], [0, 1, 1, 0]));
-  const barEvents = useTransform(p, (v) => (v > 0.11 && v < 0.85 ? "auto" : "none"));
-  const finaleOpacity = useTransform(p, map([0.86, 0.92], [0, 1]));
-  const finaleEvents = useTransform(p, (v) => (v > 0.87 ? "auto" : "none"));
+  const barOpacity = useTransform(p, map([0.1, 0.14, 0.88, 0.92], [0, 1, 1, 0]));
+  const barEvents = useTransform(p, (v) => (v > 0.11 && v < 0.91 ? "auto" : "none"));
+  const finaleOpacity = useTransform(p, map([0.9, 0.94], [0, 1]));
+  const scrimOpacity = useTransform(p, map([0.08, 0.14], [0, 1]));
+  const finaleEvents = useTransform(p, (v) => (v > 0.92 ? "auto" : "none"));
 
   return (
     <div className="pointer-events-none absolute inset-0 z-[6]">
@@ -104,6 +105,12 @@ export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: b
 
       {!statico && (
         <>
+          {/* Ombra morbida dietro le frasi: leggibili anche sui primi piani del telo e del logo. */}
+          <m.div
+            aria-hidden
+            style={{ opacity: scrimOpacity }}
+            className="absolute inset-0 opacity-0 [background:linear-gradient(to_bottom,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0)_45%)] md:[background:linear-gradient(to_right,rgba(0,0,0,0.6)_0%,rgba(0,0,0,0.25)_38%,rgba(0,0,0,0)_60%),linear-gradient(to_top,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0)_35%)]"
+          />
           <div className="absolute inset-x-0 top-24 mx-auto max-w-6xl px-6 md:top-1/2 md:-translate-y-1/2 md:px-10">
             <div className="relative h-40">
               {FRASI.map((f) => (
@@ -121,7 +128,7 @@ export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: b
 
           <m.div
             style={{ opacity: finaleOpacity, pointerEvents: finaleEvents }}
-            className="absolute inset-x-0 top-24 mx-auto max-w-6xl px-6 opacity-0 md:top-1/2 md:-translate-y-1/2 md:px-10"
+            className="absolute inset-x-0 bottom-20 mx-auto max-w-6xl px-6 opacity-0 md:bottom-14 md:px-10"
           >
             <p className="max-w-[560px] font-display text-3xl font-bold uppercase leading-[1.02] text-white md:text-5xl" style={{ textShadow: textShadowSoft }}>
               Rilievo misure gratuito in tutta Italia
