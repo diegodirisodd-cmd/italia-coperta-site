@@ -140,17 +140,26 @@ export function HeroSequence() {
     };
 
     resize();
-    // Il caricamento parte quando il browser è libero; se il componente si smonta o cambia modo
-    // (riduci movimento / risparmio dati) prima di allora, non parte affatto.
+    // I fotogrammi partono al primo segno di interesse (scroll, tocco, tasto) oppure 5 s dopo il load:
+    // così non competono con il caricamento iniziale della pagina (LCP) né con chi apre e chiude subito.
     let annullato = false;
+    let partito = false;
+    const EVENTI = ["scroll", "wheel", "touchstart", "pointerdown", "keydown"] as const;
     const avvia = () => {
-      if (!annullato) carica();
+      if (annullato || partito) return;
+      partito = true;
+      EVENTI.forEach((e) => window.removeEventListener(e, avvia));
+      carica();
     };
-    const w = window as Window & {
-      requestIdleCallback?: (cb: () => void) => number;
-      cancelIdleCallback?: (id: number) => void;
+    EVENTI.forEach((e) => window.addEventListener(e, avvia, { passive: true, once: true }));
+    let t = 0;
+    const dopoLoad = () => {
+      t = window.setTimeout(avvia, 5000);
     };
-    const t = w.requestIdleCallback ? w.requestIdleCallback(avvia) : window.setTimeout(avvia, 1500);
+    if (document.readyState === "complete") dopoLoad();
+    else window.addEventListener("load", dopoLoad, { once: true });
+    // Pagina ricaricata già scrollata (ritorno con "indietro"): l'utente sta già guardando la sequenza.
+    if (window.scrollY > 0) avvia();
 
     const io = new IntersectionObserver(([e]) => {
       s.visible = e.isIntersecting;
@@ -166,8 +175,9 @@ export function HeroSequence() {
       annullato = true;
       s.gen++;
       if (s.raf) cancelAnimationFrame(s.raf);
-      if (w.cancelIdleCallback) w.cancelIdleCallback(t);
-      else clearTimeout(t);
+      clearTimeout(t);
+      window.removeEventListener("load", dopoLoad);
+      EVENTI.forEach((e) => window.removeEventListener(e, avvia));
       io.disconnect();
       ro.disconnect();
       mq.removeEventListener("change", onMq);

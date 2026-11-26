@@ -44,6 +44,16 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
   await ctx.close();
 }
 
+// (i) senza interazione nessun fotogramma nei primi 3 s (non compete con LCP)
+{
+  const { ctx, page, richieste } = await pagina({ width: 1440, height: 900 });
+  await page.goto(URL, { waitUntil: "load" });
+  await page.waitForTimeout(3000);
+  const seq = richieste.filter((u) => /\/(desktop|mobile)\/\d{4}\.webp/.test(u)).length;
+  ok("(i) nessun fotogramma prima dell'interazione", seq === 0, `${seq} richieste`);
+  await ctx.close();
+}
+
 // (c) riduci movimento: niente canvas
 {
   const { ctx, page } = await pagina({ width: 1440, height: 900 }, { reducedMotion: "reduce" });
@@ -83,7 +93,8 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
 {
   const { ctx, page, richieste } = await pagina({ width: 1440, height: 900 });
   await page.goto(URL, { waitUntil: "domcontentloaded" });
-  await page.waitForTimeout(2000);
+  await page.mouse.wheel(0, 40); // fa partire il caricamento
+  await page.waitForTimeout(1500);
   await page.evaluate(() => {
     Object.defineProperty(document, "hidden", { configurable: true, get: () => true });
     document.dispatchEvent(new Event("visibilitychange"));
@@ -91,7 +102,7 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
   await page.waitForTimeout(800); // lascia finire il lotto in corso
   const prima = richieste.length;
   await page.waitForTimeout(3000);
-  ok("(f) scheda nascosta: download in pausa", richieste.length === prima, `${prima} → ${richieste.length}`);
+  ok("(f) scheda nascosta: download in pausa", prima > 0 && richieste.length === prima, `${prima} → ${richieste.length}`);
   await ctx.close();
 }
 

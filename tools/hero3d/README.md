@@ -30,3 +30,8 @@ PageSpeed Insights su https://www.dirisoteloni1950.com/, 26/11/2026 17:21:
 - main: Prestazioni 93 / 92 · Accessibilità 97 · LCP 3,0 s · TBT 160–180 ms · CLS 0
 - hero 3D: Prestazioni 91 / 93 · Accessibilità 97 · LCP 2,6–2,8 s · TBT 220–250 ms · CLS 0
 - (PageSpeed sull'anteprima Vercel non è utilizzabile: l'anteprima è protetta e misura la pagina di login.)
+
+## Dopo la pubblicazione (26/11, PageSpeed su www.dirisoteloni1950.com)
+
+- Prima versione live: mobile 92, LCP 3,3 s, 3,5 MB scaricati durante il test (i fotogrammi partivano a pagina ferma).
+- Correzione: i fotogrammi partono al primo scroll/tocco/tasto o 5 s dopo il load. In locale: peso iniziale 373 KiB, Prestazioni 93–97, LCP 2,6–3,0 s, CLS 0.

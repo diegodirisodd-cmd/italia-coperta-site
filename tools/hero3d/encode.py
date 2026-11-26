@@ -26,7 +26,7 @@ def webp_entro(img: Image.Image, limite: int) -> bytes:
     while True:
         buf = io.BytesIO()
         img.save(buf, "WEBP", quality=q, method=6)
-        if buf.tell() <= limite or q <= 50:
+        if buf.tell() <= limite or q <= 40:
             return buf.getvalue()
         q -= 4
 
@@ -34,6 +34,8 @@ def webp_entro(img: Image.Image, limite: int) -> bytes:
 def main() -> int:
     fuori = []
     for serie, (per_frame, totale) in BUDGET.items():
+        # Il totale e' il vincolo piu' stretto: ogni fotogramma sta nella sua quota media.
+        per_frame = min(per_frame, totale // TOTAL_FRAMES)
         dest = OUT / serie
         dest.mkdir(parents=True, exist_ok=True)
         somma, massimo = 0, 0
