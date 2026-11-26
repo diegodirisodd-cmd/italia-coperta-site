@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { m, useTransform, type MotionValue } from "framer-motion";
+import { useState } from "react";
+import { m, useMotionValueEvent, useTransform, type MotionValue } from "framer-motion";
 
 /** Interpolazione lineare a tratti con clamp. Forma a funzione di useTransform: framer non la
  *  "accelera" con ScrollTimeline, che qui calcolava i valori sulla pagina intera invece che sulla sezione. */
@@ -59,6 +60,12 @@ function Ctas() {
  * Con `statico` (reduced motion / risparmio dati) non c'è animazione: blocco hero fisso.
  */
 export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: boolean }) {
+  // Strato attivo: quelli invisibili diventano inert (niente Tab, niente lettori di schermo).
+  type Strato = "intro" | "barra" | "finale";
+  const strato = (v: number): Strato => (v < 0.11 ? "intro" : v < 0.91 ? "barra" : "finale");
+  const [attivo, setAttivo] = useState<Strato>("intro");
+  useMotionValueEvent(p, "change", (v) => setAttivo(strato(v)));
+  const inert = (s: Strato) => (!statico && attivo !== s ? ({ inert: "", "aria-hidden": true } as Record<string, unknown>) : {});
   const introOpacity = useTransform(p, map([0, 0.08, 0.12], [1, 1, 0]));
   const introEvents = useTransform(p, (v) => (v < 0.11 ? "auto" : "none"));
   const barOpacity = useTransform(p, map([0.1, 0.14, 0.88, 0.92], [0, 1, 1, 0]));
@@ -71,6 +78,7 @@ export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: b
     <div className="pointer-events-none absolute inset-0 z-[6]">
       {/* Blocco hero: in alto su mobile (camion nei 2/3 bassi), a sinistra su desktop. */}
       <m.div
+        {...inert("intro")}
         style={statico ? undefined : { opacity: introOpacity, pointerEvents: introEvents }}
         className="pointer-events-auto mx-auto flex h-full w-full max-w-6xl flex-col justify-start px-6 pt-24 md:justify-center md:px-10 md:pt-0"
       >
@@ -112,7 +120,7 @@ export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: b
             className="absolute inset-0 opacity-0 [background:linear-gradient(to_bottom,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0)_45%)] md:[background:linear-gradient(to_right,rgba(0,0,0,0.6)_0%,rgba(0,0,0,0.25)_38%,rgba(0,0,0,0)_60%),linear-gradient(to_top,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0)_35%)]"
           />
           <div className="absolute inset-x-0 top-24 mx-auto max-w-6xl px-6 md:top-1/2 md:-translate-y-1/2 md:px-10">
-            <div className="relative h-40">
+            <div className="relative h-40" aria-hidden>
               {FRASI.map((f) => (
                 <Frase key={f.testo} p={p} {...f} />
               ))}
@@ -120,6 +128,7 @@ export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: b
           </div>
 
           <m.div
+            {...inert("barra")}
             style={{ opacity: barOpacity, pointerEvents: barEvents }}
             className="absolute inset-x-0 bottom-6 mx-auto opacity-0 flex max-w-6xl justify-center px-4 md:bottom-10 md:justify-start md:px-10"
           >
@@ -127,6 +136,7 @@ export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: b
           </m.div>
 
           <m.div
+            {...inert("finale")}
             style={{ opacity: finaleOpacity, pointerEvents: finaleEvents }}
             className="absolute inset-x-0 bottom-20 mx-auto max-w-6xl px-6 opacity-0 md:bottom-14 md:px-10"
           >

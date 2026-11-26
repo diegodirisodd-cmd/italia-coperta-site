@@ -95,6 +95,31 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
   await ctx.close();
 }
 
+// (g) in cima alla pagina un solo set di CTA dell'hero è raggiungibile (gli strati invisibili sono inert)
+{
+  const { ctx, page } = await pagina({ width: 1440, height: 900 });
+  await page.goto(URL, { waitUntil: "networkidle" });
+  await page.waitForTimeout(1000);
+  const n = await page.evaluate(
+    () => [...document.querySelectorAll('#top a[href="/configuratore"]')].filter((a) => !a.closest("[inert]")).length,
+  );
+  ok("(g) CTA invisibili non raggiungibili da tastiera", n === 1, `${n} raggiungibili`);
+  await ctx.close();
+}
+
+// (h) riduci movimento: nessun salto di layout (altezza sezione già finale prima e dopo l'idratazione)
+{
+  const { ctx, page } = await pagina({ width: 1440, height: 900 }, { reducedMotion: "reduce", javaScriptEnabled: false });
+  await page.goto(URL, { waitUntil: "domcontentloaded" });
+  const prima = await page.evaluate(() => document.getElementById("top").offsetHeight);
+  await ctx.close();
+  const b = await pagina({ width: 1440, height: 900 }, { reducedMotion: "reduce" });
+  await b.page.goto(URL, { waitUntil: "networkidle" });
+  const dopo = await b.page.evaluate(() => document.getElementById("top").offsetHeight);
+  ok("(h) riduci movimento senza salto di layout", Math.abs(prima - dopo) < 4, `${prima} → ${dopo}`);
+  await b.ctx.close();
+}
+
 await browser.close();
 console.log(risultati.join("\n"));
 const passati = risultati.filter((r) => r.startsWith("ok")).length;

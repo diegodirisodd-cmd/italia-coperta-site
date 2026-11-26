@@ -140,10 +140,17 @@ export function HeroSequence() {
     };
 
     resize();
-    // Il primo fotogramma della posizione attuale subito; il resto quando il browser è libero.
-    const avvia = () => carica();
-    const idle = (window as Window & { requestIdleCallback?: (cb: () => void) => number }).requestIdleCallback;
-    const t = idle ? idle(avvia) : window.setTimeout(avvia, 1500);
+    // Il caricamento parte quando il browser è libero; se il componente si smonta o cambia modo
+    // (riduci movimento / risparmio dati) prima di allora, non parte affatto.
+    let annullato = false;
+    const avvia = () => {
+      if (!annullato) carica();
+    };
+    const w = window as Window & {
+      requestIdleCallback?: (cb: () => void) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    const t = w.requestIdleCallback ? w.requestIdleCallback(avvia) : window.setTimeout(avvia, 1500);
 
     const io = new IntersectionObserver(([e]) => {
       s.visible = e.isIntersecting;
@@ -156,9 +163,11 @@ export function HeroSequence() {
     mq.addEventListener("change", onMq);
 
     return () => {
+      annullato = true;
       s.gen++;
       if (s.raf) cancelAnimationFrame(s.raf);
-      if (!idle) clearTimeout(t as number);
+      if (w.cancelIdleCallback) w.cancelIdleCallback(t);
+      else clearTimeout(t);
       io.disconnect();
       ro.disconnect();
       mq.removeEventListener("change", onMq);
@@ -173,7 +182,7 @@ export function HeroSequence() {
       ref={sectionRef}
       id="top"
       aria-label="Di Riso Teloni — teli per bilico dal 1950"
-      className={sequenza ? "relative h-[300svh]" : "relative"}
+      className={sequenza ? "relative h-[300svh] motion-reduce:h-auto" : "relative"}
     >
       <div className="sticky top-0 h-[100svh] min-h-[560px] overflow-hidden bg-black">
         <picture>
@@ -184,7 +193,7 @@ export function HeroSequence() {
           <canvas
             ref={canvasRef}
             aria-hidden
-            className={`absolute inset-0 h-full w-full transition-opacity duration-300 ${pronto ? "opacity-100" : "opacity-0"}`}
+            className={`absolute inset-0 h-full w-full transition-opacity duration-300 motion-reduce:hidden ${pronto ? "opacity-100" : "opacity-0"}`}
           />
         )}
         {/* fondo che sfuma nella pagina, come l'hero precedente */}
@@ -196,8 +205,9 @@ export function HeroSequence() {
         <HeroOverlay p={scrollYProgress} statico={!sequenza} />
       </div>
 
-      {modo === "statico-movimento" && (
-        <div className="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:grid-cols-3 md:px-10">
+      {/* Sempre nel markup ma visibile solo con "riduci movimento" (CSS): nessun salto di layout dopo l'idratazione. */}
+      {modo !== "statico-dati" && (
+        <div className="mx-auto hidden max-w-6xl gap-6 px-6 py-16 motion-reduce:grid md:grid-cols-3 md:px-10">
           {FRASI.map((f, n) => (
             <figure key={f.testo} className="overflow-hidden rounded-2xl border border-white/10">
               <picture>
