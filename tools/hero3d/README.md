@@ -7,11 +7,11 @@ Requisiti: Python 3.11+ con `pip install bpy` (Blender 5.3 come modulo), Node pe
 
 1. `bash tools/hero3d/prepare_models.sh` — copia e decomprime i GLB di Diego in `work/` (i file originali non si toccano).
 2. `python3 tools/hero3d/scene.py --series desktop` (e `--series mobile`) — costruisce `work/scene_<serie>.blend`.
-3. `python3 tools/hero3d/render.py --series desktop --start 1 --end 150 --samples 32` — riprendibile, salta i fotogrammi già fatti. Usa la GPU se c'è.
+3. `python3 tools/hero3d/render.py --series desktop --start 1 --end 150` — riprendibile, salta i fotogrammi già fatti. Usa la GPU se c'è.
 
 ## Tempi misurati
 
-- Cloud di lavoro (2 CPU): 1920×1080, 32 campioni + denoise ≈ 70 s a fotogramma.
+- Cloud di lavoro (2 CPU): 1920×1080, 32 campioni + denoise ≈ 70 s a fotogramma; 8 campioni adattivi + denoise + dati persistenti ≈ 23 s (qualità equivalente, è il default).
 
 ## Baseline Lighthouse (prima dell'hero 3D)
 

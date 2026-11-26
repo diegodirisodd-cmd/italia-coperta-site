@@ -19,7 +19,7 @@ def main():
     ap.add_argument("--series", choices=list(SERIES), default="desktop")
     ap.add_argument("--start", type=int, default=1)
     ap.add_argument("--end", type=int, default=1)
-    ap.add_argument("--samples", type=int, default=32)
+    ap.add_argument("--samples", type=int, default=8)
     ap.add_argument("--scale", type=int, default=100, help="percentuale della risoluzione (per prove veloci)")
     a = ap.parse_args()
 
@@ -27,6 +27,10 @@ def main():
     setup_render(a.samples)
     scn = bpy.context.scene
     scn.render.resolution_percentage = a.scale
+    # Scena statica tra un fotogramma e l'altro: riuso BVH e texture; campionamento adattivo.
+    scn.render.use_persistent_data = True
+    scn.cycles.use_adaptive_sampling = True
+    scn.cycles.adaptive_threshold = 0.05
     outdir = FRAMES / a.series
     outdir.mkdir(parents=True, exist_ok=True)
     for f in range(a.start, a.end + 1):
