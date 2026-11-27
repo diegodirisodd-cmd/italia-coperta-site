@@ -198,7 +198,7 @@ export function Header() {
             </a>
           </div>
           <p className="mt-6 text-center text-sm text-avorio/60">
-            Rilievo misure gratuito in tutta Italia ·{" "}
+            Rilievo e montaggio in tutta Italia ·{" "}
             <span className="whitespace-nowrap">{TEL_DISPLAY}</span>
           </p>
         </nav>

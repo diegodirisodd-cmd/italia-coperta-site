@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-body">
         <MotionProvider>
           <Spotlight />
-          <div className="w-full overflow-x-hidden">
+          <div className="w-full overflow-x-clip">
             <Header />
             {children}
             <Footer />

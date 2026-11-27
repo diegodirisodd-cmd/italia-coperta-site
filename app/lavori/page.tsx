@@ -75,7 +75,7 @@ export default function LavoriPage() {
               Il prossimo è il tuo mezzo?
             </h2>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/75">
-              Teli su misura con la grafica della tua azienda. Rilievo misure gratuito in tutta Italia.
+              Teli su misura con la grafica della tua azienda. Rilievo misure e montaggio in tutta Italia.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
