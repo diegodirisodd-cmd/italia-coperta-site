@@ -14,6 +14,7 @@ function pw(v: number, xs: number[], ys: number[]): number {
   return ys[ys.length - 1];
 }
 const map = (xs: number[], ys: number[]) => (v: number) => pw(v, xs, ys);
+import { MapPin } from "lucide-react";
 import { MagneticCTA } from "@/components/motion/MagneticCTA";
 
 export const ctaPrimary =
@@ -104,8 +105,11 @@ export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: b
           </p>
           <div className="mt-6 md:mt-8">
             <Ctas />
-            <p className="mt-3 text-sm font-medium text-white/90" style={{ textShadow: textShadowSoft }}>
-              <span className="text-primary-light">✓</span> Rilievo misure gratuito in tutta Italia
+            <p className="mt-3 inline-flex w-fit items-center gap-2.5 rounded-full border border-white/20 bg-black/35 px-4 py-2 text-[13.5px] font-medium leading-snug text-white backdrop-blur-md md:text-sm">
+              <MapPin size={16} className="flex-none text-primary-light" aria-hidden />
+              <span>
+                <strong className="font-semibold">Veniamo noi da te, in tutta Italia:</strong> rilievo misure e montaggio sul tuo mezzo.
+              </span>
             </p>
           </div>
         </div>
@@ -141,7 +145,7 @@ export function HeroOverlay({ p, statico }: { p: MotionValue<number>; statico: b
             className="absolute inset-x-0 bottom-20 mx-auto max-w-6xl px-6 opacity-0 md:bottom-14 md:px-10"
           >
             <p className="max-w-[560px] font-display text-3xl font-bold uppercase leading-[1.02] text-white md:text-5xl" style={{ textShadow: textShadowSoft }}>
-              Rilievo misure gratuito in tutta Italia
+              Veniamo noi da te, in tutta Italia
             </p>
             <div className="mt-6 md:mt-8">
               <Ctas />
