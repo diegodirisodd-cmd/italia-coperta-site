@@ -121,7 +121,7 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
 // (h) riduci movimento: nessun salto di layout (altezza sezione già finale prima e dopo l'idratazione)
 {
   const { ctx, page } = await pagina({ width: 1440, height: 900 }, { reducedMotion: "reduce", javaScriptEnabled: false });
-  await page.goto(URL, { waitUntil: "domcontentloaded" });
+  await page.goto(URL, { waitUntil: "load" }); // a domcontentloaded il CSS può non essere ancora applicato
   const prima = await page.evaluate(() => document.getElementById("top").offsetHeight);
   await ctx.close();
   const b = await pagina({ width: 1440, height: 900 }, { reducedMotion: "reduce" });

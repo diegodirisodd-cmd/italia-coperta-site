@@ -103,7 +103,9 @@ export function HeroSequence() {
       s.loaded.clear();
       s.drawn = 0;
       // Il fotogramma della posizione attuale per primo (ritorno con "indietro" a metà sezione), poi l'ordine a fasi.
-      const subito = frameForProgress(scrollYProgress.get(), TOTAL);
+      // Progresso letto dal DOM: dopo un ripristino dello scroll il motion value può non essere ancora aggiornato.
+      const r = sectionRef.current!.getBoundingClientRect();
+      const subito = frameForProgress(-r.top / Math.max(1, r.height - window.innerHeight), TOTAL);
       const ordine = [subito, ...loadOrder(TOTAL).filter((i) => i !== subito)];
       let k = 0;
       const next = () => {
